@@ -5,20 +5,26 @@
    ========================================================== */
 (function () {
   /* ---------- 1. CONFIGURACIÓN (edita solo esto) ----------
-     Todas las rutas son relativas a la CARPETA RAÍZ del proyecto
-     (la carpeta que contiene a /componentes y /src).            */
+     - Las PÁGINAS (inicio, contacto, enlaces) se buscan en la misma
+       carpeta donde está la página que abriste (junto a index.html).
+     - El LOGO se busca desde la carpeta raíz del proyecto
+       (la que contiene a /componentes y /src).                   */
   const CONFIG = {
     logo: "src/Logo_Menu.png",
-    inicio: "Inicio.html",
-    contacto: "paginas/Contacto.html",
+    inicio: "index.html",
+    contacto: "Contacto.html",
     enlaces: [
-      { texto: "Inicio", url: "Inicio.html" },
+      { texto: "Inicio", url: "index.html" },
       { texto: "Proyectos", url: "#" },
       {
         texto: "Servicios",
+        // Cuando tengas la página de un servicio, cambia su "#" por la ruta.
         submenu: [
-          { texto: "Construcción de Red", url: "paginas/Construcción_de_Red.html" }
-          // { texto: "Otro servicio", url: "paginas/Otro.html" },
+          { texto: "Ingeniería y diseño de red", url: "IngenieriaDiseño.html" },
+          { texto: "Construcción de red", url: "Construcción_de_Red.html" },
+          { texto: "Infraestructura y obra civil", url: "https://yajairaestrada3.wixstudio.com/drfcingenieria/blank-4", nuevaVentana: "_top" },
+          { texto: "Mantenimiento de Red Activa", url: "https://yajairaestrada3.wixstudio.com/drfcingenieria/blank-3", nuevaVentana: "_top" },
+          { texto: "Acometidas", url: "#" }
         ]
       },
       { texto: "Acerca de Nosotros", url: "#" },
@@ -31,7 +37,10 @@
      funciona igual desde cualquier carpeta o subcarpeta.        */
   const script = document.currentScript;
   const raiz = new URL("../", script.src);
-  const ruta = (u) => (!u || u.startsWith("#") || /^[a-z]+:/i.test(u)) ? (u || "#") : new URL(u, raiz).href;
+  const esExterna = (u) => !u || u.startsWith("#") || /^[a-z]+:/i.test(u);
+  // Páginas: relativas a la página actual. Archivos (logo): relativos a la raíz.
+  const ruta = (u) => esExterna(u) ? (u || "#") : new URL(u, location.href).href;
+  const rutaArchivo = (u) => esExterna(u) ? (u || "#") : new URL(u, raiz).href;
   const actual = location.href.split("#")[0];
   const esActual = (u) => ruta(u).split("#")[0] === actual;
 
@@ -58,7 +67,7 @@
   .drfc-header-action{justify-self:end}
   .drfc-contact{display:inline-flex;align-items:center;justify-content:center;padding:clamp(.6rem,.8vw,.9rem) clamp(1.3rem,2vw,2.3rem);background:#0d425c;color:#fff!important;font-size:clamp(.8rem,.85vw,1.1rem);font-weight:600;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;transition:background-color .2s ease}
   .drfc-contact:hover{background:#082d40}
-  @media (max-width:992px){.drfc-header{display:flex;flex-direction:column;gap:15px;padding:20px}.drfc-header-links{flex-wrap:wrap;gap:15px}}
+  @media (max-width:992px){.drfc-header{position:relative;top:auto;min-height:auto;display:flex;flex-direction:column;gap:15px;padding:20px}.drfc-header-links{flex-wrap:wrap;gap:15px}}
   @media (max-width:576px){.drfc-header-links{gap:12px}.drfc-header-links a,.drfc-services-trigger{font-size:.9rem}.drfc-services-menu{display:flex;flex-basis:100%;flex-direction:column;align-items:center}.drfc-services-submenu{position:static;width:min(100%,24rem);min-width:0;max-width:none;margin:.5rem auto 0;transform:none}}
   @media (prefers-reduced-motion:reduce){.drfc-dropdown-arrow,.drfc-contact{transition:none}}`;
 
@@ -68,13 +77,13 @@
   const items = CONFIG.enlaces.map((e) => {
     if (e.submenu) {
       const sub = e.submenu.map((s) =>
-        `<li><a href="${ruta(s.url)}"${esActual(s.url) ? ' class="is-active"' : ""}>${s.texto}</a></li>`).join("");
+        `<li><a href="${ruta(s.url)}"${s.nuevaVentana ? ` target="${s.nuevaVentana}"` : ""}${esActual(s.url) ? ' class="is-active"' : ""}>${s.texto}</a></li>`).join("");
       return `<li class="drfc-services-menu">
         <button class="drfc-services-trigger" type="button" aria-expanded="false" aria-controls="drfc-services-submenu">${e.texto} ${flecha}</button>
         <ul class="drfc-services-submenu" id="drfc-services-submenu" aria-label="${e.texto}">${sub}</ul>
       </li>`;
     }
-    return `<li><a href="${ruta(e.url)}"${esActual(e.url) ? ' class="is-active"' : ""}>${e.texto}</a></li>`;
+    return `<li><a href="${ruta(e.url)}"${e.nuevaVentana ? ` target="${e.nuevaVentana}"` : ""}${esActual(e.url) ? ' class="is-active"' : ""}>${e.texto}</a></li>`;
   }).join("");
 
   const html = `
@@ -82,7 +91,7 @@
   <header class="drfc-header">
     <div class="drfc-header-logo">
       <a href="${ruta(CONFIG.inicio)}" aria-label="DRFC Ingeniería, inicio">
-        <img src="${ruta(CONFIG.logo)}" alt="DRFC Ingeniería S.A. de C.V.">
+        <img src="${rutaArchivo(CONFIG.logo)}" alt="DRFC Ingeniería S.A. de C.V.">
       </a>
     </div>
     <nav aria-label="Navegación principal"><ul class="drfc-header-links">${items}</ul></nav>
