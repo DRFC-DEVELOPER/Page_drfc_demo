@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestra Experiencia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .section-container {
+      width: 100%;
+      background-color: #ffffff;
+      padding: 60px 40px 0px 40px;
+    }
+
+    /* Encabezado */
+    .header-tag {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #5a6b7c;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      line-height: 1.5;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .header-icon {
+      width: 40px;
+      height: 40px;
+      flex: 0 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-icon img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .header-tag > span {
+      min-width: 0;
+    }
+
+    .main-title {
+      font-size: 42px;
+      font-weight: 700;
+      color: #123e59;
+      margin-bottom: 25px;
+    }
+
+    .title-line {
+      width: 450px;
+      max-width: 100%;
+      height: 2px;
+      background-color: #333333;
+      margin-bottom: 40px;
+    }
+
+    /* Sección de estadísticas */
+    .stats-section {
+      background-color: #f4f4f4;
+      padding: 60px 40px 80px 40px;
+      margin-left: -40px;
+      margin-right: -40px;
+    }
+
+    .stats-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      text-align: center;
+    }
+
+    .stat-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .stat-number {
+      font-size: 56px;
+      font-weight: 400;
+      color: #2b2b2b;
+      line-height: 1.1;
+      margin-bottom: 15px;
+      height: 65px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stat-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #2b2b2b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .stat-subtitle {
+      font-size: 14px;
+      color: #555555;
+      line-height: 1.4;
+      font-weight: 400;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      .main-title {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section-container">
+    <!-- Subtítulo con Icono -->
+    <div class="header-tag">
+      <div class="header-icon">
+        <img src="../src/Ícono DRFC.png" alt="">
+      </div>
+      <span>EXPERIENCIA QUE GARANTIZA CALIDAD, PROYECTOS QUE SE ENTREGAN EN TIEMPO Y FORMA</span>
+    </div>
+
+    <!-- Título Principal -->
+    <h1 class="main-title">Nuestra experiencia a tu servicio</h1>
+    <div class="title-line"></div>
+
+    <!-- Sección de contadores -->
+    <div class="stats-section">
+      <div class="stats-grid">
+        
+        <!-- Ítem 1 -->
+        <div class="stat-card">
+          <div class="stat-number">
+            + <span class="counter" data-target="18">0</span>
+          </div>
+          <div class="stat-title">AÑOS DE EXPERIENCIA</div>
+          <div class="stat-subtitle">Conectando la tecnología con el progreso</div>
+        </div>
+
+        <!-- Ítem 2 -->
+        <div class="stat-card">
+          <div class="stat-number">
+            <span class="counter" data-target="12400" data-format="comma">0</span>
+          </div>
+          <div class="stat-title">KM DE RED CONSTRUIDA</div>
+          <div class="stat-subtitle">En México y Chile</div>
+        </div>
+
+        <!-- Ítem 3 -->
+        <div class="stat-card">
+          <div class="stat-number">
+            <span class="counter" data-target="68000" data-format="comma">0</span>
+          </div>
+          <div class="stat-title">KM DE DIGITALIZACIÓN Y DISEÑO</div>
+          <div class="stat-subtitle"></div>
+        </div>
+
+        <!-- Ítem 4 -->
+        <div class="stat-card">
+          <div class="stat-number">
+            <span class="counter" data-target="24">0</span> / <span class="counter" data-target="7">0</span>
+          </div>
+          <div class="stat-title">ATENCIÓN A SERVICIOS</div>
+          <div class="stat-subtitle">de mantenimiento de redes</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Script para la animación de conteo -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const counters = document.querySelectorAll('.counter');
+      const speed = 200; // Velocidad de la animación (menor es más rápido)
+
+      const startCounting = (counter) => {
+        const target = +counter.getAttribute('data-target');
+        const useFormat = counter.getAttribute('data-format') === 'comma';
+        
+        const updateCount = () => {
+          const count = +counter.innerText.replace(/,/g, '');
+          const inc = target / speed;
+
+          if (count < target) {
+            const nextCount = Math.ceil(count + inc);
+            const valueToDisplay = nextCount > target ? target : nextCount;
+            
+            counter.innerText = useFormat 
+              ? valueToDisplay.toLocaleString('en-US') 
+              : valueToDisplay;
+
+            setTimeout(updateCount, 15);
+          } else {
+            counter.innerText = useFormat 
+              ? target.toLocaleString('en-US') 
+              : target;
+          }
+        };
+
+        updateCount();
+      };
+
+      // Animación activa al hacer scroll hacia la sección (IntersectionObserver)
+      const observerOptions = {
+        threshold: 0.4
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const currentCounters = entry.target.querySelectorAll('.counter');
+            currentCounters.forEach(counter => startCounting(counter));
+            observer.unobserve(entry.target); // Solo ejecuta una vez
+          }
+        });
+      }, observerOptions);
+
+      const statsSection = document.querySelector('.stats-section');
+      if (statsSection) {
+        observer.observe(statsSection);
+      }
+    });
+  </script>
+</body>
+</html>

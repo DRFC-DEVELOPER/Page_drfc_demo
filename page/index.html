@@ -1,0 +1,2875 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRFC Ingeniería - Hero Carousel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Monda:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --page-content-gutter: clamp(1.25rem, 5vw, 6rem);
+            --drfc-icon-size: clamp(2rem, 3vw, 3rem);
+            --section-title-size: clamp(1.875rem, 3.5vw, 4.5rem);
+            --section-title-color: #123e59;
+            --section-title-line-height: 1.2;
+            --section-photo-radius: 16px;
+            --color-dark-navy: #3b4f60;
+            --color-steel-blue: #5a6b7c;
+            --color-deep-blue: #003E58;
+            --color-slate-gray: #9BAEBC;
+            --color-cyan-blue: #318bb1;
+            --color-white: #FFFFFF;
+            
+            --font-main: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-accent: 'Monda', 'Inter', sans-serif;
+            
+            --transition-speed: 0.8s;
+            --transition-easing: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            font-family: var(--font-main);
+            background-color: var(--color-dark-navy);
+            color: var(--color-white);
+        }
+
+        .drfc-hero {
+            position: relative;
+            width: 100%;
+            height: max(100svh, 800px);
+            min-height: 800px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #002231;
+        }
+
+        .carousel-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            list-style: none;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1;
+            transition: opacity var(--transition-speed) var(--transition-easing),
+                        visibility var(--transition-speed) var(--transition-easing);
+            will-change: opacity, visibility;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 2;
+        }
+
+        .slide-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform: scale(1.08);
+            transition: transform 10s ease-out;
+            will-change: transform;
+            z-index: 1;
+        }
+
+        .hero-slide.active .slide-bg {
+            transform: scale(1);
+        }
+
+        /* Fotografía y encuadre por slide */
+        .slide-1 .slide-bg { background-image: url('https://static.wixstatic.com/media/616bf8_718f3fc8a9a74ea3aae99e4fdce72923~mv2.jpg'); background-position: center 30%; }
+        .slide-2 .slide-bg { background-image: url('https://static.wixstatic.com/media/616bf8_95e1b1c0c1a64542a54b16bcc9599881~mv2.jpg'); background-position: center center; }
+        .slide-3 .slide-bg { background-image: url('https://static.wixstatic.com/media/616bf8_d34e60e3ea4746119937b090f710ff58~mv2.jpg'); background-position: center 40%; }
+        .slide-4 .slide-bg { background-image: url('https://static.wixstatic.com/media/616bf8_acd7bbeb531240528ed248ed94adc590~mv2.jpg'); background-position: center center; }
+        .slide-5 .slide-bg { background-image: url('src/InfraObra.png'); background-position: center center; }
+
+        /* Overlay para legibilidad del contenido */
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            background: linear-gradient(
+                105deg,
+                rgba(4, 15, 38, 0.92) 0%,
+                rgba(69, 98, 124, 0.82) 45%,
+                rgba(2, 43, 61, 0.45) 80%,
+                rgba(2, 51, 72, 0.25) 100%
+            );
+            pointer-events: none;
+        }
+
+        .fiber-svg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .fiber-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Elementos dinámicos SVG */
+        .fiber-path {
+            fill: none;
+            stroke: var(--color-steel-blue);
+            stroke-width: 1.5;
+            stroke-dasharray: 6 6;
+            opacity: 0.35;
+        }
+
+        .fiber-path-accent {
+            fill: none;
+            stroke: var(--color-cyan-blue);
+            stroke-width: 2;
+            opacity: 0.5;
+        }
+
+        .fiber-pulse {
+            fill: var(--color-cyan-blue);
+            filter: drop-shadow(0px 0px 6px var(--color-cyan-blue));
+        }
+
+        .fiber-node {
+            fill: var(--color-deep-blue);
+            stroke: var(--color-cyan-blue);
+            stroke-width: 1.5;
+            transition: transform 0.3s ease;
+        }
+
+        .slide-container {
+            position: relative;
+            z-index: 4;
+            width: 100%;
+            padding: 0 clamp(1.5rem, 8vw, 12rem);
+            pointer-events: none;
+        }
+
+        .slide-content {
+            max-width: 72vw;
+            pointer-events: none;
+        }
+
+        .slide-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(23, 159, 203, 0.12);
+            border: 1px solid rgba(23, 159, 203, 0.35);
+            border-radius: 20px;
+            font-family: var(--font-accent);
+            font-size: clamp(0.75rem, 1.05vw, 1.5rem);
+            font-weight: 700;
+            color: var(--color-cyan-blue);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: clamp(1rem, 2vw, 2rem);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            backdrop-filter: blur(4px);
+            pointer-events: auto;
+        }
+
+        .slide-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--color-cyan-blue);
+            box-shadow: 0 0 8px var(--color-cyan-blue);
+        }
+
+        .slide-1 .slide-badge,
+        .slide-2 .slide-badge,
+        .slide-3 .slide-badge,
+        .slide-4 .slide-badge,
+        .slide-5 .slide-badge {
+            color: #ffffff;
+            background: rgba(0, 34, 49, 0.92);
+            border-color: rgba(255, 255, 255, 0.72);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+        }
+
+        .slide-1 .slide-badge::before,
+        .slide-2 .slide-badge::before,
+        .slide-3 .slide-badge::before,
+        .slide-4 .slide-badge::before,
+        .slide-5 .slide-badge::before {
+            background-color: #69dcff;
+            box-shadow: 0 0 8px #69dcff;
+        }
+
+        .slide-title {
+            font-family: var(--font-main);
+            font-size: clamp(1.85rem, 5vw, 10rem);
+            font-weight: 800;
+            line-height: 1.08;
+            color: var(--color-white);
+            margin-bottom: clamp(1.25rem, 2.5vw, 3rem);
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.6s ease 0.15s, transform 0.6s ease 0.15s;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            pointer-events: auto;
+        }
+
+        .slide-description {
+            font-family: var(--font-main);
+            font-size: clamp(0.95rem, 1.55vw, 3rem);
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--color-slate-gray);
+            margin-bottom: clamp(1.75rem, 3vw, 3.5rem);
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+            max-width: min(90%, 75ch);
+            pointer-events: auto;
+        }
+
+        /* Botón CTA preparado para iframe de Wix */
+        .cta-button {
+            position: relative;
+            z-index: 100;
+            pointer-events: auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: clamp(0.85rem, 1.5vw, 1.75rem) clamp(1.8rem, 2.8vw, 4rem);
+            background-color: var(--color-cyan-blue);
+            color: var(--color-white);
+            font-family: var(--font-main);
+            font-weight: 600;
+            font-size: clamp(0.9rem, 1.1vw, 1.75rem);
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(23, 159, 203, 0.35);
+            transition: opacity 0.6s ease 0.45s, transform 0.6s ease 0.45s, background-color 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(25px);
+            outline: none;
+            cursor: pointer;
+        }
+
+        .cta-button svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover, 
+        .cta-button:focus-visible {
+            background-color: #1282a8;
+            box-shadow: 0 6px 28px rgba(23, 159, 203, 0.55);
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .cta-button:hover svg,
+        .cta-button:focus-visible svg {
+            transform: translateX(4px);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(23, 159, 203, 0.3);
+        }
+
+        .cta-button:focus-visible {
+            outline: 3px solid rgba(23, 159, 203, 0.5);
+            outline-offset: 3px;
+        }
+
+        /* Activación de Animaciones en slide activo */
+        .hero-slide.active .slide-badge,
+        .hero-slide.active .slide-title,
+        .hero-slide.active .slide-description {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-slide.active .cta-button {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Botones de Navegación con z-index 100 */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            pointer-events: auto;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: rgba(0, 62, 88, 0.65);
+            border: 1px solid rgba(155, 174, 188, 0.25);
+            color: var(--color-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .nav-arrow:hover,
+        .nav-arrow:focus-visible {
+            background: rgba(23, 159, 203, 0.85);
+            border-color: var(--color-cyan-blue);
+            box-shadow: 0 0 15px rgba(23, 159, 203, 0.4);
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .nav-arrow:focus-visible {
+            outline: 2px solid var(--color-cyan-blue);
+            outline-offset: 3px;
+        }
+
+        .nav-arrow svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .nav-prev { left: clamp(1rem, 3vw, 2.5rem); }
+        .nav-next { right: clamp(1rem, 3vw, 2.5rem); }
+
+        /* Controles de Indicadores */
+        .carousel-controls {
+            position: absolute;
+            bottom: clamp(1.5rem, 4vh, 3rem);
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            pointer-events: none;
+        }
+
+        .indicators-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            pointer-events: auto;
+            background: rgba(0, 34, 49, 0.6);
+            padding: 8px 18px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(155, 174, 188, 0.15);
+        }
+
+        .indicator-dot {
+            position: relative;
+            width: 32px;
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(155, 174, 188, 0.3);
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+            outline: none;
+            padding: 0;
+            pointer-events: auto;
+        }
+
+        .indicator-dot:hover {
+            background: rgba(155, 174, 188, 0.6);
+        }
+
+        .indicator-dot.active {
+            width: 50px;
+            background: rgba(23, 159, 203, 0.3);
+        }
+
+        .indicator-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background-color: var(--color-cyan-blue);
+            border-radius: 4px;
+            box-shadow: 0 0 8px var(--color-cyan-blue);
+        }
+
+        .indicator-dot.active .indicator-progress {
+            width: 100%;
+            transition: width 6s linear;
+        }
+
+        .carousel-paused .indicator-dot.active .indicator-progress {
+            animation-play-state: paused;
+        }
+
+        .header-navbar {
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            width: 100%;
+            min-height: clamp(100px, 8vw, 180px);
+            padding: 15px clamp(1.5rem, 5vw, 7.5rem);
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 24px;
+            background-color: var(--color-white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-navbar nav {
+            justify-self: center;
+        }
+
+        .header-action {
+            justify-self: end;
+        }
+
+        .logo-container a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-container img {
+            display: block;
+            width: auto;
+            height: clamp(86px, 7vw, 150px);
+            max-width: 220px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(12px, 1.5vw, 36px);
+            list-style: none;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a,
+        .nav-links .services-trigger {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #333333;
+            font-size: clamp(1rem, 1vw, 1.375rem);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .services-trigger {
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .services-submenu {
+            position: absolute;
+            top: calc(100% + 16px);
+            left: 50%;
+            z-index: 20;
+            display: none;
+            width: max-content;
+            min-width: 18rem;
+            max-width: min(24rem, calc(100vw - 2rem));
+            padding: 0.5rem;
+            border: 1px solid #dbe5eb;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 16px 36px rgba(0, 45, 67, 0.16);
+            list-style: none;
+            transform: translateX(-50%);
+        }
+
+        .services-menu.is-open .services-submenu {
+            display: block;
+        }
+
+        .services-submenu span {
+            display: block;
+            padding: 0.75rem 0.875rem;
+            border-radius: 7px;
+            color: #31495a;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            line-height: 1.35;
+            white-space: normal;
+            cursor: default;
+        }
+
+        .services-menu .dropdown-arrow {
+            transition: transform 160ms ease;
+        }
+
+        .services-menu.is-open .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .nav-links a.active {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-deep-blue);
+        }
+
+        .nav-links .services-trigger:hover,
+        .nav-links .services-trigger:focus-visible {
+            color: var(--color-deep-blue);
+        }
+
+        .nav-links .services-trigger:focus-visible {
+            outline: 2px solid #318bb1;
+            outline-offset: 5px;
+        }
+
+        .dropdown-arrow {
+            width: 12px;
+            height: 12px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        .btn-contacto {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(0.6rem, 0.8vw, 0.9rem) clamp(1.3rem, 2vw, 2.3rem);
+            background-color: #0d425c;
+            color: var(--color-white);
+            font-size: clamp(0.8rem, 0.85vw, 1.25rem);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration: none;
+            text-transform: uppercase;
+            white-space: nowrap;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-contacto:hover {
+            background-color: #082d40;
+        }
+
+        /* Estilos Responsive */
+        @media (max-width: 992px) {
+            .drfc-hero {
+                height: max(100svh, 720px);
+                min-height: 720px;
+            }
+
+            .header-navbar {
+                display: flex;
+                position: relative;
+                top: auto;
+                flex-direction: column;
+                min-height: auto;
+                height: auto;
+                gap: 15px;
+                padding: 20px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .services-submenu {
+                top: calc(100% + 8px);
+                left: 50%;
+            }
+
+            .slide-overlay {
+                background: linear-gradient(
+                    180deg,
+                    rgba(0, 62, 88, 0.85) 0%,
+                    rgba(39, 56, 71, 0.88) 50%,
+                    rgba(0, 62, 88, 0.95) 100%
+                );
+            }
+
+            .slide-container {
+                text-align: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .slide-content {
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .slide-description {
+                max-width: 100%;
+            }
+
+            .nav-arrow {
+                width: 44px;
+                height: 44px;
+                background: rgba(0, 62, 88, 0.85);
+            }
+            
+            .nav-prev { left: 0.75rem; }
+            .nav-next { right: 0.75rem; }
+        }
+
+        @media (max-width: 576px) {
+            .drfc-hero {
+                height: max(100svh, 680px);
+                min-height: 680px;
+            }
+
+            .nav-arrow {
+                display: none; /* En móvil se prioriza navegación por swipe e indicadores */
+            }
+
+            .carousel-controls {
+                bottom: 1.25rem;
+            }
+
+            .indicator-dot {
+                width: 24px;
+            }
+            
+            .indicator-dot.active {
+                width: 38px;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .services-submenu {
+                position: static;
+                width: min(100%, 24rem);
+                min-width: 0;
+                max-width: none;
+                margin: 0.5rem auto 0;
+                transform: none;
+            }
+
+            .services-menu {
+                display: flex;
+                flex-basis: 100%;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-slide,
+            .slide-bg,
+            .slide-badge,
+            .slide-title,
+            .slide-description,
+            .cta-button,
+            .indicator-dot {
+                transition: none !important;
+                transform: none !important;
+                animation: none !important;
+            }
+
+            .hero-slide {
+                opacity: 0;
+            }
+
+            .hero-slide.active {
+                opacity: 1;
+            }
+
+            .fiber-pulse {
+                display: none;
+            }
+        }
+
+        .fiber-divider {
+            width: 100%;
+            padding: 20px 0;
+            line-height: 0;
+        }
+
+        .fiber-divider svg {
+            display: block;
+            width: 100%;
+            height: 20px;
+            overflow: visible;
+        }
+
+        .fiber-divider-base,
+        .fiber-divider-pulse {
+            fill: none;
+            stroke-linecap: round;
+        }
+
+        .fiber-divider-base {
+            stroke: #1a2b4c;
+            stroke-width: 1;
+        }
+
+        .fiber-divider-pulse {
+            stroke: #dceaee;
+            stroke-width: 3;
+            stroke-dasharray: 80 400;
+            animation: fiber-divider-light-pulse 3.5s linear infinite;
+            filter: drop-shadow(0 0 8px #dceaee);
+        }
+
+        @keyframes fiber-divider-light-pulse {
+            from { stroke-dashoffset: 480; }
+            to { stroke-dashoffset: -480; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fiber-divider-pulse {
+                animation: none;
+                stroke-dasharray: none;
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-navbar">
+        <div class="logo-container">
+            <a href="src/Logo_Menu.png" aria-label="DRFC Ingeniería, inicio">
+                <img src="src/Logo_Menu.png" alt="DRFC Ingeniería S.A. de C.V.">
+            </a>
+        </div>
+
+        <nav aria-label="Navegación principal">
+            <ul class="nav-links">
+                <li><a href="#drfcHeroCarousel" class="active">Inicio</a></li>
+                <li><a href="#">Proyectos</a></li>
+                <li class="services-menu">
+                    <button class="services-trigger" type="button" aria-expanded="false" aria-controls="services-submenu">
+                        Servicios
+                        <svg class="dropdown-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <ul class="services-submenu" id="services-submenu" aria-label="Servicios">
+                        <li><span>Ingeniería y diseño de red</span></li>
+                        <li><span>Construcción de red</span></li>
+                        <li><span>Infraestructura y Obra civil</span></li>
+                        <li><span>Mantenimiento de Red Activa</span></li>
+                        <li><span>Acometidas</span></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        Acerca de Nosotros
+                        <svg class="dropdown-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                </li>
+                <li><a href="#">Bolsa de Trabajo</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-action">
+            <a href="https://yajairaestrada3.wixstudio.com/drfcingenieria/contact" class="btn-contacto" target="_top">Contacto</a>
+        </div>
+    </header>
+
+    <section class="drfc-hero" id="drfcHeroCarousel" aria-label="Soluciones Tecnológicas DRFC Ingeniería">
+        
+        <ul class="carousel-track">
+            
+            <!-- SLIDE 1: TELECOMUNICACIONES -->
+            <li class="hero-slide slide-1 active" data-slide="0" aria-hidden="false">
+                <div class="slide-bg"></div>
+                <div class="slide-overlay"></div>
+                
+                <div class="fiber-svg-container">
+                    <svg class="fiber-svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+                        <path class="fiber-path" d="M-100,200 C300,100 500,500 900,300 C1200,150 1400,400 1600,350" />
+                        <path id="path1" class="fiber-path-accent" d="M-100,500 C200,650 600,200 1000,550 C1250,700 1450,450 1600,500" />
+                        
+                        <circle class="fiber-pulse" r="5">
+                            <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
+                                <mpath href="#path1"/>
+                            </animateMotion>
+                        </circle>
+                        
+                        <g class="fiber-nodes">
+                            <circle class="fiber-node" cx="200" cy="650" r="6"/>
+                            <circle class="fiber-node" cx="600" cy="200" r="8"/>
+                            <circle class="fiber-node" cx="1000" cy="550" r="6"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="slide-container">
+                    <div class="slide-content">
+                        <span class="slide-badge">Telecomunicaciones</span>
+                        <h1 class="slide-title">Soluciones Integrales en Telecomunicaciones</h1>
+                        <p class="slide-description">Diseñamos y construimos redes aéreas y subterráneas. Realizamos proyectos llave en mano y asignaciones específicas.</p>
+                        <a href="https://yajairaestrada3.wixstudio.com/drfcingenieria/contact" target="_top" onclick="try{window.top.location.href=this.href;}catch(e){window.location.href=this.href;}" class="cta-button" aria-label="Contáctanos para soluciones de telecomunicaciones">
+                            <span>Contáctanos</span>
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- SLIDE 2: INGENIERÍA Y DISEÑO DE RED -->
+            <li class="hero-slide slide-2" data-slide="1" aria-hidden="true">
+                <div class="slide-bg"></div>
+                <div class="slide-overlay"></div>
+                
+                <div class="fiber-svg-container">
+                    <svg class="fiber-svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+                        <path id="path2_1" class="fiber-path-accent" d="M150,700 L450,250 L850,450 L1250,150" />
+                        <path class="fiber-path" d="M450,250 L950,200 L1300,600" />
+                        <path class="fiber-path" d="M150,700 L850,450 L1300,600" />
+                        
+                        <circle class="fiber-pulse" r="4.5">
+                            <animateMotion dur="5s" repeatCount="indefinite" rotate="auto">
+                                <mpath href="#path2_1"/>
+                            </animateMotion>
+                        </circle>
+
+                        <g class="fiber-nodes">
+                            <circle class="fiber-node" cx="150" cy="700" r="7"/>
+                            <circle class="fiber-node" cx="450" cy="250" r="9"/>
+                            <circle class="fiber-node" cx="850" cy="450" r="7"/>
+                            <circle class="fiber-node" cx="1250" cy="150" r="8"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="slide-container">
+                    <div class="slide-content">
+                        <span class="slide-badge">Ingeniería & Diseño</span>
+                        <h2 class="slide-title">Ingeniería y Diseño de Red</h2>
+                        <p class="slide-description">Levantamiento, digitalización y diseño de red que anticipa el crecimiento de tu infraestructura.</p>
+                        <a href="https://yajairaestrada3.wixstudio.com/drfcingenieria/blank" target="_top" onclick="try{window.top.location.href=this.href;}catch(e){window.location.href=this.href;}" class="cta-button" aria-label="Conoce más sobre Ingeniería y Diseño de Red">
+                            <span>Conoce más</span>
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- SLIDE 3: CONSTRUCCIÓN DE RED -->
+            <li class="hero-slide slide-3" data-slide="2" aria-hidden="true">
+                <div class="slide-bg"></div>
+                <div class="slide-overlay"></div>
+                
+                <div class="fiber-svg-container">
+                    <svg class="fiber-svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+                        <path class="fiber-path" d="M-50,400 Q350,100 700,400 T1450,400" />
+                        <path id="path3_1" class="fiber-path-accent" d="M-50,300 C400,500 800,100 1500,450" />
+                        
+                        <circle class="fiber-pulse" r="5">
+                            <animateMotion dur="3.5s" repeatCount="indefinite" rotate="auto">
+                                <mpath href="#path3_1"/>
+                            </animateMotion>
+                        </circle>
+
+                        <g class="fiber-nodes">
+                            <circle class="fiber-node" cx="350" cy="360" r="6"/>
+                            <circle class="fiber-node" cx="700" cy="400" r="8"/>
+                            <circle class="fiber-node" cx="1100" cy="270" r="6"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="slide-container">
+                    <div class="slide-content">
+                        <span class="slide-badge">Construcción</span>
+                        <h2 class="slide-title">Construcción de Red</h2>
+                        <p class="slide-description">Construcción, reconstrucción y enlaces HFC, FD, FFTX, anillos y FTTR; aéreos y subterráneos.</p>
+                        <a href="https://yajairaestrada3.wixstudio.com/drfcingenieria/blank-7" target="_top" onclick="try{window.top.location.href=this.href;}catch(e){window.location.href=this.href;}" class="cta-button" aria-label="Conoce más sobre Construcción de Red">
+                            <span>Conoce más</span>
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- SLIDE 4: MANTENIMIENTO -->
+            <li class="hero-slide slide-4" data-slide="3" aria-hidden="true">
+                <div class="slide-bg"></div>
+                <div class="slide-overlay"></div>
+                
+                <div class="fiber-svg-container">
+                    <svg class="fiber-svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+                        <circle cx="720" cy="400" r="280" class="fiber-path" style="stroke-dasharray: 4 8;" />
+                        <circle cx="720" cy="400" r="180" class="fiber-path-accent" />
+                        <path id="path4_ring" d="M540,400 A180,180 0 1,1 900,400 A180,180 0 1,1 540,400" fill="none" opacity="0"/>
+
+                        <circle class="fiber-pulse" r="5">
+                            <animateMotion dur="6s" repeatCount="indefinite">
+                                <mpath href="#path4_ring"/>
+                            </animateMotion>
+                        </circle>
+
+                        <g class="fiber-nodes">
+                            <circle class="fiber-node" cx="720" cy="220" r="6"/>
+                            <circle class="fiber-node" cx="900" cy="400" r="6"/>
+                            <circle class="fiber-node" cx="720" cy="580" r="6"/>
+                            <circle class="fiber-node" cx="540" cy="400" r="6"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="slide-container">
+                    <div class="slide-content">
+                        <span class="slide-badge">Mantenimiento</span>
+                        <h2 class="slide-title">Mantenimiento a la red activa</h2>
+                        <p class="slide-description">Monitoreo preventivo y correctivo que evita fallas antes de que afecten el servicio, con respuesta rápida y equipos siempre listos para actuar.</p>
+                        <a href="https://yajairaestrada3.wixstudio.com/drfcingenieria/blank-3" target="_top" onclick="try{window.top.location.href=this.href;}catch(e){window.location.href=this.href;}" class="cta-button" aria-label="Conoce más sobre Mantenimiento">
+                            <span>Conoce más</span>
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- SLIDE 5: INFRAESTRUCTURA Y OBRA CIVIL -->
+            <li class="hero-slide slide-5" data-slide="4" aria-hidden="true">
+                <div class="slide-bg"></div>
+                <div class="slide-overlay"></div>
+                
+                <div class="fiber-svg-container">
+                    <svg class="fiber-svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+                        <path id="path5_1" class="fiber-path-accent" d="M100,650 L500,650 L500,250 L1100,250 L1100,550" />
+                        <path class="fiber-path" d="M300,750 L300,450 L900,450 L900,150" />
+
+                        <circle class="fiber-pulse" r="5">
+                            <animateMotion dur="4.5s" repeatCount="indefinite" rotate="auto">
+                                <mpath href="#path5_1"/>
+                            </animateMotion>
+                        </circle>
+
+                        <g class="fiber-nodes">
+                            <circle class="fiber-node" cx="500" cy="650" r="7"/>
+                            <circle class="fiber-node" cx="500" cy="250" r="7"/>
+                            <circle class="fiber-node" cx="1100" cy="250" r="7"/>
+                            <circle class="fiber-node" cx="1100" cy="550" r="7"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="slide-container">
+                    <div class="slide-content">
+                        <span class="slide-badge">Infraestructura</span>
+                        <h2 class="slide-title">Infraestructura y Obra Civil</h2>
+                        <p class="slide-description">Mantenimiento, instalación y remodelación de infraestructura de planta interna: Aire acondicionado, obra civil, transformadores, planta de fuerza, generadores, cable estructurado, CCTV.</p>
+                        <a href="https://yajairaestrada3.wixstudio.com/drfcingenieria/blank-4" target="_top" onclick="try{window.top.location.href=this.href;}catch(e){window.location.href=this.href;}" class="cta-button" aria-label="Conoce más sobre Infraestructura y Obra Civil">
+                            <span>Conoce más</span>
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+
+        <button class="nav-arrow nav-prev" aria-label="Slide anterior" id="prevBtn">
+            <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+
+        <button class="nav-arrow nav-next" aria-label="Siguiente slide" id="nextBtn">
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="carousel-controls">
+            <div class="indicators-container" role="tablist" aria-label="Seleccionar Slide">
+                <button class="indicator-dot active" role="tab" aria-selected="true" aria-label="Slide 1" data-slide-to="0"><span class="indicator-progress"></span></button>
+                <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Slide 2" data-slide-to="1"><span class="indicator-progress"></span></button>
+                <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Slide 3" data-slide-to="2"><span class="indicator-progress"></span></button>
+                <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Slide 4" data-slide-to="3"><span class="indicator-progress"></span></button>
+                <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Slide 5" data-slide-to="4"><span class="indicator-progress"></span></button>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="fiber-divider" aria-hidden="true">
+        <svg viewBox="0 0 1000 20" preserveAspectRatio="none">
+            <line class="fiber-divider-base" x1="0" y1="10" x2="1000" y2="10"></line>
+            <line class="fiber-divider-pulse" x1="0" y1="10" x2="1000" y2="10"></line>
+        </svg>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.getElementById('drfcHeroCarousel');
+            const slides = carousel.querySelectorAll('.hero-slide');
+            const dots = carousel.querySelectorAll('.indicator-dot');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            const AUTOPLAY_DELAY = 6000; // 6 segundos
+            let currentIndex = 0;
+            let autoplayTimer = null;
+            let touchStartX = 0;
+            let touchEndX = 0;
+            let isHovered = false;
+
+            function goToSlide(index) {
+                if (index === currentIndex) return;
+
+                if (index < 0) index = slides.length - 1;
+                if (index >= slides.length) index = 0;
+
+                slides[currentIndex].classList.remove('active');
+                slides[currentIndex].setAttribute('aria-hidden', 'true');
+                dots[currentIndex].classList.remove('active');
+                dots[currentIndex].setAttribute('aria-selected', 'false');
+
+                currentIndex = index;
+                slides[currentIndex].classList.add('active');
+                slides[currentIndex].setAttribute('aria-hidden', 'false');
+                dots[currentIndex].classList.add('active');
+                dots[currentIndex].setAttribute('aria-selected', 'true');
+
+                resetAutoplay();
+            }
+
+            function nextSlide() {
+                goToSlide(currentIndex + 1);
+            }
+
+            function prevSlide() {
+                goToSlide(currentIndex - 1);
+            }
+
+            function startAutoplay() {
+                stopAutoplay();
+                if (!isHovered && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    carousel.classList.remove('carousel-paused');
+                    autoplayTimer = setInterval(nextSlide, AUTOPLAY_DELAY);
+                }
+            }
+
+            function stopAutoplay() {
+                if (autoplayTimer) {
+                    clearInterval(autoplayTimer);
+                    autoplayTimer = null;
+                }
+                carousel.classList.add('carousel-paused');
+            }
+
+            function resetAutoplay() {
+                stopAutoplay();
+                startAutoplay();
+            }
+
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                nextSlide();
+            });
+
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                prevSlide();
+            });
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const slideIndex = parseInt(e.currentTarget.getAttribute('data-slide-to'), 10);
+                    goToSlide(slideIndex);
+                });
+            });
+
+            carousel.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                }
+            });
+
+            carousel.addEventListener('mouseenter', () => {
+                isHovered = true;
+                stopAutoplay();
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                isHovered = false;
+                startAutoplay();
+            });
+
+            // Swipe táctil
+            carousel.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            carousel.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    nextSlide();
+                } else if (touchEndX > touchStartX + swipeThreshold) {
+                    prevSlide();
+                }
+            }
+
+            startAutoplay();
+        });
+    </script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .section-container {
+      --section-gutter: var(--page-content-gutter);
+      width: 100%;
+      background-color: #ffffff;
+      padding: clamp(2.5rem, 5vw, 5.5rem) var(--section-gutter) 0;
+    }
+
+    /* Encabezado */
+    .header-tag {
+      display: flex;
+      align-items: center;
+      gap: clamp(0.5rem, 1vw, 1.25rem);
+      color: #5a6b7c;
+      font-size: clamp(0.75rem, 0.9vw, 1.125rem);
+      font-weight: 500;
+      letter-spacing: clamp(0.08rem, 0.12vw, 0.15rem);
+      line-height: 1.5;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .header-icon {
+      width: var(--drfc-icon-size);
+      height: var(--drfc-icon-size);
+      flex: 0 0 var(--drfc-icon-size);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-icon img {
+      width: var(--drfc-icon-size);
+      height: var(--drfc-icon-size);
+      object-fit: contain;
+    }
+
+    .header-tag > span {
+      min-width: 0;
+    }
+
+    .main-title {
+      font-size: clamp(1.875rem, 3.5vw, 6rem);
+      font-weight: 700;
+      color: #123e59;
+      margin: 0 0 clamp(1.25rem, 2vw, 2rem);
+    }
+
+    .title-line {
+      width: clamp(14rem, 32vw, 45rem);
+      max-width: 100%;
+      height: clamp(2px, 0.15vw, 4px);
+      background-color: #333333;
+      margin-bottom: clamp(2rem, 4vw, 4rem);
+    }
+
+    /* Sección de estadísticas */
+    .stats-section {
+      background-color: #f4f4f4;
+      padding: clamp(2.5rem, 5vw, 5.5rem) var(--section-gutter) clamp(3rem, 6vw, 6rem);
+      margin-left: calc(-1 * var(--section-gutter));
+      margin-right: calc(-1 * var(--section-gutter));
+    }
+
+    .stats-grid {
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(1rem, 3vw, 4rem);
+      text-align: center;
+    }
+
+    .stat-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .stat-number {
+      font-size: clamp(2.5rem, 4vw, 7rem);
+      font-weight: 400;
+      color: #2b2b2b;
+      line-height: 1.1;
+      margin-bottom: clamp(0.75rem, 1.5vw, 1.5rem);
+      min-height: clamp(3.5rem, 5vw, 6rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stat-title {
+      font-size: clamp(0.75rem, 0.9vw, 1.5rem);
+      font-weight: 700;
+      color: #2b2b2b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.375rem;
+      line-height: 1.3;
+    }
+
+    .stat-subtitle {
+      font-size: clamp(0.75rem, 0.9vw, 1.5rem);
+      color: #555555;
+      line-height: 1.4;
+      font-weight: 400;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      .main-title {
+        font-size: 1.875rem;
+      }
+    }
+  </style>
+
+  <div class="section-container">
+    <!-- Subtítulo con Icono -->
+    <div class="header-tag">
+      <div class="header-icon">
+        <img src="src/Ícono DRFC.png" alt="">
+      </div>
+      <span>EXPERIENCIA QUE GARANTIZA CALIDAD, PROYECTOS QUE SE ENTREGAN EN TIEMPO Y FORMA</span>
+    </div>
+
+    <!-- Título Principal -->
+    <h1 class="main-title">Nuestra experiencia a tu servicio</h1>
+    <div class="title-line"></div>
+
+    <!-- Sección de contadores -->
+    <div class="stats-section">
+      <div class="stats-grid">
+        
+        <!-- Ítem 1 -->
+        <div class="stat-card">
+          <div class="stat-number">
+            + <span class="counter" data-target="18">0</span>
+          </div>
+          <div class="stat-title">AÑOS DE EXPERIENCIA</div>
+          <div class="stat-subtitle">Conectando la tecnología con el progreso</div>
+        </div>
+
+        <!-- Ítem 2 -->
+        <div class="stat-card">
+          <div class="stat-number">
+            <span class="counter" data-target="12400" data-format="comma">0</span>
+          </div>
+          <div class="stat-title">KM DE RED CONSTRUIDA</div>
+          <div class="stat-subtitle">En México y Chile</div>
+        </div>
+
+        <!-- Ítem 3 -->
+        <div class="stat-card">
+          <div class="stat-number">
+            <span class="counter" data-target="68000" data-format="comma">0</span>
+          </div>
+          <div class="stat-title">KM DE DIGITALIZACIÓN Y DISEÑO</div>
+          <div class="stat-subtitle"></div>
+        </div>
+
+        <!-- Ítem 4 -->
+        <div class="stat-card">
+          <div class="stat-number">
+            <span class="counter" data-target="24">0</span> / <span class="counter" data-target="7">0</span>
+          </div>
+          <div class="stat-title">ATENCIÓN A SERVICIOS</div>
+          <div class="stat-subtitle">de mantenimiento de redes</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Script para la animación de conteo -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const counters = document.querySelectorAll('.counter');
+      const speed = 200; // Velocidad de la animación (menor es más rápido)
+
+      const startCounting = (counter) => {
+        const target = +counter.getAttribute('data-target');
+        const useFormat = counter.getAttribute('data-format') === 'comma';
+        
+        const updateCount = () => {
+          const count = +counter.innerText.replace(/,/g, '');
+          const inc = target / speed;
+
+          if (count < target) {
+            const nextCount = Math.ceil(count + inc);
+            const valueToDisplay = nextCount > target ? target : nextCount;
+            
+            counter.innerText = useFormat 
+              ? valueToDisplay.toLocaleString('en-US') 
+              : valueToDisplay;
+
+            setTimeout(updateCount, 15);
+          } else {
+            counter.innerText = useFormat 
+              ? target.toLocaleString('en-US') 
+              : target;
+          }
+        };
+
+        updateCount();
+      };
+
+      // Animación activa al hacer scroll hacia la sección (IntersectionObserver)
+      const observerOptions = {
+        threshold: 0.4
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const currentCounters = entry.target.querySelectorAll('.counter');
+            currentCounters.forEach(counter => startCounting(counter));
+            observer.unobserve(entry.target); // Solo ejecuta una vez
+          }
+        });
+      }, observerOptions);
+
+      const statsSection = document.querySelector('.stats-section');
+      if (statsSection) {
+        observer.observe(statsSection);
+      }
+    });
+  </script>
+  <style>
+    /* ==========================================================
+       1. REINICIO GENERAL Y STYLES DE DEMOSTRACIÓN
+       ========================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      padding: 0;
+    }
+
+    /* ==========================================================
+       2. CONTENEDOR PRINCIPAL DE LA SECCIÓN DE LOGOS
+       ========================================================== */
+    .logo-marquee-section {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 40px 0;
+      background-color: #ffffff;
+      border: 0;
+      text-align: center;
+    }
+
+    /* ==========================================================
+       3. CONTENEDOR CINTA DE LOGOS Y MÁSCARA DE DEGRADADO (FADE)
+       ========================================================== */
+    .marquee-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden; /* Oculta los logos que salen de la pantalla */
+      display: flex;
+      user-select: none;
+      
+      /* EFECTO DE GRADIENTE DE BORDE (Fade lateral suave) */
+      mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 1) 12%,
+        rgba(0, 0, 0, 1) 88%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      -webkit-mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 1) 12%,
+        rgba(0, 0, 0, 1) 88%,
+        rgba(0, 0, 0, 0) 100%
+      );
+    }
+
+    /* ==========================================================
+       4. TRACK / CINTA EN MOVIMIENTO
+       ========================================================== */
+    .marquee-track {
+      display: flex;
+      gap: clamp(24px, 2vw, 64px);
+      padding: 10px 0;
+      width: max-content;
+      
+      /* ANIMACIÓN CONTINUA
+         Ajusta '30s' para hacer la cinta más rápida (ej: 15s) o más lenta (ej: 45s) */
+      animation: marquee-scroll 30s linear infinite;
+    }
+
+    /* PAUSA EN HOVER: Pausa suavemente el movimiento cuando el mouse pasa encima */
+    .marquee-container:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    /* KEYFRAMES: Desplaza el primer grupo exactamente el 50% de su ancho */
+    @keyframes marquee-scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ==========================================================
+       5. ESTILOS DE CADA CARD/TARJETA DE LOGO
+       ========================================================== */
+    .logo-item {
+      flex: 0 0 auto;
+      width: clamp(140px, 12vw, 240px);
+      height: clamp(70px, 5vw, 110px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f8fafc;
+      border: 1px solid #f1f5f9;
+      border-radius: 12px;
+      padding: 12px 20px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    /* Efecto al pasar el mouse por un logo individual */
+    .logo-item:hover {
+      background-color: #ffffff;
+      border-color: #cbd5e1;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+    }
+
+    .logo-item img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .network-benefits {
+      --benefits-primary: #2b5288;
+      --benefits-heading: #243c5a;
+      --benefits-text: #555555;
+      --benefits-tag: #8397ab;
+      --benefits-border: #d1d9e0;
+      width: 100%;
+      padding: clamp(1.25rem, 3vw, 2.5rem) calc(var(--page-content-gutter) / 2);
+      background:
+        radial-gradient(ellipse at 12% 18%, rgba(49, 139, 177, 0.11), transparent 38%),
+        radial-gradient(ellipse at 88% 82%, rgba(0, 62, 88, 0.08), transparent 42%),
+        linear-gradient(135deg, #eaf1f5 0%, #f5f8fa 52%, #e8f0f4 100%);
+      color: var(--benefits-text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    .network-benefits *,
+    .network-benefits *::before,
+    .network-benefits *::after {
+      box-sizing: border-box;
+    }
+
+    .network-benefits-container {
+      width: 100%;
+      margin: 0 auto;
+      padding: clamp(2.5rem, 5vw, 5rem) calc(var(--page-content-gutter) / 2);
+      border: 1px solid rgba(255, 255, 255, 0.82);
+      border-radius: clamp(16px, 2vw, 28px);
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow:
+        0 24px 60px rgba(18, 62, 89, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      -webkit-backdrop-filter: blur(18px) saturate(125%);
+      backdrop-filter: blur(18px) saturate(125%);
+    }
+
+    .network-benefits-header {
+      margin-bottom: clamp(2rem, 4vw, 3.5rem);
+    }
+
+    .network-benefits-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .network-benefits-tag-icon {
+      display: flex;
+      width: var(--drfc-icon-size);
+      height: var(--drfc-icon-size);
+      flex: 0 0 var(--drfc-icon-size);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .network-benefits-tag-icon img {
+      width: var(--drfc-icon-size);
+      height: var(--drfc-icon-size);
+      object-fit: contain;
+    }
+
+    .network-benefits-tag-text {
+      color: var(--benefits-tag);
+      font-size: clamp(0.75rem, 0.9vw, 0.875rem);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .network-benefits-title {
+      margin: 0 0 16px;
+      color: var(--benefits-primary);
+      font-size: clamp(1.75rem, 3vw, 5rem);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .network-benefits-subtitle {
+      margin: 0;
+      color: var(--benefits-text);
+      font-size: clamp(1rem, 1.3vw, 1.75rem);
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .network-benefits-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: stretch;
+      gap: clamp(2rem, 4vw, 4rem);
+    }
+
+    .network-benefits-image {
+      min-width: 0;
+      display: flex;
+    }
+
+    .network-benefits-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.82);
+      border-radius: var(--section-photo-radius);
+      object-fit: cover;
+      box-shadow: 0 18px 40px rgba(18, 62, 89, 0.16);
+    }
+
+    .network-benefits-list {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+    }
+
+    .network-benefits-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--benefits-border);
+    }
+
+    .network-benefits-item:last-child {
+      flex: 1;
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .network-benefits-item:last-child .network-benefits-item-content {
+      flex: 1;
+    }
+
+    .network-benefits-item-icon {
+      display: flex;
+      width: 32px;
+      height: 32px;
+      flex: 0 0 32px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .network-benefits-item-content {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .network-benefits-item-title {
+      margin: 0;
+      color: var(--benefits-heading);
+      font-size: clamp(1rem, 1.2vw, 1.75rem);
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .network-benefits-item-description {
+      margin: 0;
+      color: var(--benefits-text);
+      font-size: clamp(0.875rem, 1vw, 1.5rem);
+      line-height: 1.5;
+    }
+
+    .network-benefits-quote {
+      display: inline-flex;
+      width: 50%;
+      max-width: 50%;
+      min-height: 3rem;
+      align-self: flex-end;
+      align-items: center;
+      justify-content: center;
+      margin-top: auto;
+      padding: 0.75rem 1.1rem;
+      border: 1px solid var(--color-deep-blue);
+      border-radius: 6px;
+      background: var(--color-deep-blue);
+      color: var(--color-white);
+      font-size: 0.875rem;
+      font-weight: 600;
+      line-height: 1.2;
+      text-decoration: none;
+      transition: background-color 160ms ease, border-color 160ms ease;
+    }
+
+    .network-benefits-quote:hover {
+      border-color: var(--color-cyan-blue);
+      background: var(--color-cyan-blue);
+    }
+
+    .network-benefits-quote:focus-visible {
+      outline: 3px solid #8cc6dc;
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 768px) {
+      .network-benefits {
+        padding-inline: calc(var(--page-content-gutter) / 2);
+      }
+
+      .network-benefits-container {
+        padding: clamp(2rem, 5vw, 3rem) calc(var(--page-content-gutter) / 2);
+        border-radius: 16px;
+      }
+
+      .network-benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .network-benefits-image img {
+        height: auto;
+      }
+
+      .network-benefits-item:last-child {
+        flex: initial;
+      }
+
+      .network-benefits-item:last-child .network-benefits-item-content {
+        flex: initial;
+      }
+
+      .network-benefits-quote {
+        margin-top: 0.5rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .network-benefits-quote {
+        transition: none;
+      }
+    }
+  </style>
+
+  <!-- SECCIÓN PRINCIPAL DEL CARRUSEL -->
+  <section class="logo-marquee-section">
+    <div class="marquee-container" id="marqueeContainer">
+      <!-- EL MARQUEE-TRACK CONTIENE 2 GRUPOS IDÉNTICOS DE 8 LOGOS PARA EL BUCLE INFINITO SINFÍN -->
+      <div class="marquee-track" id="marqueeTrack">
+        
+        <!-- ======================================================
+             GRUPO 1: 8 LOGOS ORIGINALES
+             ====================================================== -->
+        
+        <!-- LOGO 1 -->
+        <div class="logo-item" title="Logo 1">
+          <!-- REEMPLAZA EL 'src' CON LA RUTA DE TU IMAGEN O SVG -->
+          <img src="src/Cablecom BN.png" alt="Cablecom">
+        </div>
+
+        <!-- LOGO 2 -->
+        <div class="logo-item" title="Logo 2">
+          <img src="src/Cablemas BN.png" alt="Cablemás">
+        </div>
+
+        <!-- LOGO 3 -->
+        <div class="logo-item" title="Logo 3">
+          <img src="src/Izzi BN.png" alt="Izzi">
+        </div>
+
+        <!-- LOGO 4 -->
+        <div class="logo-item" title="Logo 4">
+          <img src="src/Cablevisión BN.png" alt="Cablevisión">
+        </div>
+
+        <!-- LOGO 5 -->
+        <div class="logo-item" title="Logo 5">
+          <img src="src/Megacable BN.png" alt="Megacable">
+        </div>
+
+        <!-- LOGO 6 -->
+        <div class="logo-item" title="Logo 6">
+          <img src="src/Telecable BN.png" alt="Telecable">
+        </div>
+
+        <!-- LOGO 7 -->
+        <div class="logo-item" title="Logo 7">
+          <img src="src/Claro Video BN.png" alt="Claro Video">
+        </div>
+
+        <!-- LOGO 8 -->
+        <div class="logo-item" title="Logo 8">
+          <img src="src/Tigo Star BN.png" alt="Tigo Star">
+        </div>
+
+
+        <!-- ======================================================
+             GRUPO 2: DUPLICADO EXACTO PARA CREAR EL EFECTO SINFÍN
+             (Mantén los mismos links e imágenes del grupo de arriba)
+             ====================================================== -->
+        
+        <!-- LOGO 1 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 1">
+          <img src="src/Cablecom BN.png" alt="Cablecom" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 2 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 2">
+          <img src="src/Cablemas BN.png" alt="Cablemás" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 3 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 3">
+          <img src="src/Izzi BN.png" alt="Izzi" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 4 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 4">
+          <img src="src/Cablevisión BN.png" alt="Cablevisión" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 5 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 5">
+          <img src="src/Megacable BN.png" alt="Megacable" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 6 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 6">
+          <img src="src/Telecable BN.png" alt="Telecable" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 7 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 7">
+          <img src="src/Claro Video BN.png" alt="Claro Video" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 8 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 8">
+          <img src="src/Tigo Star BN.png" alt="Tigo Star" aria-hidden="true">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="network-benefits" aria-labelledby="network-benefits-title">
+    <div class="network-benefits-container">
+      <header class="network-benefits-header">
+        <div class="network-benefits-tag">
+          <div class="network-benefits-tag-icon">
+            <img src="src/Ícono DRFC.png" alt="">
+          </div>
+          <span class="network-benefits-tag-text">Beneficios</span>
+        </div>
+        <h2 class="network-benefits-title" id="network-benefits-title">Todas las etapas de tu red, bajo un mismo equipo</h2>
+        <p class="network-benefits-subtitle">Un solo equipo responsable de toda la cadena, con respaldo operativo en campo</p>
+      </header>
+
+      <div class="network-benefits-grid">
+        <div class="network-benefits-image">
+          <img src="src/Foto_etapas.jpg" alt="Trabajo operativo en campo">
+        </div>
+
+        <div class="network-benefits-list">
+          <div class="network-benefits-item">
+            <div class="network-benefits-item-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#243c5a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              </svg>
+            </div>
+            <div class="network-benefits-item-content">
+              <h3 class="network-benefits-item-title">Dirección integral de proyectos</h3>
+              <p class="network-benefits-item-description">Ingeniería, construcción, obra civil y mantenimiento bajo un mismo responsable</p>
+            </div>
+          </div>
+
+          <div class="network-benefits-item">
+            <div class="network-benefits-item-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#243c5a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <line x1="10" y1="9" x2="8" y2="9"></line>
+              </svg>
+            </div>
+            <div class="network-benefits-item-content">
+              <h3 class="network-benefits-item-title">Evidencia documentada en campo</h3>
+              <p class="network-benefits-item-description">Registro fotográfico y reportes verificables de cada intervención</p>
+            </div>
+          </div>
+
+          <div class="network-benefits-item">
+            <div class="network-benefits-item-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#243c5a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
+            <div class="network-benefits-item-content">
+              <h3 class="network-benefits-item-title">Atención de emergencias con trazabilidad</h3>
+              <p class="network-benefits-item-description">Respuesta inmediata con seguimiento del ticket de principio a fin</p>
+              <a class="network-benefits-quote" href="mailto:contacto@drfc.com.mx?subject=Cotizaci%C3%B3n%20de%20servicio">Cotizar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<style>
+  .collaborators {
+    box-sizing: border-box;
+    width: 100%;
+    padding: clamp(1.25rem, 4vw, 3rem) 0;
+    background: #f5f5f5;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .collaborators *,
+  .collaborators *::before,
+  .collaborators *::after {
+    box-sizing: inherit;
+  }
+
+  .collaborators-container {
+    width: 100%;
+    background: #fff;
+  }
+
+  .collaborators-header {
+    padding: clamp(1.25rem, 4vw, 2.5rem) var(--page-content-gutter);
+  }
+
+  .collaborators-tagline {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 12px;
+    color: #6b7c93;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.094rem;
+    text-transform: uppercase;
+  }
+
+  .collaborators-tagline-icon {
+    width: var(--drfc-icon-size);
+    height: var(--drfc-icon-size);
+    flex: 0 0 var(--drfc-icon-size);
+    object-fit: contain;
+  }
+
+  .collaborators-title {
+    color: #2b5b84;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+  }
+
+  .header-tag,
+  .network-benefits-tag-text,
+  .collaborators-tagline,
+  .fiber-cta-eyebrow {
+    color: #5a6b7c;
+    font-size: clamp(0.75rem, 0.9vw, 1.125rem);
+    font-weight: 500;
+    letter-spacing: clamp(0.08rem, 0.12vw, 0.15rem);
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+
+  .main-title,
+  .network-benefits-title,
+  .collaborators-title {
+    color: var(--section-title-color);
+    font-family: 'Roboto', sans-serif;
+    font-size: var(--section-title-size);
+    font-weight: 700;
+    line-height: var(--section-title-line-height);
+    letter-spacing: -0.025em;
+  }
+
+  .collaborators-panel {
+    --collaborators-panel-padding: clamp(1.5rem, 4vw, 2.5rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.9fr) minmax(0, 1.2fr);
+    align-items: center;
+    gap: clamp(0.75rem, 2vw, 1.75rem);
+    min-height: 420px;
+    padding: var(--collaborators-panel-padding);
+    background: #2e4053;
+  }
+
+  .collaborators-location {
+    text-align: center;
+  }
+
+  .collaborators-pin {
+    position: relative;
+    width: 2.5rem;
+    height: 3.125rem;
+    margin: 0 auto 0.9375rem;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    background: #b0b7bd;
+  }
+
+  .collaborators-pin::after {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    background: #2e4053;
+    content: '';
+  }
+
+  .collaborators-location-block {
+    margin-bottom: 0.9375rem;
+  }
+
+  .collaborators-location-title {
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  .collaborators-location-list {
+    color: #d1d8e0;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+
+  .collaborators-highlight {
+    color: #a8c0d6;
+  }
+
+  .collaborators-worker-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    align-self: stretch;
+    margin-block: calc(-1 * var(--collaborators-panel-padding));
+  }
+
+  .collaborators-worker {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: calc(100% + 30px);
+    object-fit: cover;
+    object-position: center center;
+    transform-origin: center bottom;
+    transition: transform 0.3s ease;
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .collaborators-worker:hover {
+      transform: scale(1.06);
+    }
+  }
+
+  .collaborators-card {
+    min-width: 0;
+  }
+
+  .collaborators-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: clamp(1.25rem, 3vw, 2.25rem);
+    border-radius: 1.5rem;
+    background: #f4f5f7;
+    color: #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .collaborators-stats-title {
+    margin-bottom: 0.75rem;
+    color: #222;
+    font-size: clamp(1.125rem, 2.2vw, 1.625rem);
+    line-height: 1.25;
+  }
+
+  .collaborators-stats-title strong {
+    font-size: clamp(1.375rem, 2.5vw, 1.875rem);
+    font-weight: 800;
+  }
+
+  .collaborators-description {
+    max-width: 320px;
+    margin-bottom: 1.25rem;
+    color: #666;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+
+  .collaborators-action {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    padding: 0.7rem 1.25rem;
+    border: 1px solid #003e58;
+    border-radius: 8px;
+    background: #003e58;
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 62, 88, 0.16);
+    transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+  }
+
+  .collaborators-action::after {
+    content: "→";
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .collaborators-action:hover {
+    border-color: #26799c;
+    background: #26799c;
+    box-shadow: 0 5px 14px rgba(0, 62, 88, 0.22);
+  }
+
+  .collaborators-action:focus-visible {
+    outline: 3px solid #8cc6dc;
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 900px) {
+    .collaborators-panel {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      min-height: 0;
+    }
+
+    .collaborators-location {
+      grid-column: 1;
+    }
+
+    .collaborators-worker-section {
+      height: 340px;
+      grid-column: 2;
+      grid-row: 1;
+      margin-block: 0;
+    }
+
+    .collaborators-worker {
+      height: calc(100% + 48px);
+    }
+
+    .collaborators-card {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .collaborators-panel {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1rem;
+    }
+
+    .collaborators-location,
+    .collaborators-worker-section,
+    .collaborators-card {
+      grid-column: 1;
+    }
+
+    .collaborators-worker-section {
+      grid-row: 1;
+      margin-top: 0;
+    }
+
+    .collaborators-location {
+      grid-row: 2;
+    }
+
+    .collaborators-card {
+      grid-row: 3;
+    }
+
+    .collaborators-worker {
+      width: 100%;
+      height: calc(100% + 48px);
+    }
+
+    .collaborators-card-content {
+      align-items: center;
+      text-align: center;
+    }
+
+    .collaborators-description {
+      max-width: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .collaborators-worker,
+    .collaborators-action {
+      transition: none;
+    }
+  }
+
+</style>
+<section class="collaborators" aria-labelledby="collaborators-title">
+  <div class="collaborators-container">
+    <!-- Sección de título -->
+    <div class="collaborators-header">
+      <div class="collaborators-tagline">
+        <img src="src/Ícono DRFC.png" alt="DRFC" class="collaborators-tagline-icon">
+        <span>COLABORADORES</span>
+      </div>
+      <h2 class="collaborators-title" id="collaborators-title">Cobertura nacional</h2>
+    </div>
+
+    <!-- Sección principal azul -->
+    <div class="collaborators-panel">
+      
+      <!-- Ubicaciones -->
+      <div class="collaborators-location">
+        <div class="collaborators-pin"></div>
+        
+        <div class="collaborators-location-block">
+          <p class="collaborators-location-title">Con base permanente en:</p>
+          <p class="collaborators-location-list">
+            Cuernavaca<br>
+            CDMX<br>
+            Estado de México<br>
+            Monterrey
+          </p>
+        </div>
+
+        <div class="collaborators-location-block">
+          <p class="collaborators-location-title">En apertura:</p>
+          <p class="collaborators-location-list">
+            <span class="collaborators-highlight">Tijuana</span> y Guadalajara
+          </p>
+        </div>
+      </div>
+
+      <div class="collaborators-worker-section">
+        <img src="src/ContratistaWeb.png" alt="Trabajador con casco amarillo" class="collaborators-worker">
+      </div>
+
+      <div class="collaborators-card">
+        <div class="collaborators-card-content">
+          <h3 class="collaborators-stats-title">
+            <strong>176</strong> Colaboradores fijos y<br>
+            <strong>440</strong> de cobertura dinámica
+          </h3>
+          <p class="collaborators-description">
+            Capacidad operativa que escala según el tamaño del proyecto.
+          </p>
+          <a href="#" class="collaborators-action">Trabaja con nosotros</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .fiber-cta {
+    width: 100%;
+    padding: clamp(1.25rem, 3vw, 2rem) var(--page-content-gutter);
+    background: #e8eef2;
+    font-family: var(--font-main);
+  }
+
+  .fiber-cta *,
+  .fiber-cta *::before,
+  .fiber-cta *::after {
+    box-sizing: border-box;
+  }
+
+  .fiber-cta-card {
+    position: relative;
+    width: min(100%, 1400px);
+    margin: 0 auto;
+    overflow: hidden;
+    padding: clamp(1.25rem, 2.5vw, 2rem);
+    border: 1px solid #dbe5eb;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 18px 50px rgba(0, 45, 67, 0.08);
+    color: #253746;
+    text-align: center;
+  }
+
+  .fiber-cta-card::before {
+    position: absolute;
+    inset: 0 0 auto;
+    height: 5px;
+    background: linear-gradient(90deg, #003e58, #318bb1);
+    content: "";
+  }
+
+  .fiber-cta-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 0 0 0.75rem;
+    text-align: left;
+  }
+
+  .fiber-cta-logo {
+    display: block;
+    width: var(--drfc-icon-size);
+    height: var(--drfc-icon-size);
+    flex: 0 0 var(--drfc-icon-size);
+    object-fit: contain;
+  }
+
+  .fiber-cta-title {
+    max-width: 980px;
+    margin: 0 auto;
+    color: #253746;
+    font-family: var(--font-main);
+    font-size: clamp(1.625rem, 3vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.15;
+  }
+
+  .fiber-cta-connection {
+    display: flex;
+    width: min(100%, 980px);
+    height: 1.25rem;
+    align-items: center;
+    margin: 0.65rem auto 0;
+  }
+
+  .fiber-cta-connector {
+    position: relative;
+    width: 1rem;
+    height: 0.75rem;
+    flex: 0 0 auto;
+    border: 1px solid #5a6b7c;
+    border-radius: 3px;
+    background: #fff;
+  }
+
+  .fiber-cta-connector::after {
+    position: absolute;
+    top: 50%;
+    width: 0.25rem;
+    height: 0.25rem;
+    border: 1px solid #318bb1;
+    border-radius: 50%;
+    background: #eef5f8;
+    content: "";
+    transform: translateY(-50%);
+  }
+
+  .fiber-cta-connector:first-child::after {
+    right: 1px;
+  }
+
+  .fiber-cta-connector:last-child::after {
+    left: 1px;
+  }
+
+  .fiber-cta-cable {
+    position: relative;
+    height: 2px;
+    flex: 1;
+    overflow: hidden;
+    background: #cbdde6;
+  }
+
+  .fiber-cta-cable::after {
+    position: absolute;
+    top: 0;
+    left: -1.5rem;
+    width: 1.5rem;
+    height: 2px;
+    background: #318bb1;
+    content: "";
+    opacity: 0.85;
+    animation: fiber-cta-signal 3.2s ease-in-out infinite;
+  }
+
+  @keyframes fiber-cta-signal {
+    0% {
+      opacity: 0;
+    }
+    15%, 75% {
+      opacity: 0.85;
+    }
+    100% {
+      left: calc(100% - 1.5rem);
+      opacity: 0;
+    }
+  }
+
+  .fiber-cta-description {
+    max-width: 720px;
+    margin: 0.65rem auto 1rem;
+    color: #5a6b7c;
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  .fiber-cta-contact {
+    display: inline-flex;
+    min-height: 3.25rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid #003e58;
+    border-radius: 8px;
+    background: #003e58;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 160ms ease, border-color 160ms ease;
+  }
+
+  .fiber-cta-contact:hover {
+    border-color: #26799c;
+    background: #26799c;
+  }
+
+  .fiber-cta-contact:focus-visible {
+    outline: 3px solid #8cc6dc;
+    outline-offset: 3px;
+  }
+
+  .fiber-cta-contact svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    .fiber-cta-card {
+      border-radius: 14px;
+    }
+
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fiber-cta-cable::after {
+      left: calc(50% - 0.75rem);
+      animation: none;
+      opacity: 0.85;
+    }
+
+    .fiber-cta-contact {
+      transition: none;
+    }
+  }
+</style>
+
+<section class="fiber-cta" aria-label="Contacto y evaluación técnica">
+  <div class="fiber-cta-card">
+    <p class="fiber-cta-eyebrow">
+      <img src="src/Ícono DRFC.png" alt="" class="fiber-cta-logo">
+      Te ayudamos a expandir tu red
+    </p>
+    <h2 class="fiber-cta-title">Agendemos una reunión técnica para evaluar tu próximo despliegue</h2>
+    <div class="fiber-cta-connection" role="img" aria-label="Señal de fibra óptica conectando dos terminales">
+      <span class="fiber-cta-connector"></span>
+      <span class="fiber-cta-cable"></span>
+      <span class="fiber-cta-connector"></span>
+    </div>
+    <p class="fiber-cta-description">En DRFC estamos comprometidos con entregar calidad en cada uno de nuestros trabajos</p>
+    <a class="fiber-cta-contact" href="mailto:contacto@drfc.com.mx">
+      Contacto
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14"></path>
+        <path d="m12 5 7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  .site-footer {
+    width: 100%;
+    padding-top: clamp(2rem, 5vw, 4rem);
+    background: #273847;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .site-footer *,
+  .site-footer *::before,
+  .site-footer *::after {
+    box-sizing: border-box;
+  }
+
+  .site-footer a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .site-footer .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1400px;
+    min-height: 288px;
+    margin: 0 auto;
+    padding: clamp(1.75rem, 3vw, 2.5rem) clamp(1.5rem, 4.5vw, 4rem);
+    border-radius: 0;
+    background: #273847;
+  }
+
+  .site-footer .footer-top {
+    display: grid;
+    grid-template-columns: 1.35fr 0.6fr 1fr 1.2fr;
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+  }
+
+  .site-footer .footer-brand-icon {
+    display: block;
+    width: var(--drfc-icon-size);
+    height: var(--drfc-icon-size);
+    margin-bottom: 12px;
+    object-fit: contain;
+  }
+
+  .site-footer .footer-logo {
+    font-size: clamp(1.25rem, 2vw, 1.5625rem);
+    font-weight: 500;
+    letter-spacing: -1.8px;
+    line-height: 1;
+  }
+
+  .site-footer .footer-tagline {
+    margin-top: 7px;
+    color: #b8b8b8;
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .site-footer .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    font-size: 0.8125rem;
+  }
+
+  .site-footer .footer-links a,
+  .site-footer .legal-links a {
+    transition: color 0.25s ease;
+  }
+
+  .site-footer .footer-links a:hover,
+  .site-footer .legal-links a:hover {
+    color: #c2d5e2;
+  }
+
+  .site-footer .legal-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: #c2cbd2;
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .site-footer .corporate-info p {
+    overflow-wrap: anywhere;
+  }
+
+  .site-footer .footer-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+
+  .site-footer .back-top {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    width: fit-content;
+    padding: 5px 6px 5px 18px;
+    border: none;
+    border-radius: 30px;
+    background: #324454;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.75rem;
+  }
+
+  .site-footer .back-top .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background: #1e303e;
+    color: #c2d5e2;
+    font-size: 0.9375rem;
+  }
+
+  .site-footer .newsletter h2 {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: -0.4px;
+    line-height: 1.3;
+    text-align: right;
+  }
+
+  .site-footer .newsletter {
+    width: min(100%, 340px);
+    margin-left: auto;
+  }
+
+  .site-footer .newsletter-form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 340px;
+    height: 38px;
+    padding: 4px;
+    border-radius: 30px;
+    background: #fff;
+    margin-left: auto;
+  }
+
+  .site-footer .newsletter-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 0 10px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #111;
+    font-size: 0.8125rem;
+  }
+
+  .site-footer .newsletter-form input::placeholder {
+    color: #888;
+  }
+
+  .site-footer .newsletter-form button {
+    flex-shrink: 0;
+    width: 29px;
+    height: 29px;
+    border: none;
+    border-radius: 50%;
+    background: #003e58;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.875rem;
+  }
+
+  .site-footer .newsletter-message {
+    margin-top: 8px;
+    font-size: 0.75rem;
+  }
+
+  .site-footer .copyright {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem 1.25rem;
+    width: 100%;
+    padding: 1rem var(--page-content-gutter);
+    background: #fff;
+    color: #003e58;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .site-footer .footer-top {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+  }
+
+  @media (max-width: 520px) {
+    .site-footer .footer {
+      gap: 2rem;
+      padding: 28px 22px;
+    }
+
+    .site-footer .footer-top {
+      gap: 2rem 15px;
+    }
+
+    .site-footer .footer-bottom {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 30px;
+      margin-top: 0;
+    }
+
+    .site-footer .newsletter {
+      width: 100%;
+    }
+
+    .site-footer .newsletter-form {
+      max-width: 100%;
+    }
+
+    .site-footer .copyright {
+      padding-inline: 1rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-footer .footer-links a,
+    .site-footer .legal-links a {
+      transition: none;
+    }
+  }
+</style>
+
+<section class="site-footer" aria-label="Información y contacto">
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="src/Ícono DRFC.png" alt="Ícono DRFC" class="footer-brand-icon">
+        <a href="#inicio" class="footer-logo">Contáctanos</a>
+        <p class="footer-tagline">Soluciones Integrales en Telecomunicaciones.</p>
+      </div>
+
+      <nav class="footer-links" aria-label="Navegación">
+        <a href="#drfcHeroCarousel">Inicio</a>
+        <a href="#Proyectos">Proyectos</a>
+        <a href="#Servicios">Servicios</a>
+        <a href="#Acerca de nosotros">Acerca de nosotros</a>
+        <a href="#Bolsa de Trabajo">Bolsa de Trabajo</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <nav class="footer-links" aria-label="Redes sociales">
+        <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </nav>
+
+      <div class="legal-links corporate-info">
+        <strong id="contacto">Corporativo</strong>
+        <p>Camino a Ocotepec, SN Col. Ocotepec 123, Cuernavaca, Morelos, C.P. 62220</p>
+        <a href="mailto:contacto@drfc.com.mx">contacto@drfc.com.mx</a>
+        <a href="tel:+527774166135">777 416 6135</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="back-top-container">
+        <button type="button" class="back-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+          <span>Volver al inicio</span>
+          <span class="arrow" aria-hidden="true">↑</span>
+        </button>
+      </div>
+
+      <div class="newsletter">
+        <h2>Agendemos una<br>evaluación inicial</h2>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" name="email" placeholder="name@example.com" aria-label="Correo electrónico" required>
+          <button type="submit" aria-label="Suscribirse">➜</button>
+        </form>
+        <p class="newsletter-message" id="newsletter-message" role="status"></p>
+      </div>
+
+    </div>
+  </footer>
+  <div class="copyright" aria-label="Derechos reservados">
+    <span>DRFC S.A. de C.V.</span>
+    <span>2026 © Todos los derechos reservados.</span>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const servicesMenu = document.querySelector('.services-menu');
+    const servicesTrigger = servicesMenu.querySelector('.services-trigger');
+
+    servicesTrigger.addEventListener('click', () => {
+      const isOpen = servicesMenu.classList.toggle('is-open');
+      servicesTrigger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.addEventListener('click', event => {
+      if (!servicesMenu.contains(event.target)) {
+        servicesMenu.classList.remove('is-open');
+        servicesTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    servicesMenu.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        servicesMenu.classList.remove('is-open');
+        servicesTrigger.setAttribute('aria-expanded', 'false');
+        servicesTrigger.focus();
+      }
+    });
+
+    const newsletterForm = document.querySelector('.site-footer #newsletter-form');
+    const newsletterMessage = document.querySelector('.site-footer #newsletter-message');
+
+    newsletterForm.addEventListener('submit', event => {
+      event.preventDefault();
+      newsletterMessage.textContent =
+        'Gracias. Para completar la suscripción, conecta un servicio de correo.';
+      newsletterForm.reset();
+    });
+  })();
+</script>
+
+</body>
+</html>

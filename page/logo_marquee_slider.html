@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinta de Logos en Movimiento Infinito</title>
+  <!-- Google Fonts Inter for clean typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=display" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================
+       1. REINICIO GENERAL Y STYLES DE DEMOSTRACIÓN
+       ========================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    /* ==========================================================
+       2. CONTENEDOR PRINCIPAL DE LA SECCIÓN DE LOGOS
+       ========================================================== */
+    .logo-marquee-section {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 0;
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+      text-align: center;
+    }
+
+    /* ==========================================================
+       3. CONTENEDOR CINTA DE LOGOS Y MÁSCARA DE DEGRADADO (FADE)
+       ========================================================== */
+    .marquee-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden; /* Oculta los logos que salen de la pantalla */
+      display: flex;
+      user-select: none;
+      
+      /* EFECTO DE GRADIENTE DE BORDE (Fade lateral suave) */
+      mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 1) 12%,
+        rgba(0, 0, 0, 1) 88%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      -webkit-mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 1) 12%,
+        rgba(0, 0, 0, 1) 88%,
+        rgba(0, 0, 0, 0) 100%
+      );
+    }
+
+    /* ==========================================================
+       4. TRACK / CINTA EN MOVIMIENTO
+       ========================================================== */
+    .marquee-track {
+      display: flex;
+      gap: 50px; /* DISTANCIA ENTRE LOGOS - Ajustar según preferencia */
+      padding: 10px 0;
+      width: max-content;
+      
+      /* ANIMACIÓN CONTINUA
+         Ajusta '30s' para hacer la cinta más rápida (ej: 15s) o más lenta (ej: 45s) */
+      animation: marquee-scroll 30s linear infinite;
+    }
+
+    /* PAUSA EN HOVER: Pausa suavemente el movimiento cuando el mouse pasa encima */
+    .marquee-container:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    /* KEYFRAMES: Desplaza el primer grupo exactamente el 50% de su ancho */
+    @keyframes marquee-scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ==========================================================
+       5. ESTILOS DE CADA CARD/TARJETA DE LOGO
+       ========================================================== */
+    .logo-item {
+      flex: 0 0 auto;
+      width: 160px; /* ANCHO DE CADA LOGO */
+      height: 70px; /* ALTO DE CADA LOGO */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f8fafc;
+      border: 1px solid #f1f5f9;
+      border-radius: 12px;
+      padding: 12px 20px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    /* Efecto al pasar el mouse por un logo individual */
+    .logo-item:hover {
+      background-color: #ffffff;
+      border-color: #cbd5e1;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+    }
+
+    .logo-item img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SECCIÓN PRINCIPAL DEL CARRUSEL -->
+  <section class="logo-marquee-section">
+    <div class="marquee-container" id="marqueeContainer">
+      <!-- EL MARQUEE-TRACK CONTIENE 2 GRUPOS IDÉNTICOS DE 8 LOGOS PARA EL BUCLE INFINITO SINFÍN -->
+      <div class="marquee-track" id="marqueeTrack">
+        
+        <!-- ======================================================
+             GRUPO 1: 8 LOGOS ORIGINALES
+             ====================================================== -->
+        
+        <!-- LOGO 1 -->
+        <div class="logo-item" title="Logo 1">
+          <!-- REEMPLAZA EL 'src' CON LA RUTA DE TU IMAGEN O SVG -->
+          <img src="../src/Cablecom BN.png" alt="Cablecom">
+        </div>
+
+        <!-- LOGO 2 -->
+        <div class="logo-item" title="Logo 2">
+          <img src="../src/Cablemas BN.png" alt="Cablemás">
+        </div>
+
+        <!-- LOGO 3 -->
+        <div class="logo-item" title="Logo 3">
+          <img src="../src/Izzi BN.png" alt="Izzi">
+        </div>
+
+        <!-- LOGO 4 -->
+        <div class="logo-item" title="Logo 4">
+          <img src="../src/Cablevisión BN.png" alt="Cablevisión">
+        </div>
+
+        <!-- LOGO 5 -->
+        <div class="logo-item" title="Logo 5">
+          <img src="../src/Megacable BN.png" alt="Megacable">
+        </div>
+
+        <!-- LOGO 6 -->
+        <div class="logo-item" title="Logo 6">
+          <img src="../src/Telecable BN.png" alt="Telecable">
+        </div>
+
+        <!-- LOGO 7 -->
+        <div class="logo-item" title="Logo 7">
+          <img src="../src/Claro Video BN.png" alt="Claro Video">
+        </div>
+
+        <!-- LOGO 8 -->
+        <div class="logo-item" title="Logo 8">
+          <img src="../src/Tigo Star BN.png" alt="Tigo Star">
+        </div>
+
+
+        <!-- ======================================================
+             GRUPO 2: DUPLICADO EXACTO PARA CREAR EL EFECTO SINFÍN
+             (Mantén los mismos links e imágenes del grupo de arriba)
+             ====================================================== -->
+        
+        <!-- LOGO 1 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 1">
+          <img src="../src/Cablecom BN.png" alt="Cablecom" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 2 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 2">
+          <img src="../src/Cablemas BN.png" alt="Cablemás" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 3 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 3">
+          <img src="../src/Izzi BN.png" alt="Izzi" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 4 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 4">
+          <img src="../src/Cablevisión BN.png" alt="Cablevisión" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 5 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 5">
+          <img src="../src/Megacable BN.png" alt="Megacable" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 6 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 6">
+          <img src="../src/Telecable BN.png" alt="Telecable" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 7 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 7">
+          <img src="../src/Claro Video BN.png" alt="Claro Video" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 8 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 8">
+          <img src="../src/Tigo Star BN.png" alt="Tigo Star" aria-hidden="true">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

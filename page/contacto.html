@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ponerse en contacto</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #333333;
+    }
+
+    /* === ESTILOS DEL MENÚ DE NAVEGACIÓN === */
+    .header-navbar {
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      padding: 15px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-container a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-container img {
+      height: 60px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333333;
+      font-size: 15px;
+      font-weight: 400;
+      transition: color 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-links a.active {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .nav-links a:hover {
+      color: #0b3c5d;
+    }
+
+    .dropdown-arrow {
+      width: 12px;
+      height: 12px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .btn-contacto {
+      background-color: #0d425c;
+      color: #ffffff !important;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-contacto:hover {
+      background-color: #082d40;
+    }
+
+    /* === ESTILOS DEL FORMULARIO === */
+    .main-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .form-container {
+      width: 100%;
+      max-width: 900px;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 400;
+      margin-bottom: 30px;
+      color: #2b2b2b;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .form-group.full-width {
+      grid-column: span 2;
+    }
+
+    label {
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: #333333;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #b3b3b3;
+      border-radius: 0;
+      font-size: 15px;
+      color: #333333;
+      outline: none;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #8e8e8e;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #555555;
+    }
+
+    .phone-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .phone-input-wrapper input {
+      padding-left: 55px;
+    }
+
+    .phone-icon {
+      position: absolute;
+      left: 12px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #555555;
+      cursor: pointer;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .submit-btn {
+      background-color: #556014; /* Color verde oliva */
+      color: #ffffff;
+      border: none;
+      padding: 14px 0;
+      width: 50%;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #444d10;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 900px) {
+      .header-navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .form-group.full-width {
+        grid-column: span 1;
+      }
+      .submit-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MENÚ DE NAVEGACIÓN -->
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navegación Header</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+    }
+
+    /* Contenedor del Navbar */
+    .header-navbar {
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      padding: 15px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Logo */
+.logo-container a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-container img {
+  height: 100px; /* Tamaño más grande para el logo */
+  width: auto;
+  max-height: 100%; /* Asegura que mantenga la proporción */
+}
+
+    /* Lista de Navegación */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333333;
+      font-size: 15px;
+      font-weight: 400;
+      transition: color 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Estilo del enlace activo */
+    .nav-links a.active {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .nav-links a:hover {
+      color: #0b3c5d;
+    }
+
+    /* Flecha despliegue para menús desplegables */
+    .dropdown-arrow {
+      width: 12px;
+      height: 12px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* Botón de Contacto */
+    .btn-contacto {
+      background-color: #0d425c; /* Color azul marino profundo */
+      color: #ffffff !important;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-contacto:hover {
+      background-color: #082d40;
+    }
+
+    /* Adaptación para pantallas pequeñas */
+    @media (max-width: 900px) {
+      .header-navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header-navbar">
+    <!-- Logo -->
+    <div class="logo-container">
+      <a href="../src/logo_drfc.png">
+        <!-- Reemplaza src con la ruta de tu imagen de logo -->
+        <img src="../src/logo_drfc.png" alt="DRFC Ingeniería S.A. de C.V.">
+      </a>
+    </div>
+
+    <!-- Menú de navegación principal -->
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#" class="active">Inicio</a></li>
+        <li><a href="#">Proyectos</a></li>
+        <li>
+          <a href="#">
+            Servicios
+            <svg class="dropdown-arrow" viewBox="0 0 24 24">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Acerca de Nosotros
+            <svg class="dropdown-arrow" viewBox="0 0 24 24">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+        </li>
+        <li><a href="#">Bolsa de Trabajo</a></li>
+      </ul>
+    </nav>
+
+    <!-- Botón derecho -->
+    <div class="header-action">
+      <a href="#" class="btn-contacto">CONTACTO</a>
+    </div>
+  </header>
+
+</body>
+</html>
+
+  <!-- CONTENIDO DEL FORMULARIO -->
+  <main class="main-wrapper">
+    <div class="form-container">
+      <h1>Ponerse en contacto</h1>
+
+      <form>
+        <div class="form-grid">
+          <!-- Nombre -->
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" placeholder="Nombre">
+          </div>
+
+          <!-- Apellido -->
+          <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" placeholder="Apellido">
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" placeholder="Email" required>
+          </div>
+
+          <!-- Teléfono -->
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <div class="phone-input-wrapper">
+              <span class="phone-icon">
+                <!-- Icono de globo terráqueo -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+                <!-- Icono de flecha despliegue -->
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+              <input type="tel" id="telefono" placeholder="Teléfono">
+            </div>
+          </div>
+
+          <!-- Mensaje -->
+          <div class="form-group full-width">
+            <label for="mensaje">Mensaje *</label>
+            <textarea id="mensaje" placeholder="Mensaje" required></textarea>
+          </div>
+        </div>
+
+        <!-- Botón de enviar -->
+        <div class="button-container">
+          <button type="submit" class="submit-btn">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+</body>
+</html>
