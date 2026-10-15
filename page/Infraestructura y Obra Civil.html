@@ -231,50 +231,6 @@
             color: #123e59;
         }
 
-        .infrastructure-benefits {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 0.5rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0.75rem 0;
-        }
-
-        .infrastructure-benefit {
-            min-height: 10rem;
-            padding: 1.25rem 1rem;
-            border-radius: 0.75rem;
-            background: #f1f5f9;
-            text-align: center;
-        }
-
-        .infrastructure-benefit:nth-child(even) {
-            background: #d1d5db;
-        }
-
-        .infrastructure-benefit-icon {
-            display: block;
-            width: 2.25rem;
-            height: 2.25rem;
-            margin: 0 auto 0.75rem;
-            color: #3879a9;
-        }
-
-        .infrastructure-benefit h3 {
-            margin: 0 0 0.5rem;
-            color: #173d59;
-            font-size: clamp(0.75rem, 1.2vw, 0.9rem);
-            font-weight: 600;
-            line-height: 1.25;
-        }
-
-        .infrastructure-benefit p {
-            margin: 0;
-            color: #64748b;
-            font-size: clamp(0.65rem, 1vw, 0.75rem);
-            line-height: 1.4;
-        }
-
         .infrastructure-services {
             display: grid;
             grid-template-columns: minmax(13rem, 0.7fr) 1.3fr;
@@ -442,12 +398,6 @@
                 min-height: 16rem;
             }
 
-            .infrastructure-benefits {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                padding-right: 0.5rem;
-                padding-left: 0.5rem;
-            }
-
             .infrastructure-services {
                 grid-template-columns: 1fr;
             }
@@ -549,36 +499,7 @@
             </div>
         </section>
 
-        <section class="infrastructure-benefits" aria-label="Beneficios del servicio">
-            <article class="infrastructure-benefit">
-                <svg class="infrastructure-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>
-                </svg>
-                <h3>Cobertura nacional con base instalada</h3>
-                <p>Almacén en Cuernavaca, CDMX, Estado de México y Monterrey, Tijuana y Guadalajara en operación.</p>
-            </article>
-            <article class="infrastructure-benefit">
-                <svg class="infrastructure-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/>
-                </svg>
-                <h3>Gestión integral de proyectos</h3>
-                <p>Ingeniería, construcción, obra civil y mantenimiento bajo un mismo equipo.</p>
-            </article>
-            <article class="infrastructure-benefit">
-                <svg class="infrastructure-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 3h10l3 3v15H4V3h3Z"/><path stroke-linecap="round" d="M8 10h8M8 14h8M8 18h5"/>
-                </svg>
-                <h3>Evidencia documentada en campo</h3>
-                <p>Registro fotográfico y reportes verificables de cada intervención.</p>
-            </article>
-            <article class="infrastructure-benefit">
-                <svg class="infrastructure-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3 2.8 20h18.4L12 3Z"/><path stroke-linecap="round" d="M12 9v5m0 3h.01"/>
-                </svg>
-                <h3>Atención de emergencias con trazabilidad</h3>
-                <p>Respuesta inmediata con seguimiento del ticket de principio a fin.</p>
-            </article>
-        </section>
+        <script src="../page/tarjetas.js" data-component="infrastructure-benefits"></script>
 
         <section class="infrastructure-services" aria-labelledby="infrastructure-services-title">
             <div class="infrastructure-services-heading">

@@ -181,6 +181,41 @@
             background: #60a5fa;
         }
 
+        .infrastructure-benefits-section {
+            padding: 0.75rem clamp(0.5rem, 2vw, 1rem);
+        }
+
+        .infrastructure-benefits {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            width: min(100%, 1400px);
+        }
+
+        .infrastructure-benefit-copy .network-tool-title {
+            font-size: clamp(1rem, 1.5vw, 1.3rem);
+        }
+
+        .infrastructure-benefit-copy .network-tool-subtitle {
+            color: #526779;
+            font-size: clamp(0.75rem, 1vw, 0.875rem);
+            font-weight: 400;
+            letter-spacing: normal;
+            line-height: 1.5;
+            text-transform: none;
+        }
+
+        .network-tool-card--dark .infrastructure-benefit-copy .network-tool-subtitle {
+            color: #c5def3;
+        }
+
+        .infrastructure-benefit .network-tool-icon svg {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .infrastructure-benefits-section .network-tools-grid {
+            max-width: 1400px;
+        }
+
         @media (max-width: 640px) {
             .network-tools-grid {
                 grid-template-columns: minmax(0, 1fr);
@@ -189,6 +224,24 @@
 
             .network-tool-card {
                 min-height: 15rem;
+            }
+
+            .infrastructure-benefits {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 900px) and (min-width: 641px) {
+            .infrastructure-benefits {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .infrastructure-benefits {
+                grid-template-columns: minmax(0, 1fr);
+                max-width: 28rem;
             }
         }
 
@@ -217,9 +270,6 @@
                         <div class="network-tool-divider" aria-hidden="true"></div>
                         <p class="network-tool-subtitle">AutoCAD / Bentley / KMZ</p>
                     </div>
-                    <div class="network-tool-indicator" aria-hidden="true">
-                        <span></span><span></span><span></span>
-                    </div>
                 </article>
 
                 <article class="network-tool-card network-tool-card--dark">
@@ -239,8 +289,64 @@
                         <div class="network-tool-divider" aria-hidden="true"></div>
                         <p class="network-tool-subtitle">CAD / IODE Data / Bentley</p>
                     </div>
-                    <div class="network-tool-indicator" aria-hidden="true">
-                        <span></span><span></span><span></span>
+                </article>
+            </div>
+        </section>
+    `;
+
+    const infrastructureMarkup = `
+        <section class="network-tools-section infrastructure-benefits-section" aria-label="Beneficios del servicio">
+            <div class="network-tools-grid infrastructure-benefits">
+                <article class="network-tool-card network-tool-card--light infrastructure-benefit">
+                    <div class="network-tool-icon" aria-hidden="true">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+                            <circle cx="12" cy="10" r="2.5"></circle>
+                        </svg>
+                    </div>
+                    <div class="network-tool-copy infrastructure-benefit-copy">
+                        <h3 class="network-tool-title">Cobertura nacional con base instalada</h3>
+                        <div class="network-tool-divider" aria-hidden="true"></div>
+                        <p class="network-tool-subtitle">Almacén en Cuernavaca, CDMX, Estado de México y Monterrey, Tijuana y Guadalajara en operación.</p>
+                    </div>
+                </article>
+                <article class="network-tool-card network-tool-card--dark infrastructure-benefit">
+                    <div class="network-tool-icon" aria-hidden="true">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m9 12 2 2 4-4"></path>
+                        </svg>
+                    </div>
+                    <div class="network-tool-copy infrastructure-benefit-copy">
+                        <h3 class="network-tool-title">Gestión integral de proyectos</h3>
+                        <div class="network-tool-divider" aria-hidden="true"></div>
+                        <p class="network-tool-subtitle">Ingeniería, construcción, obra civil y mantenimiento bajo un mismo equipo.</p>
+                    </div>
+                </article>
+                <article class="network-tool-card network-tool-card--light infrastructure-benefit">
+                    <div class="network-tool-icon" aria-hidden="true">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 3h10l3 3v15H4V3h3Z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8M8 14h8M8 18h5"></path>
+                        </svg>
+                    </div>
+                    <div class="network-tool-copy infrastructure-benefit-copy">
+                        <h3 class="network-tool-title">Evidencia documentada en campo</h3>
+                        <div class="network-tool-divider" aria-hidden="true"></div>
+                        <p class="network-tool-subtitle">Registro fotográfico y reportes verificables de cada intervención.</p>
+                    </div>
+                </article>
+                <article class="network-tool-card network-tool-card--dark infrastructure-benefit">
+                    <div class="network-tool-icon" aria-hidden="true">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3 2.8 20h18.4L12 3Z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v5m0 3h.01"></path>
+                        </svg>
+                    </div>
+                    <div class="network-tool-copy infrastructure-benefit-copy">
+                        <h3 class="network-tool-title">Atención de emergencias con trazabilidad</h3>
+                        <div class="network-tool-divider" aria-hidden="true"></div>
+                        <p class="network-tool-subtitle">Respuesta inmediata con seguimiento del ticket de principio a fin.</p>
                     </div>
                 </article>
             </div>
@@ -248,8 +354,9 @@
     `;
 
     const style = document.createElement('style');
-    style.dataset.component = 'network-tools';
+    const isInfrastructureBenefits = script.dataset.component === 'infrastructure-benefits';
+    style.dataset.component = isInfrastructureBenefits ? 'infrastructure-benefits' : 'network-tools';
     style.textContent = styles;
     document.head.append(style);
-    script.insertAdjacentHTML('beforebegin', markup);
+    script.insertAdjacentHTML('beforebegin', isInfrastructureBenefits ? infrastructureMarkup : markup);
 })();
