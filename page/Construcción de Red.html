@@ -219,78 +219,8 @@
             stroke-width: 1.5;
         }
 
-        .construction-carousel-control {
-            position: absolute;
-            top: 50%;
-            z-index: 3;
-            display: grid;
-            width: clamp(2.5rem, 4vw, 3.5rem);
-            height: clamp(2.5rem, 4vw, 3.5rem);
-            place-items: center;
-            transform: translateY(-50%);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            background: rgba(0, 34, 49, 0.72);
-            color: #ffffff;
-            cursor: pointer;
-            font-size: clamp(1.5rem, 2.5vw, 2rem);
-            line-height: 1;
-            transition: background-color 180ms ease, transform 180ms ease;
-        }
-
-        .construction-carousel-control:hover {
-            background: rgba(23, 159, 203, 0.9);
-            transform: translateY(-50%) scale(1.06);
-        }
-
-        .construction-carousel-control:focus-visible,
-        .construction-carousel-dot:focus-visible {
-            outline: 3px solid #8be7ff;
-            outline-offset: 3px;
-        }
-
-        .construction-carousel-control--previous {
-            left: clamp(0.75rem, 2vw, 2rem);
-        }
-
-        .construction-carousel-control--next {
-            right: clamp(0.75rem, 2vw, 2rem);
-        }
-
-        .construction-carousel-indicators {
-            position: absolute;
-            bottom: clamp(1rem, 2vw, 1.75rem);
-            left: 50%;
-            z-index: 3;
-            display: flex;
-            gap: 0.55rem;
-            padding: 0.5rem 0.75rem;
-            transform: translateX(-50%);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 2rem;
-            background: rgba(0, 34, 49, 0.68);
-        }
-
-        .construction-carousel-dot {
-            width: 1.8rem;
-            height: 0.45rem;
-            padding: 0;
-            border: 0;
-            border-radius: 1rem;
-            background: rgba(255, 255, 255, 0.45);
-            cursor: pointer;
-            transition: background-color 180ms ease, width 180ms ease;
-        }
-
-        .construction-carousel-dot.is-active {
-            width: 2.7rem;
-            background: #38bdf8;
-        }
-
         @media (prefers-reduced-motion: reduce) {
-            .construction-carousel-slide,
-            .construction-carousel-control,
-            .construction-carousel-dot {
+            .construction-carousel-slide {
                 transition: none;
             }
 
@@ -708,24 +638,24 @@
         </header>
 
         <!-- FULL WIDTH HERO BANNER IMAGE -->
-        <div class="construction-cover w-full overflow-hidden bg-gray-900 img-container" id="constructionCarousel" role="region" aria-label="Galería de construcción de redes" aria-roledescription="carrusel">
+        <div class="construction-cover w-full overflow-hidden bg-gray-900" id="constructionCarousel" role="region" aria-label="Galería de construcción de redes" aria-roledescription="carrusel">
             <div class="construction-carousel-slide is-active" data-carousel-slide aria-hidden="false">
-                <img src="../src/PortadaConstrucción.png" alt="Cuadrilla trabajando en infraestructura de telecomunicaciones" class="img-color">
+                <img src="../src/PortadaCons1.png" alt="Cuadrilla trabajando en infraestructura de telecomunicaciones" class="img-color">
             </div>
             <div class="construction-carousel-slide" data-carousel-slide aria-hidden="true">
-                <img src="../src/CuadrillaConstrucción.png" alt="Cuadrilla de construcción de redes" class="img-color">
+                <img src="../src/CCarrusel2.jpg" alt="Cuadrilla de construcción de redes" class="img-color">
             </div>
             <div class="construction-carousel-slide" data-carousel-slide aria-hidden="true">
-                <img src="../src/Carrusel2Construcción.png" alt="Trabajo de construcción de redes, imagen 2" class="img-color">
+                <img src="../src/Movil.png" alt="Trabajo de construcción de redes, imagen 2" class="img-color">
             </div>
             <div class="construction-carousel-slide" data-carousel-slide aria-hidden="true">
-                <img src="../src/Carrusel3Construcción.png" alt="Trabajo de construcción de redes, imagen 3" class="img-color">
+                <img src="../src/3.jpeg" alt="Trabajo de construcción de redes, imagen 3" class="img-color">
             </div>
             <div class="construction-carousel-slide" data-carousel-slide aria-hidden="true">
-                <img src="../src/CarruselConstrucción.png" alt="Trabajo de construcción de redes, imagen 4" class="img-color">
+                <img src="../src/2.jpeg" alt="Trabajo de construcción de redes, imagen 4" class="img-color">
             </div>
 
-            <svg class="construction-fiber-overlay" viewBox="0 0 1440 500" preserveAspectRatio="none" aria-hidden="true">
+            <svg class="construction-fiber-overlay" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                 <path class="construction-fiber-path" d="M-50 250 Q350 62.5 700 250 T1450 250"/>
                 <path class="construction-fiber-path-accent" id="constructionFiberPath" d="M-50 187.5 C400 312.5 800 62.5 1500 281.25"/>
                 <circle class="construction-fiber-pulse" r="6">
@@ -740,15 +670,6 @@
                 </g>
             </svg>
 
-            <button type="button" class="construction-carousel-control construction-carousel-control--previous" aria-label="Imagen anterior" data-carousel-previous>&lsaquo;</button>
-            <button type="button" class="construction-carousel-control construction-carousel-control--next" aria-label="Imagen siguiente" data-carousel-next>&rsaquo;</button>
-            <div class="construction-carousel-indicators" role="tablist" aria-label="Seleccionar imagen">
-                <button type="button" class="construction-carousel-dot is-active" role="tab" aria-label="Imagen 1" aria-selected="true" data-carousel-to="0"></button>
-                <button type="button" class="construction-carousel-dot" role="tab" aria-label="Imagen 2" aria-selected="false" data-carousel-to="1"></button>
-                <button type="button" class="construction-carousel-dot" role="tab" aria-label="Imagen 3" aria-selected="false" data-carousel-to="2"></button>
-                <button type="button" class="construction-carousel-dot" role="tab" aria-label="Imagen 4" aria-selected="false" data-carousel-to="3"></button>
-                <button type="button" class="construction-carousel-dot" role="tab" aria-label="Imagen 5" aria-selected="false" data-carousel-to="4"></button>
-            </div>
         </div>
 
         <div class="construction-fiber-divider" aria-hidden="true">
@@ -845,7 +766,7 @@
                 <div class="deployment-image-column md:col-span-5 flex">
                     <div class="deployment-image-frame rounded-sm overflow-hidden bg-gray-200 img-container shadow-md border border-gray-100">
                         <img 
-                            src="../src/DespliegueConstrucción.png" 
+                            src="../src/Despliegue.png" 
                             alt="Despliegue y modernización de redes de telecomunicaciones" 
                             class="img-color"
                         />
@@ -915,7 +836,7 @@
                 <div class="coverage-image-column md:col-span-5">
                   <div class="coverage-image-frame rounded-sm overflow-hidden bg-gray-400 img-container shadow-lg">
                     <img 
-                        src="../src/CoberturaConstruccion.jpg" 
+                        src="../src/Cobertura.jpg" 
                         alt="Técnicos realizando instalaciones subterráneas en calle" 
                         class="img-color"
                     />
@@ -1000,6 +921,7 @@
     <div id="proposalModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
         <div class="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 relative border border-gray-100 transform scale-95 transition-transform duration-300" id="modalContainer">
             <!-- Close Button -->
+           
             <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 p-1">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -1062,9 +984,7 @@
     <script>
         const constructionCarousel = document.getElementById('constructionCarousel');
         const constructionSlides = [...constructionCarousel.querySelectorAll('[data-carousel-slide]')];
-        const constructionDots = [...constructionCarousel.querySelectorAll('[data-carousel-to]')];
         let constructionSlideIndex = 0;
-        let constructionCarouselTimer;
 
         function showConstructionSlide(index) {
             constructionSlideIndex = (index + constructionSlides.length) % constructionSlides.length;
@@ -1072,42 +992,12 @@
                 const isActive = slideIndex === constructionSlideIndex;
                 slide.classList.toggle('is-active', isActive);
                 slide.setAttribute('aria-hidden', String(!isActive));
-                constructionDots[slideIndex].classList.toggle('is-active', isActive);
-                constructionDots[slideIndex].setAttribute('aria-selected', String(isActive));
             });
         }
 
-        function startConstructionCarousel() {
-            window.clearInterval(constructionCarouselTimer);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                constructionCarouselTimer = window.setInterval(() => {
-                    showConstructionSlide(constructionSlideIndex + 1);
-                }, 6000);
-            }
-        }
-
-        constructionCarousel.querySelector('[data-carousel-previous]').addEventListener('click', () => {
-            showConstructionSlide(constructionSlideIndex - 1);
-            startConstructionCarousel();
-        });
-
-        constructionCarousel.querySelector('[data-carousel-next]').addEventListener('click', () => {
+        window.setInterval(() => {
             showConstructionSlide(constructionSlideIndex + 1);
-            startConstructionCarousel();
-        });
-
-        constructionDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                showConstructionSlide(index);
-                startConstructionCarousel();
-            });
-        });
-
-        constructionCarousel.addEventListener('mouseenter', () => window.clearInterval(constructionCarouselTimer));
-        constructionCarousel.addEventListener('mouseleave', startConstructionCarousel);
-        constructionCarousel.addEventListener('focusin', () => window.clearInterval(constructionCarouselTimer));
-        constructionCarousel.addEventListener('focusout', startConstructionCarousel);
-        startConstructionCarousel();
+        }, 4000);
 
         const capacityCounter = document.querySelector('[data-capacity-counter]');
         const capacityTarget = 800;
