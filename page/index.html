@@ -1265,28 +1265,23 @@
        ========================================================== */
     .marquee-track {
       display: flex;
-      gap: clamp(24px, 2vw, 64px);
-      padding: 10px 0;
+      flex: 0 0 auto;
+      gap: 0;
       width: max-content;
-      
-      /* ANIMACIÓN CONTINUA
-         Ajusta '30s' para hacer la cinta más rápida (ej: 15s) o más lenta (ej: 45s) */
-      animation: marquee-scroll 30s linear infinite;
+      padding: 10px 0;
+      --marquee-distance: -50%;
+      animation: marquee-scroll 15s linear infinite;
     }
 
-    /* PAUSA EN HOVER: Pausa suavemente el movimiento cuando el mouse pasa encima */
-    .marquee-container:hover .marquee-track {
-      animation-play-state: paused;
+    .marquee-group {
+      display: flex;
+      gap: clamp(24px, 2vw, 64px);
+      flex: 0 0 auto;
+      padding-right: clamp(24px, 2vw, 64px);
     }
 
-    /* KEYFRAMES: Desplaza el primer grupo exactamente el 50% de su ancho */
     @keyframes marquee-scroll {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
+      to { transform: translateX(var(--marquee-distance)); }
     }
 
     /* ==========================================================
@@ -1557,12 +1552,13 @@
   <!-- SECCIÓN PRINCIPAL DEL CARRUSEL -->
   <section class="logo-marquee-section">
     <div class="marquee-container" id="marqueeContainer">
-      <!-- EL MARQUEE-TRACK CONTIENE 2 GRUPOS IDÉNTICOS DE 8 LOGOS PARA EL BUCLE INFINITO SINFÍN -->
+      <!-- Cada grupo completo se repite para mantener el desplazamiento sin espacios. -->
       <div class="marquee-track" id="marqueeTrack">
         
         <!-- ======================================================
              GRUPO 1: 8 LOGOS ORIGINALES
              ====================================================== -->
+        <div class="marquee-group">
         
         <!-- LOGO 1 -->
         <div class="logo-item" title="Logo 1">
@@ -1604,12 +1600,14 @@
         <div class="logo-item" title="Logo 8">
           <img src="../src/Tigo Star BN.png" alt="Tigo Star">
         </div>
+        </div>
 
 
         <!-- ======================================================
              GRUPO 2: DUPLICADO EXACTO PARA CREAR EL EFECTO SINFÍN
              (Mantén los mismos links e imágenes del grupo de arriba)
              ====================================================== -->
+        <div class="marquee-group" aria-hidden="true">
         
         <!-- LOGO 1 (DUPLICADO) -->
         <div class="logo-item" title="Logo 1">
@@ -1650,10 +1648,47 @@
         <div class="logo-item" title="Logo 8">
           <img src="../src/Tigo Star BN.png" alt="Tigo Star" aria-hidden="true">
         </div>
+        </div>
 
       </div>
     </div>
   </section>
+
+  <script>
+    const marqueeContainer = document.getElementById('marqueeContainer');
+    const marqueeTrack = document.getElementById('marqueeTrack');
+    const marqueeGroup = marqueeTrack && marqueeTrack.querySelector('.marquee-group');
+
+    if (marqueeContainer && marqueeTrack && marqueeGroup) {
+      const updateMarquee = () => {
+        const groupWidth = marqueeGroup.getBoundingClientRect().width;
+        if (groupWidth === 0) return;
+
+        marqueeTrack.style.setProperty('--marquee-distance', `-${groupWidth}px`);
+        const groupCount = Math.max(2, Math.ceil(marqueeContainer.clientWidth / groupWidth) + 1);
+
+        while (marqueeTrack.children.length < groupCount) {
+          const clone = marqueeGroup.cloneNode(true);
+          clone.setAttribute('aria-hidden', 'true');
+          marqueeTrack.appendChild(clone);
+        }
+
+        while (marqueeTrack.children.length > groupCount) {
+          marqueeTrack.removeChild(marqueeTrack.lastElementChild);
+        }
+      };
+
+      updateMarquee();
+      if (typeof ResizeObserver === 'function') {
+        const marqueeResizeObserver = new ResizeObserver(updateMarquee);
+        marqueeResizeObserver.observe(marqueeContainer);
+        marqueeResizeObserver.observe(marqueeGroup);
+      }
+      window.addEventListener('resize', updateMarquee);
+    } else {
+      console.error('No se pudo inicializar el marquee de marcas: falta el contenedor, el track o el grupo de logos.');
+    }
+  </script>
 
   <section class="network-benefits" aria-labelledby="network-benefits-title">
     <div class="network-benefits-container">
