@@ -4,60 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sección Fachada y Mapa</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      height: 450px; /* Puedes ajustar la altura según tus necesidades */
-    }
-
-    .column {
-      flex: 1;
-      min-width: 300px;
-      height: 100%;
-    }
-
-    /* Ajuste para la foto */
-    .column img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* Ajuste para el mapa de Google */
-    .column iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    /* Responsivo para pantallas pequeñas */
-    @media (max-width: 768px) {
-      .container {
-        height: auto;
-      }
-      .column {
-        height: 350px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/css/secciones/fachada-y-mapa.css">
 </head>
 <body>
 
   <div class="container">
     <!-- Columna Izquierda: Fotografía -->
     <div class="column">
-      <img src="../src/Fachada.jpg" alt="Fachada del edificio">
+      <img src="../assets/img/fotos/Fachada.jpg" alt="Fachada del edificio">
     </div>
 
     <!-- Columna Derecha: Mapa de Google -->

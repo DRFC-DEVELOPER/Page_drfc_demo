@@ -4,157 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sección Beneficios</title>
-  <style>
-    :root {
-      --primary-color: #2b5288; /* Azul principal del título */
-      --heading-color: #243c5a; /* Azul oscuro para subtítulos */
-      --text-color: #555555;    /* Gris para texto descriptivo */
-      --tag-color: #8397ab;     /* Gris/azul para el tag superior */
-      --border-color: #d1d9e0;  /* Gris claro para líneas divisorias */
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      background-color: #ffffff;
-    }
-
-    /* ENCABEZADO */
-    .header {
-      margin-bottom: 40px;
-    }
-
-    .tag-container {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    .tag-icon {
-      width: 20px;
-      height: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .tag-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .tag-text {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: var(--tag-color);
-      text-transform: uppercase;
-    }
-
-    .main-title {
-      font-size: 38px;
-      font-weight: 700;
-      color: var(--primary-color);
-      line-height: 1.2;
-      margin-bottom: 16px;
-    }
-
-    .subtitle {
-      font-size: 18px;
-      color: var(--text-color);
-      font-weight: 400;
-    }
-
-    /* CONTENIDO PRINCIPAL (GRID / FLEX) */
-    .content-grid {
-      display: flex;
-      gap: 40px;
-      align-items: flex-start;
-    }
-
-    /* COLUMNA IZQUIERDA: IMAGEN */
-    .image-container {
-      flex: 1;
-      width: 100%;
-    }
-
-    .image-container img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
-    }
-
-    /* COLUMNA DERECHA: LISTA DE BENEFICIOS */
-    .benefits-list {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .benefit-item {
-      display: flex;
-      gap: 16px;
-      padding-bottom: 24px;
-      margin-bottom: 24px;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .benefit-item:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-      margin-bottom: 0;
-    }
-
-    .item-icon {
-      width: 32px;
-      height: 32px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 2px;
-    }
-
-    .item-content {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .item-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--heading-color);
-    }
-
-    .item-description {
-      font-size: 15px;
-      line-height: 1.4;
-      color: var(--text-color);
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .content-grid {
-        flex-direction: column;
-      }
-      
-      .main-title {
-        font-size: 28px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/css/secciones/etapas-de-la-red.css">
 </head>
 <body>
 
@@ -163,7 +13,7 @@
     <header class="header">
       <div class="tag-container">
         <div class="tag-icon">
-          <img src="../src/Ícono DRFC.png" alt="">
+          <img src="../assets/img/marca/Ícono DRFC.png" alt="">
         </div>
         <span class="tag-text">BENEFICIOS</span>
       </div>
@@ -175,7 +25,7 @@
     <div class="content-grid">
       <!-- IMAGEN PRINCIPAL -->
       <div class="image-container">
-        <img src="../src/Foto_etapas.jpg" alt="Trabajo operativo en campo">
+        <img src="../assets/img/fotos/Foto_etapas.jpg" alt="Trabajo operativo en campo">
       </div>
 
       <!-- LISTA DE BENEFICIOS -->

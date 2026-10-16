@@ -2,17 +2,17 @@
    MENÚ COMPARTIDO - DRFC Ingeniería
    Uso: en cualquier página, donde quieras que aparezca el menú:
      <script src="RUTA/componentes/menu.js"></script>
+     (RUTA = "." desde index.html, ".." desde /paginas)
    ========================================================== */
 (function () {
   /* ---------- 1. CONFIGURACIÓN (edita solo esto) ----------
-     - Las PÁGINAS (inicio, contacto, enlaces) se buscan en la misma
-       carpeta donde está la página que abriste (junto a index.html).
-     - El LOGO se busca desde la carpeta raíz del proyecto
-       (la que contiene a /componentes y /src).                   */
+     Todas las rutas (páginas y logo) se escriben desde la carpeta
+     raíz del proyecto (la que contiene index.html, /paginas,
+     /componentes y /assets).                                     */
   const CONFIG = {
-    logo: "src/Logo_Menu.png",
+    logo: "assets/img/marca/Logo_Menu.png",
     inicio: "index.html",
-    contacto: "Contacto.html",
+    contacto: "paginas/contacto.html",
     enlaces: [
       { texto: "Inicio", url: "index.html" },
       { texto: "Proyectos", url: "#" },
@@ -20,8 +20,8 @@
         texto: "Servicios",
         // Cuando tengas la página de un servicio, cambia su "#" por la ruta.
         submenu: [
-          { texto: "Ingeniería y diseño de red", url: "IngenieriaDiseño.html" },
-          { texto: "Construcción de red", url: "Construcción_de_Red.html" },
+          { texto: "Ingeniería y diseño de red", url: "paginas/ingenieria-y-diseno.html" },
+          { texto: "Construcción de red", url: "paginas/construccion-de-red.html" },
           { texto: "Infraestructura y obra civil", url: "https://yajairaestrada3.wixstudio.com/drfcingenieria/blank-4", nuevaVentana: "_top" },
           { texto: "Mantenimiento de Red Activa", url: "https://yajairaestrada3.wixstudio.com/drfcingenieria/blank-3", nuevaVentana: "_top" },
           { texto: "Acometidas", url: "#" }
@@ -38,9 +38,9 @@
   const script = document.currentScript;
   const raiz = new URL("../", script.src);
   const esExterna = (u) => !u || u.startsWith("#") || /^[a-z]+:/i.test(u);
-  // Páginas: relativas a la página actual. Archivos (logo): relativos a la raíz.
-  const ruta = (u) => esExterna(u) ? (u || "#") : new URL(u, location.href).href;
-  const rutaArchivo = (u) => esExterna(u) ? (u || "#") : new URL(u, raiz).href;
+  // Páginas y archivos (logo): relativos a la raíz del proyecto.
+  const ruta = (u) => esExterna(u) ? (u || "#") : new URL(u, raiz).href;
+  const rutaArchivo = ruta;
   const actual = location.href.split("#")[0];
   const esActual = (u) => ruta(u).split("#")[0] === actual;
 
@@ -67,8 +67,27 @@
   .drfc-header-action{justify-self:end}
   .drfc-contact{display:inline-flex;align-items:center;justify-content:center;padding:clamp(.6rem,.8vw,.9rem) clamp(1.3rem,2vw,2.3rem);background:#0d425c;color:#fff!important;font-size:clamp(.8rem,.85vw,1.1rem);font-weight:600;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;transition:background-color .2s ease}
   .drfc-contact:hover{background:#082d40}
-  @media (max-width:992px){.drfc-header{position:relative;top:auto;min-height:auto;display:flex;flex-direction:column;gap:15px;padding:20px}.drfc-header-links{flex-wrap:wrap;gap:15px}}
-  @media (max-width:576px){.drfc-header-links{gap:12px}.drfc-header-links a,.drfc-services-trigger{font-size:.9rem}.drfc-services-menu{display:flex;flex-basis:100%;flex-direction:column;align-items:center}.drfc-services-submenu{position:static;width:min(100%,24rem);min-width:0;max-width:none;margin:.5rem auto 0;transform:none}}
+  .drfc-menu-toggle{display:none;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:1px solid #dbe5eb;border-radius:8px;background:#fff;color:#0d425c;cursor:pointer}
+  .drfc-menu-toggle:focus-visible{outline:2px solid #318bb1;outline-offset:2px}
+  .drfc-menu-toggle svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+  .drfc-menu-toggle .drfc-icon-close,.drfc-header.is-menu-open .drfc-icon-open{display:none}
+  .drfc-header.is-menu-open .drfc-icon-close{display:block}
+  /* Tablet y teléfono: barra compacta + menú hamburguesa desplegable */
+  @media (max-width:992px){
+    .drfc-header{display:flex;justify-content:space-between;gap:12px;min-height:auto;padding:10px clamp(1rem,4vw,2rem)}
+    .drfc-header-logo img{height:clamp(48px,9vw,64px);max-width:160px}
+    .drfc-header-action{display:flex;align-items:center;gap:10px}
+    .drfc-menu-toggle{display:inline-flex}
+    .drfc-contact{padding:.6rem 1rem;font-size:.75rem}
+    .drfc-header nav{display:none;position:absolute;top:100%;left:0;right:0;justify-self:stretch;max-height:calc(100vh - 80px);max-height:calc(100dvh - 80px);overflow-y:auto;background:#fff;border-top:1px solid #e6edf1;box-shadow:0 14px 28px rgba(0,45,67,.14)}
+    .drfc-header.is-menu-open nav{display:block}
+    .drfc-header-links{flex-direction:column;align-items:stretch;gap:0;padding:.25rem clamp(1rem,4vw,2rem) 1rem}
+    .drfc-header-links>li{border-bottom:1px solid #eef2f5}
+    .drfc-header-links a,.drfc-services-trigger{justify-content:space-between;width:100%;min-height:48px;padding:.75rem 0;font-size:1rem;white-space:normal;text-align:left}
+    .drfc-services-submenu{position:static;width:auto;min-width:0;max-width:none;margin:0 0 .75rem;padding:0 0 0 .75rem;border:0;border-left:2px solid #dbe5eb;border-radius:0;background:transparent;box-shadow:none;transform:none}
+    .drfc-services-submenu a{display:flex;align-items:center;min-height:44px;padding:.5rem .75rem}
+  }
+  @media (max-width:340px){.drfc-contact{display:none}}
   @media (prefers-reduced-motion:reduce){.drfc-dropdown-arrow,.drfc-contact{transition:none}}`;
 
   /* ---------- 4. HTML del menú ---------- */
@@ -94,9 +113,13 @@
         <img src="${rutaArchivo(CONFIG.logo)}" alt="DRFC Ingeniería S.A. de C.V.">
       </a>
     </div>
-    <nav aria-label="Navegación principal"><ul class="drfc-header-links">${items}</ul></nav>
+    <nav id="drfc-nav" aria-label="Navegación principal"><ul class="drfc-header-links">${items}</ul></nav>
     <div class="drfc-header-action">
       <a href="${ruta(CONFIG.contacto)}" class="drfc-contact">Contacto</a>
+      <button class="drfc-menu-toggle" type="button" aria-expanded="false" aria-controls="drfc-nav" aria-label="Abrir menú">
+        <svg class="drfc-icon-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="drfc-icon-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
     </div>
   </header>`;
 
@@ -112,6 +135,22 @@
     document.addEventListener("click", (ev) => { if (!menu.contains(ev.target)) abrir(false); });
     document.addEventListener("keydown", (ev) => { if (ev.key === "Escape") { abrir(false); boton.focus(); } });
   }
+
+  // Menú hamburguesa (solo visible en tablet y teléfono)
+  const header = script.previousElementSibling; // el <header class="drfc-header">
+  const hamburguesa = header.querySelector(".drfc-menu-toggle");
+  const abrirMenu = (si) => {
+    header.classList.toggle("is-menu-open", si);
+    hamburguesa.setAttribute("aria-expanded", si);
+    hamburguesa.setAttribute("aria-label", si ? "Cerrar menú" : "Abrir menú");
+  };
+  hamburguesa.addEventListener("click", () => abrirMenu(!header.classList.contains("is-menu-open")));
+  header.querySelector("nav").addEventListener("click", (ev) => { if (ev.target.closest("a")) abrirMenu(false); });
+  document.addEventListener("click", (ev) => { if (!header.contains(ev.target)) abrirMenu(false); });
+  document.addEventListener("keydown", (ev) => {
+    if (ev.key === "Escape" && header.classList.contains("is-menu-open")) { abrirMenu(false); hamburguesa.focus(); }
+  });
+  window.matchMedia("(min-width: 993px)").addEventListener("change", (ev) => { if (ev.matches) abrirMenu(false); });
 
   // Si la página tiene su propio modal de contacto (openModal), el botón lo usa;
   // si no, lleva a la página de contacto.

@@ -10,601 +10,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            dark: '#122b3d',      /* Deep Navy Blue Header/Buttons */
-                            navy: '#1c3b57',      /* Secondary Dark Blue */
-                            accent: '#2b4b66',    /* Mid Tone Blue */
-                            cyan: '#38bdf8',      /* Subtitle Accent Light Blue */
-                            lightCyan: '#e0f2fe',
-                            grayBg: '#f4f6f8',    /* Card background */
-                            slateBg: '#d0d9e2',   /* Divider / Bottom section background */
-                            pillBg: '#f1f5f9',    /* Pill button background */
-                            hoverBg: '#e2e8f0',   /* Pill hover */
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            color: #1e293b;
-            background-color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        .section-eyebrow {
-            display: flex;
-            align-items: center;
-            gap: clamp(0.5rem, 1vw, 1.25rem);
-            margin-bottom: 0.75rem;
-            color: #5a6b7c;
-            font-size: clamp(0.75rem, 0.9vw, 1.125rem);
-            font-weight: 500;
-            letter-spacing: clamp(0.08rem, 0.12vw, 0.15rem);
-            line-height: 1.5;
-            text-transform: uppercase;
-        }
-
-        .section-eyebrow img {
-            display: block;
-            flex: 0 0 clamp(2rem, 3vw, 3rem);
-            width: clamp(2rem, 3vw, 3rem);
-            height: clamp(2rem, 3vw, 3rem);
-            object-fit: contain;
-        }
-
-        .section-eyebrow > span {
-            min-width: 0;
-        }
-
-        .section-eyebrow--dark {
-            color: #38bdf8;
-        }
-
-        .section-eyebrow--center {
-            justify-content: center;
-            text-align: left;
-        }
-
-        @media (max-width: 480px) {
-            .section-eyebrow {
-                align-items: center;
-            }
-
-            .section-eyebrow img {
-                flex-basis: 2rem;
-                width: 2rem;
-                height: 2rem;
-            }
-
-        }
-
-        /* Image grayscale and high-contrast filter to replicate black-and-white print look */
-        .img-bw {
-            filter: grayscale(100%) contrast(110%) brightness(95%);
-            object-fit: cover;
-            transition: filter 0.3s ease, transform 0.5s ease;
-        }
-
-        .img-container:hover .img-bw {
-            filter: grayscale(80%) contrast(115%) brightness(100%);
-            transform: scale(1.02);
-        }
-
-        .img-color {
-            object-fit: cover;
-            filter: brightness(1.04) contrast(1.04) saturate(1.02);
-            transition: transform 0.5s ease;
-        }
-
-        .img-container:hover .img-color {
-            transform: scale(1.02);
-        }
-
-        .construction-cover {
-            position: relative;
-            height: clamp(16rem, 38vw, 42rem);
-            isolation: isolate;
-        }
-
-        .construction-fiber-divider {
-            width: 100%;
-            padding: 1.25rem 0;
-            line-height: 0;
-        }
-
-        .construction-fiber-divider svg {
-            display: block;
-            width: 100%;
-            height: 1.25rem;
-            overflow: visible;
-        }
-
-        .construction-fiber-divider-base,
-        .construction-fiber-divider-pulse {
-            fill: none;
-            stroke-linecap: round;
-        }
-
-        .construction-fiber-divider-base {
-            stroke: #1a2b4c;
-            stroke-width: 1;
-        }
-
-        .construction-fiber-divider-pulse {
-            stroke: #dceaee;
-            stroke-width: 3;
-            stroke-dasharray: 80 400;
-            animation: construction-fiber-light-pulse 3.5s linear infinite;
-            filter: drop-shadow(0 0 8px #dceaee);
-        }
-
-        @keyframes construction-fiber-light-pulse {
-            from { stroke-dashoffset: 480; }
-            to { stroke-dashoffset: -480; }
-        }
-
-        .construction-iso-badge {
-            position: absolute;
-            top: 0;
-            right: clamp(1.5rem, 5vw, 4rem);
-            z-index: 5;
-            width: clamp(7rem, 14vw, 12rem);
-            height: auto;
-            transform: translateY(-50%);
-        }
-
-        .construction-carousel-slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 700ms ease, visibility 700ms ease;
-        }
-
-        .construction-carousel-slide.is-active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .construction-carousel-slide img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .construction-fiber-overlay {
-            position: absolute;
-            inset: 0;
-            z-index: 2;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .construction-fiber-path {
-            fill: none;
-            stroke: #5a6b7c;
-            stroke-width: 1.5;
-            stroke-dasharray: 6 6;
-            opacity: 0.35;
-        }
-
-        .construction-fiber-path-accent {
-            fill: none;
-            stroke: #318bb1;
-            stroke-width: 2;
-            opacity: 0.5;
-        }
-
-        .construction-fiber-pulse {
-            fill: #318bb1;
-            filter: drop-shadow(0 0 6px #318bb1);
-        }
-
-        .construction-fiber-node {
-            fill: #003e58;
-            stroke: #318bb1;
-            stroke-width: 1.5;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .construction-carousel-slide {
-                transition: none;
-            }
-
-            .construction-fiber-pulse {
-                display: none;
-            }
-
-            .construction-fiber-divider-pulse {
-                animation: none;
-                stroke-dasharray: none;
-                stroke-dashoffset: 0;
-            }
-        }
-
-        .construction-hero-title,
-        .construction-heading {
-            margin: 0 0 clamp(1.25rem, 2vw, 2rem);
-            font-size: clamp(1.875rem, 3.5vw, 6rem);
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .construction-hero-title {
-            color: #ffffff;
-            font-size: clamp(2.5rem, 5vw, 7rem);
-        }
-
-        .construction-capacity {
-            position: absolute;
-            top: 3.75rem;
-            right: clamp(1.5rem, 3.5vw, 3rem);
-            z-index: 1;
-            min-width: 15rem;
-            padding: 1rem 1.25rem 1.1rem;
-            border: 1px solid rgba(255, 255, 255, 0.24);
-            border-radius: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 12px 32px rgba(2, 18, 29, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.16);
-            -webkit-backdrop-filter: blur(14px);
-            backdrop-filter: blur(14px);
-            text-align: right;
-        }
-
-        .construction-capacity-label {
-            margin: 0;
-            color: rgba(255, 255, 255, 0.78);
-            font-size: clamp(0.55rem, 0.8vw, 0.75rem);
-            font-weight: 500;
-            letter-spacing: 0.14em;
-            line-height: 1.4;
-            text-transform: uppercase;
-        }
-
-        .construction-capacity-number {
-            display: block;
-            color: #ffffff;
-            font-size: clamp(2.25rem, 5vw, 4.5rem);
-            font-weight: 800;
-            letter-spacing: -0.07em;
-            line-height: 0.95;
-            font-variant-numeric: tabular-nums;
-        }
-
-        .construction-capacity-unit {
-            display: block;
-            margin-top: 0.25rem;
-            color: #38bdf8;
-            font-size: clamp(0.55rem, 0.85vw, 0.8rem);
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            line-height: 1.4;
-            text-transform: uppercase;
-        }
-
-        @media (max-width: 767px) {
-            .construction-capacity {
-                top: 0.75rem;
-                right: 1.5rem;
-                min-width: 0;
-                padding: 0.65rem 0.85rem 0.75rem;
-                border-radius: 0.8rem;
-            }
-
-            .construction-hero-content {
-                padding-top: 5rem;
-            }
-        }
-
-        .construction-heading {
-            color: #123e59;
-        }
-
-        .deployment-grid {
-            align-items: center;
-        }
-
-        .deployment-image-column {
-            min-width: 0;
-            align-self: center;
-        }
-
-        .deployment-image-frame {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 1 / 1;
-            max-height: 38rem;
-            min-height: 0;
-        }
-
-        .deployment-image-frame img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            min-height: 0;
-        }
-
-        .coverage-grid {
-            align-items: stretch;
-        }
-
-        .coverage-image-column {
-            position: relative;
-            min-width: 0;
-            min-height: 0;
-        }
-
-        .coverage-image-frame {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .coverage-image-frame img {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-
-        .construction-fiber-cta {
-            width: 100%;
-            padding: clamp(1.25rem, 3vw, 2rem) clamp(1.25rem, 5vw, 6rem);
-            background: #e8eef2;
-            color: #253746;
-        }
-
-        .construction-fiber-cta-card {
-            position: relative;
-            width: min(100%, 1400px);
-            margin: 0 auto;
-            overflow: hidden;
-            padding: clamp(1.5rem, 4vw, 3rem);
-            border: 1px solid #dbe5eb;
-            border-radius: 18px;
-            background: #ffffff;
-            box-shadow: 0 18px 50px rgba(0, 45, 67, 0.08);
-            text-align: center;
-        }
-
-        .construction-fiber-cta-card::before {
-            position: absolute;
-            inset: 0 0 auto;
-            height: 5px;
-            background: linear-gradient(90deg, #003e58, #318bb1);
-            content: "";
-        }
-
-        .construction-fiber-cta-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.65rem;
-            margin: 0 0 0.75rem;
-            color: #5a6b7c;
-            font-size: clamp(0.8rem, 1.5vw, 1rem);
-            font-weight: 500;
-            text-align: left;
-        }
-
-        .construction-fiber-cta-logo {
-            display: block;
-            width: clamp(2rem, 3vw, 3rem);
-            height: clamp(2rem, 3vw, 3rem);
-            flex: 0 0 auto;
-            object-fit: contain;
-        }
-
-        .construction-fiber-cta-title {
-            max-width: 980px;
-            margin: 0 auto;
-            color: #253746;
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(1.75rem, 5vw, 3.5rem);
-            font-weight: 700;
-            letter-spacing: -0.04em;
-            line-height: 1.12;
-        }
-
-        .construction-fiber-cta-connection {
-            display: flex;
-            width: min(100%, 980px);
-            height: 1.25rem;
-            align-items: center;
-            margin: 1rem auto 0;
-        }
-
-        .construction-fiber-cta-connector {
-            position: relative;
-            width: 1rem;
-            height: 0.75rem;
-            flex: 0 0 auto;
-            border: 1px solid #5a6b7c;
-            border-radius: 3px;
-            background: #fff;
-        }
-
-        .construction-fiber-cta-connector::after {
-            position: absolute;
-            top: 50%;
-            width: 0.25rem;
-            height: 0.25rem;
-            border: 1px solid #318bb1;
-            border-radius: 50%;
-            background: #eef5f8;
-            content: "";
-            transform: translateY(-50%);
-        }
-
-        .construction-fiber-cta-connector:first-child::after {
-            right: 1px;
-        }
-
-        .construction-fiber-cta-connector:last-child::after {
-            left: 1px;
-        }
-
-        .construction-fiber-cta-cable {
-            position: relative;
-            height: 2px;
-            flex: 1;
-            overflow: hidden;
-            background: #cbdde6;
-        }
-
-        .construction-fiber-cta-cable::after {
-            position: absolute;
-            top: 0;
-            left: -1.5rem;
-            width: 1.5rem;
-            height: 2px;
-            background: #318bb1;
-            content: "";
-            opacity: 0.85;
-            animation: construction-fiber-cta-signal 3.2s ease-in-out infinite;
-        }
-
-        @keyframes construction-fiber-cta-signal {
-            0% { opacity: 0; }
-            15%, 75% { opacity: 0.85; }
-            100% {
-                left: calc(100% - 1.5rem);
-                opacity: 0;
-            }
-        }
-
-        .construction-fiber-cta-description {
-            max-width: 720px;
-            margin: 0.65rem auto 1rem;
-            color: #5a6b7c;
-            font-size: clamp(0.95rem, 2vw, 1.125rem);
-            line-height: 1.7;
-        }
-
-        .construction-fiber-cta-contact {
-            display: inline-flex;
-            min-height: 3.25rem;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            padding: 0.8rem 1.5rem;
-            border: 1px solid #003e58;
-            border-radius: 8px;
-            background: #003e58;
-            color: #fff;
-            font-size: 1rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: background-color 160ms ease, border-color 160ms ease;
-        }
-
-        .construction-fiber-cta-contact:hover {
-            border-color: #26799c;
-            background: #26799c;
-        }
-
-        .construction-fiber-cta-contact:focus-visible {
-            outline: 3px solid #8cc6dc;
-            outline-offset: 3px;
-        }
-
-        .construction-fiber-cta-contact svg {
-            width: 1rem;
-            height: 1rem;
-        }
-
-        @media (max-width: 480px) {
-            .construction-fiber-cta-card {
-                border-radius: 14px;
-                padding: 1.5rem 1rem;
-            }
-
-            .construction-fiber-cta-eyebrow {
-                justify-content: center;
-            }
-
-            .construction-fiber-cta-contact {
-                width: 100%;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .construction-fiber-cta-cable::after {
-                left: calc(50% - 0.75rem);
-                animation: none;
-                opacity: 0.85;
-            }
-
-            .construction-fiber-cta-contact {
-                transition: none;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .deployment-image-frame {
-                aspect-ratio: 4 / 3;
-            }
-
-            .coverage-image-column {
-                display: block;
-                aspect-ratio: 4 / 3;
-            }
-
-            .coverage-image-frame {
-                height: 100%;
-            }
-        }
-
-        /* Subtle animated underline for interactive links */
-        .hover-underline {
-            position: relative;
-        }
-        .hover-underline::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: #38bdf8;
-            transition: width 0.3s ease-in-out;
-        }
-        .hover-underline:hover::after {
-            width: 100%;
-        }
-
-        /* Custom scrollbar for optimal presentation */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #122b3d;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #2b4b66;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #38bdf8;
-        }
-    </style>
+    <script src="../assets/js/config/tailwind.config.js"></script>
+    <link rel="stylesheet" href="../assets/css/paginas/construccion-de-red.css">
 </head>
 <body class="antialiased min-h-screen">
 
     <!-- MENÚ COMPARTIDO -->
-    <script src="../page/menu.js"></script>
+    <script src="../componentes/menu.js"></script>
 
     <!-- Main Wrapper Container -->
     <main class="w-full min-h-screen mx-0 bg-white overflow-hidden">
@@ -623,7 +35,7 @@
                 <div class="construction-hero-content">
                     <div class="mb-3">
                         <p class="section-eyebrow section-eyebrow--dark">
-                            <img src="../src/Ícono DRFC.png" alt="">
+                            <img src="../assets/img/marca/Ícono DRFC.png" alt="">
                             <span>FIBRA ÓPTICA Y HFC, AÉREA Y SUBTERRÁNEA</span>
                         </p>
                     </div>
@@ -640,19 +52,19 @@
         <!-- FULL WIDTH HERO BANNER IMAGE -->
         <div class="construction-cover w-full overflow-hidden bg-gray-900" id="constructionCarousel" role="region" aria-label="Galería de construcción de redes" aria-roledescription="carrusel">
             <div class="construction-carousel-slide is-active" data-carousel-slide aria-hidden="false">
-                <img src="../src/PortadaCons1.png" alt="Cuadrilla trabajando en infraestructura de telecomunicaciones" class="img-color">
+                <img src="../assets/img/encabezados/PortadaCons1.png" alt="Cuadrilla trabajando en infraestructura de telecomunicaciones" class="img-color">
             </div>
             <div class="construction-carousel-slide" data-carousel-slide aria-hidden="true">
-                <img src="../src/CCarrusel2.jpg" alt="Cuadrilla de construcción de redes" class="img-color">
+                <img src="../assets/img/servicios/CCarrusel2.JPG" alt="Cuadrilla de construcción de redes" class="img-color">
             </div>
             <div class="construction-carousel-slide" data-carousel-slide aria-hidden="true">
-                <img src="../src/Movil.png" alt="Trabajo de construcción de redes, imagen 2" class="img-color">
+                <img src="../assets/img/servicios/Movil.png" alt="Trabajo de construcción de redes, imagen 2" class="img-color">
             </div>
             <div class="construction-carousel-slide" data-carousel-slide aria-hidden="true">
-                <img src="../src/3.jpeg" alt="Trabajo de construcción de redes, imagen 3" class="img-color">
+                <img src="../assets/img/encabezados/3.jpeg" alt="Trabajo de construcción de redes, imagen 3" class="img-color">
             </div>
             <div class="construction-carousel-slide" data-carousel-slide aria-hidden="true">
-                <img src="../src/2.jpeg" alt="Trabajo de construcción de redes, imagen 4" class="img-color">
+                <img src="../assets/img/encabezados/2.jpeg" alt="Trabajo de construcción de redes, imagen 4" class="img-color">
             </div>
 
             <svg class="construction-fiber-overlay" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
@@ -682,12 +94,12 @@
         <!-- SECTION 2: SOBRE ESTE SERVICIO -->
         <section id="sobre-servicio" class="relative p-6 pt-20 md:p-12 md:pt-12 bg-white">
             <img
-                src="../src/Logo ISO Definitivo.png"
+                src="../assets/img/certificaciones/Logo ISO Definitivo.png"
                 alt="Certificación ISO 9001:2015"
                 class="construction-iso-badge"
             >
             <div class="section-eyebrow">
-                <img src="../src/Ícono DRFC.png" alt="">
+                <img src="../assets/img/marca/Ícono DRFC.png" alt="">
                 <span>SOBRE ESTE SERVICIO</span>
             </div>
             
@@ -766,7 +178,7 @@
                 <div class="deployment-image-column md:col-span-5 flex">
                     <div class="deployment-image-frame rounded-sm overflow-hidden bg-gray-200 img-container shadow-md border border-gray-100">
                         <img 
-                            src="../src/Despliegue.png" 
+                            src="../assets/img/servicios/Despliegue.png" 
                             alt="Despliegue y modernización de redes de telecomunicaciones" 
                             class="img-color"
                         />
@@ -783,7 +195,7 @@
             <div class="md:col-span-5 bg-brand-dark p-8 md:p-12 text-white flex flex-col justify-between relative overflow-hidden">
                 <div class="relative z-10">
                     <span class="section-eyebrow section-eyebrow--dark">
-                        <img src="../src/Ícono DRFC.png" alt="">
+                        <img src="../assets/img/marca/Ícono DRFC.png" alt="">
                         <span>SERVICIOS ESPECÍFICOS</span>
                     </span>
                     <h2 class="construction-heading text-white leading-tight">
@@ -836,7 +248,7 @@
                 <div class="coverage-image-column md:col-span-5">
                   <div class="coverage-image-frame rounded-sm overflow-hidden bg-gray-400 img-container shadow-lg">
                     <img 
-                        src="../src/Cobertura.jpg" 
+                        src="../assets/img/servicios/Cobertura.jpg" 
                         alt="Técnicos realizando instalaciones subterráneas en calle" 
                         class="img-color"
                     />
@@ -863,7 +275,7 @@
                     <!-- Target Audience Section (Pill Buttons) -->
                     <div class="pt-6 mt-4 border-t border-gray-100">
                         <h3 class="section-eyebrow section-eyebrow--center">
-                            <img src="../src/Ícono DRFC.png" alt="">
+                            <img src="../assets/img/marca/Ícono DRFC.png" alt="">
                             <span>A QUIÉN VA DIRIGIDO</span>
                         </h3>
                         
@@ -892,7 +304,7 @@
         <section class="construction-fiber-cta" aria-label="Construye tu red con nosotros">
             <div class="construction-fiber-cta-card">
                 <p class="construction-fiber-cta-eyebrow">
-                    <img src="../src/Ícono DRFC.png" alt="" class="construction-fiber-cta-logo">
+                    <img src="../assets/img/marca/Ícono DRFC.png" alt="" class="construction-fiber-cta-logo">
                     Te ayudamos a expandir tu red
                 </p>
                 <h2 class="construction-fiber-cta-title">Construye tu red con nosotros</h2>
@@ -913,7 +325,7 @@
         </section>
 
         <!-- PIE DE PÁGINA COMPARTIDO -->
-        <script src="../page/footer.js"></script>
+        <script src="../componentes/footer.js"></script>
 
     </main>
 
@@ -981,106 +393,7 @@
         </div>
     </div>
 
-    <script>
-        const constructionCarousel = document.getElementById('constructionCarousel');
-        const constructionSlides = [...constructionCarousel.querySelectorAll('[data-carousel-slide]')];
-        let constructionSlideIndex = 0;
-
-        function showConstructionSlide(index) {
-            constructionSlideIndex = (index + constructionSlides.length) % constructionSlides.length;
-            constructionSlides.forEach((slide, slideIndex) => {
-                const isActive = slideIndex === constructionSlideIndex;
-                slide.classList.toggle('is-active', isActive);
-                slide.setAttribute('aria-hidden', String(!isActive));
-            });
-        }
-
-        window.setInterval(() => {
-            showConstructionSlide(constructionSlideIndex + 1);
-        }, 4000);
-
-        const capacityCounter = document.querySelector('[data-capacity-counter]');
-        const capacityTarget = 800;
-        const capacityDuration = 2600;
-
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            capacityCounter.textContent = capacityTarget;
-        } else {
-            let capacityStartTime;
-
-            function animateCapacityCounter(currentTime) {
-                if (!capacityStartTime) capacityStartTime = currentTime;
-                const progress = Math.min((currentTime - capacityStartTime) / capacityDuration, 1);
-                const easedProgress = 1 - Math.pow(2, -10 * progress);
-                capacityCounter.textContent = Math.floor(easedProgress * capacityTarget);
-
-                if (progress < 1) {
-                    window.requestAnimationFrame(animateCapacityCounter);
-                } else {
-                    capacityCounter.textContent = capacityTarget;
-                }
-            }
-
-            window.setTimeout(() => window.requestAnimationFrame(animateCapacityCounter), 200);
-        }
-
-        // Modal functions
-        function openModal(sectorName = null) {
-            const modal = document.getElementById('proposalModal');
-            const container = document.getElementById('modalContainer');
-            if (sectorName) {
-                const select = document.getElementById('sectorSelect');
-                for (let i = 0; i < select.options.length; i++) {
-                    if (select.options[i].text.toLowerCase().includes(sectorName.toLowerCase())) {
-                        select.selectedIndex = i;
-                        break;
-                    }
-                }
-            }
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                container.classList.remove('scale-95');
-            }, 10);
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('proposalModal');
-            const container = document.getElementById('modalContainer');
-            modal.classList.add('opacity-0');
-            container.classList.add('scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                document.getElementById('modalToast').classList.add('hidden');
-                document.getElementById('contactForm').reset();
-            }, 300);
-        }
-
-        function selectAudience(audienceName) {
-            openModal(audienceName);
-        }
-
-        function scrollToServices() {
-            document.getElementById('alcance').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function submitForm(event) {
-            event.preventDefault();
-            const toast = document.getElementById('modalToast');
-            toast.classList.remove('hidden');
-            setTimeout(() => {
-                closeModal();
-            }, 2000);
-        }
-
-        // Close modal when clicking on backdrop
-        window.onclick = function(event) {
-            const modal = document.getElementById('proposalModal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
-    </script>
+    <script src="../assets/js/paginas/construccion-de-red.js"></script>
     
 </body>
 </html>

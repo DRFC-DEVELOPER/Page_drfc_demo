@@ -2,18 +2,17 @@
    PIE DE PÁGINA COMPARTIDO - DRFC Ingeniería
    Uso: en cualquier página, donde quieras que aparezca el footer
    (normalmente justo antes de </body>):
-     <script src="../page/footer.js"></script>
+     <script src="RUTA/componentes/footer.js"></script>
+     (RUTA = "." desde index.html, ".." desde /paginas)
    ========================================================== */
 (function () {
   /* ---------- 1. CONFIGURACIÓN (edita solo esto) ----------
-     - Las PÁGINAS se buscan en la misma carpeta que la página abierta
-       (igual que en menu.js).
-     - Las IMÁGENES se buscan desde la carpeta raíz del proyecto
-       (la que contiene a /page y /src).                            */
+     Todas las rutas (páginas e imágenes) se escriben desde la carpeta
+     raíz del proyecto (igual que en menu.js).                      */
   const CONFIG = {
-    icono: "src/Ícono DRFC.png",
+    icono: "assets/img/marca/Ícono DRFC.png",
     titulo: "Contáctanos",
-    tituloUrl: "Contacto.html",
+    tituloUrl: "paginas/contacto.html",
     lema: "Soluciones Integrales en Telecomunicaciones.",
     enlaces: [
       { texto: "Inicio", url: "index.html" },
@@ -21,7 +20,7 @@
       { texto: "Servicios", url: "#" },
       { texto: "Acerca de nosotros", url: "#" },
       { texto: "Bolsa de Trabajo", url: "#" },
-      { texto: "Contacto", url: "Contacto.html" }
+      { texto: "Contacto", url: "paginas/contacto.html" }
     ],
     redes: [
       { texto: "Facebook", url: "https://facebook.com/" },
@@ -39,8 +38,8 @@
   const script = document.currentScript;
   const raiz = new URL("../", script.src);
   const esExterna = (u) => !u || u.startsWith("#") || /^[a-z]+:/i.test(u);
-  const ruta = (u) => esExterna(u) ? (u || "#") : new URL(u, location.href).href;
-  const rutaArchivo = (u) => esExterna(u) ? (u || "#") : new URL(u, raiz).href;
+  const ruta = (u) => esExterna(u) ? (u || "#") : new URL(u, raiz).href;
+  const rutaArchivo = ruta;
 
   /* ---------- 3. Estilos ---------- */
   const css = `

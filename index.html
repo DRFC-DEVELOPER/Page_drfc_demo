@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRFC Ingeniería - Hero Carousel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Monda:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/paginas/index/hero.css">
+    <link rel="stylesheet" href="assets/css/paginas/index/experiencia.css">
+    <link rel="stylesheet" href="assets/css/paginas/index/clientes-y-etapas.css">
+    <link rel="stylesheet" href="assets/css/paginas/index/colaboradores.css">
+    <link rel="stylesheet" href="assets/css/paginas/index/cta.css">
+</head>
+<body>
+
+    <!-- MENÚ COMPARTIDO -->
+        <script src="componentes/menu.js"></script>
+
+    <section class="drfc-hero" id="drfcHeroCarousel" aria-label="Soluciones Tecnológicas DRFC Ingeniería">
+        
+        <ul class="carousel-track">
+            
+            <!-- SLIDE 1: TELECOMUNICACIONES -->
+            <li class="hero-slide slide-1 active" data-slide="0" aria-hidden="false">
+                <div class="slide-bg"></div>
+                <div class="slide-overlay"></div>
+                
+                <div class="fiber-svg-container">
+                    <svg class="fiber-svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+                        <path class="fiber-path" d="M-100,200 C300,100 500,500 900,300 C1200,150 1400,400 1600,350" />
+                        <path id="path1" class="fiber-path-accent" d="M-100,500 C200,650 600,200 1000,550 C1250,700 1450,450 1600,500" />
+                        
+                        <circle class="fiber-pulse" r="5">
+                            <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
+                                <mpath href="#path1"/>
+                            </animateMotion>
+                        </circle>
+                        
+                        <g class="fiber-nodes">
+                            <circle class="fiber-node" cx="200" cy="650" r="6"/>
+                            <circle class="fiber-node" cx="600" cy="200" r="8"/>
+                            <circle class="fiber-node" cx="1000" cy="550" r="6"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="slide-container">
+                    <div class="slide-content">
+                        <span class="slide-badge">Telecomunicaciones</span>
+                        <h1 class="slide-title">Soluciones Integrales en Telecomunicaciones</h1>
+                        <p class="slide-description">Diseñamos y construimos redes aéreas y subterráneas. Realizamos proyectos llave en mano y asignaciones específicas.</p>
+                        <a href="paginas/contacto.html" target="_top" onclick="try{window.top.location.href=this.href;}catch(e){window.location.href=this.href;}" class="cta-button" aria-label="Contáctanos para soluciones de telecomunicaciones">
+                            <span>Contáctanos</span>
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- SLIDE 2: INGENIERÍA Y DISEÑO DE RED -->
+            <li class="hero-slide slide-2" data-slide="1" aria-hidden="true">
+                <div class="slide-bg"></div>
+                <div class="slide-overlay"></div>
+                
+                <div class="fiber-svg-container">
+                    <svg class="fiber-svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+                        <path id="path2_1" class="fiber-path-accent" d="M150,700 L450,250 L850,450 L1250,150" />
+                        <path class="fiber-path" d="M450,250 L950,200 L1300,600" />
+                        <path class="fiber-path" d="M150,700 L850,450 L1300,600" />
+                        
+                        <circle class="fiber-pulse" r="4.5">
+                            <animateMotion dur="5s" repeatCount="indefinite" rotate="auto">
+                                <mpath href="#path2_1"/>
+                            </animateMotion>
+                        </circle>
+
+                        <g class="fiber-nodes">
+                            <circle class="fiber-node" cx="150" cy="700" r="7"/>
+                            <circle class="fiber-node" cx="450" cy="250" r="9"/>
+                            <circle class="fiber-node" cx="850" cy="450" r="7"/>
+                            <circle class="fiber-node" cx="1250" cy="150" r="8"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="slide-container">
+                    <div class="slide-content">
+                        <span class="slide-badge">Ingeniería & Diseño</span>
+                        <h2 class="slide-title">Ingeniería y Diseño de Red</h2>
+                        <p class="slide-description">Levantamiento, digitalización y diseño de red que anticipa el crecimiento de tu infraestructura.</p>
+                        <a href="paginas/ingenieria-y-diseno.html" target="_top" onclick="try{window.top.location.href=this.href;}catch(e){window.location.href=this.href;}" class="cta-button" aria-label="Conoce más sobre Ingeniería y Diseño de Red">
+                            <span>Conoce más</span>
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- SLIDE 3: CONSTRUCCIÓN DE RED -->
+            <li class="hero-slide slide-3" data-slide="2" aria-hidden="true">
+                <div class="slide-bg"></div>
+                <div class="slide-overlay"></div>
+                
+                <div class="fiber-svg-container">
+                    <svg class="fiber-svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+                        <path class="fiber-path" d="M-50,400 Q350,100 700,400 T1450,400" />
+                        <path id="path3_1" class="fiber-path-accent" d="M-50,300 C400,500 800,100 1500,450" />
+                        
+                        <circle class="fiber-pulse" r="5">
+                            <animateMotion dur="3.5s" repeatCount="indefinite" rotate="auto">
+                                <mpath href="#path3_1"/>
+                            </animateMotion>
+                        </circle>
+
+                        <g class="fiber-nodes">
+                            <circle class="fiber-node" cx="350" cy="360" r="6"/>
+                            <circle class="fiber-node" cx="700" cy="400" r="8"/>
+                            <circle class="fiber-node" cx="1100" cy="270" r="6"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="slide-container">
+                    <div class="slide-content">
+                        <span class="slide-badge">Construcción</span>
+                        <h2 class="slide-title">Construcción de Red</h2>
+                        <p class="slide-description">Construcción, reconstrucción y enlaces HFC, FD, FFTX, anillos y FTTR; aéreos y subterráneos.</p>
+                        <a href="paginas/construccion-de-red.html" target="_top" onclick="try{window.top.location.href=this.href;}catch(e){window.location.href=this.href;}" class="cta-button" aria-label="Conoce más sobre Construcción de Red">
+                            <span>Conoce más</span>
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- SLIDE 4: MANTENIMIENTO -->
+            <li class="hero-slide slide-4" data-slide="3" aria-hidden="true">
+                <div class="slide-bg"></div>
+                <div class="slide-overlay"></div>
+                +
+                <div class="fiber-svg-container">
+                    <svg class="fiber-svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+                        <circle cx="720" cy="400" r="280" class="fiber-path" style="stroke-dasharray: 4 8;" />
+                        <circle cx="720" cy="400" r="180" class="fiber-path-accent" />
+                        <path id="path4_ring" d="M540,400 A180,180 0 1,1 900,400 A180,180 0 1,1 540,400" fill="none" opacity="0"/>
+
+                        <circle class="fiber-pulse" r="5">
+                            <animateMotion dur="6s" repeatCount="indefinite">
+                                <mpath href="#path4_ring"/>
+                            </animateMotion>
+                        </circle>
+
+                        <g class="fiber-nodes">
+                            <circle class="fiber-node" cx="720" cy="220" r="6"/>
+                            <circle class="fiber-node" cx="900" cy="400" r="6"/>
+                            <circle class="fiber-node" cx="720" cy="580" r="6"/>
+                            <circle class="fiber-node" cx="540" cy="400" r="6"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="slide-container">
+                    <div class="slide-content">
+                        <span class="slide-badge">Mantenimiento</span>
+                        <h2 class="slide-title">Mantenimiento a la red activa</h2>
+                        <p class="slide-description">Monitoreo preventivo y correctivo que evita fallas antes de que afecten el servicio, con respuesta rápida y equipos siempre listos para actuar.</p>
+                        <a href="https://yajairaestrada3.wixstudio.com/drfcingenieria/blank-3" target="_top" onclick="try{window.top.location.href=this.href;}catch(e){window.location.href=this.href;}" class="cta-button" aria-label="Conoce más sobre Mantenimiento">
+                            <span>Conoce más</span>
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- SLIDE 5: INFRAESTRUCTURA Y OBRA CIVIL -->
+            <li class="hero-slide slide-5" data-slide="4" aria-hidden="true">
+                <div class="slide-bg"></div>
+                <div class="slide-overlay"></div>
+                
+                <div class="fiber-svg-container">
+                    <svg class="fiber-svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+                        <path id="path5_1" class="fiber-path-accent" d="M100,650 L500,650 L500,250 L1100,250 L1100,550" />
+                        <path class="fiber-path" d="M300,750 L300,450 L900,450 L900,150" />
+
+                        <circle class="fiber-pulse" r="5">
+                            <animateMotion dur="4.5s" repeatCount="indefinite" rotate="auto">
+                                <mpath href="#path5_1"/>
+                            </animateMotion>
+                        </circle>
+
+                        <g class="fiber-nodes">
+                            <circle class="fiber-node" cx="500" cy="650" r="7"/>
+                            <circle class="fiber-node" cx="500" cy="250" r="7"/>
+                            <circle class="fiber-node" cx="1100" cy="250" r="7"/>
+                            <circle class="fiber-node" cx="1100" cy="550" r="7"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="slide-container">
+                    <div class="slide-content">
+                        <span class="slide-badge">Infraestructura</span>
+                        <h2 class="slide-title">Infraestructura Crítica</h2>
+                        <p class="slide-description">Mantenimiento, instalación y remodelación de infraestructura de planta interna: Aire acondicionado, obra civil, transformadores, planta de fuerza, generadores, cable estructurado, CCTV.</p>
+                        <a href="paginas/infraestructura-y-obra-civil.html" target="_top" onclick="try{window.top.location.href=this.href;}catch(e){window.location.href=this.href;}" class="cta-button" aria-label="Conoce más sobre Infraestructura y Obra Civil">
+                            <span>Conoce más</span>
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+
+        <button class="nav-arrow nav-prev" aria-label="Slide anterior" id="prevBtn">
+            <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+
+        <button class="nav-arrow nav-next" aria-label="Siguiente slide" id="nextBtn">
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="carousel-controls">
+            <div class="indicators-container" role="tablist" aria-label="Seleccionar Slide">
+                <button class="indicator-dot active" role="tab" aria-selected="true" aria-label="Slide 1" data-slide-to="0"><span class="indicator-progress"></span></button>
+                <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Slide 2" data-slide-to="1"><span class="indicator-progress"></span></button>
+                <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Slide 3" data-slide-to="2"><span class="indicator-progress"></span></button>
+                <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Slide 4" data-slide-to="3"><span class="indicator-progress"></span></button>
+                <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Slide 5" data-slide-to="4"><span class="indicator-progress"></span></button>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="fiber-divider" aria-hidden="true">
+        <svg viewBox="0 0 1000 20" preserveAspectRatio="none">
+            <line class="fiber-divider-base" x1="0" y1="10" x2="1000" y2="10"></line>
+            <line class="fiber-divider-pulse" x1="0" y1="10" x2="1000" y2="10"></line>
+        </svg>
+    </div>
+
+    <script src="assets/js/paginas/index/hero.js"></script>
+
+  <div class="section-container">
+    <!-- Subtítulo con Icono -->
+    <div class="header-tag">
+      <div class="header-icon">
+        <img src="assets/img/marca/Ícono DRFC.png" alt="Ícono DRFC">
+      </div>
+      <span>EXPERIENCIA QUE GARANTIZA CALIDAD, PROYECTOS QUE SE ENTREGAN EN TIEMPO Y FORMA</span>
+    </div>
+
+    <!-- Título Principal -->
+    <h1 class="main-title">Nuestra experiencia a tu servicio</h1>
+    <div class="title-line"></div>
+
+    <!-- Sección de contadores -->
+    <div class="stats-section">
+      <div class="stats-grid">
+        
+        <!-- Ítem 1 -->
+        <div class="stat-card">
+          <div class="stat-number">
+            + <span class="counter" data-target="18">0</span>
+          </div>
+          <div class="stat-title">AÑOS DE EXPERIENCIA</div>
+          <div class="stat-subtitle">Conectando la tecnología con el progreso</div>
+        </div>
+
+        <!-- Ítem 2 -->
+        <div class="stat-card">
+          <div class="stat-number">
+            <span class="counter" data-target="12400" data-format="comma">0</span>
+          </div>
+          <div class="stat-title">KM DE RED CONSTRUIDA</div>
+          <div class="stat-subtitle">En México y Chile</div>
+        </div>
+
+        <!-- Ítem 3 -->
+        <div class="stat-card">
+          <div class="stat-number">
+            <span class="counter" data-target="68000" data-format="comma">0</span>
+          </div>
+          <div class="stat-title">KM DE DIGITALIZACIÓN Y DISEÑO</div>
+          <div class="stat-subtitle"></div>
+        </div>
+
+        <!-- Ítem 4 -->
+        <div class="stat-card">
+          <div class="stat-number">
+            <span class="counter" data-target="24">0</span> / <span class="counter" data-target="7">0</span>
+          </div>
+          <div class="stat-title">ATENCIÓN A SERVICIOS</div>
+          <div class="stat-subtitle">de mantenimiento de redes</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Script para la animación de conteo -->
+  <script src="assets/js/paginas/index/experiencia.js"></script>
+
+  <!-- SECCIÓN PRINCIPAL DEL CARRUSEL -->
+  <section class="logo-marquee-section">
+    <div class="marquee-container" id="marqueeContainer">
+      <!-- Cada grupo completo se repite para mantener el desplazamiento sin espacios. -->
+      <div class="marquee-track" id="marqueeTrack">
+        
+        <!-- ======================================================
+             GRUPO 1: 8 LOGOS ORIGINALES
+             ====================================================== -->
+        <div class="marquee-group">
+        
+        <!-- LOGO 1 -->
+        <div class="logo-item" title="Logo 1">
+          <!-- REEMPLAZA EL 'src' CON LA RUTA DE TU IMAGEN O SVG -->
+          <img src="assets/img/clientes/Cablecom BN.png" alt="Cablecom">
+        </div>
+
+        <!-- LOGO 2 -->
+        <div class="logo-item" title="Logo 2">
+          <img src="assets/img/clientes/Cablemas BN.png" alt="Cablemás">
+        </div>
+
+        <!-- LOGO 3 -->
+        <div class="logo-item" title="Logo 3">
+          <img src="assets/img/clientes/Izzi BN.png" alt="Izzi">
+        </div>
+
+        <!-- LOGO 4 -->
+        <div class="logo-item" title="Logo 4">
+          <img src="assets/img/clientes/Cablevisión BN.png" alt="Cablevisión">
+        </div>
+
+        <!-- LOGO 5 -->
+        <div class="logo-item" title="Logo 5">
+          <img src="assets/img/clientes/Megacable BN.png" alt="Megacable">
+        </div>
+
+        <!-- LOGO 6 -->
+        <div class="logo-item" title="Logo 6">
+          <img src="assets/img/clientes/Telecable BN.png" alt="Telecable">
+        </div>
+
+        <!-- LOGO 7 -->
+        <div class="logo-item" title="Logo 7">
+          <img src="assets/img/clientes/Claro Video BN.png" alt="Claro Video">
+        </div>
+
+        <!-- LOGO 8 -->
+        <div class="logo-item" title="Logo 8">
+          <img src="assets/img/clientes/Tigo Star BN.png" alt="Tigo Star">
+        </div>
+        </div>
+
+
+        <!-- ======================================================
+             GRUPO 2: DUPLICADO EXACTO PARA CREAR EL EFECTO SINFÍN
+             (Mantén los mismos links e imágenes del grupo de arriba)
+             ====================================================== -->
+        <div class="marquee-group" aria-hidden="true">
+        
+        <!-- LOGO 1 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 1">
+          <img src="assets/img/clientes/Cablecom BN.png" alt="Cablecom" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 2 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 2">
+          <img src="assets/img/clientes/Cablemas BN.png" alt="Cablemás" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 3 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 3">
+          <img src="assets/img/clientes/Izzi BN.png" alt="Izzi" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 4 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 4">
+          <img src="assets/img/clientes/Cablevisión BN.png" alt="Cablevisión" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 5 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 5">
+          <img src="assets/img/clientes/Megacable BN.png" alt="Megacable" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 6 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 6">
+          <img src="assets/img/clientes/Telecable BN.png" alt="Telecable" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 7 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 7">
+          <img src="assets/img/clientes/Claro Video BN.png" alt="Claro Video" aria-hidden="true">
+        </div>
+
+        <!-- LOGO 8 (DUPLICADO) -->
+        <div class="logo-item" title="Logo 8">
+          <img src="assets/img/clientes/Tigo Star BN.png" alt="Tigo Star" aria-hidden="true">
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="assets/js/paginas/index/clientes.js"></script>
+
+  <section class="network-benefits" aria-labelledby="network-benefits-title">
+    <div class="network-benefits-container">
+      <header class="network-benefits-header">
+        <div class="network-benefits-tag">
+          <div class="network-benefits-tag-icon">
+            <img src="assets/img/marca/Ícono DRFC.png" alt="DRFC Icono">
+          </div>
+          <span class="network-benefits-tag-text">Beneficios</span>
+        </div>
+        <h2 class="network-benefits-title" id="network-benefits-title">Todas las etapas de tu red, bajo un mismo equipo</h2>
+        <p class="network-benefits-subtitle">Un solo equipo responsable de toda la cadena, con respaldo operativo en campo</p>
+      </header>
+
+      <div class="network-benefits-grid">
+        <div class="network-benefits-image">
+          <img src="assets/img/fotos/Foto_etapas.jpg" alt="Trabajo operativo en campo">
+        </div>
+
+        <div class="network-benefits-list">
+          <div class="network-benefits-item">
+            <div class="network-benefits-item-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#243c5a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              </svg>
+            </div>
+            <div class="network-benefits-item-content">
+              <h3 class="network-benefits-item-title">Dirección integral de proyectos</h3>
+              <p class="network-benefits-item-description">Ingeniería, construcción, obra civil y mantenimiento bajo un mismo responsable</p>
+            </div>
+          </div>
+
+          <div class="network-benefits-item">
+            <div class="network-benefits-item-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#243c5a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <line x1="10" y1="9" x2="8" y2="9"></line>
+              </svg>
+            </div>
+            <div class="network-benefits-item-content">
+              <h3 class="network-benefits-item-title">Evidencia documentada en campo</h3>
+              <p class="network-benefits-item-description">Registro fotográfico y reportes verificables de cada intervención</p>
+            </div>
+          </div>
+
+          <div class="network-benefits-item">
+            <div class="network-benefits-item-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#243c5a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
+            <div class="network-benefits-item-content">
+              <h3 class="network-benefits-item-title">Atención de emergencias con trazabilidad</h3>
+              <p class="network-benefits-item-description">Respuesta inmediata con seguimiento del ticket de principio a fin</p>
+              <a class="network-benefits-quote" href="mailto:contacto@drfc.com.mx?subject=Cotizaci%C3%B3n%20de%20servicio">Cotizar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="collaborators" aria-labelledby="collaborators-title">
+  <div class="collaborators-container">
+    <!-- Sección de título -->
+    <div class="collaborators-header">
+      <div class="collaborators-tagline">
+        <img src="assets/img/marca/Ícono DRFC.png" alt="DRFC" class="collaborators-tagline-icon">
+        <span>COLABORADORES</span>
+      </div>
+      <h2 class="collaborators-title" id="collaborators-title">Cobertura nacional</h2>
+    </div>
+
+    <!-- Sección principal azul -->
+    <div class="collaborators-panel">
+      
+      <!-- Ubicaciones -->
+      <div class="collaborators-location">
+        <div class="collaborators-pin"></div>
+        
+        <div class="collaborators-location-block">
+          <p class="collaborators-location-title">Con base permanente en:</p>
+          <p class="collaborators-location-list">
+            Cuernavaca<br>
+            CDMX<br>
+            Estado de México<br>
+            Monterrey
+          </p>
+        </div>
+
+        <div class="collaborators-location-block">
+          <p class="collaborators-location-title">En apertura:</p>
+          <p class="collaborators-location-list">
+            <span class="collaborators-highlight">Tijuana</span> y Guadalajara
+          </p>
+        </div>
+      </div>
+
+      <div class="collaborators-worker-section">
+        <img src="assets/img/certificaciones/ContratistaWeb.png" alt="Trabajador con casco amarillo" class="collaborators-worker">
+      </div>
+
+      <div class="collaborators-card">
+        <div class="collaborators-card-content">
+          <h3 class="collaborators-stats-title">
+            <strong>176</strong> Colaboradores fijos y<br>
+            <strong>440</strong> de cobertura dinámica
+          </h3>
+          <p class="collaborators-description">
+            Capacidad operativa que escala según el tamaño del proyecto.
+          </p>
+          <a href="#" class="collaborators-action">Trabaja con nosotros</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="fiber-cta" aria-label="Contacto y evaluación técnica">
+  <div class="fiber-cta-card">
+    <p class="fiber-cta-eyebrow">
+      <img src="assets/img/marca/Ícono DRFC.png" alt="" class="fiber-cta-logo">
+      Te ayudamos a expandir tu red
+    </p>
+    <h2 class="fiber-cta-title">Agendemos una reunión técnica para evaluar tu próximo despliegue</h2>
+    <div class="fiber-cta-connection" role="img" aria-label="Señal de fibra óptica conectando dos terminales">
+      <span class="fiber-cta-connector"></span>
+      <span class="fiber-cta-cable"></span>
+      <span class="fiber-cta-connector"></span>
+    </div>
+    <p class="fiber-cta-description">En DRFC estamos comprometidos con entregar calidad en cada uno de nuestros trabajos</p>
+    <a class="fiber-cta-contact" href="mailto:contacto@drfc.com.mx">
+      Contacto
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14"></path>
+        <path d="m12 5 7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<!-- PIE DE PÁGINA COMPARTIDO -->
+<script src="componentes/footer.js"></script>
+
+</body>
+</html>

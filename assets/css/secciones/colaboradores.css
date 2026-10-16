@@ -1,0 +1,222 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+/* Encabezado Superior */
+.header {
+  padding: 20px 40px;
+}
+
+.tagline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7c93;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.tagline-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.title {
+  color: #2b5b84;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+/* Panel Principal */
+.content-panel {
+  background-color: #2e4053;
+  display: flex;
+  color: #ffffff;
+  position: relative;
+  align-items: center;
+  padding: 30px 40px;
+  min-height: 280px;
+}
+
+/* Columna Izquierda: Ubicación */
+.location-section {
+  width: 35%;
+  text-align: center;
+  padding-right: 20px;
+}
+
+.pin-icon {
+  width: 40px;
+  height: 50px;
+  background-color: #b0b7bd;
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  margin: 0 auto 15px auto;
+  position: relative;
+}
+
+.pin-icon::after {
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  width: 40%;
+  height: 40%;
+  background-color: #2e4053;
+  border-radius: 50%;
+}
+
+.location-block {
+  margin-bottom: 15px;
+}
+
+.location-title {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.location-list {
+  color: #d1d8e0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.highlight-text {
+  color: #a8c0d6;
+}
+
+/* Columna Derecha: Tarjeta Blanca */
+.card-section {
+  width: 65%;
+  position: relative;
+}
+
+.white-card {
+  background-color: #f4f5f7;
+  border-radius: 30px;
+  color: #333333;
+  padding: 35px 30px 35px 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Imagen del Trabajador con Casco superpuesta */
+.worker-image {
+  position: absolute;
+  left: -240px;
+  bottom: -30px;
+  height: 380px;
+  z-index: 10;
+  transform-origin: bottom center;
+  transition: transform 0.3s ease;
+}
+
+.worker-image:hover {
+  transform: scale(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .worker-image {
+    transition: none;
+  }
+}
+
+.stats-title {
+  font-size: 26px;
+  color: #222222;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.stats-title strong {
+  font-weight: 800;
+  font-size: 30px;
+}
+
+.stats-description {
+  color: #666666;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  max-width: 320px;
+}
+
+.btn-action {
+  background-color: #1c425c;
+  color: #ffffff;
+  padding: 10px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.btn-action:hover {
+  background-color: #132e42;
+}
+
+/* Responsive: tablet y teléfono */
+@media (max-width: 860px) {
+  body {
+    padding: 0;
+  }
+  .header {
+    padding: 20px;
+  }
+  .title {
+    font-size: clamp(1.75rem, 6vw, 2.25rem);
+  }
+  .content-panel {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    padding: 28px 20px;
+  }
+  .location-section,
+  .card-section {
+    width: 100%;
+    padding-right: 0;
+  }
+  /* La imagen deja de superponerse y se muestra encima de la tarjeta */
+  .worker-image {
+    position: static;
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: clamp(220px, 60vw, 320px);
+    margin: 0 auto -12px;
+    object-fit: contain;
+  }
+  .white-card {
+    padding: 28px 24px;
+    align-items: center;
+    text-align: center;
+  }
+  .stats-title {
+    font-size: 22px;
+  }
+  .stats-title strong {
+    font-size: 26px;
+  }
+}

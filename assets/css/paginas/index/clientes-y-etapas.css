@@ -1,0 +1,348 @@
+/* ==========================================================
+   1. REINICIO GENERAL Y STYLES DE DEMOSTRACIÓN
+   ========================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #f8fafc;
+  color: #1e293b;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0;
+}
+
+/* ==========================================================
+   2. CONTENEDOR PRINCIPAL DE LA SECCIÓN DE LOGOS
+   ========================================================== */
+.logo-marquee-section {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 40px 0;
+  background-color: #ffffff;
+  border: 0;
+  text-align: center;
+}
+
+/* ==========================================================
+   3. CONTENEDOR CINTA DE LOGOS Y MÁSCARA DE DEGRADADO (FADE)
+   ========================================================== */
+.marquee-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* Oculta los logos que salen de la pantalla */
+  display: flex;
+  user-select: none;
+
+  /* EFECTO DE GRADIENTE DE BORDE (Fade lateral suave) */
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 12%,
+    rgba(0, 0, 0, 1) 88%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 12%,
+    rgba(0, 0, 0, 1) 88%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* ==========================================================
+   4. TRACK / CINTA EN MOVIMIENTO
+   ========================================================== */
+.marquee-track {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0;
+  width: max-content;
+  padding: 10px 0;
+  --marquee-distance: -50%;
+  animation: marquee-scroll 30s linear infinite;
+}
+
+.marquee-group {
+  display: flex;
+  gap: clamp(24px, 2vw, 64px);
+  flex: 0 0 auto;
+  padding-right: clamp(24px, 2vw, 64px);
+}
+
+@keyframes marquee-scroll {
+  to { transform: translateX(var(--marquee-distance)); }
+}
+
+/* ==========================================================
+   5. ESTILOS DE CADA CARD/TARJETA DE LOGO
+   ========================================================== */
+.logo-item {
+  flex: 0 0 auto;
+  width: clamp(140px, 12vw, 240px);
+  height: clamp(70px, 5vw, 110px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 12px;
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Efecto al pasar el mouse por un logo individual */
+.logo-item:hover {
+  background-color: #ffffff;
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+}
+
+.logo-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.network-benefits {
+  --benefits-primary: #2b5288;
+  --benefits-heading: #243c5a;
+  --benefits-text: #555555;
+  --benefits-tag: #8397ab;
+  --benefits-border: #d1d9e0;
+  width: 100%;
+  padding: clamp(1.25rem, 3vw, 2.5rem) calc(var(--page-content-gutter) / 2);
+  background:
+    radial-gradient(ellipse at 12% 18%, rgba(49, 139, 177, 0.11), transparent 38%),
+    radial-gradient(ellipse at 88% 82%, rgba(0, 62, 88, 0.08), transparent 42%),
+    linear-gradient(135deg, #eaf1f5 0%, #f5f8fa 52%, #e8f0f4 100%);
+  color: var(--benefits-text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.network-benefits *,
+.network-benefits *::before,
+.network-benefits *::after {
+  box-sizing: border-box;
+}
+
+.network-benefits-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 5vw, 5rem) calc(var(--page-content-gutter) / 2);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: clamp(16px, 2vw, 28px);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow:
+    0 24px 60px rgba(18, 62, 89, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
+  backdrop-filter: blur(18px) saturate(125%);
+}
+
+.network-benefits-header {
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.network-benefits-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.network-benefits-tag-icon {
+  display: flex;
+  width: var(--drfc-icon-size);
+  height: var(--drfc-icon-size);
+  flex: 0 0 var(--drfc-icon-size);
+  align-items: center;
+  justify-content: center;
+}
+
+.network-benefits-tag-icon img {
+  width: var(--drfc-icon-size);
+  height: var(--drfc-icon-size);
+  object-fit: contain;
+}
+
+.network-benefits-tag-text {
+  color: var(--benefits-tag);
+  font-size: clamp(0.75rem, 0.9vw, 0.875rem);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.network-benefits-title {
+  margin: 0 0 16px;
+  color: var(--benefits-primary);
+  font-size: clamp(1.75rem, 3vw, 5rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.network-benefits-subtitle {
+  margin: 0;
+  color: var(--benefits-text);
+  font-size: clamp(1rem, 1.3vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.network-benefits-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: stretch;
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+.network-benefits-image {
+  min-width: 0;
+  display: flex;
+}
+
+.network-benefits-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: var(--section-photo-radius);
+  object-fit: cover;
+  box-shadow: 0 18px 40px rgba(18, 62, 89, 0.16);
+}
+
+.network-benefits-list {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.network-benefits-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--benefits-border);
+}
+
+.network-benefits-item:last-child {
+  flex: 1;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.network-benefits-item:last-child .network-benefits-item-content {
+  flex: 1;
+}
+
+.network-benefits-item-icon {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.network-benefits-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.network-benefits-item-title {
+  margin: 0;
+  color: var(--benefits-heading);
+  font-size: clamp(1rem, 1.2vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.network-benefits-item-description {
+  margin: 0;
+  color: var(--benefits-text);
+  font-size: clamp(0.875rem, 1vw, 1.5rem);
+  line-height: 1.5;
+}
+
+.network-benefits-quote {
+  display: inline-flex;
+  width: 50%;
+  max-width: 50%;
+  min-height: 3rem;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  padding: 0.75rem 1.1rem;
+  border: 1px solid var(--color-deep-blue);
+  border-radius: 6px;
+  background: var(--color-deep-blue);
+  color: var(--color-white);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.network-benefits-quote:hover {
+  border-color: var(--color-cyan-blue);
+  background: var(--color-cyan-blue);
+}
+
+.network-benefits-quote:focus-visible {
+  outline: 3px solid #8cc6dc;
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .network-benefits {
+    padding-inline: calc(var(--page-content-gutter) / 2);
+  }
+
+  .network-benefits-container {
+    padding: clamp(2rem, 5vw, 3rem) calc(var(--page-content-gutter) / 2);
+    border-radius: 16px;
+  }
+
+  .network-benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .network-benefits-image img {
+    height: auto;
+  }
+
+  .network-benefits-item:last-child {
+    flex: initial;
+  }
+
+  .network-benefits-item:last-child .network-benefits-item-content {
+    flex: initial;
+  }
+
+  .network-benefits-quote {
+    margin-top: 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .network-benefits-quote {
+    transition: none;
+  }
+}
