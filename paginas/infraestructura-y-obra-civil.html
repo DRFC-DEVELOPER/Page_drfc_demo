@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="../assets/js/config/tailwind-infraestructura.config.js"></script>
     <link rel="stylesheet" href="../assets/css/paginas/infraestructura-y-obra-civil.css">
+    <link rel="stylesheet" href="../assets/css/paginas/index/cta.css">
 </head>
 <body class="bg-white">
     <script src="../componentes/menu.js"></script>
@@ -23,7 +24,7 @@
                     <img src="../assets/img/marca/Ícono DRFC.png" alt="">
                     <span>Energía crítica, obra civil y telecomunicaciones</span>
                 </p>
-                <h1 class="infrastructure-hero-title tracking-tight uppercase">Infraestructura<br>y Obra Civil</h1>
+                <h1 class="infrastructure-hero-title tracking-tight uppercase">Infraestructura<br>Crítica</h1>
                 <p class="max-w-3xl text-xs font-light leading-relaxed text-gray-200 md:text-sm">
                     Un solo proveedor integral: servicios eléctricos, civiles y de telecomunicaciones bajo una misma responsabilidad.
                 </p>
@@ -33,19 +34,19 @@
         <!-- Carrusel principal de infraestructura -->
         <section class="infrastructure-carousel" id="infrastructureCarousel" role="region" aria-label="Galería de infraestructura y obra civil" aria-roledescription="carrusel">
             <div class="infrastructure-carousel-slide is-active" data-infrastructure-slide aria-hidden="false">
-                <img src="../assets/img/encabezados/PortadaCons1.png" alt="Técnicos realizando trabajos en infraestructura de telecomunicaciones">
+                <img src="../assets/img/encabezados/CInfra.png" alt="Técnicos realizando trabajos en infraestructura de telecomunicaciones">
             </div>
             <div class="infrastructure-carousel-slide" data-infrastructure-slide aria-hidden="true">
-                <img src="../assets/img/servicios/CCarrusel.JPG" alt="Trabajos de infraestructura en sitio">
+                <img src="../assets/img/encabezados/CInfra2.png" alt="Trabajos de infraestructura en sitio">
             </div>
             <div class="infrastructure-carousel-slide" data-infrastructure-slide aria-hidden="true">
-                <img src="../assets/img/servicios/CCarrusel2.JPG" alt="Instalación de infraestructura de telecomunicaciones">
+                <img src="../assets/img/servicios/CMtto9.jpg" alt="Mantenimiento de infraestructura de telecomunicaciones">
             </div>
             <div class="infrastructure-carousel-slide" data-infrastructure-slide aria-hidden="true">
-                <img src="../assets/img/servicios/CMantenimiento.JPG" alt="Mantenimiento de infraestructura">
+                <img src="../assets/img/encabezados/CInfra4.jpg" alt="Mantenimiento de infraestructura">
             </div>
             <div class="infrastructure-carousel-slide" data-infrastructure-slide aria-hidden="true">
-                <img src="../assets/img/servicios/Movil.png" alt="Infraestructura para servicios móviles">
+                <img src="../assets/img/encabezados/CInfra5.jpg" alt="Infraestructura para servicios móviles">
             </div>
 
             <svg class="infrastructure-fiber-overlay" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
@@ -78,11 +79,11 @@
                     <span>Sobre este servicio</span>
                 </p>
                 <h2 class="infrastructure-section-title" id="infrastructure-intro-title">Gestión Integral<br>de Infraestructura</h2>
-                <p class="mb-4 text-xs leading-relaxed text-slate-600 md:text-sm">
+                <p class="infrastructure-intro-description">
                     Mantenimiento y construcción de infraestructura eléctrica, civil y de telecomunicaciones para sitios clave, HFC, centros de datos y edificios corporativos.
                 </p>
-                <p class="mb-2 text-sm font-semibold text-brand-dark">Un único proveedor para la atención de:</p>
-                <ul class="mb-5 list-inside list-disc space-y-1 text-xs text-slate-600">
+                <p class="infrastructure-intro-lead">Un único proveedor para la atención de:</p>
+                <ul class="infrastructure-intro-services">
                     <li>Aire acondicionado de precisión</li>
                     <li>Subestaciones, transformadores y plantas de emergencia</li>
                     <li>Bancos de baterías</li>
@@ -92,8 +93,21 @@
                     Contacto
                 </a>
             </div>
-            <div class="infrastructure-intro-image">
-                <img src="../assets/img/servicios/InfraObra.png" alt="Técnicos realizando mantenimiento de infraestructura eléctrica">
+            <div class="infrastructure-intro-image infrastructure-intro-gallery" role="region" aria-label="Galería de gestión integral de infraestructura" aria-roledescription="carrusel">
+                <div class="infrastructure-intro-gallery-slide is-active" data-infrastructure-intro-slide aria-hidden="false">
+                    <img src="../assets/img/fotos/gestion_integral.png" alt="Gestión integral de mantenimiento de infraestructura eléctrica">
+                </div>
+                <div class="infrastructure-intro-gallery-slide" data-infrastructure-intro-slide aria-hidden="true">
+                    <img src="../assets/img/servicios/CMtto10.jpg" alt="Mantenimiento de infraestructura de red">
+                </div>
+                <div class="infrastructure-intro-gallery-slide" data-infrastructure-intro-slide aria-hidden="true">
+                    <img src="../assets/img/servicios/InfraCritica1.jpg" alt="Infraestructura crítica realizando trabajos de mantenimiento">
+                </div>
+                <!-- Duplica este bloque y reemplaza la ruta y el texto alternativo para agregar la tercera foto.
+                <div class="infrastructure-intro-gallery-slide" data-infrastructure-intro-slide aria-hidden="true">
+                    <img src="../assets/img/fotos/tercera-foto.jpg" alt="Descripción de la tercera foto">
+                </div>
+                -->
             </div>
         </section>
 
@@ -122,33 +136,47 @@
 
         <section class="infrastructure-compliance" aria-labelledby="infrastructure-compliance-title">
             <div class="infrastructure-compliance-image">
-                <img src="../assets/img/servicios/CMantenimiento.JPG" alt="Técnico trabajando en mantenimiento de infraestructura">
+                <img src="../assets/img/fotos/certificaciones_normatividad.png" alt="Certificaciones y normatividad de infraestructura crítica">
             </div>
             <div class="infrastructure-compliance-content">
                 <div class="infrastructure-compliance-title-row">
                     <img src="../assets/img/marca/Ícono DRFC.png" alt="">
                     <h2 class="infrastructure-compliance-title" id="infrastructure-compliance-title">Certificaciones y normatividad</h2>
                 </div>
-                <ul class="infrastructure-standards" aria-label="Normas y lineamientos">
-                    <li>NOM-001-SEDE</li>
-                    <li>NOM-017-STPS</li>
-                    <li>NOM-029-STPS</li>
-                    <li>Código de Red CFE</li>
-                    <li>NOM-009-STPS</li>
-                </ul>
-                <p class="infrastructure-audience-title">A quién va dirigido</p>
-                <div class="infrastructure-audiences">
-                    <span>Operadoras y proveedores de telecom</span>
-                    <span>Industria con energía crítica</span>
-                    <span>Cadenas comerciales</span>
-                    <span>Hotelería e inmobiliario</span>
-                    <span>Gobierno</span>
+                <div class="infrastructure-compliance-groups">
+                    <section class="infrastructure-compliance-group" aria-labelledby="infrastructure-certifications-title">
+                        <h3 class="infrastructure-compliance-subtitle" id="infrastructure-certifications-title">Certificaciones</h3>
+                        <ul class="infrastructure-certifications">
+                            <li>Plantas de emergencia y subestación</li>
+                            <li>Instalación eléctrica, tableros de distribución y tableros de control</li>
+                        </ul>
+                    </section>
+                    <section class="infrastructure-compliance-group" aria-labelledby="infrastructure-standards-title">
+                        <h3 class="infrastructure-compliance-subtitle" id="infrastructure-standards-title">Normatividad</h3>
+                        <ul class="infrastructure-standards" aria-label="Normas y lineamientos">
+                            <li>NOM-001-SEDE</li>
+                            <li>NOM-017-STPS</li>
+                            <li>NOM-029-STPS</li>
+                            <li>Código de Red CFE</li>
+                            <li>NOM-009-STPS</li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="infrastructure-audience">
+                    <p class="infrastructure-audience-title">A quién va dirigido</p>
+                    <div class="infrastructure-audiences">
+                        <span>Operadoras y proveedores de telecom</span>
+                        <span>Industria con energía crítica</span>
+                        <span>Cadenas comerciales</span>
+                        <span>Hotelería e inmobiliario</span>
+                        <span>Gobierno</span>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
-
     <script src="../assets/js/paginas/infraestructura-y-obra-civil.js"></script>
+    <script src="../assets/js/secciones/call-to-action.js"></script>
     <script src="../componentes/footer.js"></script>
 </body>
 </html>

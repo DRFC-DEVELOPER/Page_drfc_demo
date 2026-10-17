@@ -190,6 +190,13 @@
             width: min(100%, 1400px);
         }
 
+        @media (hover: hover) {
+            .infrastructure-benefits .network-tool-card:hover {
+                transform: translateY(-5px) scale(1.025);
+                box-shadow: 0 26px 48px rgba(2, 11, 24, 0.24), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+            }
+        }
+
         .infrastructure-benefit-copy .network-tool-title {
             font-size: clamp(1rem, 1.5vw, 1.3rem);
         }
@@ -249,6 +256,10 @@
             .network-tool-card,
             .network-tool-icon {
                 transition: none;
+            }
+
+            .infrastructure-benefits .network-tool-card:hover {
+                transform: none;
             }
         }
     `;

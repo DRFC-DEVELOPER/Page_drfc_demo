@@ -1,8 +1,8 @@
 .fiber-cta {
   width: 100%;
-  padding: clamp(1.25rem, 3vw, 2rem) var(--page-content-gutter);
+  padding: clamp(1.25rem, 3vw, 2rem) var(--page-content-gutter, clamp(1.25rem, 5vw, 6rem));
   background: #e8eef2;
-  font-family: var(--font-main);
+  font-family: var(--font-main, 'Inter', Arial, Helvetica, sans-serif);
 }
 
 .fiber-cta *,
@@ -43,9 +43,9 @@
 
 .fiber-cta-logo {
   display: block;
-  width: var(--drfc-icon-size);
-  height: var(--drfc-icon-size);
-  flex: 0 0 var(--drfc-icon-size);
+  width: var(--drfc-icon-size, clamp(2rem, 3vw, 3rem));
+  height: var(--drfc-icon-size, clamp(2rem, 3vw, 3rem));
+  flex: 0 0 var(--drfc-icon-size, clamp(2rem, 3vw, 3rem));
   object-fit: contain;
 }
 

@@ -22,8 +22,8 @@
         submenu: [
           { texto: "Ingeniería y diseño de red", url: "paginas/ingenieria-y-diseno.html" },
           { texto: "Construcción de red", url: "paginas/construccion-de-red.html" },
-          { texto: "Infraestructura y obra civil", url: "https://yajairaestrada3.wixstudio.com/drfcingenieria/blank-4", nuevaVentana: "_top" },
-          { texto: "Mantenimiento de Red Activa", url: "https://yajairaestrada3.wixstudio.com/drfcingenieria/blank-3", nuevaVentana: "_top" },
+          { texto: "Infraestructura Crítica", url: "paginas/infraestructura-y-obra-civil.html", nuevaVentana: "_top" },
+          { texto: "Mantenimiento de Red Activa", url: "paginas/mantenimiento-red-activa.html", nuevaVentana: "_top" },
           { texto: "Acometidas", url: "#" }
         ]
       },

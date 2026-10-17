@@ -1,0 +1,480 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: #1e293b;
+    background: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
+.active-maintenance-hero {
+    position: relative;
+    display: flex;
+    min-height: clamp(15rem, 25vw, 22rem);
+    align-items: center;
+    overflow: hidden;
+    padding: clamp(1.5rem, 4vw, 3.5rem);
+    background: #003e58;
+    color: white;
+    isolation: isolate;
+}
+
+.active-maintenance-hero::after {
+    position: absolute;
+    right: -4rem;
+    bottom: -8rem;
+    z-index: -1;
+    width: clamp(12rem, 30vw, 24rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: rgba(11, 49, 81, 0.75);
+    content: "";
+    filter: blur(2rem);
+}
+
+.active-maintenance-hero-content {
+    width: 100%;
+    max-width: 58rem;
+    min-width: 0;
+}
+
+.active-maintenance-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.5rem, 1vw, 1.25rem);
+    margin: 0 0 0.75rem;
+    color: #5a6b7c;
+    font-size: clamp(0.75rem, 0.9vw, 1.125rem);
+    font-weight: 600;
+    letter-spacing: clamp(0.08rem, 0.12vw, 0.15rem);
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+.active-maintenance-eyebrow img {
+    display: block;
+    width: clamp(2rem, 3vw, 3rem);
+    height: clamp(2rem, 3vw, 3rem);
+    flex: 0 0 clamp(2rem, 3vw, 3rem);
+    object-fit: contain;
+}
+
+.active-maintenance-eyebrow > span {
+    min-width: 0;
+}
+
+.active-maintenance-eyebrow--dark {
+    color: #7dd3fc;
+}
+
+.active-maintenance-eyebrow--dark img {
+    filter: brightness(0) invert(1);
+}
+
+.active-maintenance-title,
+.active-maintenance-section-title {
+    margin: 0 0 clamp(1rem, 2vw, 1.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.active-maintenance-title {
+    color: #fff;
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    letter-spacing: -0.045em;
+    text-transform: uppercase;
+}
+
+.active-maintenance-hero-description {
+    max-width: 46rem;
+    margin: 0;
+    color: #e2e8f0;
+    font-size: clamp(0.9rem, 1.25vw, 1.05rem);
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+.active-maintenance-carousel {
+    position: relative;
+    height: clamp(16rem, 34vw, 32rem);
+    overflow: hidden;
+    background: #111827;
+}
+
+.active-maintenance-slide {
+    position: absolute;
+    inset: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 700ms ease, visibility 700ms ease;
+}
+
+.active-maintenance-slide.is-active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.active-maintenance-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.active-maintenance-fiber-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.active-maintenance-fiber-path,
+.active-maintenance-fiber-path-accent {
+    fill: none;
+    stroke-linecap: round;
+}
+
+.active-maintenance-fiber-path {
+    stroke: #dceaee;
+    stroke-width: 1.5;
+    stroke-dasharray: 6 6;
+    opacity: 0.35;
+}
+
+.active-maintenance-fiber-path-accent {
+    stroke: #38bdf8;
+    stroke-width: 2;
+    opacity: 0.65;
+}
+
+.active-maintenance-fiber-pulse {
+    fill: #8be7ff;
+    filter: drop-shadow(0 0 6px #38bdf8);
+}
+
+.active-maintenance-fiber-node {
+    fill: #003e58;
+    stroke: #38bdf8;
+    stroke-width: 1.5;
+}
+
+.active-maintenance-divider {
+    width: 100%;
+    padding: 1.25rem 0;
+    background: #fff;
+    line-height: 0;
+}
+
+.active-maintenance-divider svg {
+    display: block;
+    width: 100%;
+    height: 1.25rem;
+    overflow: visible;
+}
+
+.active-maintenance-divider-base,
+.active-maintenance-divider-pulse {
+    fill: none;
+    stroke-linecap: round;
+}
+
+.active-maintenance-divider-base {
+    stroke: #1a2b4c;
+    stroke-width: 1;
+}
+
+.active-maintenance-divider-pulse {
+    stroke: #dceaee;
+    stroke-width: 3;
+    stroke-dasharray: 80 400;
+    animation: active-maintenance-light-pulse 3.5s linear infinite;
+    filter: drop-shadow(0 0 8px #dceaee);
+}
+
+@keyframes active-maintenance-light-pulse {
+    from { stroke-dashoffset: 480; }
+    to { stroke-dashoffset: -480; }
+}
+
+.active-maintenance-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    align-items: stretch;
+    gap: clamp(2rem, 5vw, 5rem);
+    width: min(100%, 1400px);
+    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem);
+    background: #fff;
+}
+
+.active-maintenance-intro-content {
+    min-width: 0;
+}
+
+.active-maintenance-section-title {
+    color: #123e59;
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    letter-spacing: -0.035em;
+}
+
+.active-maintenance-description {
+    max-width: 42rem;
+    margin: 0 0 1.5rem;
+    color: #475569;
+    font-size: clamp(0.95rem, 1.3vw, 1.125rem);
+    line-height: 1.75;
+}
+
+.active-maintenance-points {
+    display: grid;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.active-maintenance-point {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    padding: 1rem;
+    border: 1px solid rgba(18, 62, 89, 0.1);
+    border-left: 3px solid #38bdf8;
+    border-radius: 0.8rem;
+    background: #f8fafc;
+    box-shadow: 0 10px 24px rgba(18, 43, 61, 0.08);
+    transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.active-maintenance-point-number {
+    display: grid;
+    width: 2.25rem;
+    height: 2.25rem;
+    flex: 0 0 2.25rem;
+    place-items: center;
+    border-radius: 50%;
+    background: #e0f2fe;
+    color: #0369a1;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.active-maintenance-point h3 {
+    margin: 0 0 0.25rem;
+    color: #173d59;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.active-maintenance-point p {
+    margin: 0;
+    color: #64748b;
+    font-size: 0.85rem;
+    line-height: 1.55;
+}
+
+.active-maintenance-contact,
+.active-maintenance-services-link {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.5rem;
+    border-radius: 9999px;
+    background: #123e59;
+    box-shadow: 0 8px 18px rgba(18, 43, 61, 0.16);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.active-maintenance-contact:hover,
+.active-maintenance-services-link:hover {
+    transform: translateY(-2px);
+    background: #0b3151;
+    box-shadow: 0 12px 24px rgba(18, 43, 61, 0.22);
+}
+
+.active-maintenance-contact:focus-visible,
+.active-maintenance-services-link:focus-visible {
+    outline: 3px solid #38bdf8;
+    outline-offset: 3px;
+}
+
+.active-maintenance-image {
+    position: relative;
+    height: 100%;
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 1rem;
+    background: #e2e8f0;
+    box-shadow: 0 20px 44px rgba(18, 43, 61, 0.18);
+}
+
+.active-maintenance-image-slide {
+    position: absolute;
+    inset: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 700ms ease, visibility 700ms ease;
+}
+
+.active-maintenance-image-slide.is-active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.active-maintenance-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 300ms ease;
+}
+
+.active-maintenance-image figcaption {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background: linear-gradient(transparent, rgba(10, 30, 44, 0.78));
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.active-maintenance-services {
+    display: grid;
+    grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1.3fr);
+    width: min(100%, 1400px);
+    margin: 0 auto clamp(2rem, 5vw, 3rem);
+    overflow: visible;
+    border-radius: 1.25rem;
+    background: #f8fafc;
+    box-shadow: 0 18px 42px rgba(18, 43, 61, 0.17), 0 4px 12px rgba(18, 43, 61, 0.08);
+}
+
+.active-maintenance-services-heading {
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border-radius: 1.25rem 0 0 1.25rem;
+    background: #28445e;
+    color: white;
+}
+
+.active-maintenance-services-heading .active-maintenance-section-title {
+    color: #fff;
+}
+
+.active-maintenance-services-heading .active-maintenance-eyebrow {
+    color: #dbeafe;
+}
+
+.active-maintenance-services-link {
+    background: #fff;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    color: #123e59;
+}
+
+.active-maintenance-services-link:hover {
+    background: #e8f0f6;
+    color: #0b3151;
+}
+
+.active-maintenance-services-list {
+    display: grid;
+    align-content: center;
+    gap: 0.65rem;
+    margin: 0;
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    list-style: none;
+}
+
+.active-maintenance-services-list li {
+    position: relative;
+    padding: 0.85rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-left: 3px solid #38bdf8;
+    border-radius: 0.75rem;
+    background: #fff;
+    box-shadow: 0 8px 18px rgba(18, 43, 61, 0.08);
+    color: #173d59;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    line-height: 1.45;
+    transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+@media (hover: hover) {
+    .active-maintenance-point:hover,
+    .active-maintenance-services-list li:hover {
+        z-index: 1;
+        transform: scale(1.025);
+        box-shadow: 0 14px 28px rgba(18, 43, 61, 0.18);
+    }
+
+    .active-maintenance-image:hover img {
+        transform: scale(1.025);
+    }
+}
+
+@media (max-width: 700px) {
+    .active-maintenance-hero {
+        min-height: 14rem;
+    }
+
+    .active-maintenance-title {
+        font-size: clamp(2rem, 9vw, 3.5rem);
+    }
+
+    .active-maintenance-eyebrow img {
+        width: 2rem;
+        height: 2rem;
+        flex-basis: 2rem;
+    }
+
+    .active-maintenance-intro {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+    }
+
+    .active-maintenance-image {
+        height: auto;
+        aspect-ratio: 16 / 10;
+        order: -1;
+    }
+
+    .active-maintenance-image img {
+        height: 100%;
+    }
+
+    .active-maintenance-services {
+        grid-template-columns: 1fr;
+        width: calc(100% - 2rem);
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .active-maintenance-services-heading {
+        border-radius: 1.25rem 1.25rem 0 0;
+    }
+}
+
+@media (max-width: 420px) {
+    .active-maintenance-title {
+        font-size: clamp(1.8rem, 9vw, 2.5rem);
+    }
+
+    .active-maintenance-services-list {
+        padding: 1rem;
+    }
+}
