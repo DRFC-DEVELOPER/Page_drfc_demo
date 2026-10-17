@@ -2,9 +2,9 @@
   box-sizing: border-box;
   width: 100%;
   padding: clamp(1.25rem, 4vw, 3rem) 0;
-  background: #f5f5f5;
+  background: #e7ebed;
   color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-main);
 }
 
 .collaborators *,
@@ -13,9 +13,32 @@
   box-sizing: inherit;
 }
 
+.collaborators.coverage-reveal-ready [data-coverage-reveal] {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition: opacity 650ms ease, transform 650ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.collaborators [data-coverage-reveal].is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.collaborators.coverage-reveal-ready [data-coverage-reveal="locations"] {
+  transition-delay: 100ms;
+}
+
+.collaborators.coverage-reveal-ready [data-coverage-reveal="worker"] {
+  transition-delay: 200ms;
+}
+
+.collaborators.coverage-reveal-ready [data-coverage-reveal="capacity"] {
+  transition-delay: 300ms;
+}
+
 .collaborators-container {
   width: 100%;
-  background: #fff;
+  background: #f7f9fa;
 }
 
 .collaborators-header {
@@ -27,7 +50,7 @@
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 12px;
-  color: #6b7c93;
+  color: #657680;
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.094rem;
@@ -35,14 +58,19 @@
 }
 
 .collaborators-tagline-icon {
+  display: block;
   width: var(--drfc-icon-size);
   height: var(--drfc-icon-size);
   flex: 0 0 var(--drfc-icon-size);
   object-fit: contain;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .collaborators-title {
-  color: #2b5b84;
+  color: var(--section-title-color);
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 700;
 }
@@ -63,11 +91,11 @@
 .network-benefits-title,
 .collaborators-title {
   color: var(--section-title-color);
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-main);
   font-size: var(--section-title-size);
   font-weight: 700;
   line-height: var(--section-title-line-height);
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
 }
 
 .collaborators-panel {
@@ -78,11 +106,20 @@
   gap: clamp(0.75rem, 2vw, 1.75rem);
   min-height: 420px;
   padding: var(--collaborators-panel-padding);
-  background: #2e4053;
+  background: #263b49;
 }
 
 .collaborators-location {
   text-align: center;
+}
+
+.collaborators-location-card {
+  width: min(100%, 22rem);
+  margin: 0 auto 1.25rem;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  border: 1px solid rgba(209, 216, 224, 0.26);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .collaborators-pin {
@@ -91,7 +128,7 @@
   height: 3.125rem;
   margin: 0 auto 0.9375rem;
   border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-  background: #b0b7bd;
+  background: #9db4bf;
 }
 
 .collaborators-pin::after {
@@ -101,12 +138,16 @@
   width: 40%;
   height: 40%;
   border-radius: 50%;
-  background: #2e4053;
+  background: #263b49;
   content: '';
 }
 
 .collaborators-location-block {
   margin-bottom: 0.9375rem;
+}
+
+.collaborators-location-block--permanent {
+  margin-bottom: 0;
 }
 
 .collaborators-location-title {
@@ -122,7 +163,7 @@
 }
 
 .collaborators-highlight {
-  color: #a8c0d6;
+  color: #c0d7e1;
 }
 
 .collaborators-worker-section {
@@ -148,7 +189,7 @@
   transition: transform 0.3s ease;
 }
 
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+@media (hover: hover) {
   .collaborators-worker:hover {
     transform: scale(1.06);
   }
@@ -163,15 +204,15 @@
   flex-direction: column;
   align-items: flex-start;
   padding: clamp(1.25rem, 3vw, 2.25rem);
-  border-radius: 1.5rem;
-  background: #f4f5f7;
-  color: #333;
+  border-radius: 8px;
+  background: #eef2f4;
+  color: #293841;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .collaborators-stats-title {
   margin-bottom: 0.75rem;
-  color: #222;
+  color: #263b49;
   font-size: clamp(1.125rem, 2.2vw, 1.625rem);
   line-height: 1.25;
 }
@@ -184,7 +225,7 @@
 .collaborators-description {
   max-width: 320px;
   margin-bottom: 1.25rem;
-  color: #666;
+  color: #5b6970;
   font-size: 0.8125rem;
   line-height: 1.5;
 }
@@ -209,9 +250,12 @@
 }
 
 .collaborators-action::after {
-  content: "→";
-  font-size: 1rem;
-  line-height: 1;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  content: "";
+  transform: rotate(45deg);
 }
 
 .collaborators-action:hover {
@@ -291,9 +335,3 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .collaborators-worker,
-  .collaborators-action {
-    transition: none;
-  }
-}

@@ -1,7 +1,7 @@
 .fiber-cta {
   width: 100%;
   padding: clamp(1.25rem, 3vw, 2rem) var(--page-content-gutter, clamp(1.25rem, 5vw, 6rem));
-  background: #e8eef2;
+  background: #e3e8eb;
   font-family: var(--font-main, 'Inter', Arial, Helvetica, sans-serif);
 }
 
@@ -17,11 +17,11 @@
   margin: 0 auto;
   overflow: hidden;
   padding: clamp(1.25rem, 2.5vw, 2rem);
-  border: 1px solid #dbe5eb;
-  border-radius: 18px;
-  background: #fff;
-  box-shadow: 0 18px 50px rgba(0, 45, 67, 0.08);
-  color: #253746;
+  border: 1px solid #ced8dd;
+  border-radius: 8px;
+  background: #f7f9fa;
+  box-shadow: 0 12px 32px rgba(0, 45, 67, 0.08);
+  color: #293841;
   text-align: center;
 }
 
@@ -29,7 +29,7 @@
   position: absolute;
   inset: 0 0 auto;
   height: 5px;
-  background: linear-gradient(90deg, #003e58, #318bb1);
+  background: linear-gradient(90deg, #263b49, #587889);
   content: "";
 }
 
@@ -52,11 +52,11 @@
 .fiber-cta-title {
   max-width: 980px;
   margin: 0 auto;
-  color: #253746;
+  color: #293841;
   font-family: var(--font-main);
   font-size: clamp(1.625rem, 3vw, 2.5rem);
   font-weight: 600;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
   line-height: 1.15;
 }
 
@@ -73,7 +73,7 @@
   width: 1rem;
   height: 0.75rem;
   flex: 0 0 auto;
-  border: 1px solid #5a6b7c;
+  border: 1px solid #657680;
   border-radius: 3px;
   background: #fff;
 }
@@ -103,7 +103,7 @@
   height: 2px;
   flex: 1;
   overflow: hidden;
-  background: #cbdde6;
+  background: #cbd6db;
 }
 
 .fiber-cta-cable::after {
@@ -134,7 +134,7 @@
 .fiber-cta-description {
   max-width: 720px;
   margin: 0.65rem auto 1rem;
-  color: #5a6b7c;
+  color: #5b6970;
   font-size: clamp(1rem, 2vw, 1.125rem);
   font-weight: 400;
   line-height: 1.7;
@@ -147,9 +147,9 @@
   justify-content: center;
   gap: 0.75rem;
   padding: 0.8rem 1.5rem;
-  border: 1px solid #003e58;
+  border: 1px solid #263b49;
   border-radius: 8px;
-  background: #003e58;
+  background: #263b49;
   color: #fff;
   font-size: 1rem;
   font-weight: 500;
@@ -174,19 +174,8 @@
 
 @media (max-width: 480px) {
   .fiber-cta-card {
-    border-radius: 14px;
+    border-radius: 8px;
   }
 
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .fiber-cta-cable::after {
-    left: calc(50% - 0.75rem);
-    animation: none;
-    opacity: 0.85;
-  }
-
-  .fiber-cta-contact {
-    transition: none;
-  }
-}

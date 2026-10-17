@@ -5,12 +5,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif;
 }
 
 body {
-  background-color: #f8fafc;
-  color: #1e293b;
+  background-color: #e7ebed;
+  color: #293841;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -95,18 +94,17 @@ body {
   justify-content: center;
   background-color: #f8fafc;
   border: 1px solid #f1f5f9;
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 12px 20px;
-  transition: all 0.3s ease;
-  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
 }
 
 /* Efecto al pasar el mouse por un logo individual */
 .logo-item:hover {
   background-color: #ffffff;
   border-color: #cbd5e1;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 45, 67, 0.08);
 }
 
 .logo-item img {
@@ -116,19 +114,16 @@ body {
 }
 
 .network-benefits {
-  --benefits-primary: #2b5288;
-  --benefits-heading: #243c5a;
-  --benefits-text: #555555;
-  --benefits-tag: #8397ab;
+  --benefits-primary: var(--section-title-color);
+  --benefits-heading: var(--color-deep-blue);
+  --benefits-text: #4b5d68;
+  --benefits-tag: #5a6b7c;
   --benefits-border: #d1d9e0;
   width: 100%;
   padding: clamp(1.25rem, 3vw, 2.5rem) calc(var(--page-content-gutter) / 2);
-  background:
-    radial-gradient(ellipse at 12% 18%, rgba(49, 139, 177, 0.11), transparent 38%),
-    radial-gradient(ellipse at 88% 82%, rgba(0, 62, 88, 0.08), transparent 42%),
-    linear-gradient(135deg, #eaf1f5 0%, #f5f8fa 52%, #e8f0f4 100%);
+  background: linear-gradient(135deg, #e3e8eb 0%, #edf1f3 52%, #e1e6e9 100%);
   color: var(--benefits-text);
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-main);
 }
 
 .network-benefits *,
@@ -141,14 +136,10 @@ body {
   width: 100%;
   margin: 0 auto;
   padding: clamp(2.5rem, 5vw, 5rem) calc(var(--page-content-gutter) / 2);
-  border: 1px solid rgba(255, 255, 255, 0.82);
-  border-radius: clamp(16px, 2vw, 28px);
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow:
-    0 24px 60px rgba(18, 62, 89, 0.10),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  -webkit-backdrop-filter: blur(18px) saturate(125%);
-  backdrop-filter: blur(18px) saturate(125%);
+  border: 1px solid #cdd7dc;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(26, 43, 52, 0.1);
 }
 
 .network-benefits-header {
@@ -187,10 +178,26 @@ body {
 
 .network-benefits-title {
   margin: 0 0 16px;
-  color: var(--benefits-primary);
+  color: var(--section-title-color);
   font-size: clamp(1.75rem, 3vw, 5rem);
   font-weight: 700;
   line-height: 1.2;
+}
+
+.network-benefits-title::after {
+  display: block;
+  width: min(100%, 15rem);
+  height: 3px;
+  margin-top: 1rem;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #003e58 0%, #318bb1 35%, #e8f4f8 50%, #318bb1 65%, #003e58 100%);
+  background-size: 220% 100%;
+  content: "";
+  animation: network-title-light 3s linear infinite;
+}
+
+@keyframes network-title-light {
+  to { background-position: -220% 0; }
 }
 
 .network-benefits-subtitle {
@@ -209,18 +216,35 @@ body {
 }
 
 .network-benefits-image {
+  position: relative;
   min-width: 0;
+  min-height: 26rem;
+  overflow: hidden;
+  border-radius: var(--section-photo-radius);
+  background: #263b49;
+}
+
+.network-benefits-track {
+  position: absolute;
+  inset: 0;
   display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform;
+}
+
+.network-benefits-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  height: 100%;
 }
 
 .network-benefits-image img {
   display: block;
   width: 100%;
   height: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.82);
-  border-radius: var(--section-photo-radius);
   object-fit: cover;
-  box-shadow: 0 18px 40px rgba(18, 62, 89, 0.16);
 }
 
 .network-benefits-list {
@@ -317,15 +341,16 @@ body {
 
   .network-benefits-container {
     padding: clamp(2rem, 5vw, 3rem) calc(var(--page-content-gutter) / 2);
-    border-radius: 16px;
+    border-radius: 8px;
   }
 
   .network-benefits-grid {
     grid-template-columns: 1fr;
   }
 
-  .network-benefits-image img {
-    height: auto;
+  .network-benefits-image {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
   }
 
   .network-benefits-item:last-child {
@@ -341,8 +366,3 @@ body {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .network-benefits-quote {
-    transition: none;
-  }
-}

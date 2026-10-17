@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conoce la filosofía, misión, visión y valores de DRFC Ingeniería, especialistas en soluciones integrales de telecomunicaciones.">
+  <title>Nosotros - DRFC Ingeniería</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/paginas/index/cta.css">
+  <script>
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = {
+      corePlugins: { preflight: false },
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+          },
+          colors: {
+            glass: {
+              bg: 'rgba(255, 255, 255, 0.08)',
+              border: 'rgba(255, 255, 255, 0.18)',
+              hover: 'rgba(255, 255, 255, 0.15)',
+              card: 'rgba(255, 255, 255, 0.06)',
+              cardActive: 'rgba(255, 255, 255, 0.22)',
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    .nosotros-page {
+      background-color: #f3f8fe;
+      color: #222;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    .nosotros-page .section-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+      box-sizing: border-box;
+    }
+
+    .nosotros-page .subtitle-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .nosotros-page .icon-placeholder {
+      width: 32px;
+      height: 32px;
+      background-color: #0b4566;
+      border-radius: 4px;
+    }
+
+    .nosotros-page .subtitle-text {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      color: #0b4566;
+      text-transform: uppercase;
+    }
+
+    .nosotros-page .main-title {
+      max-width: 800px;
+      margin: 0 0 32px;
+      color: #0b4566;
+      font-size: 2.75rem;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .nosotros-page .description {
+      max-width: 850px;
+      margin: 0 0 16px;
+      color: #222;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .mission-vision-section {
+      padding: clamp(2rem, 4vw, 3.5rem) 24px;
+      background: radial-gradient(circle at 80% 20%, #eff8fd 0%, #d7ebf6 48%, #c1dfef 100%);
+      font-family: Inter, sans-serif;
+    }
+
+    .mission-vision-section .page-container {
+      display: flex;
+      min-height: 0;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mission-vision-section .cards-content {
+      display: flex;
+      width: min(1100px, 100%);
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .mission-vision-section .card {
+      flex: 1;
+      padding: clamp(1.75rem, 3vw, 2.5rem);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 20px;
+      color: #123e59;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 16px 40px rgba(18, 62, 89, 0.12);
+    }
+
+    .mission-vision-section .mission-card {
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .mission-vision-section .vision-card {
+      background: rgba(255, 255, 255, 0.56);
+    }
+
+    .mission-vision-section .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .mission-vision-section .header-icon-img {
+      width: 32px;
+      height: 32px;
+      filter: none;
+      object-fit: contain;
+    }
+
+    .mission-vision-section .section-label {
+      color: #176487;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .mission-vision-section h2.section-title {
+      margin-bottom: 25px;
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .mission-vision-section .section-text {
+      color: #344b5b;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    .nosotros-page .fiber-container {
+      width: 100%;
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nosotros-page .fiber-container svg {
+      width: 100%;
+      height: 20px;
+      overflow: visible;
+    }
+
+    .nosotros-page .fiber-base {
+      stroke: #1a2b4c;
+      stroke-width: 1;
+      stroke-linecap: round;
+    }
+
+    .nosotros-page .fiber-pulse {
+      stroke: #dceaee;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 80 400;
+      animation: lightPulse 3.5s linear infinite;
+      filter: drop-shadow(0 0 8px #dceaee);
+    }
+
+    .valores-slider-section {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      min-height: 0;
+      padding: clamp(1rem, 2vw, 1.75rem) clamp(0.75rem, 2vw, 1.5rem);
+      background: radial-gradient(circle at 80% 20%, #d8effc 0%, #b8ddf0 38%, #8fc3df 72%, #73aed0 100%);
+      color: #123e59;
+      font-family: 'Plus Jakarta Sans', Inter, sans-serif;
+    }
+
+    .valores-slider-section .ambient-glow {
+      position: absolute;
+      z-index: -1;
+      width: 20rem;
+      height: 20rem;
+      border-radius: 9999px;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    .valores-slider-section .glass-panel {
+      padding: clamp(1.25rem, 2.5vw, 2rem);
+      background: rgba(255, 255, 255, 0.42);
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      box-shadow: 0 18px 45px rgba(28, 78, 110, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .valores-slider-section .glass-card {
+      background: #315e79;
+      border: 1px solid rgba(255, 255, 255, 0.68);
+      box-shadow: 0 12px 28px rgba(18, 62, 89, 0.2);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .valores-slider-section .glass-card.active {
+      border-color: #fff;
+      box-shadow: 0 18px 36px rgba(18, 62, 89, 0.32), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+    }
+
+    .valores-slider-section .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .valores-slider-section .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .valores-slider-section .card-item {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      min-width: 190px;
+      min-height: 270px;
+      border: 0;
+      color: inherit;
+      font: inherit;
+    }
+
+    .valores-slider-section .card-photo {
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 500ms ease;
+    }
+
+    .valores-slider-section .card-photo-overlay {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8, 34, 53, 0.2) 0%, rgba(8, 34, 53, 0.54) 44%, rgba(8, 34, 53, 0.92) 100%);
+      pointer-events: none;
+    }
+
+    .valores-slider-section .card-item > span:not(.card-photo-overlay),
+    .valores-slider-section .card-item > div {
+      position: relative;
+      z-index: 1;
+    }
+
+    .valores-slider-section .card-item > span:not(.card-photo-overlay) {
+      padding: 0.35rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(8, 34, 53, 0.48);
+    }
+
+    .valores-slider-section .card-item.active .card-photo {
+      transform: scale(1.06);
+    }
+
+    .valores-slider-section #slide-number {
+      color: #174d6c;
+    }
+
+    .valores-slider-section #slide-title {
+      color: #123e59;
+      font-size: clamp(2.25rem, 4vw, 3.75rem);
+    }
+
+    .valores-slider-section #slide-desc {
+      max-width: 38rem;
+      min-height: 8rem;
+      color: #294b62;
+      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+      line-height: 1.75;
+    }
+
+    .valores-slider-section .dot-nav[aria-pressed="false"] .dot-indicator {
+      background-color: rgba(18, 62, 89, 0.3);
+    }
+
+    .valores-slider-section .dot-nav {
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .valores-slider-section button:focus-visible {
+      outline: 2px solid white;
+      outline-offset: 3px;
+    }
+
+    @keyframes lightPulse {
+      from {
+        stroke-dashoffset: 480;
+      }
+      to {
+        stroke-dashoffset: -480;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .nosotros-page .fiber-pulse {
+        animation: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nosotros-page .section-container {
+        padding: 48px 24px;
+      }
+
+      .nosotros-page .main-title {
+        font-size: 2.1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mission-vision-section .page-container {
+        min-height: 0;
+        padding: 0;
+      }
+
+      .mission-vision-section .cards-content {
+        flex-direction: column;
+      }
+
+      .mission-vision-section .card {
+        padding: 24px;
+      }
+
+      .valores-slider-section .glass-panel {
+        padding: 1.25rem;
+      }
+
+      .valores-slider-section #slide-desc {
+        min-height: 0;
+      }
+    }
+
+    .nosotros-page {
+      background: #e8edf0;
+      color: #263b49;
+      font-family: Inter, sans-serif;
+    }
+
+    .nosotros-page .section-container {
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      width: 100%;
+      max-width: none;
+      min-height: clamp(36rem, 72vh, 52rem);
+      flex-direction: column;
+      justify-content: center;
+      margin: 0;
+      padding: clamp(5rem, 10vh, 8rem) var(--page-content-gutter, clamp(1.5rem, 6vw, 7rem));
+      overflow: hidden;
+      background: #102b3a url("../assets/img/encabezados/FOTO1.jpg") center 44% / cover no-repeat;
+    }
+
+    .nosotros-page .section-container::before {
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(11, 29, 40, 0.97) 0%, rgba(16, 42, 56, 0.9) 46%, rgba(16, 42, 56, 0.34) 100%);
+      content: "";
+    }
+
+    .nosotros-page .section-container > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .nosotros-page .subtitle-wrapper {
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .nosotros-page .icon-placeholder {
+      display: block;
+      width: 2.5rem;
+      height: 2.5rem;
+      flex: 0 0 2.5rem;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      object-fit: contain;
+    }
+
+    .nosotros-page .subtitle-text {
+      color: #a8d5e8;
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+    }
+
+    .nosotros-page .main-title {
+      max-width: 58rem;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+      font-size: clamp(2.75rem, 5.5vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.04;
+    }
+
+    .nosotros-page .description {
+      max-width: 48rem;
+      margin-bottom: 0.85rem;
+      color: #e0e8ec;
+      font-size: clamp(1rem, 1.25vw, 1.15rem);
+      line-height: 1.7;
+    }
+
+    .nosotros-hero-cta {
+      display: inline-flex;
+      width: fit-content;
+      min-height: 3rem;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+      padding: 0.75rem 1.4rem;
+      border: 1px solid #ffffff;
+      border-radius: 6px;
+      background: #ffffff;
+      color: #123e59;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+    }
+
+    .nosotros-hero-cta:hover {
+      border-color: #9cc9dd;
+      background: #9cc9dd;
+    }
+
+    .nosotros-hero-cta:focus-visible {
+      outline: 3px solid #9cc9dd;
+      outline-offset: 3px;
+    }
+
+    .nosotros-page .fiber-container {
+      padding: 0;
+      background: #e8edf0;
+    }
+
+    .nosotros-page .fiber-container svg {
+      display: block;
+      height: 1rem;
+    }
+
+    .nosotros-page .fiber-base {
+      stroke: #263b49;
+    }
+
+    .nosotros-page .fiber-pulse {
+      stroke: #d8eaf1;
+      filter: drop-shadow(0 0 6px #9cc9dd);
+    }
+
+    .mission-vision-section {
+      padding: clamp(3rem, 6vw, 5.5rem) var(--page-content-gutter, clamp(1.5rem, 5vw, 6rem));
+      background: #e8edf0;
+      font-family: Inter, sans-serif;
+    }
+
+    .mission-vision-section .cards-content {
+      width: min(1200px, 100%);
+      gap: clamp(1rem, 2.5vw, 2rem);
+    }
+
+    .mission-vision-section .card {
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      border: 1px solid #d4dfe5;
+      border-top: 4px solid #318bb1;
+      border-radius: 8px;
+      background: #ffffff;
+      color: #263b49;
+      box-shadow: 0 12px 28px rgba(19, 49, 66, 0.08);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .mission-vision-section .vision-card {
+      border-top-color: #71818a;
+      background: #ffffff;
+    }
+
+    .mission-vision-section .card-header {
+      margin-bottom: 1.25rem;
+    }
+
+    .mission-vision-section .section-label {
+      color: #318bb1;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+    }
+
+    .mission-vision-section h2.section-title {
+      margin-bottom: 1.25rem;
+      color: #123e59;
+      font-size: clamp(2rem, 3vw, 2.75rem);
+      line-height: 1.08;
+      text-transform: none;
+    }
+
+    .mission-vision-section .section-text {
+      color: #4a5c66;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .valores-slider-section {
+      min-height: clamp(44rem, 88svh, 60rem) !important;
+      padding: clamp(3rem, 6vw, 5.5rem) var(--page-content-gutter, clamp(1.5rem, 5vw, 6rem));
+      background: #263b49;
+      color: #ffffff;
+      font-family: Inter, sans-serif;
+    }
+
+    .valores-slider-section .ambient-glow {
+      display: none;
+    }
+
+    .valores-slider-section .glass-panel {
+      width: min(1400px, 100%);
+      max-width: 1400px;
+      padding: clamp(1.5rem, 3.5vw, 3rem);
+      border: 1px solid #d4dfe5;
+      border-radius: 8px;
+      background: #f7f9fa;
+      box-shadow: 0 18px 42px rgba(7, 24, 34, 0.24);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .valores-slider-section .glass-panel > .flex {
+      gap: clamp(1rem, 2vw, 2rem);
+    }
+
+    .valores-slider-section #slide-number {
+      color: #318bb1;
+    }
+
+    .valores-slider-section #slide-title {
+      color: #123e59;
+      font-family: Inter, sans-serif;
+      font-size: clamp(2rem, 3.4vw, 3rem);
+      font-weight: 800;
+    }
+
+    .valores-slider-section #slide-desc {
+      max-width: 34rem;
+      min-height: 10rem;
+      color: #455963;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .valores-slider-section .glass-card {
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 8px;
+      background: #183748;
+      box-shadow: 0 10px 24px rgba(14, 42, 57, 0.22);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .valores-slider-section .glass-card.active {
+      border-color: #8fc5d8;
+      box-shadow: 0 14px 28px rgba(14, 42, 57, 0.28);
+    }
+
+    .valores-slider-section .card-item {
+      min-width: 210px;
+      min-height: 320px;
+    }
+
+    .valores-slider-section .card-item > span:not(.card-photo-overlay) {
+      border-radius: 4px;
+      background: rgba(14, 42, 57, 0.78);
+    }
+
+    .valores-slider-section .dot-nav {
+      color: #123e59;
+    }
+
+    .valores-slider-section #slide-desc {
+      min-height: 12rem;
+    }
+
+    .valores-slider-section button:focus-visible {
+      outline-color: #318bb1;
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 768px) {
+      .nosotros-page .section-container {
+        min-height: 38rem;
+        padding: 5rem 1.5rem;
+        background-position: 62% center;
+      }
+
+      .nosotros-page .section-container::before {
+        background: linear-gradient(180deg, rgba(11, 29, 40, 0.52) 0%, rgba(11, 29, 40, 0.93) 48%, rgba(11, 29, 40, 0.98) 100%);
+      }
+
+      .nosotros-page .main-title {
+        font-size: clamp(2.5rem, 9vw, 4rem);
+      }
+
+      .mission-vision-section .cards-content {
+        flex-direction: column;
+      }
+
+      .valores-slider-section #slide-desc {
+        min-height: 0;
+      }
+
+      .valores-slider-section {
+        min-height: clamp(44rem, 90svh, 62rem) !important;
+        padding-inline: 1.25rem;
+      }
+
+      .valores-slider-section .card-item {
+        min-height: 290px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script src="../componentes/menu.js"></script>
+
+  <main class="nosotros-page">
+    <section class="section-container">
+      <div class="subtitle-wrapper">
+        <img src="../assets/img/marca/%C3%8Dcono%20DRFC.png" alt="" class="icon-placeholder" aria-hidden="true">
+        <span class="subtitle-text">Nuestra Filosofía</span>
+      </div>
+
+      <h1 class="main-title">Lo que define nuestra manera de trabajar</h1>
+
+      <p class="description">
+        Agilizamos el crecimiento de nuestros clientes al convertirnos en un aliado técnico que atiende sus necesidades de levantamiento, digitalización, diseño, construcción, instalación de líneas de telecomunicaciones y mantenimiento.
+      </p>
+
+      <p class="description">
+        Así contribuimos a que continúen creciendo en sus mercados, atrayendo y reteniendo clientes.
+      </p>
+      <a class="nosotros-hero-cta" href="contacto.html">Contáctanos</a>
+    </section>
+
+    <div class="fiber-container" aria-hidden="true">
+      <svg viewBox="0 0 1000 20" preserveAspectRatio="none">
+        <line class="fiber-base" x1="0" y1="10" x2="1000" y2="10"></line>
+        <line class="fiber-pulse" x1="0" y1="10" x2="1000" y2="10"></line>
+      </svg>
+    </div>
+
+    <section class="mission-vision-section" aria-label="Misión y visión">
+      <div class="page-container">
+        <div class="cards-content">
+          <article class="card mission-card">
+            <div class="card-header">
+              <img src="../assets/img/marca/%C3%8Dcono%20DRFC.png" alt="" class="header-icon-img">
+              <span class="section-label">Misión</span>
+            </div>
+            <h2 class="section-title">Nuestra<br>Misión</h2>
+            <p class="section-text">
+              Apoyamos a nuestros clientes a implementar sus planes de crecimiento con versatilidad en tiempo y forma, logrando así que sus clientes se mantengan en constante comunicación en el mundo digital.
+            </p>
+          </article>
+
+          <article class="card vision-card">
+            <div class="card-header">
+              <img src="../assets/img/marca/%C3%8Dcono%20DRFC.png" alt="" class="header-icon-img">
+              <span class="section-label">Visión</span>
+            </div>
+            <h2 class="section-title">Nuestra<br>Visión</h2>
+            <p class="section-text">
+              Mantener un crecimiento constante anual del 20% respecto al año anterior, en el mercado nacional de ventas, como en servicios y consolidar nuestra participación en el mercado en América Latina durante los próximos 5 años.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="valores-slider" class="valores-slider-section min-h-screen flex items-center justify-center p-4 sm:p-8 text-white antialiased selection:bg-white selection:text-blue-900" aria-label="Nuestros valores">
+      <div class="ambient-glow top-10 left-10 bg-blue-400/20"></div>
+      <div class="ambient-glow bottom-10 right-10 bg-indigo-500/15"></div>
+
+      <div class="w-full max-w-6xl glass-panel rounded-3xl p-6 sm:p-10 md:p-14 relative overflow-hidden transition-all duration-500">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 relative z-10">
+          <div class="flex lg:flex-col items-center justify-center gap-4 relative py-2 lg:py-6 shrink-0 order-2 lg:order-1">
+            <div class="hidden lg:block absolute top-4 bottom-4 left-1/2 -translate-x-1/2 w-[2px] bg-white/20 rounded-full"></div>
+            <div class="block lg:hidden absolute left-4 right-4 top-1/2 -translate-y-1/2 h-[2px] bg-white/20 rounded-full"></div>
+            <button type="button" data-slide-index="0" class="dot-nav group relative z-10 w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 focus:outline-none" aria-label="Valor 1"><span class="dot-indicator w-3 h-3 rounded-full bg-white/50 group-hover:bg-white transition-all duration-300 flex items-center justify-center text-xs font-bold text-slate-900"></span></button>
+            <button type="button" data-slide-index="1" class="dot-nav group relative z-10 w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 focus:outline-none" aria-label="Valor 2"><span class="dot-indicator w-3 h-3 rounded-full bg-white/50 group-hover:bg-white transition-all duration-300 flex items-center justify-center text-xs font-bold text-slate-900"></span></button>
+            <button type="button" data-slide-index="2" class="dot-nav group relative z-10 w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 focus:outline-none" aria-label="Valor 3"><span class="dot-indicator w-3 h-3 rounded-full bg-white/50 group-hover:bg-white transition-all duration-300 flex items-center justify-center text-xs font-bold text-slate-900"></span></button>
+            <button type="button" data-slide-index="3" class="dot-nav group relative z-10 w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 focus:outline-none" aria-label="Valor 4"><span class="dot-indicator w-3 h-3 rounded-full bg-white/50 group-hover:bg-white transition-all duration-300 flex items-center justify-center text-xs font-bold text-slate-900"></span></button>
+            <button type="button" data-slide-index="4" class="dot-nav group relative z-10 w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 focus:outline-none" aria-label="Valor 5"><span class="dot-indicator w-3 h-3 rounded-full bg-white/50 group-hover:bg-white transition-all duration-300 flex items-center justify-center text-xs font-bold text-slate-900"></span></button>
+            <button type="button" data-slide-index="5" class="dot-nav group relative z-10 w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 focus:outline-none" aria-label="Valor 6"><span class="dot-indicator w-3 h-3 rounded-full bg-white/50 group-hover:bg-white transition-all duration-300 flex items-center justify-center text-xs font-bold text-slate-900"></span></button>
+          </div>
+
+          <div class="flex-1 max-w-xl text-left order-1 lg:order-2 my-auto">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-semibold tracking-wider uppercase mb-4 backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-blue-300 animate-pulse" aria-hidden="true"></span>
+              <span id="slide-number">VALOR 01 / 06</span>
+            </div>
+            <h2 id="slide-title" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-4 leading-tight transition-all duration-300">Integridad</h2>
+            <p id="slide-desc" class="text-base sm:text-lg text-blue-100/80 font-normal leading-relaxed min-h-[90px] sm:min-h-[100px] transition-all duration-300" aria-live="polite">
+              Actuamos con honestidad, transparencia y congruencia. Hacemos lo correcto por convicción, cumplimos las políticas de DRFC, decimos la verdad y rechazamos cualquier forma de engaño, soborno, abuso de autoridad o beneficio indebido. Reportamos riesgos o irregularidades y reconocemos nuestros errores para corregirlos. Nuestro proceder protege la confianza, la imagen y el prestigio de DRFC.
+            </p>
+            <div class="w-16 h-1 bg-gradient-to-r from-white/80 to-transparent rounded-full mt-2"></div>
+          </div>
+
+          <div class="w-full lg:w-[50%] overflow-hidden py-4 order-3 no-scrollbar">
+            <div id="cardsTrack" class="flex items-center gap-5 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]">
+              <button type="button" data-slide-index="0" class="card-item glass-card rounded-2xl p-6 shrink-0 cursor-pointer text-left transition-all duration-500 flex flex-col justify-between group">
+                <img class="card-photo" src="../assets/img/fotos/certificaciones_normatividad.png" alt="" aria-hidden="true"><span class="card-photo-overlay" aria-hidden="true"></span><span class="text-xs font-semibold text-white tracking-wider">01</span><div><h3 class="text-xl font-bold text-white mb-1">Integridad</h3><p class="text-xs text-white/85">Honestidad, transparencia y congruencia en cada decisión.</p></div>
+              </button>
+              <button type="button" data-slide-index="1" class="card-item glass-card rounded-2xl p-6 shrink-0 cursor-pointer text-left transition-all duration-500 flex flex-col justify-between group">
+                <img class="card-photo" src="../assets/img/servicios/CuadrillaConstrucci%C3%B3n.png" alt="" aria-hidden="true"><span class="card-photo-overlay" aria-hidden="true"></span><span class="text-xs font-semibold text-white tracking-wider">02</span><div><h3 class="text-xl font-bold text-white mb-1">Lealtad</h3><p class="text-xs text-white/85">Dedicación y confidencialidad hacia DRFC y quienes colaboran con nosotros.</p></div>
+              </button>
+              <button type="button" data-slide-index="2" class="card-item glass-card rounded-2xl p-6 shrink-0 cursor-pointer text-left transition-all duration-500 flex flex-col justify-between group">
+                <img class="card-photo" src="../assets/img/servicios/DespliegueConstrucci%C3%B3n.png" alt="" aria-hidden="true"><span class="card-photo-overlay" aria-hidden="true"></span><span class="text-xs font-semibold text-white tracking-wider">03</span><div><h3 class="text-xl font-bold text-white mb-1">Pasión</h3><p class="text-xs text-white/85">Entusiasmo por mejorar y alcanzar nuevos estándares de calidad.</p></div>
+              </button>
+              <button type="button" data-slide-index="3" class="card-item glass-card rounded-2xl p-6 shrink-0 cursor-pointer text-left transition-all duration-500 flex flex-col justify-between group">
+                <img class="card-photo" src="../assets/img/servicios/CMtto1.jpg" alt="" aria-hidden="true"><span class="card-photo-overlay" aria-hidden="true"></span><span class="text-xs font-semibold text-white tracking-wider">04</span><div><h3 class="text-xl font-bold text-white mb-1">Confianza</h3><p class="text-xs text-white/85">Relaciones sólidas, comunicación abierta y compromisos cumplidos.</p></div>
+              </button>
+              <button type="button" data-slide-index="4" class="card-item glass-card rounded-2xl p-6 shrink-0 cursor-pointer text-left transition-all duration-500 flex flex-col justify-between group">
+                <img class="card-photo" src="../assets/img/servicios/InfraObra.png" alt="" aria-hidden="true"><span class="card-photo-overlay" aria-hidden="true"></span><span class="text-xs font-semibold text-white tracking-wider">05</span><div><h3 class="text-xl font-bold text-white mb-1">Responsabilidad</h3><p class="text-xs text-white/85">Cuidamos a las personas, los recursos y el entorno en cada proyecto.</p></div>
+              </button>
+              <button type="button" data-slide-index="5" class="card-item glass-card rounded-2xl p-6 shrink-0 cursor-pointer text-left transition-all duration-500 flex flex-col justify-between group">
+                <img class="card-photo" src="../assets/img/servicios/DespliegueRedes.png" alt="" aria-hidden="true"><span class="card-photo-overlay" aria-hidden="true"></span><span class="text-xs font-semibold text-white tracking-wider">06</span><div><h3 class="text-xl font-bold text-white mb-1">Puntualidad</h3><p class="text-xs text-white/85">Planificación y disciplina para entregar cada proyecto a tiempo.</p></div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    (() => {
+      const section = document.getElementById('valores-slider');
+      const valores = [
+        {
+          titulo: 'Integridad',
+          descripcion: 'Actuamos con honestidad, transparencia y congruencia. Hacemos lo correcto por convicción, cumplimos las políticas de DRFC, decimos la verdad y rechazamos cualquier forma de engaño, soborno, abuso de autoridad o beneficio indebido. Reportamos riesgos o irregularidades y reconocemos nuestros errores para corregirlos. Nuestro proceder protege la confianza, la imagen y el prestigio de DRFC.',
+          numero: 'VALOR 01 / 06',
+        },
+        {
+          titulo: 'Lealtad',
+          descripcion: 'Valoramos la lealtad hacia nuestra empresa, nuestros trabajadores, nuestros clientes y proveedores. Esto significa actuar con integridad y dedicación, manteniendo la confidencialidad de la información sensible de la empresa y apoyando las decisiones organizativas una vez se han tomado.',
+          numero: 'VALOR 02 / 06',
+        },
+        {
+          titulo: 'Pasión',
+          descripcion: 'Fomentamos la pasión por nuestra misión y metas organizativas. Esto se traduce en un compromiso apasionado por la excelencia en nuestro trabajo diario, buscando constantemente mejorar y alcanzar nuevos estándares de calidad. La pasión se refleja en el entusiasmo y la energía que dedicamos a nuestras tareas y proyectos, inspirando a nuestros trabajadores y clientes a través de nuestro compromiso y creatividad.',
+          numero: 'VALOR 03 / 06',
+        },
+        {
+          titulo: 'Confianza',
+          descripcion: 'Construimos relaciones sólidas basadas en la honestidad, el respeto y la comunicación abierta. Cumplimos lo que prometemos, generamos seguridad en cada acción y fomentamos un ambiente de colaboración donde nuestros clientes y equipos pueden confiar plenamente.',
+          numero: 'VALOR 04 / 06',
+        },
+        {
+          titulo: 'Responsabilidad',
+          descripcion: 'Asumimos nuestro rol con compromiso y profesionalismo, cuidando los recursos, cumpliendo con normativas y velando por la seguridad y el bienestar de las personas y del entorno. Respondemos por nuestras decisiones y resultados, promoviendo soluciones sostenibles y de calidad que generen valor a largo plazo.',
+          numero: 'VALOR 05 / 06',
+        },
+        {
+          titulo: 'Puntualidad',
+          descripcion: 'Valoramos el tiempo propio y el de los demás. Cumplimos los plazos acordados, planificamos eficientemente y actuamos con disciplina para entregar proyectos e intervenciones a tiempo, asegurando continuidad y confiabilidad en cada servicio que brindamos.',
+          numero: 'VALOR 06 / 06',
+        },
+      ];
+      const track = section.querySelector('#cardsTrack');
+      const dots = section.querySelectorAll('.dot-nav');
+      const cards = section.querySelectorAll('.card-item');
+      const title = section.querySelector('#slide-title');
+      const description = section.querySelector('#slide-desc');
+      const number = section.querySelector('#slide-number');
+      let currentIndex = 0;
+      let autoPlayTimer;
+      let textUpdateTimer;
+
+      function goToSlide(index) {
+        currentIndex = index;
+        cards.forEach((card, cardIndex) => {
+          const isActive = cardIndex === currentIndex;
+          card.classList.toggle('active', isActive);
+          card.classList.toggle('scale-105', isActive);
+          const isMobile = window.innerWidth < 640;
+          card.style.width = isActive
+            ? (isMobile ? '240px' : '300px')
+            : (isMobile ? '210px' : '250px');
+          card.style.height = isActive
+            ? (isMobile ? '340px' : '380px')
+            : (isMobile ? '295px' : '330px');
+        });
+
+        const activeCard = cards[currentIndex];
+        const trackGap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
+        const activeWidth = parseFloat(activeCard.style.width);
+        const precedingWidth = Array.from(cards)
+          .slice(0, currentIndex)
+          .reduce((width, card) => width + parseFloat(card.style.width) + trackGap, 0);
+        const viewportWidth = track.parentElement.clientWidth;
+        const centeredOffset = (viewportWidth - activeWidth) / 2 - precedingWidth;
+        track.style.transform = `translateX(${centeredOffset}px)`;
+
+        dots.forEach((dot, dotIndex) => {
+          const indicator = dot.querySelector('.dot-indicator');
+          const isActive = dotIndex === currentIndex;
+          dot.setAttribute('aria-pressed', String(isActive));
+          indicator.className = isActive
+            ? 'dot-indicator w-7 h-7 rounded-full bg-white text-slate-900 font-extrabold text-xs flex items-center justify-center shadow-lg shadow-white/30 transition-all duration-300'
+            : 'dot-indicator w-3 h-3 rounded-full bg-slate-700/40 hover:bg-slate-700/70 transition-all duration-300 flex items-center justify-center text-xs font-bold text-slate-900';
+          indicator.textContent = isActive ? String(dotIndex + 1) : '';
+        });
+
+        title.style.opacity = '0';
+        description.style.opacity = '0';
+        window.clearTimeout(textUpdateTimer);
+        textUpdateTimer = window.setTimeout(() => {
+          title.textContent = valores[currentIndex].titulo;
+          description.textContent = valores[currentIndex].descripcion;
+          number.textContent = valores[currentIndex].numero;
+          title.style.opacity = '1';
+          description.style.opacity = '1';
+        }, 150);
+
+        window.clearInterval(autoPlayTimer);
+        autoPlayTimer = window.setInterval(() => {
+          goToSlide((currentIndex + 1) % valores.length);
+        }, 5000);
+      }
+
+      section.querySelectorAll('[data-slide-index]').forEach((control) => {
+        control.addEventListener('click', () => {
+          goToSlide(Number(control.dataset.slideIndex));
+        });
+      });
+
+      window.addEventListener('resize', () => {
+        goToSlide(currentIndex);
+      });
+
+      goToSlide(0);
+    })();
+  </script>
+  <script src="../assets/js/secciones/call-to-action.js" data-title="Conoce los proyectos en los que hemos trabajado" data-button-text="Proyectos" data-button-href="proyectos.html"></script>
+  <script src="../componentes/footer.js"></script>
+</body>
+</html>

@@ -42,4 +42,18 @@
     heading.textContent = script.dataset.title;
     cta.setAttribute("aria-label", script.dataset.title);
   }
+
+  const cta = script.previousElementSibling;
+  const button = cta?.querySelector(".fiber-cta-contact");
+  if (!cta || !button) {
+    throw new Error("No se pudo inicializar el botón del llamado a la acción.");
+  }
+
+  if (script.dataset.buttonText) {
+    button.firstChild.textContent = `\n          ${script.dataset.buttonText}\n          `;
+  }
+
+  if (script.dataset.buttonHref) {
+    button.href = script.dataset.buttonHref;
+  }
 })();

@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DRFC Ingeniería - Hero Carousel</title>
+    <title>DRFC Ingeniería | Soluciones Integrales en Telecomunicaciones</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Monda:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="assets/css/paginas/index/hero.css">
     <link rel="stylesheet" href="assets/css/paginas/index/experiencia.css">
@@ -51,7 +50,10 @@
                 <div class="slide-container">
                     <div class="slide-content">
                         <span class="slide-badge">Telecomunicaciones</span>
-                        <h1 class="slide-title">Soluciones Integrales en Telecomunicaciones</h1>
+                        <h1 class="slide-title">
+                          <span class="slide-title-kicker">Soluciones Integrales en</span>
+                          <span class="slide-title-main">Telecomunicaciones</span>
+                        </h1>
                         <p class="slide-description">Diseñamos y construimos redes aéreas y subterráneas. Realizamos proyectos llave en mano y asignaciones específicas.</p>
                         <a href="paginas/contacto.html" target="_top" onclick="try{window.top.location.href=this.href;}catch(e){window.location.href=this.href;}" class="cta-button" aria-label="Contáctanos para soluciones de telecomunicaciones">
                             <span>Contáctanos</span>
@@ -141,7 +143,6 @@
             <li class="hero-slide slide-4" data-slide="3" aria-hidden="true">
                 <div class="slide-bg"></div>
                 <div class="slide-overlay"></div>
-                +
                 <div class="fiber-svg-container">
                     <svg class="fiber-svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
                         <circle cx="720" cy="400" r="280" class="fiber-path" style="stroke-dasharray: 4 8;" />
@@ -255,7 +256,7 @@
     </div>
 
     <!-- Título Principal -->
-    <h1 class="main-title">Nuestra experiencia a tu servicio</h1>
+    <h2 class="main-title">Nuestra experiencia a tu servicio</h2>
     <div class="title-line"></div>
 
     <!-- Sección de contadores -->
@@ -426,8 +427,22 @@
       </header>
 
       <div class="network-benefits-grid">
-        <div class="network-benefits-image">
-          <img src="assets/img/fotos/Foto_etapas.jpg" alt="Trabajo operativo en campo">
+        <div class="network-benefits-image" id="networkBenefitsCarousel" role="region" aria-label="Galería de trabajo en redes" aria-roledescription="carrusel">
+          <div class="network-benefits-track" data-benefits-track>
+            <div class="network-benefits-slide is-active" data-benefits-slide aria-hidden="false">
+              <img src="assets/img/fotos/Foto_etapas.jpg" alt="Trabajo operativo en campo">
+            </div>
+            <div class="network-benefits-slide" data-benefits-slide aria-hidden="true">
+              <img src="assets/img/servicios/DespliegueRedes.png" alt="Técnico instalando cableado aéreo de telecomunicaciones">
+            </div>
+            <div class="network-benefits-slide" data-benefits-slide aria-hidden="true">
+              <img src="assets/img/servicios/CCarrusel2.JPG" alt="Equipo de campo trabajando en el despliegue de redes">
+            </div>
+            <div class="network-benefits-slide" data-benefits-slide aria-hidden="true">
+              <img src="assets/img/servicios/Cobertura.jpg" alt="Cuadrilla realizando labores de cobertura de red">
+            </div>
+          </div>
+
         </div>
 
         <div class="network-benefits-list">
@@ -478,10 +493,12 @@
     </div>
   </section>
 
+  <script src="assets/js/paginas/index/beneficios.js"></script>
+
 <section class="collaborators" aria-labelledby="collaborators-title">
   <div class="collaborators-container">
     <!-- Sección de título -->
-    <div class="collaborators-header">
+    <div class="collaborators-header" data-coverage-reveal="header">
       <div class="collaborators-tagline">
         <img src="assets/img/marca/Ícono DRFC.png" alt="DRFC" class="collaborators-tagline-icon">
         <span>COLABORADORES</span>
@@ -493,17 +510,18 @@
     <div class="collaborators-panel">
       
       <!-- Ubicaciones -->
-      <div class="collaborators-location">
-        <div class="collaborators-pin"></div>
-        
-        <div class="collaborators-location-block">
-          <p class="collaborators-location-title">Con base permanente en:</p>
-          <p class="collaborators-location-list">
-            Cuernavaca<br>
-            CDMX<br>
-            Estado de México<br>
-            Monterrey
-          </p>
+      <div class="collaborators-location" data-coverage-reveal="locations">
+        <div class="collaborators-location-card">
+          <div class="collaborators-pin" aria-hidden="true"></div>
+          <div class="collaborators-location-block collaborators-location-block--permanent">
+            <p class="collaborators-location-title">Con base permanente en:</p>
+            <p class="collaborators-location-list">
+              Cuernavaca<br>
+              CDMX<br>
+              Estado de México<br>
+              Monterrey
+            </p>
+          </div>
         </div>
 
         <div class="collaborators-location-block">
@@ -514,11 +532,11 @@
         </div>
       </div>
 
-      <div class="collaborators-worker-section">
+      <div class="collaborators-worker-section" data-coverage-reveal="worker">
         <img src="assets/img/certificaciones/ContratistaWeb.png" alt="Trabajador con casco amarillo" class="collaborators-worker">
       </div>
 
-      <div class="collaborators-card">
+      <div class="collaborators-card" data-coverage-reveal="capacity">
         <div class="collaborators-card-content">
           <h3 class="collaborators-stats-title">
             <strong>176</strong> Colaboradores fijos y<br>
@@ -535,6 +553,7 @@
   </div>
 </section>
 
+<script src="assets/js/paginas/index/colaboradores.js"></script>
 
 <section class="fiber-cta" aria-label="Contacto y evaluación técnica">
   <div class="fiber-cta-card">

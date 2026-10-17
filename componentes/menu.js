@@ -27,7 +27,7 @@
           { texto: "Acometidas", url: "#" }
         ]
       },
-      { texto: "Acerca de Nosotros", url: "#" },
+      { texto: "Acerca de Nosotros", url: "paginas/nosotros.html" },
       { texto: "Bolsa de Trabajo", url: "#" }
     ]
   };

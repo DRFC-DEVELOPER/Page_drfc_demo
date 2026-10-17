@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startAutoplay() {
         stopAutoplay();
-        if (!isHovered && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (!isHovered) {
             carousel.classList.remove('carousel-paused');
             autoplayTimer = setInterval(nextSlide, AUTOPLAY_DELAY);
         }
