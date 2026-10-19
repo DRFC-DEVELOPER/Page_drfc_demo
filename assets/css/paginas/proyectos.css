@@ -120,7 +120,7 @@
     letter-spacing: -0.045em;
 }
 
-.projects-map-hint {
+.projects-location-hint {
     display: flex;
     align-items: center;
     gap: 0.6rem;
@@ -129,8 +129,7 @@
     font-size: 0.82rem;
 }
 
-.projects-map-hint > span,
-.projects-map-legend > span {
+.projects-location-hint > span {
     display: inline-block;
     width: 0.65rem;
     height: 0.65rem;
@@ -142,11 +141,10 @@
 }
 
 .projects-explorer-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1.8fr) minmax(280px, 0.8fr);
+    display: block;
     width: 100%;
     max-width: 1320px;
-    min-height: 520px;
+    min-height: 0;
     margin: 0 auto;
     overflow: hidden;
     border: 1px solid var(--projects-border);
@@ -155,128 +153,17 @@
     box-shadow: 0 18px 50px rgba(13, 52, 72, 0.09);
 }
 
-.projects-map-panel {
-    display: flex;
-    min-width: 0;
-    flex-direction: column;
-    padding: clamp(1rem, 2.5vw, 1.75rem);
-    background: #111d29;
-}
-
-.projects-map-topline,
-.projects-map-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-}
-
-.projects-map-topline {
-    color: #fff;
-}
-
-.projects-map-label {
-    font-size: 0.83rem;
-    font-weight: 600;
-}
-
-.projects-map-region {
-    padding: 0.38rem 0.65rem;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 99px;
-    color: #c5dce5;
-    font-size: 0.68rem;
-}
-
-.projects-map-canvas {
-    display: grid;
-    min-height: 0;
-    flex: 1;
-    place-items: center;
-}
-
-.projects-map {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-height: 500px;
-    overflow: visible;
-}
-
-.projects-map-footer {
-    min-height: 2rem;
-    color: #c5dce5;
-    font-size: 0.7rem;
-}
-
-.projects-map-legend {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.65rem;
-}
-
-.projects-map-markers .project-map-marker {
-    cursor: pointer;
-    outline: none;
-}
-
-.project-marker-halo {
-    fill: rgba(27, 165, 188, 0.15);
-    stroke: rgba(67, 197, 215, 0.45);
-    stroke-width: 1.5;
-    transition: r 160ms ease, fill 160ms ease;
-}
-
-.project-marker-dot {
-    fill: #20a9bd;
-    stroke: #fff;
-    stroke-width: 2.5;
-    transition: r 160ms ease, fill 160ms ease;
-}
-
-.project-marker-label-bg {
-    fill: #fff;
-    opacity: 0;
-    transition: opacity 160ms ease;
-}
-
-.project-marker-label {
-    fill: #173b4b;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    opacity: 0;
-    pointer-events: none;
-    text-anchor: middle;
-    transition: opacity 160ms ease;
-}
-
-.project-map-marker:hover .project-marker-halo,
-.project-map-marker:focus-visible .project-marker-halo,
-.project-map-marker.is-selected .project-marker-halo {
-    fill: rgba(67, 197, 215, 0.28);
-}
-
-.project-map-marker:hover .project-marker-dot,
-.project-map-marker:focus-visible .project-marker-dot,
-.project-map-marker.is-selected .project-marker-dot {
-    fill: #0b718e;
-}
-
-.project-map-marker:focus-visible .project-marker-label-bg,
-.project-map-marker:focus-visible .project-marker-label,
-.project-map-marker:hover .project-marker-label-bg,
-.project-map-marker:hover .project-marker-label,
-.project-map-marker.is-selected .project-marker-label-bg,
-.project-map-marker.is-selected .project-marker-label {
-    opacity: 1;
-}
-
 .projects-location-panel {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.8fr);
+    align-items: start;
+    gap: 1.25rem 2rem;
     min-width: 0;
-    flex-direction: column;
     padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.projects-location-panel-heading {
+    grid-column: 1 / -1;
 }
 
 .projects-location-panel-heading h3 {
@@ -296,12 +183,10 @@
 
 .projects-location-list {
     display: grid;
-    max-height: 220px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-content: start;
     gap: 0.35rem;
-    overflow: auto;
     padding: 0 0.25rem 0.5rem 0;
-    scrollbar-color: #b5cdd5 transparent;
-    scrollbar-width: thin;
 }
 
 .projects-location-button {
@@ -359,7 +244,7 @@
     min-width: 0;
     align-items: center;
     gap: 0.85rem;
-    margin-top: auto;
+    margin-top: 0;
     padding: 1rem;
     border-radius: 9px;
     background: #f1f7f8;
@@ -438,7 +323,7 @@
     overflow-wrap: anywhere;
 }
 
-.projects-map-disclaimer {
+.projects-location-note {
     width: 100%;
     max-width: 1320px;
     margin: 0.85rem auto 0;
@@ -448,13 +333,12 @@
 }
 
 @media (max-width: 900px) {
-    .projects-explorer-layout {
-        grid-template-columns: minmax(0, 1.3fr) minmax(250px, 0.8fr);
-        min-height: 460px;
+    .projects-location-panel {
+        grid-template-columns: minmax(0, 1.2fr) minmax(250px, 0.8fr);
     }
 
-    .projects-map {
-        max-height: none;
+    .projects-location-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
@@ -488,33 +372,26 @@
         gap: 0.75rem;
     }
 
-    .projects-explorer-layout {
+    .projects-location-panel {
         grid-template-columns: minmax(0, 1fr);
-    }
-
-    .projects-map-panel {
-        min-height: 350px;
+        gap: 1.25rem;
         padding: 1rem;
     }
 
-    .projects-map {
-        max-height: none;
+    .projects-location-panel-heading {
+        grid-column: auto;
     }
 
     .projects-location-list {
-        max-height: 250px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .projects-location-detail {
-        margin-top: 0.75rem;
+        margin-top: 0;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .project-marker-halo,
-    .project-marker-dot,
-    .project-marker-label-bg,
-    .project-marker-label,
     .projects-location-button {
         transition: none;
     }

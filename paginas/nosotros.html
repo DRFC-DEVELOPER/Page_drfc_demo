@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/paginas/index/cta.css">
+  <link rel="stylesheet" href="../assets/css/paginas/hero-iso.css">
   <script>
     window.tailwind = window.tailwind || {};
     window.tailwind.config = {
@@ -386,7 +387,7 @@
       margin: 0;
       padding: clamp(5rem, 10vh, 8rem) var(--page-content-gutter, clamp(1.5rem, 6vw, 7rem));
       overflow: hidden;
-      background: #102b3a url("../assets/img/encabezados/FOTO1.jpg") center 44% / cover no-repeat;
+      background: #102b3a url("../assets/img/encabezados/filosofia.jpg") center 44% / cover no-repeat;
     }
 
     .nosotros-page .section-container::before {
@@ -543,7 +544,7 @@
 
     .valores-slider-section {
       min-height: clamp(44rem, 88svh, 60rem) !important;
-      padding: clamp(3rem, 6vw, 5.5rem) var(--page-content-gutter, clamp(1.5rem, 5vw, 6rem));
+      padding: clamp(3rem, 6vw, 5.5rem) clamp(1rem, 2.5vw, 2.5rem);
       background: #263b49;
       color: #ffffff;
       font-family: Inter, sans-serif;
@@ -554,9 +555,9 @@
     }
 
     .valores-slider-section .glass-panel {
-      width: min(1400px, 100%);
-      max-width: 1400px;
-      padding: clamp(1.5rem, 3.5vw, 3rem);
+      width: min(1500px, 100%);
+      max-width: 1500px;
+      padding: clamp(2rem, 3.5vw, 3.5rem);
       border: 1px solid #d4dfe5;
       border-radius: 8px;
       background: #f7f9fa;
@@ -688,7 +689,8 @@
       </svg>
     </div>
 
-    <section class="mission-vision-section" aria-label="Misión y visión">
+    <section id="mision-vision-section" class="mission-vision-section" aria-label="Misión y visión">
+      <img class="page-content-iso-badge" src="../assets/img/certificaciones/Logo%20ISO%20Definitivo.png" alt="Certificación ISO 9001:2015">
       <div class="page-container">
         <div class="cards-content">
           <article class="card mission-card">
@@ -745,8 +747,8 @@
             <div class="w-16 h-1 bg-gradient-to-r from-white/80 to-transparent rounded-full mt-2"></div>
           </div>
 
-          <div class="w-full lg:w-[50%] overflow-hidden py-4 order-3 no-scrollbar">
-            <div id="cardsTrack" class="flex items-center gap-5 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]">
+          <div class="w-full lg:w-[55%] overflow-hidden py-4 order-3 no-scrollbar">
+            <div id="cardsTrack" class="flex items-center gap-5 transition-transform duration-400 ease-[cubic-bezier(0.25,1,0.5,1)]">
               <button type="button" data-slide-index="0" class="card-item glass-card rounded-2xl p-6 shrink-0 cursor-pointer text-left transition-all duration-500 flex flex-col justify-between group">
                 <img class="card-photo" src="../assets/img/fotos/certificaciones_normatividad.png" alt="" aria-hidden="true"><span class="card-photo-overlay" aria-hidden="true"></span><span class="text-xs font-semibold text-white tracking-wider">01</span><div><h3 class="text-xl font-bold text-white mb-1">Integridad</h3><p class="text-xs text-white/85">Honestidad, transparencia y congruencia en cada decisión.</p></div>
               </button>
@@ -824,11 +826,11 @@
           card.classList.toggle('scale-105', isActive);
           const isMobile = window.innerWidth < 640;
           card.style.width = isActive
-            ? (isMobile ? '240px' : '300px')
-            : (isMobile ? '210px' : '250px');
+            ? (isMobile ? '250px' : '340px')
+            : (isMobile ? '220px' : '280px');
           card.style.height = isActive
-            ? (isMobile ? '340px' : '380px')
-            : (isMobile ? '295px' : '330px');
+            ? (isMobile ? '350px' : '430px')
+            : (isMobile ? '305px' : '360px');
         });
 
         const activeCard = cards[currentIndex];
@@ -865,7 +867,7 @@
         window.clearInterval(autoPlayTimer);
         autoPlayTimer = window.setInterval(() => {
           goToSlide((currentIndex + 1) % valores.length);
-        }, 5000);
+        }, 4000);
       }
 
       section.querySelectorAll('[data-slide-index]').forEach((control) => {

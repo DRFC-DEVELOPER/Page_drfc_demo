@@ -1,0 +1,95 @@
+.service-carousel-hero {
+  height: clamp(30rem, 42vw, 42rem);
+  isolation: isolate;
+}
+
+.service-carousel-hero-shade {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(6, 29, 43, .88) 0%, rgba(6, 29, 43, .66) 48%, rgba(6, 29, 43, .12) 100%),
+    linear-gradient(0deg, rgba(6, 29, 43, .3), transparent 55%);
+  pointer-events: none;
+}
+
+.service-carousel-hero-content {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  padding: clamp(2rem, 7vw, 6.5rem);
+  color: #fff;
+  pointer-events: none;
+}
+
+.service-carousel-hero-copy {
+  position: relative;
+  width: min(100%, 72rem);
+}
+
+.service-carousel-hero-copy .construction-capacity {
+  top: 0;
+  right: 0;
+}
+
+.service-carousel-hero-copy .construction-hero-content {
+  max-width: 68%;
+}
+
+.service-carousel-hero-copy .construction-hero-content > p:last-child {
+  color: #e0e9ed;
+}
+
+.service-carousel-hero-content .infrastructure-hero-content {
+  max-width: 58rem;
+}
+
+.service-carousel-hero-content .infrastructure-hero-title {
+  color: #fff;
+}
+
+.service-carousel-hero-content .infrastructure-hero-content > p:last-child {
+  color: #e0e9ed;
+}
+
+.service-carousel-hero-content .active-maintenance-hero-content {
+  max-width: 58rem;
+}
+
+.service-carousel-hero-content .active-maintenance-eyebrow {
+  color: #b9d5e1;
+}
+
+.service-carousel-hero-content .active-maintenance-title {
+  color: #fff;
+}
+
+@media (max-width: 767px) {
+  .service-carousel-hero {
+    height: clamp(32rem, 105vw, 40rem);
+  }
+
+  .service-carousel-hero-content {
+    padding: 1.5rem;
+  }
+
+  .service-carousel-hero-copy .construction-hero-content {
+    max-width: 100%;
+  }
+
+  .service-carousel-hero-copy .construction-capacity {
+    position: static;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  .service-carousel-hero-content .construction-hero-title {
+    font-size: clamp(2.25rem, 10vw, 4rem);
+  }
+
+  .service-carousel-hero-content .active-maintenance-title {
+    font-size: clamp(2.25rem, 10vw, 4rem);
+  }
+}

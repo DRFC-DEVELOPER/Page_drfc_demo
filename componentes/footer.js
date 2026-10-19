@@ -16,9 +16,9 @@
     lema: "Soluciones Integrales en Telecomunicaciones.",
     enlaces: [
       { texto: "Inicio", url: "index.html" },
-      { texto: "Proyectos", url: "#" },
-      { texto: "Servicios", url: "#" },
-      { texto: "Acerca de nosotros", url: "#" },
+      { texto: "Proyectos", url: "paginas/proyectos.html" },
+      { texto: "Servicios", url: "paginas/servicios.html" },
+      { texto: "Acerca de nosotros", url: "paginas/nosotros.html" },
       { texto: "Bolsa de Trabajo", url: "#" },
       { texto: "Contacto", url: "paginas/contacto.html" }
     ],

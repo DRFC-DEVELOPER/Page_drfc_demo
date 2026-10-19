@@ -9,26 +9,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/paginas/mantenimiento-red-activa.css">
+    <link rel="stylesheet" href="../assets/css/paginas/hero-iso.css">
+    <link rel="stylesheet" href="../assets/css/paginas/service-carousel-hero.css">
     <link rel="stylesheet" href="../assets/css/paginas/index/cta.css">
+    <link rel="stylesheet" href="../assets/css/paginas/service-typography.css">
 </head>
 <body>
     <script src="../componentes/menu.js"></script>
 
     <main>
-        <header class="active-maintenance-hero">
-            <div class="active-maintenance-hero-content">
-                <p class="active-maintenance-eyebrow active-maintenance-eyebrow--dark">
-                    <img src="../assets/img/marca/Ícono DRFC.png" alt="">
-                    <span>MONITOREO Y REPARACIÓN 24/7</span>
-                </p>
-                <h1 class="active-maintenance-title">Mantenimiento<br>a la red activa</h1>
-                <p class="active-maintenance-hero-description">
-                    Atendemos servicios de mantenimiento de redes HFC y FTTX las 24 horas, los 7 días de la semana los 365 días del año.
-                </p>
-            </div>
-        </header>
-
-        <section class="active-maintenance-carousel" id="activeMaintenanceCarousel" role="region" aria-label="Galería de mantenimiento a la red activa" aria-roledescription="carrusel">
+        <section class="active-maintenance-carousel service-carousel-hero" id="activeMaintenanceCarousel" role="region" aria-label="Galería de mantenimiento a la red activa" aria-roledescription="carrusel">
             <div class="active-maintenance-slide is-active" data-active-maintenance-slide aria-hidden="false">
                 <img src="../assets/img/servicios/CMtto3.png" alt="Técnicos realizando mantenimiento en una red aérea">
             </div>
@@ -41,7 +31,20 @@
                         <div class="active-maintenance-slide" data-active-maintenance-slide aria-hidden="true">
                 <img src="../assets/img/servicios/CMtto8.png" alt="Técnico realizando mantenimiento en una línea de telecomunicaciones">
             </div>
-            <svg class="active-maintenance-fiber-overlay" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                        <div class="service-carousel-hero-shade" aria-hidden="true"></div>
+                        <div class="service-carousel-hero-content">
+                            <div class="active-maintenance-hero-content">
+                                <p class="active-maintenance-eyebrow active-maintenance-eyebrow--dark">
+                                    <img src="../assets/img/marca/Ícono DRFC.png" alt="">
+                                    <span>MONITOREO Y REPARACIÓN 24/7</span>
+                                </p>
+                                <h1 class="active-maintenance-title">Mantenimiento<br>a la red activa</h1>
+                                <p class="active-maintenance-hero-description">
+                                    Atendemos servicios de mantenimiento de redes HFC y FTTX las 24 horas, los 7 días de la semana los 365 días del año.
+                                </p>
+                            </div>
+                        </div>
+                        <svg class="active-maintenance-fiber-overlay" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                 <path class="active-maintenance-fiber-path" d="M-50 250 Q350 62.5 700 250 T1450 250"/>
                 <path class="active-maintenance-fiber-path-accent" id="activeMaintenanceFiberPath" d="M-50 187.5 C400 312.5 800 62.5 1500 281.25"/>
                 <circle class="active-maintenance-fiber-pulse" r="6">
@@ -65,6 +68,7 @@
         </div>
 
         <section class="active-maintenance-intro" aria-labelledby="active-maintenance-intro-title">
+            <img class="page-content-iso-badge" src="../assets/img/certificaciones/Logo%20ISO%20Definitivo.png" alt="Certificación ISO 9001:2015">
             <div class="active-maintenance-intro-content">
                 <p class="active-maintenance-eyebrow">
                     <img src="../assets/img/marca/Ícono DRFC.png" alt="">
@@ -86,7 +90,7 @@
                         <span class="active-maintenance-point-number" aria-hidden="true">02</span>
                         <div>
                             <h3>Emergencias y programadas</h3>
-                            <p>Atención de fallas FTTX y HFC, urgentes o programadas, con respuesta rápida y seguimiento de las actividades de mantenimiento.</p>
+                            <p>Atención de fallas FTTX y HFC, urgentes o programadas, con respuesta inmediata y seguimiento de las actividades de mantenimiento.</p>
                         </div>
                     </article>
                 </div>

@@ -138,7 +138,7 @@
 
       <!-- Right Side: Interactive Glass Cards Carousel -->
       <div class="w-full lg:w-[50%] overflow-hidden py-4 order-3 no-scrollbar">
-        <div id="cardsTrack" class="flex items-center gap-5 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]">
+        <div id="cardsTrack" class="flex items-center gap-5 transition-transform duration-300 ease-[cubic-bezier(0.25,1,0.5,1)]">
 
           <!-- Card 1 -->
           <div onclick="goToSlide(0)" class="card-item glass-card rounded-2xl p-6 shrink-0 cursor-pointer transition-all duration-500 flex flex-col justify-between group">
@@ -331,7 +331,7 @@
       autoPlayTimer = setInterval(() => {
         currentIndex = (currentIndex + 1) % valores.length;
         goToSlide(currentIndex);
-      }, 5000);
+      }, 3000);
     }
 
     function resetAutoPlay() {

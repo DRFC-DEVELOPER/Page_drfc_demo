@@ -15,19 +15,24 @@
     contacto: "paginas/contacto.html",
     enlaces: [
       { texto: "Inicio", url: "index.html" },
-      { texto: "Proyectos", url: "#" },
+      { texto: "Proyectos", url: "paginas/proyectos.html" },
       {
-        texto: "Servicios",
-        // Cuando tengas la página de un servicio, cambia su "#" por la ruta.
+        texto: "Servicios", url: "paginas/servicios.html",
         submenu: [
           { texto: "Ingeniería y diseño de red", url: "paginas/ingenieria-y-diseno.html" },
           { texto: "Construcción de red", url: "paginas/construccion-de-red.html" },
           { texto: "Infraestructura Crítica", url: "paginas/infraestructura-y-obra-civil.html", nuevaVentana: "_top" },
           { texto: "Mantenimiento de Red Activa", url: "paginas/mantenimiento-red-activa.html", nuevaVentana: "_top" },
-          { texto: "Acometidas", url: "#" }
+          { texto: "Acometidas", url: "paginas/acometidas.html" }
         ]
       },
-      { texto: "Acerca de Nosotros", url: "paginas/nosotros.html" },
+      {
+        texto: "Acerca de Nosotros", url: "paginas/nosotros.html",
+        submenu: [
+          { texto: "Misión, Visión y Valores", url: "paginas/nosotros.html#mision-vision-section" },
+          { texto: "Cultura Empresarial", url: "paginas/cultura_empresarial.html" }
+        ]
+      },
       { texto: "Bolsa de Trabajo", url: "#" }
     ]
   };
@@ -55,7 +60,12 @@
   .drfc-header-links{display:flex;align-items:center;justify-content:center;gap:clamp(12px,1.5vw,36px);list-style:none;padding:0}
   .drfc-header-links li{position:relative}
   .drfc-header-links a,.drfc-services-trigger{display:flex;align-items:center;gap:4px;padding:0;border:0;background:transparent;color:#333;font-weight:500;font-size:clamp(1rem,1vw,1.375rem);font-family:inherit;white-space:nowrap;cursor:pointer}
+  .drfc-services-menu{display:flex;align-items:center}
+  .drfc-services-menu>.drfc-services-link{display:flex;align-items:center;color:#333;font-weight:500;font-size:clamp(1rem,1vw,1.375rem);white-space:nowrap}
+  .drfc-services-trigger{justify-content:center;width:24px;height:36px}
+  .drfc-services-trigger .drfc-dropdown-arrow{width:10px;height:10px}
   .drfc-header-links a:hover,.drfc-services-trigger:hover,.drfc-services-trigger:focus-visible{color:#003e58}
+  .drfc-services-menu>.drfc-services-link:hover,.drfc-services-menu>.drfc-services-link:focus-visible{color:#003e58}
   .drfc-header-links a.is-active{text-decoration:underline;text-underline-offset:4px}
   .drfc-services-trigger:focus-visible,.drfc-contact:focus-visible{outline:2px solid #318bb1;outline-offset:4px}
   .drfc-dropdown-arrow{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;transition:transform 160ms ease}
@@ -83,7 +93,10 @@
     .drfc-header.is-menu-open nav{display:block}
     .drfc-header-links{flex-direction:column;align-items:stretch;gap:0;padding:.25rem clamp(1rem,4vw,2rem) 1rem}
     .drfc-header-links>li{border-bottom:1px solid #eef2f5}
-    .drfc-header-links a,.drfc-services-trigger{justify-content:space-between;width:100%;min-height:48px;padding:.75rem 0;font-size:1rem;white-space:normal;text-align:left}
+    .drfc-header-links a,.drfc-services-menu>.drfc-services-link{justify-content:space-between;min-height:48px;padding:.75rem 0;font-size:1rem;white-space:normal;text-align:left}
+    .drfc-header-links .drfc-services-menu{flex-wrap:wrap}
+    .drfc-header-links .drfc-services-menu>.drfc-services-link{flex:1}
+    .drfc-header-links .drfc-services-trigger{width:48px;height:48px;flex:0 0 48px;padding:0}
     .drfc-services-submenu{position:static;width:auto;min-width:0;max-width:none;margin:0 0 .75rem;padding:0 0 0 .75rem;border:0;border-left:2px solid #dbe5eb;border-radius:0;background:transparent;box-shadow:none;transform:none}
     .drfc-services-submenu a{display:flex;align-items:center;min-height:44px;padding:.5rem .75rem}
   }
@@ -93,13 +106,15 @@
   /* ---------- 4. HTML del menú ---------- */
   const flecha = '<svg class="drfc-dropdown-arrow" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>';
 
-  const items = CONFIG.enlaces.map((e) => {
+  const items = CONFIG.enlaces.map((e, index) => {
     if (e.submenu) {
+      const submenuId = `drfc-services-submenu-${index}`;
       const sub = e.submenu.map((s) =>
         `<li><a href="${ruta(s.url)}"${s.nuevaVentana ? ` target="${s.nuevaVentana}"` : ""}${esActual(s.url) ? ' class="is-active"' : ""}>${s.texto}</a></li>`).join("");
       return `<li class="drfc-services-menu">
-        <button class="drfc-services-trigger" type="button" aria-expanded="false" aria-controls="drfc-services-submenu">${e.texto} ${flecha}</button>
-        <ul class="drfc-services-submenu" id="drfc-services-submenu" aria-label="${e.texto}">${sub}</ul>
+        <a class="drfc-services-link${esActual(e.url) ? " is-active" : ""}" href="${ruta(e.url)}">${e.texto}</a>
+        <button class="drfc-services-trigger" type="button" aria-label="Mostrar submenú de ${e.texto}" aria-expanded="false" aria-controls="${submenuId}">${flecha}</button>
+        <ul class="drfc-services-submenu" id="${submenuId}" aria-label="${e.texto}">${sub}</ul>
       </li>`;
     }
     return `<li><a href="${ruta(e.url)}"${e.nuevaVentana ? ` target="${e.nuevaVentana}"` : ""}${esActual(e.url) ? ' class="is-active"' : ""}>${e.texto}</a></li>`;
@@ -127,17 +142,34 @@
   script.insertAdjacentHTML("beforebegin", html);
 
   /* ---------- 5. Comportamiento ---------- */
-  const menu = document.querySelector(".drfc-services-menu");
-  if (menu) {
+  const header = script.previousElementSibling;
+  const menus = header.querySelectorAll(".drfc-services-menu");
+  menus.forEach((menu) => {
     const boton = menu.querySelector(".drfc-services-trigger");
     const abrir = (si) => { menu.classList.toggle("is-open", si); boton.setAttribute("aria-expanded", si); };
-    boton.addEventListener("click", (ev) => { ev.stopPropagation(); abrir(!menu.classList.contains("is-open")); });
-    document.addEventListener("click", (ev) => { if (!menu.contains(ev.target)) abrir(false); });
-    document.addEventListener("keydown", (ev) => { if (ev.key === "Escape") { abrir(false); boton.focus(); } });
-  }
+    boton.addEventListener("click", (ev) => {
+      ev.stopPropagation();
+      const estabaAbierto = menu.classList.contains("is-open");
+      menus.forEach((otroMenu) => {
+        otroMenu.classList.remove("is-open");
+        otroMenu.querySelector(".drfc-services-trigger").setAttribute("aria-expanded", "false");
+      });
+      if (!estabaAbierto) abrir(true);
+    });
+    document.addEventListener("keydown", (ev) => {
+      if (ev.key === "Escape" && menu.classList.contains("is-open")) { abrir(false); boton.focus(); }
+    });
+  });
+  document.addEventListener("click", (ev) => {
+    menus.forEach((menu) => {
+      if (!menu.contains(ev.target)) {
+        menu.classList.remove("is-open");
+        menu.querySelector(".drfc-services-trigger").setAttribute("aria-expanded", "false");
+      }
+    });
+  });
 
   // Menú hamburguesa (solo visible en tablet y teléfono)
-  const header = script.previousElementSibling; // el <header class="drfc-header">
   const hamburguesa = header.querySelector(".drfc-menu-toggle");
   const abrirMenu = (si) => {
     header.classList.toggle("is-menu-open", si);

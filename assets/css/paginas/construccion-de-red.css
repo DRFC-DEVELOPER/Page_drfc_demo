@@ -352,20 +352,19 @@ body {
 
 .construction-proof-list {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: clamp(0.65rem, 1vw, 1rem);
     padding: clamp(0.75rem, 1.5vw, 1.25rem) !important;
     border: 1px solid #d6e0e5 !important;
     border-radius: 8px !important;
     background: linear-gradient(145deg, #edf2f4, #e4ebee) !important;
     box-shadow: 0 10px 24px rgba(0, 62, 88, 0.08) !important;
-    counter-reset: construction-proof;
 }
 
 .construction-proof-list > .flex {
     display: flex;
     min-width: 0;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.85rem;
     margin: 0 !important;
     padding: 1rem;
@@ -373,7 +372,6 @@ body {
     border-left: 3px solid #318bb1;
     border-radius: 6px;
     background: #ffffff;
-    counter-increment: construction-proof;
     transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
@@ -383,11 +381,8 @@ body {
     transform: translateY(-2px);
 }
 
-.construction-proof-list > .flex:nth-child(5) {
-    grid-column: 1 / -1;
-}
-
 .construction-proof-list > .flex > span:first-child {
+    position: relative;
     display: grid;
     width: 2.2rem;
     height: 2.2rem;
@@ -402,11 +397,15 @@ body {
 }
 
 .construction-proof-list > .flex > span:first-child::before {
-    color: #17465b;
-    content: counter(construction-proof, decimal-leading-zero);
-    font-size: 0.75rem;
-    font-weight: 800;
-    line-height: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.65rem;
+    height: 0.35rem;
+    border-bottom: 2px solid #17465b;
+    border-left: 2px solid #17465b;
+    content: "";
+    transform: translate(-50%, -65%) rotate(-45deg);
 }
 
 .construction-proof-list > .flex > div {
@@ -428,19 +427,18 @@ body {
 }
 
 .deployment-grid {
-    align-items: center;
+    align-items: stretch;
 }
 
 .deployment-image-column {
     min-width: 0;
-    align-self: center;
+    align-self: stretch;
 }
 
 .deployment-image-frame {
     width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;
-    max-height: 38rem;
+    height: 100%;
+    aspect-ratio: auto;
     min-height: 0;
 }
 
@@ -452,6 +450,11 @@ body {
 }
 
 @media (max-width: 767px) {
+    .deployment-image-frame {
+        height: auto;
+        aspect-ratio: 4 / 3;
+    }
+
     .construction-proof-list {
         grid-template-columns: minmax(0, 1fr);
     }

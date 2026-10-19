@@ -12,6 +12,8 @@
     
     <script src="../assets/js/config/tailwind.config.js"></script>
     <link rel="stylesheet" href="../assets/css/paginas/construccion-de-red.css">
+    <link rel="stylesheet" href="../assets/css/paginas/service-carousel-hero.css">
+    <link rel="stylesheet" href="../assets/css/paginas/service-typography.css">
 </head>
 <body class="antialiased min-h-screen">
 
@@ -21,36 +23,8 @@
     <!-- Main Wrapper Container -->
     <main class="w-full min-h-screen mx-0 bg-white overflow-hidden">
 
-        <!-- HEADER / TOP HERO BANNER -->
-        <header class="bg-brand-dark text-white px-6 pt-10 pb-8 md:px-12 md:pt-14 md:pb-10 relative overflow-hidden">
-            <!-- Background Subtle Geometric Accent -->
-            <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-brand-navy rounded-full opacity-30 blur-2xl pointer-events-none"></div>
-            
-            <div class="relative z-10">
-                <div class="construction-capacity" aria-label="Capacidad de 800 kilómetros de construcción mensual">
-                    <p class="construction-capacity-label">Capacidad de</p>
-                    <span class="construction-capacity-number" data-capacity-counter>0</span>
-                    <span class="construction-capacity-unit">Km de Construcción Mensual</span>
-                </div>
-                <div class="construction-hero-content">
-                    <div class="mb-3">
-                        <p class="section-eyebrow section-eyebrow--dark">
-                            <img src="../assets/img/marca/Ícono DRFC.png" alt="">
-                            <span>FIBRA ÓPTICA Y HFC, AÉREA Y SUBTERRÁNEA</span>
-                        </p>
-                    </div>
-                    <h1 class="construction-hero-title tracking-tight leading-tight uppercase">
-                        CONSTRUCCIÓN<br/>DE RED
-                    </h1>
-                    <p class="text-xs md:text-sm text-gray-300 max-w-2xl font-light leading-relaxed">
-                        Construcción e implementación de infraestructura de redes (aérea y subterránea), despliegue, ampliación y modernización de fibra óptica y HFC.
-                    </p>
-                </div>
-            </div>
-        </header>
-
-        <!-- FULL WIDTH HERO BANNER IMAGE -->
-        <div class="construction-cover w-full overflow-hidden bg-gray-900" id="constructionCarousel" role="region" aria-label="Galería de construcción de redes" aria-roledescription="carrusel">
+        <!-- HERO CON CARRUSEL Y TEXTO SUPERPUESTO -->
+        <div class="construction-cover service-carousel-hero w-full overflow-hidden bg-gray-900" id="constructionCarousel" role="region" aria-label="Galería de construcción de redes" aria-roledescription="carrusel">
             <div class="construction-carousel-slide is-active" data-carousel-slide aria-hidden="false">
                 <img src="../assets/img/encabezados/PortadaCons1.png" alt="Cuadrilla trabajando en infraestructura de telecomunicaciones" class="img-color">
             </div>
@@ -64,9 +38,30 @@
                 <img src="../assets/img/encabezados/3.jpeg" alt="Trabajo de construcción de redes, imagen 3" class="img-color">
             </div>
             <div class="construction-carousel-slide" data-carousel-slide aria-hidden="true">
-                <img src="../assets/img/encabezados/2.jpeg" alt="Trabajo de construcción de redes, imagen 4" class="img-color">
+                <img src="../assets/img/encabezados/2.jpg" alt="Trabajo de construcción de redes, imagen 4" class="img-color">
             </div>
-
+            <div class="service-carousel-hero-shade" aria-hidden="true"></div>
+            <div class="service-carousel-hero-content">
+                <div class="service-carousel-hero-copy">
+                    <div class="construction-capacity" aria-label="Capacidad de 800 kilómetros de construcción mensual">
+                        <p class="construction-capacity-label">Capacidad de</p>
+                        <span class="construction-capacity-number" data-capacity-counter>0</span>
+                        <span class="construction-capacity-unit">Km de Construcción Mensual</span>
+                    </div>
+                    <div class="construction-hero-content">
+                        <p class="section-eyebrow section-eyebrow--dark">
+                            <img src="../assets/img/marca/Ícono DRFC.png" alt="">
+                            <span>FIBRA ÓPTICA Y HFC, AÉREA Y SUBTERRÁNEA</span>
+                        </p>
+                        <h1 class="construction-hero-title tracking-tight leading-tight">
+                            Construcción<br/>de red
+                        </h1>
+                        <p class="text-xs md:text-sm text-gray-300 max-w-2xl font-light leading-relaxed">
+                            Construcción e implementación de infraestructura de redes (aérea y subterránea), despliegue, ampliación y modernización de fibra óptica y HFC.
+                        </p>
+                    </div>
+                </div>
+            </div>
             <svg class="construction-fiber-overlay" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                 <path class="construction-fiber-path" d="M-50 250 Q350 62.5 700 250 T1450 250"/>
                 <path class="construction-fiber-path-accent" id="constructionFiberPath" d="M-50 187.5 C400 312.5 800 62.5 1500 281.25"/>
@@ -204,9 +199,9 @@
                 </div>
                 
                 <div class="relative z-10 pt-6">
-                    <button onclick="scrollToServices()" class="inline-block border-2 border-white hover:bg-white hover:text-brand-dark transition duration-300 text-white text-[11px] font-bold tracking-wider py-3 px-6 rounded-full text-center uppercase shadow-sm">
+                    <a href="servicios.html" class="inline-block border-2 border-white hover:bg-white hover:text-brand-dark transition duration-300 text-white text-[11px] font-bold tracking-wider py-3 px-6 rounded-full text-center uppercase shadow-sm">
                         VER TODOS LOS SERVICIOS
-                    </button>
+                    </a>
                 </div>
 
                 <!-- Decorative corner glow -->
@@ -314,7 +309,7 @@
                     <span class="construction-fiber-cta-connector"></span>
                 </div>
                 <p class="construction-fiber-cta-description">En DRFC estamos comprometidos con entregar calidad en cada uno de nuestros trabajos</p>
-                <a class="construction-fiber-cta-contact" href="mailto:contacto@drfc.com.mx">
+                <a class="construction-fiber-cta-contact" href="contacto.html">
                     Contacto
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M5 12h14"></path>

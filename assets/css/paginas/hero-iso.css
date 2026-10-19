@@ -1,0 +1,24 @@
+.page-content-iso-badge {
+  position: absolute;
+  top: 0;
+  right: clamp(1.5rem, 5vw, 4rem);
+  z-index: 5;
+  width: clamp(7rem, 14vw, 12rem);
+  height: auto;
+  transform: translateY(-50%);
+}
+
+.active-maintenance-intro,
+.mission-vision-section,
+.projects-explorer,
+.services-context {
+  position: relative;
+}
+
+.projects-explorer {
+  padding-top: clamp(6rem, 8vw, 7rem);
+}
+
+.services-context {
+  padding-top: clamp(5rem, 8vw, 7rem);
+}

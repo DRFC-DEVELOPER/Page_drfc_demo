@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explora en el mapa las ubicaciones de los proyectos realizados por DRFC Ingeniería en México.">
+    <meta name="description" content="Consulta los estados, ciudades y tipos de proyecto en los que ha trabajado DRFC Ingeniería en México.">
     <title>Proyectos en México - DRFC Ingeniería</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/paginas/proyectos.css">
+    <link rel="stylesheet" href="../assets/css/paginas/hero-iso.css">
     <link rel="stylesheet" href="../assets/css/paginas/index/cta.css">
 </head>
 <body class="projects-page">
@@ -30,33 +31,17 @@
             </div>
         </section>
 
-        <section class="projects-explorer" aria-labelledby="projects-map-title">
+        <section class="projects-explorer" aria-labelledby="projects-locations-title">
+            <img class="page-content-iso-badge" src="../assets/img/certificaciones/Logo%20ISO%20Definitivo.png" alt="Certificación ISO 9001:2015">
             <div class="projects-explorer-heading">
                 <div>
                     <p class="projects-kicker">Nuestra experiencia</p>
-                    <h2 id="projects-map-title">Presencia en México</h2>
+                    <h2 id="projects-locations-title">Presencia en México</h2>
                 </div>
-                <p class="projects-map-hint"><span aria-hidden="true"></span> Selecciona un indicador para ver sus proyectos</p>
+                <p class="projects-location-hint"><span aria-hidden="true"></span> Selecciona un estado para ver sus proyectos</p>
             </div>
 
             <div class="projects-explorer-layout">
-                <div class="projects-map-panel">
-                    <div class="projects-map-topline">
-                        <span class="projects-map-label">Mapa de proyectos</span>
-                        <span class="projects-map-region">México</span>
-                    </div>
-                    <div class="projects-map-canvas">
-                        <svg class="projects-map" viewBox="0 0 1920 1080" role="group" aria-label="Mapa interactivo de ubicaciones de proyectos en México">
-                            <image href="../assets/img/fotos/MapaMexico.png" x="0" y="0" width="1920" height="1080" aria-hidden="true"/>
-                            <g class="projects-map-markers" id="project-map-markers"></g>
-                        </svg>
-                    </div>
-                    <div class="projects-map-footer">
-                        <span class="projects-map-legend"><span aria-hidden="true"></span> Estado con proyectos</span>
-                        <span class="projects-map-scale">Cobertura nacional</span>
-                    </div>
-                </div>
-
                 <aside class="projects-location-panel" aria-labelledby="projects-location-title">
                     <div class="projects-location-panel-heading">
                         <p class="projects-kicker">Explora por ubicación</p>
@@ -76,7 +61,7 @@
                     </article>
                 </aside>
             </div>
-            <p class="projects-map-disclaimer">Los indicadores representan estados; la tarjeta muestra las ciudades y los tipos de proyecto reportados.</p>
+            <p class="projects-location-note">Selecciona un estado para consultar las ciudades y los tipos de proyecto reportados.</p>
         </section>
     </main>
 

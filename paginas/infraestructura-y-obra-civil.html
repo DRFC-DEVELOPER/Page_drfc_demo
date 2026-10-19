@@ -11,28 +11,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="../assets/js/config/tailwind-infraestructura.config.js"></script>
     <link rel="stylesheet" href="../assets/css/paginas/infraestructura-y-obra-civil.css">
+    <link rel="stylesheet" href="../assets/css/paginas/hero-iso.css">
+    <link rel="stylesheet" href="../assets/css/paginas/service-carousel-hero.css">
     <link rel="stylesheet" href="../assets/css/paginas/index/cta.css">
+    <link rel="stylesheet" href="../assets/css/paginas/service-typography.css">
 </head>
 <body class="bg-white">
     <script src="../componentes/menu.js"></script>
 
     <main>
-        <header class="infrastructure-hero bg-brand-dark text-white">
-            <div class="pointer-events-none absolute -right-12 -bottom-12 h-64 w-64 rounded-full bg-brand-navy opacity-40 blur-2xl"></div>
-            <div class="infrastructure-hero-content">
-                <p class="infrastructure-section-eyebrow infrastructure-section-eyebrow--dark">
-                    <img src="../assets/img/marca/Ícono DRFC.png" alt="">
-                    <span>Energía crítica, obra civil y telecomunicaciones</span>
-                </p>
-                <h1 class="infrastructure-hero-title tracking-tight uppercase">Infraestructura<br>Crítica</h1>
-                <p class="max-w-3xl text-xs font-light leading-relaxed text-gray-200 md:text-sm">
-                    Un solo proveedor integral: servicios eléctricos, civiles y de telecomunicaciones bajo una misma responsabilidad.
-                </p>
-            </div>
-        </header>
-
         <!-- Carrusel principal de infraestructura -->
-        <section class="infrastructure-carousel" id="infrastructureCarousel" role="region" aria-label="Galería de infraestructura y obra civil" aria-roledescription="carrusel">
+        <section class="infrastructure-carousel service-carousel-hero" id="infrastructureCarousel" role="region" aria-label="Galería de infraestructura y obra civil" aria-roledescription="carrusel">
             <div class="infrastructure-carousel-slide is-active" data-infrastructure-slide aria-hidden="false">
                 <img src="../assets/img/encabezados/CInfra.png" alt="Técnicos realizando trabajos en infraestructura de telecomunicaciones">
             </div>
@@ -48,7 +37,19 @@
             <div class="infrastructure-carousel-slide" data-infrastructure-slide aria-hidden="true">
                 <img src="../assets/img/encabezados/CInfra5.jpg" alt="Infraestructura para servicios móviles">
             </div>
-
+            <div class="service-carousel-hero-shade" aria-hidden="true"></div>
+            <div class="service-carousel-hero-content">
+                <div class="infrastructure-hero-content">
+                    <p class="infrastructure-section-eyebrow infrastructure-section-eyebrow--dark">
+                        <img src="../assets/img/marca/Ícono DRFC.png" alt="">
+                        <span>Energía crítica, obra civil y telecomunicaciones</span>
+                    </p>
+                    <h1 class="infrastructure-hero-title tracking-tight">Infraestructura<br>crítica</h1>
+                    <p class="max-w-3xl text-xs font-light leading-relaxed text-gray-200 md:text-sm">
+                        Un solo proveedor integral: servicios eléctricos, civiles y de telecomunicaciones bajo una misma responsabilidad.
+                    </p>
+                </div>
+            </div>
             <svg class="infrastructure-fiber-overlay" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                 <path class="infrastructure-fiber-path" d="M-50 250 Q350 62.5 700 250 T1450 250"/>
                 <path class="infrastructure-fiber-path-accent" id="infrastructureFiberPath" d="M-50 187.5 C400 312.5 800 62.5 1500 281.25"/>
@@ -73,6 +74,7 @@
         </div>
 
         <section class="infrastructure-intro" aria-labelledby="infrastructure-intro-title">
+            <img class="page-content-iso-badge" src="../assets/img/certificaciones/Logo%20ISO%20Definitivo.png" alt="Certificación ISO 9001:2015">
             <div class="infrastructure-intro-content">
                 <p class="infrastructure-section-eyebrow">
                     <img src="../assets/img/marca/Ícono DRFC.png" alt="">
@@ -120,7 +122,7 @@
                     <span>Servicios específicos</span>
                 </p>
                 <h2 class="infrastructure-section-title" id="infrastructure-services-title">Alcance del servicio</h2>
-                <a href="contacto.html" class="inline-flex rounded-full bg-white px-7 py-2 text-xs font-semibold uppercase text-brand-navy transition hover:bg-slate-100">
+                <a href="servicios.html" class="inline-flex rounded-full bg-white px-7 py-2 text-xs font-semibold uppercase text-brand-navy transition hover:bg-slate-100">
                     Ver todos los servicios
                 </a>
             </div>

@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
 
-    const AUTOPLAY_DELAY = 6000; // 6 segundos
+    const AUTOPLAY_DELAY = 4000; // 4 segundos
     let currentIndex = 0;
     let autoplayTimer = null;
     let touchStartX = 0;

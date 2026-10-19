@@ -1,0 +1,85 @@
+:root {
+  --service-hero-title-size: clamp(3rem, 6vw, 5.25rem);
+  --service-section-title-size: clamp(1.75rem, 3vw, 2.75rem);
+  --service-card-title-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  --service-eyebrow-size: 0.75rem;
+  --service-body-size: clamp(1rem, 1.15vw, 1.125rem);
+}
+
+.construction-hero-title,
+.infrastructure-hero-title,
+.active-maintenance-title,
+.services-hero h1,
+.acometidas-hero h1,
+.service-carousel-hero-content .construction-hero-title,
+.service-carousel-hero-content .infrastructure-hero-title,
+.service-carousel-hero-content .active-maintenance-title {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--service-hero-title-size);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+  text-transform: none;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --service-hero-title-size: clamp(2.5rem, 10vw, 3.5rem);
+    --service-section-title-size: clamp(1.6rem, 6vw, 2.25rem);
+    --service-card-title-size: 1.05rem;
+    --service-body-size: 1rem;
+  }
+
+  .service-carousel-hero-content .construction-hero-title,
+  .service-carousel-hero-content .active-maintenance-title {
+    font-size: var(--service-hero-title-size);
+  }
+}
+
+.construction-heading,
+.service-intro-heading,
+.infrastructure-section-title,
+.infrastructure-compliance-title,
+.active-maintenance-section-title,
+.acometidas-intro h2,
+.acometidas-section-heading h2,
+.services-intro h2,
+.services-offerings-heading h2,
+.services-benefits h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--service-section-title-size);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+.section-eyebrow,
+.infrastructure-section-eyebrow,
+.active-maintenance-eyebrow,
+.services-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--service-eyebrow-size);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+}
+
+.construction-hero-content > p:last-child,
+.infrastructure-hero-content > p:last-child,
+.active-maintenance-hero-description,
+.services-hero-content > p:last-child,
+.service-carousel-hero-copy .construction-hero-content > p:last-child,
+.service-carousel-hero-content .infrastructure-hero-content > p:last-child {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--service-body-size);
+  line-height: 1.7;
+}
+
+.acometidas-service-card h3,
+.acometidas-value-card h3,
+.active-maintenance-point h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--service-card-title-size);
+  font-weight: 600;
+  line-height: 1.35;
+}

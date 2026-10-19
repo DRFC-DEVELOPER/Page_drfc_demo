@@ -6,6 +6,7 @@
   }
 
   const logo = new URL("../../img/marca/Ícono DRFC.png", script.src).href;
+  const contactPage = new URL("../../../paginas/contacto.html", script.src).href;
   const html = `
     <section class="fiber-cta" aria-label="Construye tu red con nosotros">
       <div class="fiber-cta-card">
@@ -20,7 +21,7 @@
           <span class="fiber-cta-connector"></span>
         </div>
         <p class="fiber-cta-description">En DRFC estamos comprometidos con entregar calidad en cada uno de nuestros trabajos</p>
-        <a class="fiber-cta-contact" href="mailto:contacto@drfc.com.mx">
+        <a class="fiber-cta-contact" href="${contactPage}">
           Contacto
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M5 12h14"></path>
@@ -44,6 +45,16 @@
   }
 
   const cta = script.previousElementSibling;
+  if (script.hasAttribute("data-description")) {
+    const description = cta?.querySelector(".fiber-cta-description");
+    if (!cta || !description) {
+      throw new Error("No se pudo actualizar la descripción del llamado a la acción.");
+    }
+
+    description.textContent = script.dataset.description;
+    description.hidden = !script.dataset.description;
+  }
+
   const button = cta?.querySelector(".fiber-cta-contact");
   if (!cta || !button) {
     throw new Error("No se pudo inicializar el botón del llamado a la acción.");
@@ -53,7 +64,7 @@
     button.firstChild.textContent = `\n          ${script.dataset.buttonText}\n          `;
   }
 
-  if (script.dataset.buttonHref) {
-    button.href = script.dataset.buttonHref;
-  }
+  button.href = script.dataset.buttonHref
+    ? new URL(script.dataset.buttonHref, location.href).href
+    : contactPage;
 })();

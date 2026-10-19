@@ -12,6 +12,9 @@
     
     <script src="../assets/js/config/tailwind.config.js"></script>
     <link rel="stylesheet" href="../assets/css/paginas/ingenieria-y-diseno.css">
+    <link rel="stylesheet" href="../assets/css/paginas/hero-iso.css">
+    <link rel="stylesheet" href="../assets/css/paginas/service-carousel-hero.css">
+    <link rel="stylesheet" href="../assets/css/paginas/service-typography.css">
 </head>
 <body class="antialiased min-h-screen">
 
@@ -21,37 +24,8 @@
     <!-- Main Wrapper Container -->
     <main class="w-full min-h-screen mx-0 bg-white overflow-hidden">
 
-        <!-- EDITABLE: Actualiza aquí el encabezado, título y descripción del servicio. -->
-        <!-- HEADER / TOP HERO BANNER -->
-        <header class="bg-brand-dark text-white px-6 pt-10 pb-8 md:px-12 md:pt-14 md:pb-10 relative overflow-hidden">
-            <!-- Background Subtle Geometric Accent -->
-            <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-brand-navy rounded-full opacity-30 blur-2xl pointer-events-none"></div>
-            
-            <div class="relative z-10">
-                <div class="construction-capacity" aria-label="Capacidad de 500 kilómetros semanales">
-                    <p class="construction-capacity-label">Capacidad de</p>
-                    <span class="construction-capacity-number" data-capacity-counter>0</span>
-                    <span class="construction-capacity-unit">Km semanales</span>
-                </div>
-                <div class="construction-hero-content">
-                    <div class="mb-3">
-                        <p class="section-eyebrow section-eyebrow--dark">
-                            <img src="../assets/img/marca/Ícono DRFC.png" alt="">
-                            <span>LEVANTAMIENTO, DIGITALIZACIÓN Y DISEÑO</span>
-                        </p>
-                    </div>
-                    <h1 class="construction-hero-title tracking-tight leading-tight uppercase">
-                        INGENIERÍA Y DISEÑO<br/>DE RED HFC Y FTTX
-                    </h1>
-                    <p class="text-xs md:text-sm text-gray-300 max-w-2xl font-light leading-relaxed">
-                        Levantamiento, digitalización y diseño de redes de telecomunicaciones en instalaciones aéreas y subterráneas.
-                    </p>
-                </div>
-            </div>
-        </header>
-
-        <!-- EDITABLE: Reemplaza las rutas y textos alternativos de estas imágenes para actualizar el carrusel. -->
-        <div class="construction-cover w-full overflow-hidden bg-gray-900 img-container" id="constructionCarousel" role="region" aria-label="Galería de ingeniería y diseño de redes" aria-roledescription="carrusel">
+        <!-- EDITABLE: Actualiza las imágenes del carrusel sin modificar su animación. -->
+        <div class="construction-cover service-carousel-hero w-full overflow-hidden bg-gray-900 img-container" id="constructionCarousel" role="region" aria-label="Galería de ingeniería y diseño de redes" aria-roledescription="carrusel">
             <div class="construction-carousel-slide is-active" data-carousel-slide aria-hidden="false">
                 <img src="../assets/img/encabezados/head3.png" alt="Diseño y digitalización de redes" class="img-color">
             </div>
@@ -60,6 +34,28 @@
             </div>
             <div class="construction-carousel-slide" data-carousel-slide aria-hidden="true">
                 <img src="../assets/img/encabezados/head4.png" alt="Ingeniería de redes de fibra óptica" class="img-color">
+            </div>
+            <div class="service-carousel-hero-shade" aria-hidden="true"></div>
+            <div class="service-carousel-hero-content">
+                <div class="service-carousel-hero-copy">
+                    <div class="construction-capacity" aria-label="Capacidad de 500 kilómetros semanales">
+                        <p class="construction-capacity-label">Capacidad de</p>
+                        <span class="construction-capacity-number" data-capacity-counter>0</span>
+                        <span class="construction-capacity-unit">Km semanales</span>
+                    </div>
+                    <div class="construction-hero-content">
+                        <p class="section-eyebrow section-eyebrow--dark">
+                            <img src="../assets/img/marca/Ícono DRFC.png" alt="">
+                            <span>LEVANTAMIENTO, DIGITALIZACIÓN Y DISEÑO</span>
+                        </p>
+                        <h1 class="construction-hero-title tracking-tight leading-tight">
+                            Ingeniería y diseño<br/>de red HFC y FTTX
+                        </h1>
+                        <p class="text-xs md:text-sm text-gray-300 max-w-2xl font-light leading-relaxed">
+                            Levantamiento, digitalización y diseño de redes de telecomunicaciones en instalaciones aéreas y subterráneas.
+                        </p>
+                    </div>
+                </div>
             </div>
             <svg class="construction-fiber-overlay" viewBox="0 0 1440 500" preserveAspectRatio="none" aria-hidden="true">
                 <path class="construction-fiber-path" d="M-50 250 Q350 62.5 700 250 T1450 250"/>
@@ -88,11 +84,7 @@
         <!-- EDITABLE: Actualiza aquí el título, descripción, beneficios e imagen del servicio. -->
         <!-- SECTION 2: SOBRE ESTE SERVICIO -->
         <section id="sobre-servicio" class="relative p-6 pt-20 md:p-12 md:pt-12 bg-white">
-            <img
-                src="../assets/img/certificaciones/Logo ISO Definitivo.png"
-                alt="Certificación ISO 9001:2015"
-                class="construction-iso-badge"
-            >
+            <img class="page-content-iso-badge" src="../assets/img/certificaciones/Logo ISO Definitivo.png" alt="Certificación ISO 9001:2015">
             <div class="section-eyebrow">
                 <img src="../assets/img/marca/Ícono DRFC.png" alt="">
                 <span>SOBRE ESTE SERVICIO</span>
@@ -111,36 +103,34 @@
                         </p>
                     </div>
 
-                    <!-- Key Points Box (Light Gray Background) -->
-                    <div class="bg-brand-grayBg p-5 md:p-6 rounded-lg space-y-4 border border-gray-100 shadow-sm">
-                        
-                        <!-- Point 1 -->
-                        <div class="flex items-start space-x-3">
-                            <span class="text-brand-dark font-extrabold text-base md:text-lg leading-none mt-0.5 select-none">&gt;</span>
-                            <div>
-                                <h3 class="text-xs md:text-sm font-bold text-brand-dark">18 años de experiencia</h3>
-                                <p class="text-xs text-gray-500 mt-0.5">Proyectos de levantamiento y diseño para operadores desde 2008.</p>
+                    <div class="design-proof-list">
+                        <article class="design-proof-card">
+                            <span class="design-proof-icon" aria-hidden="true">
+                                <svg viewBox="0 0 32 32" fill="none"><rect x="5" y="7" width="22" height="20" rx="3"/><path d="M10 4v6m12-6v6M5 13h22M10 18h4m-4 4h8"/></svg>
+                            </span>
+                            <div class="design-proof-copy">
+                                <h3>18 años de experiencia</h3>
+                                <p>Proyectos de levantamiento y diseño para operadores desde 2008.</p>
                             </div>
-                        </div>
-
-                        <!-- Point 2 -->
-                        <div class="flex items-start space-x-3">
-                            <span class="text-brand-dark font-extrabold text-base md:text-lg leading-none mt-0.5 select-none">&gt;</span>
-                            <div>
-                                <h3 class="text-xs md:text-sm font-bold text-brand-dark">Equipo consolidado</h3>
-                                <p class="text-xs text-gray-500 mt-0.5">Cuadrillas y proyectistas con método propio de levantamiento y diseño.</p>
+                        </article>
+                        <article class="design-proof-card">
+                            <span class="design-proof-icon" aria-hidden="true">
+                                <svg viewBox="0 0 32 32" fill="none"><circle cx="12" cy="11" r="4"/><path d="M4 26v-2a8 8 0 0 1 16 0v2H4Zm16-18a4 4 0 0 1 0 8m2 3a7 7 0 0 1 6 7h-5"/></svg>
+                            </span>
+                            <div class="design-proof-copy">
+                                <h3>Equipo consolidado</h3>
+                                <p>Cuadrillas y proyectistas con método propio de levantamiento y diseño.</p>
                             </div>
-                        </div>
-
-                        <!-- Point 3 -->
-                        <div class="flex items-start space-x-3">
-                            <span class="text-brand-dark font-extrabold text-base md:text-lg leading-none mt-0.5 select-none">&gt;</span>
-                            <div>
-                                <h3 class="text-xs md:text-sm font-bold text-brand-dark">Tiempo de respuesta satisfactorio</h3>
-                                <p class="text-xs text-gray-500 mt-0.5">Entregas dentro de los plazos comprometidos con el operador</p>
+                        </article>
+                        <article class="design-proof-card">
+                            <span class="design-proof-icon" aria-hidden="true">
+                                <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="17" r="11"/><path d="M16 11v6l4 3M12 3h8m-4 0v3"/></svg>
+                            </span>
+                            <div class="design-proof-copy">
+                                <h3>Tiempo de respuesta satisfactorio</h3>
+                                <p>Entregas dentro de los plazos comprometidos con el operador</p>
                             </div>
-                        </div>
-
+                        </article>
                     </div>
 
                     <!-- Call to Action Dark Button -->
@@ -182,7 +172,7 @@
                 </div>
                 
                 <div class="relative z-10 pt-6">
-                    <button onclick="scrollToServices()" class="inline-block border-2 border-white hover:bg-white hover:text-brand-dark transition duration-300 text-white text-[11px] font-bold tracking-wider py-3 px-6 rounded-full text-center uppercase shadow-sm">
+                    <button onclick="window.location.href='servicios.html'" class="inline-block border-2 border-white hover:bg-white hover:text-brand-dark transition duration-300 text-white text-[11px] font-bold tracking-wider py-3 px-6 rounded-full text-center uppercase shadow-sm">
                         VER TODOS LOS SERVICIOS
                     </button>
                 </div>
@@ -195,7 +185,7 @@
             <div class="md:col-span-7 p-8 md:p-12 bg-white flex flex-col justify-center">
                 <ul class="divide-y divide-gray-300 text-sm md:text-base font-bold text-brand-dark">
                     <li class="py-4 first:pt-0 hover:text-brand-navy hover:translate-x-1 hover:scale-[1.02] transition duration-150 cursor-default">
-                        <span>Levantamiento de infraestructura en campo (aéreo y subterráneo) </span>
+                        <span>Levantamiento de infraestructura en campo (aéreo y subterráneo) y verticales en edificios y plantas</span>
                     </li>
                     <li class="py-4 hover:text-brand-navy hover:translate-x-1 hover:scale-[1.02] transition duration-150 cursor-default">
                         <span>Mediciones interpostales y registros</span>
@@ -204,10 +194,7 @@
                         <span>Lotificación de predios</span>
                     </li>
                     <li class="py-4 hover:text-brand-navy hover:translate-x-1 hover:scale-[1.02] transition duration-150 cursor-default">
-                        <span>Levantamiento de verticales en edificios/plantas</span>
-                    </li>
-                    <li class="py-4 hover:text-brand-navy hover:translate-x-1 hover:scale-[1.02] transition duration-150 cursor-default">
-                        <span>Levantamiento Asbuilt (redes HFC/FTTX) </span>
+                        <span>Levantamiento Asbuilt, digitalización y diseño. (redes HFC/FTTX).</span>
                     </li>
             
                 </ul>
@@ -230,7 +217,7 @@
                     <span class="construction-fiber-cta-connector"></span>
                 </div>
                 <p class="construction-fiber-cta-description">Te acompañamos desde el levantamiento en campo hasta el diseño de soluciones para tu zona.</p>
-                <a class="construction-fiber-cta-contact" href="mailto:contacto@drfc.com.mx">
+                <a class="construction-fiber-cta-contact" href="contacto.html">
                     Contacto
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M5 12h14"></path>
@@ -251,9 +238,9 @@
 
                 <nav class="contact-cta-links" aria-label="Navegación">
                     <a href="../index.html">Inicio</a>
-                    <a href="#">Proyectos</a>
+                    <a href="proyectos.html">Proyectos</a>
                     <a href="#alcance">Servicios</a>
-                    <a href="#">Acerca de nosotros</a>
+                    <a href="nosotros.html">Acerca de nosotros</a>
                     <a href="#">Bolsa de Trabajo</a>
                     <a href="#contacto">Contacto</a>
                 </nav>
