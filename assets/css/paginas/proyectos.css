@@ -21,7 +21,7 @@
     position: relative;
     display: flex;
     width: 100%;
-    height: clamp(30rem, 42vw, 42rem);
+    min-height: clamp(30rem, 60svh, 42rem);
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
@@ -330,12 +330,12 @@
 
 @media (max-width: 767px) {
     .projects-intro {
-        height: clamp(32rem, 105vw, 40rem);
-        padding: 1.5rem;
+        min-height: clamp(24rem, 60svh, 40rem);
+        padding: clamp(1.25rem, 6vw, 2rem);
     }
 
     .projects-intro h1 {
-        font-size: clamp(2.5rem, 10vw, 3.5rem);
+        font-size: clamp(2.25rem, 10vw, 3.5rem);
     }
 }
 
