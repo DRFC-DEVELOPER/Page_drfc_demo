@@ -16,56 +16,198 @@
     <script src="../componentes/menu.js"></script>
 
     <main>
-        <section class="projects-intro" aria-labelledby="projects-title">
-            <div class="projects-intro-content">
-                <p class="projects-eyebrow">
-                    <img src="../assets/img/marca/Ícono DRFC.png" alt="">
-                    <span>Experiencia en todo México</span>
-                </p>
-                <h1 id="projects-title">Proyectos que conectan al país</h1>
-                <p>Explora los estados donde hemos trabajado. Selecciona un indicador para consultar las ciudades y los tipos de proyecto realizados.</p>
-            </div>
-            <div class="projects-intro-stat" aria-label="Estados con proyectos">
-                <span class="projects-intro-stat-number" id="project-location-count">13</span>
-                <span class="projects-intro-stat-label">estados con proyectos</span>
-            </div>
-        </section>
+      <section class="projects-intro" aria-labelledby="projects-title">
+        <img class="projects-intro-image" src="../assets/img/encabezados/FotoPortada1.png" alt="Equipo DRFC trabajando en una instalación de telecomunicaciones">
+        <div class="projects-intro-content">
+          <p class="projects-eyebrow">
+            <img src="../assets/img/marca/Ícono DRFC.png" alt="">
+            <span>Proyectos DRFC</span>
+          </p>
+          <h1 id="projects-title">Conectamos a México, proyecto a proyecto.</h1>
+          <p>Conoce las regiones y ciudades donde nuestra experiencia en infraestructura de telecomunicaciones se convierte en resultados.</p>
+        </div>
+      </section>
 
-        <section class="projects-explorer" aria-labelledby="projects-locations-title">
-            <img class="page-content-iso-badge" src="../assets/img/certificaciones/Logo%20ISO%20Definitivo.png" alt="Certificación ISO 9001:2015">
-            <div class="projects-explorer-heading">
-                <div>
-                    <p class="projects-kicker">Nuestra experiencia</p>
-                    <h2 id="projects-locations-title">Presencia en México</h2>
-                </div>
-                <p class="projects-location-hint"><span aria-hidden="true"></span> Selecciona un estado para ver sus proyectos</p>
+      <section class="projects-map" aria-labelledby="projects-map-title">
+        <div class="wrap">
+          <h2 id="projects-map-title">Compromiso en cada proyecto</h2>
+          <p class="sub">Presencia operativa en distintas regiones de la República Mexicana.</p>
+          <div class="chips" id="chips"></div>
+          <div class="grid">
+            <div class="mapa">
+              <svg id="mapa" viewBox="0 0 760 500" role="img" aria-label="Mapa de México con las ciudades donde se han realizado proyectos"></svg>
+              <div class="tip" id="tip"></div>
             </div>
+            <div class="lado">
+              <div class="nums">
+                <div class="num"><b id="nCiudades">0</b><span>Ciudades</span></div>
+                <div class="num"><b id="nEstados">0</b><span>Estados</span></div>
+              </div>
+              <div class="detalle" id="detalle"></div>
+            </div>
+          </div>
+          <div class="lista" id="lista"></div>
+        </div>
+      </section>
 
-            <div class="projects-explorer-layout">
-                <aside class="projects-location-panel" aria-labelledby="projects-location-title">
-                    <div class="projects-location-panel-heading">
-                        <p class="projects-kicker">Explora por ubicación</p>
-                        <h3 id="projects-location-title">Estados con proyectos</h3>
-                        <p>Elige un estado para consultar ciudades y tipos de proyecto.</p>
-                    </div>
-                    <div class="projects-location-list" id="projects-location-list" aria-label="Ubicaciones de proyectos"></div>
-                    <article class="projects-location-detail" id="projects-location-detail" aria-live="polite">
-                        <span class="projects-detail-pin" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" focusable="false"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-                        </span>
-                        <div>
-                            <p class="projects-detail-label">Estado seleccionado</p>
-                            <h4 id="projects-detail-state">Aguascalientes</h4>
-                            <div class="projects-detail-projects" id="projects-detail-projects"></div>
-                        </div>
-                    </article>
-                </aside>
-            </div>
-            <p class="projects-location-note">Selecciona un estado para consultar las ciudades y los tipos de proyecto reportados.</p>
-        </section>
+      <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+      <script>
+/* ============================================================
+   EDITA AQUÍ: tipos de proyecto y ciudades
+   ============================================================ */
+var PROYECTOS = {
+  "Reconstrucción": ["Acapulco","Monterrey","Cd. Juárez","Aguascalientes","Cuernavaca","Tijuana","Tecate","CDMX"],
+  "Construcción": ["Cuautla","Coatzacoalcos","Linares","Monterrey","Durango","San Luis Río Colorado","Villahermosa","CDMX","Mazatlán","Puebla","Tehuacán","Guadalajara","Toluca","Acapulco","Chihuahua","Nogales"],
+  "Inmobiliarios": ["Monterrey"],
+  "Obra civil": ["Acapulco","Salamanca","San Luis Río Colorado","Monterrey","Aguascalientes","Manzanillo","Nogales"],
+  "Obras inducidas": ["Querétaro","San Luis Río Colorado","Nogales"],
+  "Desmontaje de red": ["Monterrey","Querétaro"]
+};
+
+/* [latitud, longitud, estado]  — si agregas una ciudad nueva, agrégala aquí también */
+var CIUDADES = {
+  "Acapulco":[16.8531,-99.8237,"Guerrero"],
+  "Monterrey":[25.6866,-100.3161,"Nuevo León"],
+  "Cd. Juárez":[31.6904,-106.4245,"Chihuahua"],
+  "Aguascalientes":[21.8853,-102.2916,"Aguascalientes"],
+  "Cuernavaca":[18.9242,-99.2216,"Morelos"],
+  "Tijuana":[32.5149,-117.0382,"Baja California"],
+  "Tecate":[32.5672,-116.6251,"Baja California"],
+  "CDMX":[19.4326,-99.1332,"Ciudad de México"],
+  "Cuautla":[18.8120,-98.9544,"Morelos"],
+  "Coatzacoalcos":[18.1500,-94.4333,"Veracruz"],
+  "Linares":[24.8594,-99.5683,"Nuevo León"],
+  "Durango":[24.0277,-104.6532,"Durango"],
+  "San Luis Río Colorado":[32.4563,-114.7717,"Sonora"],
+  "Salamanca":[20.5730,-101.1950,"Guanajuato"],
+  "Manzanillo":[19.0514,-104.3188,"Colima"],
+  "Nogales":[31.3086,-110.9422,"Sonora"],
+  "Querétaro":[20.5888,-100.3899,"Querétaro"],
+  "Villahermosa":[17.9892,-92.9475,"Tabasco"],
+  "Mazatlán":[23.2494,-106.4111,"Sinaloa"],
+  "Puebla":[19.0414,-98.2063,"Puebla"],
+  "Tehuacán":[18.4667,-97.3926,"Puebla"],
+  "Guadalajara":[20.6597,-103.3496,"Jalisco"],
+  "Toluca":[19.2826,-99.6557,"Estado de México"],
+  "Chihuahua":[28.6353,-106.0889,"Chihuahua"]
+};
+/* ============================================================ */
+
+var TIPOS = Object.keys(PROYECTOS);
+var activo = "Todos";
+var seleccion = null;
+
+/* ciudad -> lista de tipos */
+var porCiudad = {};
+TIPOS.forEach(function(t){
+  PROYECTOS[t].forEach(function(c){
+    (porCiudad[c] = porCiudad[c] || []).push(t);
+  });
+});
+
+function visibles(){
+  return Object.keys(porCiudad).filter(function(c){
+    return CIUDADES[c] && (activo === "Todos" || porCiudad[c].indexOf(activo) > -1);
+  });
+}
+
+function pintarChips(){
+  var el = document.getElementById("chips");
+  el.innerHTML = "";
+  ["Todos"].concat(TIPOS).forEach(function(t){
+    var b = document.createElement("button");
+    b.className = "chip" + (t === activo ? " on" : "");
+    b.textContent = t;
+    b.onclick = function(){ activo = t; seleccion = null; pintarChips(); pintarLista(); pintarMarcadores(); pintarDetalle(); };
+    el.appendChild(b);
+  });
+}
+
+function pintarLista(){
+  var el = document.getElementById("lista");
+  el.innerHTML = "";
+  TIPOS.forEach(function(t){
+    if (activo !== "Todos" && activo !== t) return;
+    var d = document.createElement("div");
+    var h = document.createElement("h4"); h.textContent = t; d.appendChild(h);
+    var p = document.createElement("p");
+    PROYECTOS[t].forEach(function(c, i){
+      var a = document.createElement("a");
+      a.textContent = c;
+      a.onclick = function(){ seleccionar(c); };
+      p.appendChild(a);
+      if (i < PROYECTOS[t].length - 1) p.appendChild(document.createTextNode(", "));
+    });
+    d.appendChild(p);
+    el.appendChild(d);
+  });
+}
+
+function pintarDetalle(){
+  var el = document.getElementById("detalle");
+  if (!seleccion){
+    el.innerHTML = '<p class="vacio">Selecciona un punto del mapa para ver la ciudad y los tipos de proyecto realizados.</p>';
+    return;
+  }
+  var tags = porCiudad[seleccion].map(function(t){ return '<span class="tag">'+t+'</span>'; }).join("");
+  el.innerHTML = '<h3>'+seleccion+'</h3><p class="est">'+CIUDADES[seleccion][2]+'</p>'+tags;
+}
+
+function seleccionar(c){
+  seleccion = c;
+  if (activo !== "Todos" && porCiudad[c].indexOf(activo) === -1){ activo = "Todos"; pintarChips(); pintarLista(); }
+  pintarMarcadores(); pintarDetalle();
+}
+
+function pintarContadores(){
+  var v = visibles();
+  document.getElementById("nCiudades").textContent = v.length;
+  var est = {};
+  v.forEach(function(c){ est[CIUDADES[c][2]] = 1; });
+  document.getElementById("nEstados").textContent = Object.keys(est).length;
+}
+
+var svg = d3.select("#mapa");
+var proj = null;
+var capa = null;
+var tip = document.getElementById("tip");
+
+function pintarMarcadores(){
+  pintarContadores();
+  if (!proj) return;
+  capa.selectAll("*").remove();
+  visibles().forEach(function(c){
+    var p = proj([CIUDADES[c][1], CIUDADES[c][0]]);
+    var on = seleccion === c;
+    var g = capa.append("g").style("cursor","pointer");
+    g.append("circle").attr("cx",p[0]).attr("cy",p[1]).attr("r", on ? 18 : 13).attr("fill","#1a73c8").attr("opacity",0.18);
+    g.append("circle").attr("cx",p[0]).attr("cy",p[1]).attr("r", on ? 8 : 6).attr("fill", on ? "#293a4a" : "#1a73c8").attr("stroke","#fff").attr("stroke-width",2);
+    g.append("circle").attr("cx",p[0]).attr("cy",p[1]).attr("r",16).attr("fill","transparent")
+      .on("mouseenter", function(){
+        var r = svg.node().getBoundingClientRect();
+        var k = r.width / 760;
+        tip.textContent = c; tip.style.display = "block";
+        tip.style.left = (p[0]*k) + "px"; tip.style.top = (p[1]*k) + "px";
+      })
+      .on("mouseleave", function(){ tip.style.display = "none"; })
+      .on("click", function(){ seleccionar(c); });
+  });
+}
+
+pintarChips(); pintarLista(); pintarDetalle(); pintarContadores();
+
+d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json").then(function(w){
+  var mx = topojson.feature(w, w.objects.countries).features.filter(function(d){ return d.id === "484"; })[0];
+  proj = d3.geoMercator().fitExtent([[14,14],[746,486]], mx);
+  svg.append("path").attr("d", d3.geoPath(proj)(mx)).attr("fill","#e4e9ee").attr("stroke","#9aa7b4").attr("stroke-width",1);
+  capa = svg.append("g");
+  pintarMarcadores();
+}).catch(function(){
+  document.querySelector(".mapa").innerHTML = '<p class="vacio" style="padding:24px">No se pudo cargar el mapa. La lista de ciudades sigue disponible abajo.</p>';
+});
+</script>
     </main>
-
-    <script src="../assets/js/paginas/proyectos.js"></script>
     <script src="../assets/js/secciones/call-to-action.js" data-title="Hablemos de tu próximo proyecto"></script>
     <script src="../componentes/footer.js"></script>
 </body>

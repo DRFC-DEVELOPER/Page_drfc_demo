@@ -21,13 +21,20 @@ body {
 .services-hero {
   position: relative;
   display: flex;
-  min-height: clamp(29rem, 48vw, 43rem);
+  height: clamp(30rem, 42vw, 42rem);
+  min-height: 0;
   align-items: center;
   overflow: hidden;
   padding: clamp(3rem, 8vw, 7rem) var(--services-gutter);
   isolation: isolate;
   background: #17394b;
   color: #fff;
+}
+
+@media (max-width: 767px) {
+  .services-hero {
+    height: clamp(32rem, 105vw, 40rem);
+  }
 }
 
 .services-hero-image,
@@ -871,10 +878,6 @@ body {
 }
 
 @media (max-width: 520px) {
-  .services-hero {
-    min-height: 34rem;
-  }
-
   .services-hero-image {
     object-position: 58% center;
   }
