@@ -29,8 +29,8 @@
       {
         texto: "Acerca de Nosotros", url: "paginas/nosotros.html",
         submenu: [
-          { texto: "Misión, Visión y Valores", url: "paginas/nosotros.html#mision-vision-section" },
-          { texto: "Cultura Empresarial", url: "paginas/cultura_empresarial.html" }
+          { texto: "Cultura Organizacional", url: "paginas/cultura_empresarial.html" },
+          { texto: "Responsabilidad Social", url: "paginas/responsabilidad_social.html" }
         ]
       },
       { texto: "Bolsa de Trabajo", url: "#" }

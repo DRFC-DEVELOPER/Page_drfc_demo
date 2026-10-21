@@ -21,12 +21,12 @@
     position: relative;
     display: flex;
     width: 100%;
-    min-height: clamp(30rem, 60svh, 42rem);
+    min-height: clamp(36rem, 45vw, 48rem);
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
     margin: 0;
-    padding: clamp(3rem, 8vw, 7rem) clamp(1.25rem, 6vw, 6.5rem);
+    padding: clamp(5rem, 10vh, 8rem) clamp(1.25rem, 6vw, 6.5rem);
     overflow: hidden;
     isolation: isolate;
     background: #17394b;
@@ -78,12 +78,13 @@
 }
 
 .projects-intro h1 {
+    max-width: 58rem;
     margin: 0;
     color: #fff;
-    font-size: clamp(3rem, 6vw, 5.25rem);
-    font-weight: 700;
+    font-size: clamp(2.75rem, 5.5vw, 5.5rem);
+    font-weight: 800;
     letter-spacing: -0.045em;
-    line-height: 1.08;
+    line-height: 1.04;
 }
 
 .projects-intro-content > p:last-child {
@@ -117,12 +118,13 @@
 }
 
 .projects-map {
-    padding: clamp(2.5rem, 5vw, 4rem) max(1.5rem, calc((100% - 1320px) / 2));
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 6vw, 6.5rem);
     background: #f5f8f9;
 }
 
 .projects-map .wrap {
-    max-width: 1320px;
+    width: 100%;
+    max-width: none;
     margin: 0 auto;
     padding: 0;
 }
@@ -330,12 +332,16 @@
 
 @media (max-width: 767px) {
     .projects-intro {
-        min-height: clamp(24rem, 60svh, 40rem);
-        padding: clamp(1.25rem, 6vw, 2rem);
+        min-height: clamp(36rem, 80svh, 45rem);
+        padding: 5rem 1.5rem;
+    }
+
+    .projects-intro-image {
+        object-position: 62% center;
     }
 
     .projects-intro h1 {
-        font-size: clamp(2.25rem, 10vw, 3.5rem);
+        font-size: clamp(2.5rem, 9vw, 4rem);
     }
 }
 

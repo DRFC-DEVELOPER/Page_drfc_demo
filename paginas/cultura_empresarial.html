@@ -3,27 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ingeniería y construcción de redes de telecomunicaciones aéreas y subterráneas en todo México.">
-  <title>Ingeniería y Construcción de Redes - DRFC Ingeniería</title>
+  <meta name="description" content="Conoce la cultura organizacional, misión, visión y valores de DRFC Ingeniería.">
+  <title>Cultura Organizacional - DRFC Ingeniería</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/paginas/servicios.css">
-  <link rel="stylesheet" href="../assets/css/paginas/index/cta.css">
+  <link rel="stylesheet" href="../assets/css/paginas/nosotros.css">
 </head>
-<body>
+<body class="about-site">
   <script src="../componentes/menu.js"></script>
 
+  <main class="about-page">
+    <section class="about-hero about-hero--culture" aria-labelledby="culture-title">
+      <div class="about-hero-content">
+        <p class="about-eyebrow">
+          <img src="../assets/img/marca/%C3%8Dcono%20DRFC.png" alt="">
+          <span>Cultura Organizacional</span>
+        </p>
+        <h1 id="culture-title">Una empresa que crece con su gente</h1>
+        <p class="about-hero-copy">Nuestra cultura se construye con las personas, los principios y el compromiso que ponemos en cada proyecto.</p>
+      </div>
+    </section>
 
+    <section class="about-section about-section--white" aria-labelledby="culture-identity-title">
+      <div class="about-inner">
+        <header class="about-section-heading">
+          <p class="about-eyebrow">
+            <img src="../assets/img/marca/%C3%8Dcono%20DRFC.png" alt="">
+            <span>Nuestra identidad</span>
+          </p>
+          <h2 id="culture-identity-title">Un propósito que nos une</h2>
+          <p>Apoyamos el crecimiento de nuestros clientes con versatilidad en tiempo y forma, para que sus comunidades se mantengan conectadas en el mundo digital.</p>
+        </header>
 
+        <div class="about-mission-grid">
+          <article class="about-info-card">
+            <span class="about-card-kicker">
+              <img src="../assets/img/marca/%C3%8Dcono%20DRFC.png" alt="">
+              <span>Misión</span>
+            </span>
+            <h3>Impulsamos el crecimiento de nuestros clientes</h3>
+            <p>Apoyamos a nuestros clientes a implementar sus planes de crecimiento con versatilidad en tiempo y forma, logrando así que sus clientes se mantengan en constante comunicación en el mundo digital.</p>
+          </article>
+          <article class="about-info-card">
+            <span class="about-card-kicker">
+              <img src="../assets/img/marca/%C3%8Dcono%20DRFC.png" alt="">
+              <span>Visión</span>
+            </span>
+            <h3>Crecer y consolidar nuestra presencia</h3>
+            <p>Mantener un crecimiento constante anual del 20% respecto al año anterior, en el mercado nacional de ventas, como en servicios y consolidar nuestra participación en el mercado en América Latina durante los próximos 5 años.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <script
-    src="../assets/js/secciones/call-to-action.js"
-    data-title="Reduce tus tiempos de entrega, sin preocupaciones operativas."
-    data-description=""
-    data-button-text="Solicita una cotización"
-    data-button-href="contacto.html"
-  ></script>
+    <section class="about-section about-section--soft" aria-labelledby="culture-values-title">
+      <div class="about-inner">
+        <header class="about-section-heading">
+          <p class="about-eyebrow">
+            <img src="../assets/img/marca/%C3%8Dcono%20DRFC.png" alt="">
+            <span>Lo que nos guía</span>
+          </p>
+          <h2 id="culture-values-title">Nuestros valores, en cada decisión</h2>
+          <p>Son principios que orientan nuestro trabajo diario, la colaboración y la relación con clientes y equipos.</p>
+        </header>
+
+        <iframe
+          class="about-value-slider"
+          src="../secciones/slider_valores.html"
+          title="Slider interactivo de los valores de DRFC"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </section>
+
+    <section class="about-section about-section--white" aria-labelledby="culture-work-title">
+      <div class="about-inner">
+        <div class="about-feature">
+          <div>
+            <p class="about-eyebrow">
+              <img src="../assets/img/marca/%C3%8Dcono%20DRFC.png" alt="">
+              <span>Así se vive DRFC</span>
+            </p>
+            <h2 id="culture-work-title">Una cultura que se construye en equipo</h2>
+            <p>La experiencia y las ideas de cada persona contribuyen a una forma de trabajo basada en la colaboración, el compromiso y la mejora constante.</p>
+            <a class="about-action" href="responsabilidad_social.html">Conoce nuestro compromiso social <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="about-feature-note">Crecer juntos también significa crear conexiones que generan oportunidades.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const valuesSlider = document.querySelector(".about-value-slider");
+
+    function fitValuesSlider() {
+      const frameDocument = valuesSlider.contentDocument;
+      if (!frameDocument) return;
+
+      const contentHeight = Math.max(
+        frameDocument.documentElement.scrollHeight,
+        frameDocument.body.scrollHeight
+      );
+      const frameHeight = valuesSlider.getBoundingClientRect().height;
+
+      if (contentHeight > frameHeight + 1) {
+        valuesSlider.style.height = `${contentHeight}px`;
+      }
+    }
+
+    valuesSlider.addEventListener("load", () => {
+      fitValuesSlider();
+      const frameDocument = valuesSlider.contentDocument;
+      const frameObserver = new ResizeObserver(fitValuesSlider);
+      frameObserver.observe(frameDocument.documentElement);
+      frameObserver.observe(frameDocument.body);
+    });
+
+    window.addEventListener("resize", () => {
+      valuesSlider.style.height = "";
+      requestAnimationFrame(fitValuesSlider);
+    });
+  </script>
   <script src="../componentes/footer.js"></script>
 </body>
 </html>

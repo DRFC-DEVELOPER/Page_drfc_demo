@@ -1,8 +1,14 @@
 .fiber-cta {
+  box-sizing: border-box;
   width: 100%;
+  max-width: 100%;
   padding: clamp(1.25rem, 3vw, 2rem) var(--page-content-gutter, clamp(1.25rem, 5vw, 6rem));
   background: #e3e8eb;
   font-family: var(--font-main, 'Inter', Arial, Helvetica, sans-serif);
+}
+
+.fiber-cta-page {
+  margin: 0;
 }
 
 .fiber-cta *,
@@ -178,4 +184,3 @@
   }
 
 }
-

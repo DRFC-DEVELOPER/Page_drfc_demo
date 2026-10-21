@@ -21,8 +21,8 @@ body {
 .services-hero {
   position: relative;
   display: flex;
-  height: clamp(30rem, 42vw, 42rem);
-  min-height: 0;
+  height: auto;
+  min-height: clamp(36rem, 45vw, 48rem);
   align-items: center;
   overflow: hidden;
   padding: clamp(3rem, 8vw, 7rem) var(--services-gutter);
@@ -33,7 +33,8 @@ body {
 
 @media (max-width: 767px) {
   .services-hero {
-    height: clamp(32rem, 105vw, 40rem);
+    height: auto;
+    min-height: clamp(36rem, 80svh, 45rem);
   }
 }
 
@@ -410,7 +411,7 @@ body {
 }
 
 .services-offerings-heading {
-  max-width: 1440px;
+  max-width: none;
   margin: 0 auto clamp(2rem, 4vw, 3.5rem);
 }
 
@@ -434,7 +435,7 @@ body {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: clamp(1rem, 2.2vw, 2rem);
-  max-width: 1440px;
+  max-width: none;
   margin: 0 auto;
 }
 
@@ -587,9 +588,22 @@ body {
 }
 
 .services-benefits {
-  max-width: 1600px;
-  margin: 0 auto;
+  width: 100%;
   padding: clamp(5rem, 9vw, 8rem) var(--services-gutter);
+}
+
+.services-page .fiber-cta {
+  padding-inline: var(--services-gutter);
+}
+
+.services-page .fiber-cta-card {
+  width: 100%;
+  max-width: none;
+}
+
+.services-page .site-footer .footer {
+  max-width: none;
+  padding-inline: var(--services-gutter);
 }
 
 .services-benefits-heading {
