@@ -1,7 +1,7 @@
 .collaborators {
   box-sizing: border-box;
   width: 100%;
-  padding: clamp(1.25rem, 4vw, 3rem) 0;
+  padding: clamp(1.25rem, 4vw, 3rem) var(--page-content-gutter);
   background: #e7ebed;
   color: #fff;
   font-family: var(--font-main);
@@ -37,7 +37,13 @@
 }
 
 .collaborators-container {
-  width: 100%;
+  width: min(100%, 1400px);
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid #d5dde1;
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(26, 43, 52, 0.08);
+  color: #293841;
   background: #f7f9fa;
 }
 
@@ -107,6 +113,7 @@
   min-height: 420px;
   padding: var(--collaborators-panel-padding);
   background: #263b49;
+  color: #fff;
 }
 
 .collaborators-location {
@@ -334,4 +341,3 @@
     max-width: none;
   }
 }
-

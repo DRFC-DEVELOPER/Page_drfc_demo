@@ -25,8 +25,8 @@ body {
   width: 100%;
   max-width: none;
   margin: 0;
-  padding: 40px 0;
-  background-color: #ffffff;
+  padding: clamp(2rem, 4vw, 3.5rem) 0;
+  background-color: #f7f9fa;
   border: 0;
   text-align: center;
 }
@@ -92,8 +92,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f8fafc;
-  border: 1px solid #f1f5f9;
+  background-color: #ffffff;
+  border: 1px solid #e3e8eb;
   border-radius: 8px;
   padding: 12px 20px;
   transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
@@ -121,7 +121,7 @@ body {
   --benefits-border: #d1d9e0;
   width: 100%;
   padding: clamp(1.25rem, 3vw, 2.5rem) calc(var(--page-content-gutter) / 2);
-  background: linear-gradient(135deg, #e3e8eb 0%, #edf1f3 52%, #e1e6e9 100%);
+  background: #e7ebed;
   color: var(--benefits-text);
   font-family: var(--font-main);
 }
@@ -133,6 +133,7 @@ body {
 }
 
 .network-benefits-container {
+  max-width: 1400px;
   width: 100%;
   margin: 0 auto;
   padding: clamp(2.5rem, 5vw, 5rem) calc(var(--page-content-gutter) / 2);
@@ -365,4 +366,3 @@ body {
     margin-top: 0.5rem;
   }
 }
-

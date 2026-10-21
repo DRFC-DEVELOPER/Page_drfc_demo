@@ -3,7 +3,7 @@
   width: 100%;
   max-width: 100%;
   padding: clamp(1.25rem, 3vw, 2rem) var(--page-content-gutter, clamp(1.25rem, 5vw, 6rem));
-  background: #e3e8eb;
+  background: #e7ebed;
   font-family: var(--font-main, 'Inter', Arial, Helvetica, sans-serif);
 }
 

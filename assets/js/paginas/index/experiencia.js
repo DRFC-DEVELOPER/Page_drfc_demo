@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const counters = document.querySelectorAll('.counter');
+  if (!counters.length) return;
+
   const speed = 200; // Velocidad de la animación (menor es más rápido)
 
   const startCounting = (counter) => {

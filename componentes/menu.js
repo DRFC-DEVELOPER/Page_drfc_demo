@@ -186,7 +186,10 @@
 
   // Si la página tiene su propio modal de contacto (openModal), el botón lo usa;
   // si no, lleva a la página de contacto.
-  document.querySelector(".drfc-contact").addEventListener("click", (ev) => {
-    if (typeof window.openModal === "function") { ev.preventDefault(); window.openModal(); }
-  });
+  const contactButton = document.querySelector(".drfc-contact");
+  if (contactButton) {
+    contactButton.addEventListener("click", (ev) => {
+      if (typeof window.openModal === "function") { ev.preventDefault(); window.openModal(); }
+    });
+  }
 })();

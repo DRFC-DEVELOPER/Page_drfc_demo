@@ -1,9 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const carousel = document.getElementById('drfcHeroCarousel');
+    if (!carousel) return;
+
     const slides = carousel.querySelectorAll('.hero-slide');
     const dots = carousel.querySelectorAll('.indicator-dot');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
+
+    if (!slides.length || !dots.length) return;
 
     const AUTOPLAY_DELAY = 4000; // 4 segundos
     let currentIndex = 0;
