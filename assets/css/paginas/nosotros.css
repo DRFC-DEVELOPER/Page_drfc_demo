@@ -147,12 +147,13 @@ body.about-site {
 .about-choice-card {
   position: relative;
   display: flex;
-  min-height: 15rem;
+  min-height: 25rem;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 2rem;
-  padding: clamp(1.5rem, 3vw, 2.5rem);
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
   border: 1px solid #d8e3e8;
   border-top: 3px solid var(--about-cyan);
   border-radius: 10px;
@@ -164,9 +165,28 @@ body.about-site {
 }
 
 .about-choice-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
   border-color: #9fcada;
   box-shadow: 0 20px 38px rgba(24, 52, 72, .12);
+}
+
+.about-choice-image {
+  display: block;
+  width: 100%;
+  height: clamp(11rem, 20vw, 16rem);
+  flex: 0 0 auto;
+  object-fit: cover;
+  transition: transform 260ms ease;
+}
+
+.about-choice-card:hover .about-choice-image {
+  transform: scale(1.035);
+}
+
+.about-choice-copy {
+  display: block;
+  width: 100%;
+  padding: clamp(1.25rem, 2.5vw, 2rem) clamp(1.25rem, 3vw, 2.5rem) 1rem;
 }
 
 .about-choice-card:focus-visible,
@@ -175,24 +195,40 @@ body.about-site {
   outline-offset: 4px;
 }
 
-.about-choice-card h2 {
+.about-choice-title {
+  display: block;
   margin: 0 0 .75rem;
   color: var(--about-ink);
   font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+  font-weight: 700;
   letter-spacing: -.035em;
+  line-height: 1.2;
 }
 
-.about-choice-card p {
+.about-choice-description {
+  display: block;
   max-width: 34rem;
   margin: 0;
   color: var(--about-muted);
   line-height: 1.7;
 }
 
+.about-choice-card .about-card-kicker {
+  margin-bottom: .75rem;
+}
+
+.about-choice-card .about-card-kicker img {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-basis: 1.75rem;
+}
+
 .about-choice-link {
   display: inline-flex;
   align-items: center;
   gap: .6rem;
+  margin: auto 0 0;
+  padding: 0 clamp(1.25rem, 3vw, 2.5rem) clamp(1.25rem, 2.5vw, 2rem);
   color: var(--about-blue);
   font-size: .9rem;
   font-weight: 700;
@@ -759,6 +795,22 @@ body.about-site {
     padding: 1.35rem;
   }
 
+  .about-choice-card {
+    padding: 0;
+  }
+
+  .about-choice-image {
+    height: 12rem;
+  }
+
+  .about-choice-copy {
+    padding: 1.25rem 1.35rem .75rem;
+  }
+
+  .about-choice-link {
+    padding: 0 1.35rem 1.35rem;
+  }
+
   .about-mission-grid .about-info-card {
     min-height: 0;
     padding: 1.5rem;
@@ -767,6 +819,7 @@ body.about-site {
 
 @media (prefers-reduced-motion: reduce) {
   .about-choice-card,
+  .about-choice-image,
   .about-choice-link span,
   .about-action,
   .about-practice-card,
