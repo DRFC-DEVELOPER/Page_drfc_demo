@@ -18,7 +18,7 @@
       { texto: "Inicio", url: "index.html" },
       { texto: "Proyectos", url: "paginas/proyectos.html" },
       { texto: "Servicios", url: "paginas/servicios.html" },
-      { texto: "Acerca de nosotros", url: "paginas/nosotros.html" },
+      { texto: "Acerca de nosotros", url: "paginas/acerca_nosotros.html" },
       { texto: "Bolsa de Trabajo", url: "#" },
       { texto: "Contacto", url: "paginas/contacto.html" }
     ],

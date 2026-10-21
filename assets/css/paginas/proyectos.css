@@ -198,6 +198,51 @@
     height: auto;
 }
 
+.projects-map .project-map-state {
+    transition: fill 180ms ease;
+}
+
+.projects-map .project-map-state.has-projects {
+    fill: #b5e2eb;
+}
+
+.projects-map .map-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem 1.25rem;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--projects-border);
+    background: #fff;
+    color: var(--projects-muted);
+    font-size: 0.75rem;
+}
+
+.projects-map .map-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.projects-map .map-legend i {
+    display: inline-block;
+    width: 0.8rem;
+    height: 0.8rem;
+    flex: 0 0 auto;
+}
+
+.projects-map .map-legend-state {
+    border: 1px solid #8fcbd9;
+    border-radius: 3px;
+    background: #b5e2eb;
+}
+
+.projects-map .map-legend-city {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: #1a73c8;
+    box-shadow: 0 0 0 1px #1a73c8;
+}
+
 .projects-map .tip {
     position: absolute;
     display: none;

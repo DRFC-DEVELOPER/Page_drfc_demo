@@ -15,7 +15,6 @@
     contacto: "paginas/contacto.html",
     enlaces: [
       { texto: "Inicio", url: "index.html" },
-      { texto: "Proyectos", url: "paginas/proyectos.html" },
       {
         texto: "Servicios", url: "paginas/servicios.html",
         submenu: [
@@ -26,8 +25,9 @@
           { texto: "Acometidas", url: "paginas/acometidas.html" }
         ]
       },
+      { texto: "Proyectos", url: "paginas/proyectos.html" },
       {
-        texto: "Acerca de Nosotros", url: "paginas/nosotros.html",
+        texto: "Acerca de Nosotros", url: "paginas/acerca_nosotros.html",
         submenu: [
           { texto: "Cultura Organizacional", url: "paginas/cultura_empresarial.html" },
           { texto: "Responsabilidad Social", url: "paginas/responsabilidad_social.html" }

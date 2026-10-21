@@ -35,8 +35,12 @@
           <div class="chips" id="chips"></div>
           <div class="grid">
             <div class="mapa">
-              <svg id="mapa" viewBox="0 0 760 500" role="img" aria-label="Mapa de México con las ciudades donde se han realizado proyectos"></svg>
-              <div class="tip" id="tip"></div>
+              <svg id="mapa" viewBox="0 0 760 500" role="img" aria-label="Mapa de México con estados con proyectos resaltados y ciudades donde se han realizado proyectos"></svg>
+              <div class="tip" id="tip" role="tooltip"></div>
+              <div class="map-legend" aria-label="Leyenda del mapa">
+                <span><i class="map-legend-state" aria-hidden="true"></i>Estado con proyectos</span>
+                <span><i class="map-legend-city" aria-hidden="true"></i>Ciudad con proyectos</span>
+              </div>
             </div>
             <div class="lado">
               <div class="nums">
@@ -63,7 +67,8 @@
     "Obras inducidas": ["Querétaro", "San Luis Río Colorado", "Nogales"],
     "Desmontaje de red": ["Monterrey", "Querétaro","Cuernavaca"],
     "Ingeniería de Proyectos": ["Monclova", "Saltillo", "Ciudad Valles", "Tula", "Ciudad Sahagún", "Tizayuca", "Los Reyes Higuerita", "Mexicali", "Ensenada", "Tijuana", "Celaya", "Monterrey", "Villahermosa", "Oaxaca", "Chilpancingo", "Mérida", "Ecatepec", "Iztapalapa", "Naucalpan"],
-    "Mantenimiento de red": ["Monterrey", "Guadalajara", "Saltillo", "CDMX"]
+    "Mantenimiento de red": ["Monterrey", "Guadalajara", "Saltillo", "CDMX"],
+    "Acometidas": ["Monterrey", "Cd. Juárez","CDMX"]
   },
   "ciudades": {
     "Acapulco": [16.8531, -99.8237, "Guerrero"],
@@ -209,6 +214,17 @@ var tip = document.getElementById("tip");
 function pintarMarcadores(){
   pintarContadores();
   if (!proj) return;
+  var estadosVisibles = {};
+  visibles().forEach(function(c){
+    estadosVisibles[CIUDADES[c][2]] = true;
+  });
+  svg.selectAll(".project-map-state")
+    .classed("has-projects", function(){
+      return Boolean(estadosVisibles[this.getAttribute("data-state")]);
+    })
+    .attr("fill", function(){
+      return estadosVisibles[this.getAttribute("data-state")] ? "#b5e2eb" : "#e4e9ee";
+    });
   capa.selectAll("*").remove();
   visibles().forEach(function(c){
     var p = proj([CIUDADES[c][1], CIUDADES[c][0]]);
@@ -234,9 +250,29 @@ d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json").then(fu
   var mx = topojson.feature(w, w.objects.countries).features.filter(function(d){ return d.id === "484"; })[0];
   proj = d3.geoMercator().fitExtent([[14,14],[746,486]], mx);
   svg.append("path").attr("d", d3.geoPath(proj)(mx)).attr("fill","#e4e9ee").attr("stroke","#9aa7b4").attr("stroke-width",1);
-  capa = svg.append("g");
-  pintarMarcadores();
-}).catch(function(){
+  return d3.json("https://raw.githubusercontent.com/angelnmara/geojson/master/mexicoHigh.json").then(function(estados){
+    var path = d3.geoPath(proj);
+    var nombreEstado = function(feature){
+      return feature.properties.name === "México" ? "Estado de México" : feature.properties.name;
+    };
+    var geometriaEstados = svg.append("g").attr("aria-hidden", "true");
+    geometriaEstados.selectAll("path")
+      .data(estados.features)
+      .join("path")
+      .attr("class", "project-map-state")
+      .attr("d", path)
+      .attr("data-state", nombreEstado)
+      .attr("fill", "#e4e9ee")
+      .attr("stroke", "#fff")
+      .attr("stroke-width", 1.25)
+      .attr("vector-effect", "non-scaling-stroke")
+      .append("title")
+      .text(nombreEstado);
+    capa = svg.append("g");
+    pintarMarcadores();
+  });
+}).catch(function(error){
+  console.error("No se pudo cargar la geometría del mapa de México.", error);
   document.querySelector(".mapa").innerHTML = '<p class="vacio" style="padding:24px">No se pudo cargar el mapa. La lista de ciudades sigue disponible abajo.</p>';
 });
 </script>
