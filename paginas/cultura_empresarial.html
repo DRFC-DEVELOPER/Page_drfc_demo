@@ -20,12 +20,12 @@
           <img src="../assets/img/marca/%C3%8Dcono%20DRFC.png" alt="">
           <span>Cultura Organizacional</span>
         </p>
-        <h1 id="culture-title">Una empresa que crece con su gente</h1>
+        <h1 id="culture-title">Gente que construye, empresa que crece.</h1>
         <p class="about-hero-copy">Nuestra cultura se construye con las personas, los principios y el compromiso que ponemos en cada proyecto.</p>
       </div>
     </section>
 
-    <section class="about-section about-section--white" aria-labelledby="culture-identity-title">
+    <section class="about-section about-section--white about-section--identity" aria-labelledby="culture-identity-title">
       <div class="about-inner">
         <header class="about-section-heading">
           <p class="about-eyebrow">
@@ -37,7 +37,7 @@
         </header>
 
         <div class="about-mission-grid">
-          <article class="about-info-card">
+          <article class="about-info-card about-info-card--mission" data-card-mark="M">
             <span class="about-card-kicker">
               <img src="../assets/img/marca/%C3%8Dcono%20DRFC.png" alt="">
               <span>Misión</span>
@@ -45,7 +45,7 @@
             <h3>Impulsamos el crecimiento de nuestros clientes</h3>
             <p>Apoyamos a nuestros clientes a implementar sus planes de crecimiento con versatilidad en tiempo y forma, logrando así que sus clientes se mantengan en constante comunicación en el mundo digital.</p>
           </article>
-          <article class="about-info-card">
+          <article class="about-info-card about-info-card--vision" data-card-mark="V">
             <span class="about-card-kicker">
               <img src="../assets/img/marca/%C3%8Dcono%20DRFC.png" alt="">
               <span>Visión</span>
@@ -57,7 +57,7 @@
       </div>
     </section>
 
-    <section class="about-section about-section--soft" aria-labelledby="culture-values-title">
+    <section class="about-section about-section--soft about-section--culture-values" aria-labelledby="culture-values-title">
       <div class="about-inner">
         <header class="about-section-heading">
           <p class="about-eyebrow">
@@ -97,33 +97,37 @@
 
   <script>
     const valuesSlider = document.querySelector(".about-value-slider");
+    let baseSliderHeight = parseFloat(getComputedStyle(valuesSlider).height);
+    let fitSliderTimer;
 
     function fitValuesSlider() {
       const frameDocument = valuesSlider.contentDocument;
       if (!frameDocument) return;
 
-      const contentHeight = Math.max(
-        frameDocument.documentElement.scrollHeight,
-        frameDocument.body.scrollHeight
-      );
-      const frameHeight = valuesSlider.getBoundingClientRect().height;
+      const contentHeight = frameDocument.body.scrollHeight;
+      const targetHeight = Math.max(baseSliderHeight, contentHeight);
 
-      if (contentHeight > frameHeight + 1) {
-        valuesSlider.style.height = `${contentHeight}px`;
+      if (Math.abs(valuesSlider.getBoundingClientRect().height - targetHeight) > 1) {
+        valuesSlider.style.height = `${targetHeight}px`;
       }
     }
 
+    function scheduleValuesSliderFit() {
+      clearTimeout(fitSliderTimer);
+      fitSliderTimer = setTimeout(() => requestAnimationFrame(fitValuesSlider), 120);
+    }
+
     valuesSlider.addEventListener("load", () => {
-      fitValuesSlider();
+      scheduleValuesSliderFit();
       const frameDocument = valuesSlider.contentDocument;
-      const frameObserver = new ResizeObserver(fitValuesSlider);
-      frameObserver.observe(frameDocument.documentElement);
+      const frameObserver = new ResizeObserver(scheduleValuesSliderFit);
       frameObserver.observe(frameDocument.body);
     });
 
     window.addEventListener("resize", () => {
       valuesSlider.style.height = "";
-      requestAnimationFrame(fitValuesSlider);
+      baseSliderHeight = parseFloat(getComputedStyle(valuesSlider).height);
+      scheduleValuesSliderFit();
     });
   </script>
   <script src="../componentes/footer.js"></script>

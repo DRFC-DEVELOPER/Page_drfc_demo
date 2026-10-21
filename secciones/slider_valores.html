@@ -91,8 +91,8 @@
     }
 
     .card-item {
-      width: min(280px, calc(100vw - 96px));
-      height: 350px;
+      width: clamp(19rem, 29vw, 23rem);
+      height: clamp(23rem, 34vw, 27rem);
       scroll-snap-align: center;
     }
 
@@ -126,7 +126,75 @@
     #cardsTrack {
       width: max-content;
       min-width: 100%;
-      padding-inline: max(0px, calc((100% - 280px) / 2));
+      padding-inline: max(0px, calc((100% - clamp(19rem, 29vw, 23rem)) / 2));
+    }
+
+    body.antialiased {
+      display: block;
+      min-height: 0;
+      height: auto;
+      padding: clamp(.5rem, 1.2vw, 1rem);
+    }
+
+    main.glass-panel {
+      width: 100%;
+      margin: 0 auto;
+      padding: clamp(1rem, 3vw, 2.5rem);
+    }
+
+    main.glass-panel > .value-layout {
+      gap: clamp(1.25rem, 2vw, 2rem);
+    }
+
+    .value-copy {
+      min-width: 0;
+    }
+
+    .cards-carousel {
+      min-width: 0;
+    }
+
+    @media (max-width: 1023px) {
+      .card-item {
+        width: clamp(19rem, 48vw, 22rem);
+        height: clamp(23rem, 56vw, 26rem);
+      }
+
+      #cardsTrack {
+        padding-inline: max(0px, calc((100% - clamp(19rem, 48vw, 22rem)) / 2));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .card-item {
+        width: min(21rem, calc(100vw - 5rem));
+        height: clamp(21rem, 96vw, 24rem);
+      }
+
+      #cardsTrack {
+        padding-inline: max(0px, calc((100% - min(21rem, calc(100vw - 5rem))) / 2));
+      }
+    }
+
+    @media (min-width: 650px) {
+      main.glass-panel > .value-layout {
+        flex-direction: row !important;
+        align-items: center;
+      }
+
+      main.glass-panel > .value-layout > .value-controls {
+        flex: 0 0 2rem;
+        flex-direction: column !important;
+      }
+
+      .value-copy {
+        flex: 1 1 0;
+      }
+
+      main.glass-panel > .value-layout > .cards-carousel {
+        width: 46%;
+        flex: 0 1 46%;
+      }
     }
   </style>
 </head>
@@ -139,10 +207,10 @@
   <!-- Main Glassmorphism Container -->
   <main class="w-full max-w-6xl glass-panel rounded-3xl p-6 sm:p-10 md:p-14 relative overflow-hidden transition-all duration-500">
     
-    <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 relative z-10">
+    <div class="value-layout flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 relative z-10">
 
       <!-- Left Controls: Vertical Navigation Dots & Line -->
-      <div class="flex lg:flex-col items-center justify-center gap-4 relative py-2 lg:py-6 shrink-0 order-2 lg:order-1">
+      <div class="value-controls flex lg:flex-col items-center justify-center gap-4 relative py-2 lg:py-6 shrink-0 order-2 lg:order-1">
         <!-- Vertical Line (Desktop) -->
         <div class="hidden lg:block absolute top-4 bottom-4 left-1/2 -translate-x-1/2 w-[2px] bg-white/20 rounded-full"></div>
         <!-- Horizontal Line (Mobile/Tablet) -->
@@ -170,7 +238,7 @@
       </div>
 
       <!-- Center-Left Text Description Content -->
-      <div class="flex-1 max-w-xl text-left order-1 lg:order-2 my-auto">
+      <div class="value-copy flex-1 max-w-xl text-left order-1 lg:order-2 my-auto">
         <!-- Number Tag Badge -->
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-semibold tracking-wider uppercase mb-4 backdrop-blur-md">
           <span id="slide-badge" class="w-2 h-2 rounded-full bg-blue-300 animate-pulse"></span>
@@ -212,7 +280,7 @@
 
           <!-- Card 2 -->
           <div onclick="goToSlide(1)" class="card-item glass-card rounded-2xl p-6 shrink-0 cursor-pointer transition-all duration-500 flex flex-col justify-between group">
-            <img class="card-image" src="../assets/img/servicios/CuadrillaConstrucción.png" alt="" decoding="async">
+            <img class="card-image" src="../assets/img/servicios/CuadrillaConstrucción.jpg" alt="" decoding="async">
             <div class="flex items-center justify-between">
               <span class="text-xs font-semibold text-white/60 tracking-wider">02</span>
               <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-all">
@@ -242,7 +310,7 @@
 
           <!-- Card 4 -->
           <div onclick="goToSlide(3)" class="card-item glass-card rounded-2xl p-6 shrink-0 cursor-pointer transition-all duration-500 flex flex-col justify-between group">
-            <img class="card-image" src="../assets/img/fotos/Gemini_Generated_Image_540may540may540m.jpg" alt="" decoding="async">
+            <img class="card-image" src="../assets/img/servicios/Despliegue.png" alt="" decoding="async">
             <div class="flex items-center justify-between">
               <span class="text-xs font-semibold text-white/60 tracking-wider">04</span>
               <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-all">

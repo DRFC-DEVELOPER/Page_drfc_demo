@@ -257,10 +257,103 @@ body.about-site {
 .about-value-slider {
   display: block;
   width: 100%;
-  height: clamp(52rem, 100svh, 68rem);
+  height: clamp(34rem, 38vw, 40rem);
   border: 0;
   border-radius: 12px;
   background: #e9eef1;
+}
+
+.about-section--culture-values {
+  padding-block: clamp(3rem, 5vw, 4.5rem);
+}
+
+.about-section--identity {
+  padding-block: clamp(3.5rem, 5vw, 4.5rem);
+}
+
+.about-section--identity .about-section-heading {
+  margin-bottom: clamp(1.25rem, 2vw, 2rem);
+}
+
+.about-section--culture-values .about-section-heading {
+  margin-bottom: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.about-mission-grid .about-info-card {
+  position: relative;
+  min-height: clamp(18rem, 26vw, 23rem);
+  overflow: hidden;
+  padding: clamp(1.75rem, 3vw, 3rem);
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(circle at 92% 14%, rgba(85, 181, 213, .3), transparent 15rem),
+    linear-gradient(135deg, #0d3448, #123f56 58%, #0d425c);
+  box-shadow: 0 22px 48px rgba(13, 52, 72, .2);
+  color: #fff;
+  isolation: isolate;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.about-mission-grid .about-info-card::before {
+  position: absolute;
+  z-index: -1;
+  top: -4rem;
+  right: -2rem;
+  color: rgba(255, 255, 255, .07);
+  content: attr(data-card-mark);
+  font-size: clamp(14rem, 25vw, 24rem);
+  font-weight: 800;
+  letter-spacing: -.1em;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.about-mission-grid .about-info-card--vision {
+  background:
+    radial-gradient(circle at 92% 14%, rgba(141, 196, 215, .3), transparent 15rem),
+    linear-gradient(135deg, #183448, #22536b 58%, #287797);
+}
+
+.about-mission-grid .about-card-kicker {
+  position: relative;
+  z-index: 1;
+  gap: .75rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  color: #b9e5f2;
+  font-size: .8rem;
+}
+
+.about-mission-grid .about-card-kicker img {
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-basis: 2.75rem;
+  filter: brightness(0) invert(1);
+}
+
+.about-mission-grid .about-info-card h3 {
+  position: relative;
+  z-index: 1;
+  max-width: 32rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  font-size: clamp(1.6rem, 2.6vw, 2.5rem);
+  letter-spacing: -.04em;
+  line-height: 1.12;
+}
+
+.about-mission-grid .about-info-card p {
+  position: relative;
+  z-index: 1;
+  max-width: 38rem;
+  color: #d7e8ef;
+  font-size: clamp(.95rem, 1.1vw, 1.05rem);
+  line-height: 1.75;
+}
+
+.about-mission-grid .about-info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 28px 56px rgba(13, 52, 72, .27);
 }
 
 .about-feature {
@@ -318,37 +411,43 @@ body.about-site {
   background: #082d40;
 }
 
-.social-video-frame {
-  overflow: hidden;
-  border: 1px solid #d7e2e7;
-  border-radius: 12px;
-  background: #0d2431;
-  box-shadow: 0 20px 45px rgba(24, 52, 72, .16);
-}
-
-.social-video-frame video {
-  display: block;
-  width: 100%;
-  max-height: min(72vh, 760px);
-  aspect-ratio: 16 / 9;
-  background: #0d2431;
-  object-fit: contain;
-}
-
 .about-hero--social {
   display: grid;
   min-height: clamp(36rem, 45vw, 48rem);
   grid-template-columns: minmax(0, 1fr) minmax(20rem, .72fr);
   align-items: center;
   gap: clamp(2rem, 6vw, 6rem);
-  background: #192329;
+  background: #17394b;
 }
 
 .about-hero--social::before {
-  background: linear-gradient(110deg, rgba(16, 25, 31, .55), rgba(16, 25, 31, .08));
+  display: none;
+}
+
+.about-hero--social .about-hero-image,
+.about-hero--social .about-hero-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.about-hero--social .about-hero-image {
+  z-index: -2;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.about-hero--social .about-hero-overlay {
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(6, 29, 43, .88) 0%, rgba(6, 29, 43, .66) 46%, rgba(6, 29, 43, .12) 100%),
+    linear-gradient(0deg, rgba(6, 29, 43, .3), transparent 45%);
 }
 
 .about-hero--social .about-hero-content {
+  position: relative;
+  z-index: 1;
   width: 100%;
 }
 
@@ -357,26 +456,31 @@ body.about-site {
 }
 
 .social-hero-video {
+  position: relative;
+  z-index: 1;
   margin: 0;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, .18);
-  border-radius: 8px;
-  background: #1d2930;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, .2);
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: 1rem;
+  background: #0d2431;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, .3);
 }
 
 .social-hero-video video {
   display: block;
   width: 100%;
+  max-height: min(60vh, 540px);
   aspect-ratio: 16 / 9;
-  background: #1d2930;
+  background: #0d2431;
   object-fit: contain;
 }
 
 .social-hero-video figcaption {
   padding: .75rem 1rem;
-  color: #d6e2e7;
-  font-size: .75rem;
+  background: rgba(2, 11, 24, .85);
+  color: #e0e9ed;
+  font-size: .8rem;
+  font-weight: 600;
 }
 
 .social-action-grid {
@@ -387,87 +491,140 @@ body.about-site {
 
 .social-principles-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.social-action-grid .about-practice-card,
+.social-principles-grid .about-practice-card {
+  position: relative;
+  display: flex;
+  min-height: clamp(15rem, 27vw, 19rem);
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border: 1px solid rgba(255, 255, 255, .85);
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, .96), rgba(240, 246, 250, .88));
+  box-shadow: 0 20px 40px rgba(18, 43, 61, .12), inset 0 1px 2px rgba(255, 255, 255, .95);
+  color: #122b3d;
+  text-align: center;
+  transition: transform 300ms cubic-bezier(.4, 0, .2, 1), box-shadow 300ms ease;
+}
+
+.social-action-grid .about-practice-card:nth-child(even),
+.social-principles-grid .about-practice-card:nth-child(even) {
+  border-color: rgba(59, 130, 246, .35);
+  background: linear-gradient(135deg, #020b18 0%, #06172d 55%, #0b3151 100%);
+  box-shadow: 0 20px 40px rgba(2, 11, 24, .3);
+  color: #fff;
+}
+
+.about-practice-icon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: clamp(3.75rem, 7vw, 4.5rem);
+  height: clamp(3.75rem, 7vw, 4.5rem);
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(18, 43, 61, .12);
+  color: #1675b9;
+  transition: transform 300ms ease;
+}
+
+.social-action-grid .about-practice-card:nth-child(even) .about-practice-icon,
+.social-principles-grid .about-practice-card:nth-child(even) .about-practice-icon {
+  border: 1px solid rgba(59, 130, 246, .35);
+  background: linear-gradient(180deg, rgba(30, 64, 175, .55), rgba(2, 11, 24, .8));
+  box-shadow: none;
+  color: #75c7ff;
+}
+
+.about-practice-icon svg {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+}
+
+.about-practice-copy {
+  position: relative;
+  z-index: 1;
+  margin: auto 0;
+  padding: .9rem 0;
+}
+
+.about-practice-copy h3 {
+  margin: 0;
+  color: inherit;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.about-practice-divider {
+  display: block;
+  width: 3rem;
+  height: 2px;
+  margin: .75rem auto;
+  background: #0ea5e9;
+}
+
+.social-action-grid .about-practice-card:nth-child(even) .about-practice-divider,
+.social-principles-grid .about-practice-card:nth-child(even) .about-practice-divider {
+  background: #60a5fa;
+}
+
+.about-practice-copy p {
+  margin: 0;
+  color: #526779;
+  font-size: clamp(.75rem, 1vw, .875rem);
+  line-height: 1.5;
+}
+
+.social-action-grid .about-practice-card:nth-child(even) .about-practice-copy p,
+.social-principles-grid .about-practice-card:nth-child(even) .about-practice-copy p {
+  color: #c5def3;
+}
+
+@media (hover: hover) {
+  .social-action-grid .about-practice-card:hover,
+  .social-principles-grid .about-practice-card:hover {
+    transform: translateY(-5px) scale(1.025);
+    box-shadow: 0 26px 48px rgba(2, 11, 24, .24);
+  }
+
+  .about-practice-card:hover .about-practice-icon {
+    transform: scale(1.06);
+  }
 }
 
 .social-code-panel {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: clamp(1.5rem, 3vw, 2.5rem);
-  border: 1px solid #dce6ea;
-  border-radius: 10px;
-  background: #fff;
+  justify-content: center;
 }
 
-.social-code-panel h2 {
-  margin: 0 0 .5rem;
+.social-internship {
+  width: min(100%, 58rem);
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border-left: 3px solid var(--about-cyan);
+  border-radius: .5rem;
+  background: #e8f1f4;
+}
+
+.social-internship h2 {
+  margin: 0 0 .75rem;
   color: var(--about-ink);
-  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  line-height: 1.35;
 }
 
-.social-code-panel p {
-  max-width: 46rem;
-  margin: 0;
-  color: var(--about-muted);
-  line-height: 1.7;
-}
-
-.social-code-panel .about-action {
-  flex: 0 0 auto;
-  margin-top: 0;
-}
-
-.social-contact-banner {
-  padding: clamp(3rem, 6vw, 5rem) var(--about-gutter);
-  background: #0870ad;
-  color: #fff;
-}
-
-.social-contact-inner {
-  display: flex;
-  width: 100%;
-  max-width: 1320px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  margin: 0 auto;
-}
-
-.social-contact-inner h2 {
-  max-width: 46rem;
-  margin: 0;
-  font-size: clamp(1.8rem, 3.5vw, 2.75rem);
-  letter-spacing: -.04em;
-  line-height: 1.15;
-}
-
-.social-contact-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .75rem;
-}
-
-.social-contact-actions .about-action {
-  margin: 0;
-  border-color: #fff;
-  background: #fff;
-  color: #0d425c;
-}
-
-.social-contact-actions .about-action:hover {
-  background: #eaf5fa;
-}
-
-.social-contact-actions .about-action--outline {
-  background: transparent;
-  color: #fff;
-}
-
-.social-contact-actions .about-action--outline:hover {
-  background: rgba(255, 255, 255, .12);
+.social-internship .about-action {
+  margin-top: 1.25rem;
 }
 
 .social-video-caption {
@@ -504,27 +661,39 @@ body.about-site {
     padding: 1.5rem;
   }
 
+  .about-hero--social .about-hero-overlay {
+    background:
+      linear-gradient(180deg, rgba(6, 29, 43, .72), rgba(6, 29, 43, .84) 55%, rgba(6, 29, 43, .94)),
+      linear-gradient(0deg, rgba(6, 29, 43, .35), transparent 45%);
+  }
+
+  .about-hero--social .about-hero-image {
+    object-position: 62% center;
+  }
+
+  .about-hero--social .about-hero-content {
+    align-self: end;
+  }
+
+  .social-hero-video video {
+    max-height: min(32vh, 280px);
+  }
+
   .about-hero--social h1 {
-    font-size: clamp(1.45rem, 6.5vw, 2.5rem);
+    font-size: clamp(1.75rem, 6.5vw, 2.5rem);
   }
 
   .social-action-grid,
   .social-principles-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .about-value-slider {
-    height: clamp(52rem, 100svh, 68rem);
+    height: 40rem;
   }
 
-  .social-code-panel,
-  .social-contact-inner {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .social-code-panel .about-action {
-    flex: 0 1 auto;
+  .social-internship {
+    width: 100%;
   }
 
   .about-choice-card {
@@ -549,6 +718,13 @@ body.about-site {
   }
 }
 
+@media (max-width: 900px) and (min-width: 481px) {
+  .social-action-grid,
+  .social-principles-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (min-width: 768px) and (max-width: 900px) {
   .about-hero--social {
     gap: 2rem;
@@ -557,6 +733,13 @@ body.about-site {
 
   .about-hero--social h1 {
     font-size: clamp(1.75rem, 4vw, 3rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .social-action-grid,
+  .social-principles-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -575,12 +758,30 @@ body.about-site {
   .about-practice-card {
     padding: 1.35rem;
   }
+
+  .about-mission-grid .about-info-card {
+    min-height: 0;
+    padding: 1.5rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .about-choice-card,
   .about-choice-link span,
-  .about-action {
+  .about-action,
+  .about-practice-card,
+  .about-practice-icon,
+  .about-mission-grid .about-info-card {
     transition: none;
+  }
+
+  .social-action-grid .about-practice-card:hover,
+  .social-principles-grid .about-practice-card:hover,
+  .about-practice-card:hover .about-practice-icon {
+    transform: none;
+  }
+
+  .about-mission-grid .about-info-card:hover {
+    transform: none;
   }
 }
