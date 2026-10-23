@@ -136,9 +136,29 @@ body {
   margin: 0 auto;
 }
 
+.network-benefits.benefits-reveal-ready [data-benefits-reveal] {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 650ms ease, transform 650ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.network-benefits.benefits-reveal-ready [data-benefits-reveal].is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.network-benefits.benefits-reveal-ready .network-benefits-item:nth-child(2) {
+  transition-delay: 100ms;
+}
+
+.network-benefits.benefits-reveal-ready .network-benefits-item:nth-child(3) {
+  transition-delay: 200ms;
+}
+
 .network-benefits-header {
   max-width: 58rem;
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  text-align: left;
 }
 
 .network-benefits-tag {
@@ -387,6 +407,12 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .network-benefits.benefits-reveal-ready [data-benefits-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
   .network-benefits-track,
   .network-benefits-item,
   .network-benefits-quote {

@@ -206,23 +206,21 @@
 }
 
 .acometidas-value {
-  padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 6vw, 6.5rem);
+  padding: clamp(4rem, 8vw, 7rem) var(--services-gutter);
   background:
     radial-gradient(ellipse at 82% 10%, rgba(85, 181, 213, .2), transparent 32rem),
     linear-gradient(135deg, #0d3448, #123f56 58%, #0d3448);
   color: #fff;
 }
 
-.acometidas-value .acometidas-section-heading {
-  width: min(100%, 52rem);
-  margin-bottom: clamp(2rem, 4vw, 3rem);
-  margin-right: auto;
-  margin-left: auto;
-  text-align: center;
+.acometidas-value-content .acometidas-section-heading {
+  width: 100%;
+  margin: 0 0 clamp(1.5rem, 3vw, 2.25rem);
+  text-align: left;
 }
 
-.acometidas-value .acometidas-section-heading .services-eyebrow {
-  justify-content: center;
+.acometidas-value-content .acometidas-section-heading .services-eyebrow {
+  justify-content: flex-start;
 }
 
 .acometidas-value .acometidas-section-heading > p:last-child {
@@ -240,12 +238,38 @@
   color: #b9d5e1;
 }
 
+.acometidas-value-layout {
+  display: grid;
+  width: min(100%, 1200px);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin: 0 auto;
+}
+
+.acometidas-value-visual {
+  min-width: 0;
+}
+
+.acometidas-value-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 42rem;
+  border: 1px solid rgba(222, 241, 247, .2);
+  border-radius: 1rem;
+  object-fit: contain;
+  box-shadow: 0 20px 44px rgba(3, 21, 32, .18);
+}
+
+.acometidas-value-content {
+  min-width: 0;
+}
+
 .acometidas-value-grid {
   display: grid;
-  width: min(100%, 1100px);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem;
-  margin: 0 auto;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
 }
 
 .acometidas-value-card {
@@ -288,11 +312,11 @@
 
 .acometidas-certification {
   display: flex;
-  width: min(100%, 1100px);
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
-  margin: 1.5rem auto 0;
+  gap: .75rem 1.5rem;
+  margin: 1rem 0 0;
   padding: 1.15rem 1.5rem;
   border: 1px solid rgba(222, 241, 247, .2);
   border-radius: .9rem;
@@ -324,7 +348,7 @@
   font-size: .9rem;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .acometidas-intro {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -357,6 +381,20 @@
   .acometidas-value-grid {
     grid-template-columns: 1fr;
   }
+
+  .acometidas-value-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .acometidas-value-visual {
+    width: min(100%, 26rem);
+    margin: 0 auto;
+  }
+
+  .acometidas-value-image {
+    max-height: none;
+  }
 }
 
 @media (max-width: 520px) {
@@ -369,6 +407,38 @@
     align-items: flex-start;
     flex-direction: column;
     gap: .6rem;
+    padding: 1rem 1.1rem;
+  }
+
+  .acometidas-certification p {
+    flex-wrap: wrap;
+    gap: .4rem .75rem;
+  }
+
+  .acometidas-value {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .acometidas-value-card {
+    gap: .85rem;
+    padding: 1.25rem;
+  }
+
+  .acometidas-value-icon {
+    width: 2.6rem;
+    height: 2.6rem;
+    flex-basis: 2.6rem;
+  }
+
+  .acometidas-value-content .acometidas-section-heading .services-eyebrow {
+    align-items: flex-start;
+    font-size: .68rem;
+    letter-spacing: .1em;
+  }
+
+  .acometidas-value-content .acometidas-section-heading h2 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
   }
 }
 

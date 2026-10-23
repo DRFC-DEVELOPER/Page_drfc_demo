@@ -1,4 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const experienceTitle = document.querySelector('[data-experience-reveal]');
+  if (
+    experienceTitle &&
+    'IntersectionObserver' in window &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  ) {
+    experienceTitle.classList.add('experience-reveal-ready');
+
+    const titleObserver = new IntersectionObserver((entries, currentObserver) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        entry.target.classList.add('is-revealed');
+        currentObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.2 });
+
+    titleObserver.observe(experienceTitle);
+  }
+
   const counters = document.querySelectorAll('.counter');
   if (!counters.length) return;
 

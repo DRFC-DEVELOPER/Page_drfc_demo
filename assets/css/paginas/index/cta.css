@@ -2,7 +2,7 @@
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
-  padding: clamp(1.25rem, 3vw, 2rem) var(--page-content-gutter, clamp(1.25rem, 5vw, 6rem));
+  padding: clamp(1.25rem, 3vw, 2rem) 0;
   background: #e7ebed;
   font-family: var(--font-main, 'Inter', Arial, Helvetica, sans-serif);
 }
@@ -19,14 +19,13 @@
 
 .fiber-cta-card {
   position: relative;
-  width: min(100%, 1400px);
-  margin: 0 auto;
+  width: 100%;
   overflow: hidden;
-  padding: clamp(1.25rem, 2.5vw, 2rem);
-  border: 1px solid #ced8dd;
-  border-radius: 8px;
+  padding: clamp(1.5rem, 4vw, 3rem) var(--page-content-gutter, clamp(1.25rem, 5vw, 6rem));
+  border: 0;
+  border-radius: 0;
   background: #f7f9fa;
-  box-shadow: 0 12px 32px rgba(0, 45, 67, 0.08);
+  box-shadow: none;
   color: #293841;
   text-align: center;
 }
@@ -180,7 +179,7 @@
 
 @media (max-width: 480px) {
   .fiber-cta-card {
-    border-radius: 8px;
+    border-radius: 0;
   }
 
 }
