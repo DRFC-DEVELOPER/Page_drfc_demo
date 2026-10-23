@@ -114,14 +114,13 @@ body {
 }
 
 .network-benefits {
-  --benefits-primary: var(--section-title-color);
-  --benefits-heading: var(--color-deep-blue);
-  --benefits-text: #4b5d68;
-  --benefits-tag: #5a6b7c;
-  --benefits-border: #d1d9e0;
+  --benefits-primary: #59c0df;
+  --benefits-border: rgba(206, 225, 235, 0.2);
   width: 100%;
-  padding: clamp(1.25rem, 3vw, 2.5rem) calc(var(--page-content-gutter) / 2);
-  background: #e7ebed;
+  padding: clamp(4rem, 8vw, 7.5rem) var(--page-content-gutter);
+  background:
+    radial-gradient(ellipse at 85% 15%, rgba(29, 82, 106, 0.34), transparent 38%),
+    linear-gradient(125deg, #152c3a 0%, #1b3544 55%, #142a38 100%);
   color: var(--benefits-text);
   font-family: var(--font-main);
 }
@@ -133,25 +132,20 @@ body {
 }
 
 .network-benefits-container {
-  max-width: 1400px;
-  width: 100%;
+  width: min(100%, 1400px);
   margin: 0 auto;
-  padding: clamp(2.5rem, 5vw, 5rem) calc(var(--page-content-gutter) / 2);
-  border: 1px solid #cdd7dc;
-  border-radius: 8px;
-  background: #ffffff;
-  box-shadow: 0 12px 32px rgba(26, 43, 52, 0.1);
 }
 
 .network-benefits-header {
-  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+  max-width: 58rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
 .network-benefits-tag {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
+  gap: 0.625rem;
+  margin-bottom: 1rem;
 }
 
 .network-benefits-tag-icon {
@@ -161,6 +155,7 @@ body {
   flex: 0 0 var(--drfc-icon-size);
   align-items: center;
   justify-content: center;
+  filter: brightness(0) invert(1);
 }
 
 .network-benefits-tag-icon img {
@@ -169,60 +164,66 @@ body {
   object-fit: contain;
 }
 
-.network-benefits-tag-text {
-  color: var(--benefits-tag);
-  font-size: clamp(0.75rem, 0.9vw, 0.875rem);
+.network-benefits .network-benefits-tag-text {
+  color: var(--benefits-primary);
+  font-size: 0.8125rem;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
-.network-benefits-title {
-  margin: 0 0 16px;
-  color: var(--section-title-color);
-  font-size: clamp(1.75rem, 3vw, 5rem);
+.network-benefits .network-benefits-title {
+  max-width: 16ch;
+  margin: 0 0 1rem;
+  color: #ffffff;
+  font-size: clamp(2rem, 4vw, 3.75rem);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
 }
 
 .network-benefits-title::after {
   display: block;
-  width: min(100%, 15rem);
-  height: 3px;
-  margin-top: 1rem;
-  border-radius: 2px;
-  background: linear-gradient(90deg, #003e58 0%, #318bb1 35%, #e8f4f8 50%, #318bb1 65%, #003e58 100%);
-  background-size: 220% 100%;
+  width: 4.5rem;
+  height: 0.25rem;
+  margin-top: 1.5rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--benefits-primary), rgba(89, 192, 223, 0.15));
   content: "";
-  animation: network-title-light 3s linear infinite;
-}
-
-@keyframes network-title-light {
-  to { background-position: -220% 0; }
 }
 
 .network-benefits-subtitle {
   margin: 0;
-  color: var(--benefits-text);
-  font-size: clamp(1rem, 1.3vw, 1.75rem);
+  color: #c0cbd2;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.7;
 }
 
 .network-benefits-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   align-items: stretch;
-  gap: clamp(2rem, 4vw, 4rem);
+  gap: clamp(2.5rem, 6vw, 6rem);
 }
 
 .network-benefits-image {
   position: relative;
   min-width: 0;
-  min-height: 26rem;
+  min-height: 34rem;
   overflow: hidden;
-  border-radius: var(--section-photo-radius);
-  background: #263b49;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  background: #203845;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.22);
+}
+
+.network-benefits-image::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(11, 29, 40, 0.22));
+  content: "";
+  pointer-events: none;
 }
 
 .network-benefits-track {
@@ -252,21 +253,29 @@ body {
   display: flex;
   min-width: 0;
   flex-direction: column;
+  justify-content: center;
 }
 
 .network-benefits-item {
   display: flex;
-  gap: 16px;
-  margin-bottom: 24px;
-  padding-bottom: 24px;
+  gap: 1.25rem;
+  margin: 0;
+  padding: clamp(1.5rem, 3vw, 2.25rem) 0;
   border-bottom: 1px solid var(--benefits-border);
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.network-benefits-item:first-child {
+  border-top: 1px solid var(--benefits-border);
+}
+
+.network-benefits-item:hover {
+  border-color: rgba(89, 192, 223, 0.55);
+  transform: translateX(0.25rem);
 }
 
 .network-benefits-item:last-child {
-  flex: 1;
-  margin-bottom: 0;
-  padding-bottom: 0;
-  border-bottom: none;
+  padding-bottom: clamp(1.5rem, 3vw, 2.25rem);
 }
 
 .network-benefits-item:last-child .network-benefits-item-content {
@@ -275,94 +284,117 @@ body {
 
 .network-benefits-item-icon {
   display: flex;
-  width: 32px;
-  height: 32px;
-  flex: 0 0 32px;
+  width: 3.25rem;
+  height: 3.25rem;
+  flex: 0 0 3.25rem;
   align-items: center;
   justify-content: center;
-  margin-top: 2px;
+  margin-top: 0.1rem;
+  border: 1px solid rgba(89, 192, 223, 0.27);
+  border-radius: 0.875rem;
+  background: rgba(89, 192, 223, 0.1);
+}
+
+.network-benefits-item-icon svg {
+  width: 1.625rem;
+  height: 1.625rem;
+  stroke: var(--benefits-primary);
 }
 
 .network-benefits-item-content {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0.5rem;
 }
 
-.network-benefits-item-title {
+.network-benefits .network-benefits-item-title {
   margin: 0;
-  color: var(--benefits-heading);
-  font-size: clamp(1rem, 1.2vw, 1.75rem);
+  color: #ffffff;
+  font-size: clamp(1.0625rem, 1.4vw, 1.375rem);
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .network-benefits-item-description {
   margin: 0;
-  color: var(--benefits-text);
-  font-size: clamp(0.875rem, 1vw, 1.5rem);
-  line-height: 1.5;
+  color: #c0cbd2;
+  font-size: clamp(0.9375rem, 1vw, 1rem);
+  line-height: 1.65;
 }
 
 .network-benefits-quote {
   display: inline-flex;
-  width: 50%;
-  max-width: 50%;
-  min-height: 3rem;
-  align-self: flex-end;
+  width: fit-content;
+  min-height: 3.125rem;
+  align-self: flex-start;
   align-items: center;
   justify-content: center;
-  margin-top: auto;
-  padding: 0.75rem 1.1rem;
-  border: 1px solid var(--color-deep-blue);
-  border-radius: 6px;
-  background: var(--color-deep-blue);
-  color: var(--color-white);
-  font-size: 0.875rem;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--benefits-primary);
+  border-radius: 0.5rem;
+  background: var(--benefits-primary);
+  color: #132d3a;
+  font-size: 0.9375rem;
   font-weight: 600;
   line-height: 1.2;
   text-decoration: none;
-  transition: background-color 160ms ease, border-color 160ms ease;
+  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
 
 .network-benefits-quote:hover {
-  border-color: var(--color-cyan-blue);
-  background: var(--color-cyan-blue);
+  border-color: #9be2f4;
+  background: #9be2f4;
+  transform: translateY(-2px);
 }
 
 .network-benefits-quote:focus-visible {
-  outline: 3px solid #8cc6dc;
+  outline: 3px solid #ffffff;
   outline-offset: 3px;
 }
 
-@media (max-width: 768px) {
-  .network-benefits {
-    padding-inline: calc(var(--page-content-gutter) / 2);
-  }
-
-  .network-benefits-container {
-    padding: clamp(2rem, 5vw, 3rem) calc(var(--page-content-gutter) / 2);
-    border-radius: 8px;
-  }
-
+@media (max-width: 900px) {
   .network-benefits-grid {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
 
   .network-benefits-image {
     min-height: 0;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 10;
   }
+}
 
-  .network-benefits-item:last-child {
-    flex: initial;
-  }
-
-  .network-benefits-item:last-child .network-benefits-item-content {
-    flex: initial;
-  }
-
+@media (max-width: 600px) {
   .network-benefits-quote {
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .network-benefits-item {
+    gap: 1rem;
+  }
+
+  .network-benefits-item-icon {
+    width: 2.875rem;
+    height: 2.875rem;
+    flex-basis: 2.875rem;
+  }
+
+  .network-benefits-item-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .network-benefits-track,
+  .network-benefits-item,
+  .network-benefits-quote {
+    transition: none;
+  }
+
+  .network-benefits-item:hover,
+  .network-benefits-quote:hover {
+    transform: none;
   }
 }

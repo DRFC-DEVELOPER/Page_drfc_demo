@@ -215,6 +215,41 @@
                 </div>
             </li>
 
+            <!-- SLIDE 6: ACOMETIDAS -->
+            <li class="hero-slide slide-6" data-slide="5" aria-hidden="true">
+                <div class="slide-bg"></div>
+                <div class="slide-overlay"></div>
+
+                <div class="fiber-svg-container">
+                    <svg class="fiber-svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+                        <path class="fiber-path" d="M-100,220 C220,120 470,490 790,330 C1080,185 1320,395 1540,315" />
+                        <path id="path6_1" class="fiber-path-accent" d="M-100,570 C230,680 520,270 860,490 C1150,680 1390,450 1540,520" />
+                        <circle class="fiber-pulse" r="5">
+                            <animateMotion dur="4.5s" repeatCount="indefinite" rotate="auto">
+                                <mpath href="#path6_1"/>
+                            </animateMotion>
+                        </circle>
+                        <g class="fiber-nodes">
+                            <circle class="fiber-node" cx="220" cy="610" r="6"/>
+                            <circle class="fiber-node" cx="790" cy="330" r="8"/>
+                            <circle class="fiber-node" cx="1150" cy="640" r="6"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="slide-container">
+                    <div class="slide-content">
+                        <span class="slide-badge">Conexión residencial · FTTH</span>
+                        <h2 class="slide-title">Acometidas de última milla</h2>
+                        <p class="slide-description">Instalación residencial y migración tecnológica para mantener cada conexión en marcha.</p>
+                        <a href="paginas/acometidas.html" target="_top" onclick="try{window.top.location.href=this.href;}catch(e){window.location.href=this.href;}" class="cta-button" aria-label="Conoce más sobre Acometidas de última milla">
+                            <span>Conoce más</span>
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
         </ul>
 
         <button class="nav-arrow nav-prev" aria-label="Slide anterior" id="prevBtn">
@@ -232,6 +267,7 @@
                 <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Slide 3" data-slide-to="2"><span class="indicator-progress"></span></button>
                 <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Slide 4" data-slide-to="3"><span class="indicator-progress"></span></button>
                 <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Slide 5" data-slide-to="4"><span class="indicator-progress"></span></button>
+                <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Slide 6" data-slide-to="5"><span class="indicator-progress"></span></button>
             </div>
         </div>
 
@@ -508,6 +544,22 @@
 
     <!-- Sección principal azul -->
     <div class="collaborators-panel">
+      <svg class="collaborators-fiber-overlay" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+        <path class="collaborators-fiber-path" d="M-100 180C180 80 330 440 650 340S1050 120 1540 300"></path>
+        <path class="collaborators-fiber-path" d="M-80 650C250 570 370 210 690 300S1120 700 1520 510"></path>
+        <path id="collaborators-fiber-path-primary" class="collaborators-fiber-path collaborators-fiber-path-accent" d="M-100 460C180 700 460 120 760 380S1160 690 1540 180"></path>
+        <path id="collaborators-fiber-path-secondary" class="collaborators-fiber-path collaborators-fiber-path-accent collaborators-fiber-path-accent--slow" d="M-100 100C230 360 460 680 760 500S1180 160 1540 620"></path>
+        <circle class="collaborators-fiber-pulse" r="5">
+          <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#collaborators-fiber-path-primary"></mpath>
+          </animateMotion>
+        </circle>
+        <circle class="collaborators-fiber-pulse collaborators-fiber-pulse--secondary" r="4">
+          <animateMotion dur="5.5s" begin="-2.5s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#collaborators-fiber-path-secondary"></mpath>
+          </animateMotion>
+        </circle>
+      </svg>
       
       <!-- Ubicaciones -->
       <div class="collaborators-location" data-coverage-reveal="locations">

@@ -664,17 +664,17 @@ body {
   right: -6rem;
   width: clamp(15rem, 24vw, 21rem);
   aspect-ratio: 1;
-  border: 1px solid rgba(13, 66, 92, .12);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, .78), rgba(197, 218, 228, .16) 68%, transparent 69%);
+  background: url("../../img/marca/Ícono DRFC.png") center / contain no-repeat;
   content: "";
+  opacity: .075;
+  filter: grayscale(1);
   animation: services-context-orbit 12s ease-in-out infinite alternate;
   transition: transform 400ms ease, opacity 400ms ease;
 }
 
 .services-benefit-card:nth-child(even)::before {
-  border-color: rgba(137, 205, 241, .2);
-  background: radial-gradient(circle, rgba(63, 155, 199, .24), rgba(25, 82, 117, .12) 68%, transparent 69%);
+  opacity: .12;
+  filter: brightness(0) invert(1);
 }
 
 .services-benefit-card::after {
@@ -700,47 +700,12 @@ body {
 }
 
 .services-benefit-card:hover::before {
-  opacity: 1;
+  opacity: .18;
   transform: scale(1.08) translate(-.4rem, .4rem);
 }
 
 .services-benefit-card:hover::after {
   transform: scaleX(1);
-}
-
-.services-benefit-number {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: .65rem;
-  padding: .55rem .8rem;
-  border: 1px solid rgba(68, 113, 134, .2);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, .62);
-  color: #426273;
-  font-size: .7rem;
-  font-weight: 700;
-  letter-spacing: .16em;
-}
-
-.services-benefit-number::before {
-  width: .45rem;
-  height: .45rem;
-  border-radius: 50%;
-  background: #318bb1;
-  box-shadow: 0 0 0 4px rgba(49, 139, 177, .12);
-  content: "";
-}
-
-.services-benefit-card:nth-child(even) .services-benefit-number {
-  border-color: rgba(184, 220, 238, .22);
-  background: rgba(5, 22, 40, .32);
-  color: #b7d6e5;
-}
-
-.services-benefit-card:nth-child(even) .services-benefit-number::before {
-  background: #80d7ff;
-  box-shadow: 0 0 0 4px rgba(128, 215, 255, .14), 0 0 16px rgba(128, 215, 255, .65);
 }
 
 .services-benefit-card h3 {
@@ -977,8 +942,7 @@ body {
 
   .services-benefit-card::before,
   .services-benefit-card::after,
-  .services-benefit-icon,
-  .services-benefit-number {
+  .services-benefit-icon {
     transition: none;
   }
 

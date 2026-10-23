@@ -104,7 +104,7 @@ html, body {
 .slide-3 .slide-bg { background-image: url('../../../img/encabezados/1.jpeg'); background-position: center 40%; }
 .slide-4 .slide-bg { background-image: url('https://static.wixstatic.com/media/616bf8_acd7bbeb531240528ed248ed94adc590~mv2.jpg'); background-position: center center; }
 .slide-5 .slide-bg { background-image: url('../../../img/servicios/InfraObra.png'); background-position: center center; }
-
+.slide-6 .slide-bg { background-image: url('../../../img/encabezados/acometidas_hero.jpg'); background-position: center center; }
 /* Overlay para legibilidad del contenido */
 .slide-overlay {
     position: absolute;
@@ -221,7 +221,8 @@ html, body {
 .slide-2 .slide-badge,
 .slide-3 .slide-badge,
 .slide-4 .slide-badge,
-.slide-5 .slide-badge {
+.slide-5 .slide-badge,
+.slide-6 .slide-badge {
     color: #ffffff;
     background: rgba(15, 39, 52, 0.94);
     border-color: rgba(247, 249, 250, 0.58);
@@ -232,7 +233,8 @@ html, body {
 .slide-2 .slide-badge::before,
 .slide-3 .slide-badge::before,
 .slide-4 .slide-badge::before,
-.slide-5 .slide-badge::before {
+.slide-5 .slide-badge::before,
+.slide-6 .slide-badge::before {
     background-color: #69dcff;
     box-shadow: 0 0 8px #69dcff;
 }

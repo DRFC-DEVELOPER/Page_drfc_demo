@@ -21,5 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   showSlide(0);
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
   window.setInterval(() => showSlide(currentIndex + 1), 5000);
 });
