@@ -5,10 +5,17 @@
 }
 
 body {
+    --maintenance-gutter: clamp(1.25rem, 5vw, 4rem);
+    width: 100%;
     margin: 0;
     color: #1e293b;
     background: #fff;
     font-family: 'Inter', sans-serif;
+}
+
+.active-maintenance-carousel .service-carousel-hero-content {
+    padding-right: var(--maintenance-gutter);
+    padding-left: var(--maintenance-gutter);
 }
 
 .active-maintenance-hero {
@@ -208,9 +215,9 @@ body {
     grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
     align-items: stretch;
     gap: clamp(2rem, 5vw, 5rem);
-    width: min(100%, 1400px);
-    margin: 0 auto;
-    padding: clamp(2.5rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem);
+    width: 100%;
+    margin: 0;
+    padding: clamp(2.5rem, 6vw, 5rem) var(--maintenance-gutter);
     background: #fff;
 }
 
@@ -357,17 +364,17 @@ body {
 .active-maintenance-services {
     display: grid;
     grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1.3fr);
-    width: min(100%, 1400px);
-    margin: 0 auto clamp(2rem, 5vw, 3rem);
+    width: 100%;
+    margin: 0 0 clamp(2rem, 5vw, 3rem);
     overflow: visible;
-    border-radius: 1.25rem;
+    border-radius: 0;
     background: #f8fafc;
-    box-shadow: 0 18px 42px rgba(18, 43, 61, 0.17), 0 4px 12px rgba(18, 43, 61, 0.08);
+    box-shadow: none;
 }
 
 .active-maintenance-services-heading {
-    padding: clamp(1.5rem, 4vw, 3rem);
-    border-radius: 1.25rem 0 0 1.25rem;
+    padding: clamp(2rem, 5vw, 4rem) var(--maintenance-gutter);
+    border-radius: 0;
     background: #28445e;
     color: white;
 }
@@ -396,7 +403,7 @@ body {
     align-content: center;
     gap: 0.65rem;
     margin: 0;
-    padding: clamp(1.25rem, 3vw, 2.5rem);
+    padding: clamp(2rem, 5vw, 4rem) var(--maintenance-gutter);
     list-style: none;
 }
 
@@ -459,13 +466,11 @@ body {
 
     .active-maintenance-services {
         grid-template-columns: 1fr;
-        width: calc(100% - 2rem);
-        margin-right: auto;
-        margin-left: auto;
     }
 
     .active-maintenance-services-heading {
-        border-radius: 1.25rem 1.25rem 0 0;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
     }
 }
 
@@ -475,6 +480,6 @@ body {
     }
 
     .active-maintenance-services-list {
-        padding: 1rem;
+        padding: 1rem var(--maintenance-gutter);
     }
 }

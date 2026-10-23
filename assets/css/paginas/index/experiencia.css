@@ -50,7 +50,6 @@
   max-width: 1400px;
   margin-right: auto;
   margin-left: auto;
-  font-size: clamp(1.875rem, 3.5vw, 6rem);
   font-weight: 700;
   color: var(--section-title-color);
   margin-bottom: clamp(1.25rem, 2vw, 2rem);
@@ -151,7 +150,7 @@
     margin-bottom: 0.5rem;
   }
   .main-title {
-    font-size: 1.875rem;
+    font-size: var(--section-title-size);
   }
 }
 

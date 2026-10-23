@@ -156,7 +156,7 @@ body {
 }
 
 .network-benefits-header {
-  max-width: 58rem;
+  max-width: none;
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
   text-align: left;
 }
@@ -193,12 +193,13 @@ body {
 }
 
 .network-benefits .network-benefits-title {
-  max-width: 16ch;
+  max-width: none;
+  width: 100%;
   margin: 0 0 1rem;
   color: #ffffff;
-  font-size: clamp(2rem, 4vw, 3.75rem);
+  font-size: var(--section-title-size);
   font-weight: 700;
-  line-height: 1.08;
+  line-height: var(--section-title-line-height);
   letter-spacing: -0.035em;
 }
 

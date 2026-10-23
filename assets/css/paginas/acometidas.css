@@ -240,11 +240,10 @@
 
 .acometidas-value-layout {
   display: grid;
-  width: min(100%, 1200px);
+  width: 100%;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
   align-items: center;
   gap: clamp(1.5rem, 4vw, 3rem);
-  margin: 0 auto;
 }
 
 .acometidas-value-visual {
