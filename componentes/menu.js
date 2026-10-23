@@ -71,6 +71,7 @@
   .drfc-dropdown-arrow{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;transition:transform 160ms ease}
   .drfc-services-menu.is-open .drfc-dropdown-arrow{transform:rotate(180deg)}
   .drfc-services-submenu{position:absolute;top:calc(100% + 16px);left:50%;z-index:20;display:none;width:max-content;min-width:18rem;max-width:min(24rem,calc(100vw - 2rem));padding:.5rem;border:1px solid #dbe5eb;border-radius:12px;background:rgba(255,255,255,.98);box-shadow:0 16px 36px rgba(0,45,67,.16);list-style:none;transform:translateX(-50%)}
+  .drfc-services-submenu::before{position:absolute;right:0;bottom:100%;left:0;height:16px;content:""}
   .drfc-services-menu.is-open .drfc-services-submenu{display:block}
   .drfc-services-submenu a{display:block;padding:.75rem .875rem;border-radius:7px;color:#31495a;font-size:.9375rem;line-height:1.35;white-space:normal}
   .drfc-services-submenu a:hover{background:#eef5f8}
@@ -144,17 +145,39 @@
   /* ---------- 5. Comportamiento ---------- */
   const header = script.previousElementSibling;
   const menus = header.querySelectorAll(".drfc-services-menu");
+  const desktopHover = window.matchMedia("(min-width: 993px) and (hover: hover) and (pointer: fine)");
+  const setMenuOpen = (menu, si) => {
+    menu.classList.toggle("is-open", si);
+    menu.querySelector(".drfc-services-trigger").setAttribute("aria-expanded", String(si));
+  };
+  const closeOtherMenus = (currentMenu) => {
+    menus.forEach((menu) => {
+      if (menu !== currentMenu) setMenuOpen(menu, false);
+    });
+  };
   menus.forEach((menu) => {
     const boton = menu.querySelector(".drfc-services-trigger");
-    const abrir = (si) => { menu.classList.toggle("is-open", si); boton.setAttribute("aria-expanded", si); };
+    const abrir = (si) => {
+      if (si) closeOtherMenus(menu);
+      setMenuOpen(menu, si);
+    };
     boton.addEventListener("click", (ev) => {
       ev.stopPropagation();
       const estabaAbierto = menu.classList.contains("is-open");
-      menus.forEach((otroMenu) => {
-        otroMenu.classList.remove("is-open");
-        otroMenu.querySelector(".drfc-services-trigger").setAttribute("aria-expanded", "false");
-      });
+      closeOtherMenus(menu);
       if (!estabaAbierto) abrir(true);
+    });
+    menu.addEventListener("pointerenter", () => {
+      if (desktopHover.matches) abrir(true);
+    });
+    menu.addEventListener("pointerleave", () => {
+      if (desktopHover.matches && !menu.contains(document.activeElement)) abrir(false);
+    });
+    menu.addEventListener("focusin", () => {
+      if (desktopHover.matches) abrir(true);
+    });
+    menu.addEventListener("focusout", (ev) => {
+      if (desktopHover.matches && !menu.contains(ev.relatedTarget)) abrir(false);
     });
     document.addEventListener("keydown", (ev) => {
       if (ev.key === "Escape" && menu.classList.contains("is-open")) { abrir(false); boton.focus(); }

@@ -9,29 +9,92 @@
   text-transform: none;
 }
 
+.acometidas-hero .services-hero-image {
+  animation: acometidas-hero-drift 18s ease-in-out infinite alternate;
+}
+
+.acometidas-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.acometidas-hero-fiber {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.acometidas-hero-fiber svg {
+  width: 100%;
+  height: 100%;
+}
+
+.acometidas-fiber-path {
+  fill: none;
+  stroke: rgba(184, 215, 228, .55);
+  stroke-width: 1.8;
+  stroke-dasharray: 7 9;
+}
+
+.acometidas-fiber-path--accent {
+  stroke: #55b5d5;
+  stroke-width: 2.6;
+  stroke-dasharray: 12 12;
+  filter: drop-shadow(0 0 6px rgba(85, 181, 213, .8));
+  animation: acometidas-fiber-stream 7s linear infinite;
+}
+
+.acometidas-fiber-pulse {
+  fill: #c8f4ff;
+  filter: drop-shadow(0 0 8px #55b5d5);
+}
+
+.acometidas-fiber-nodes {
+  fill: #9fe7fa;
+  filter: drop-shadow(0 0 7px rgba(85, 181, 213, .9));
+}
+
+@keyframes acometidas-hero-drift {
+  from { transform: scale(1.02); }
+  to { transform: scale(1.09); }
+}
+
+@keyframes acometidas-fiber-stream {
+  to { stroke-dashoffset: -240; }
+}
+
 .acometidas-intro {
   position: relative;
-  display: flex;
-  min-height: 26rem;
+  display: grid;
+  min-height: 32rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
-  justify-content: center;
-  padding: clamp(5.5rem, 9vw, 8rem) clamp(1.25rem, 6vw, 6.5rem);
+  gap: clamp(2rem, 6vw, 6rem);
+  padding: clamp(6rem, 9vw, 8rem) clamp(1.25rem, 6vw, 6.5rem);
   background:
     radial-gradient(ellipse at 82% 12%, rgba(85, 181, 213, .14), transparent 34rem),
     #f4f8fa;
 }
 
-.acometidas-intro-content {
-  width: min(100%, 58rem);
-  text-align: center;
+.acometidas-intro-image {
+  display: block;
+  width: 100%;
+  min-height: 20rem;
+  max-height: 31rem;
+  aspect-ratio: 1.25;
+  border-radius: 1.25rem;
+  object-fit: cover;
+  box-shadow: 0 24px 55px rgba(13, 52, 72, .16);
 }
 
-.acometidas-intro-content .services-eyebrow {
-  justify-content: center;
+.acometidas-intro-content {
+  width: min(100%, 38rem);
 }
 
 .acometidas-intro h2,
-.acometidas-section-heading h2 {
+.acometidas-value .acometidas-section-heading h2 {
   margin: 0;
   color: var(--acometidas-ink);
   font-size: clamp(2rem, 4.4vw, 3.75rem);
@@ -41,8 +104,8 @@
 }
 
 .acometidas-intro-content > p:not(.services-eyebrow, .acometidas-audience) {
-  max-width: 48rem;
-  margin: 1.25rem auto 0;
+  max-width: 38rem;
+  margin: 1.25rem 0 0;
   color: var(--acometidas-muted);
   font-size: clamp(1rem, 1.5vw, 1.2rem);
   line-height: 1.8;
@@ -71,79 +134,62 @@
 }
 
 .acometidas-details {
-  padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 6vw, 6.5rem);
-  background: #fff;
+  display: grid;
+  grid-template-columns: minmax(18rem, .72fr) minmax(0, 1.28fr);
+  background: #f4f7f8;
 }
 
-.acometidas-section-heading {
-  width: min(100%, 52rem);
-  margin: 0 auto clamp(2rem, 4vw, 3.25rem);
-  text-align: center;
+.acometidas-details-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: clamp(3rem, 6vw, 5.5rem) clamp(1.5rem, 4vw, 4rem);
+  background: #28465f;
+  color: #fff;
 }
 
-.acometidas-section-heading .services-eyebrow {
-  justify-content: center;
+.acometidas-details-heading .services-eyebrow {
+  color: #c0d6e2;
 }
 
-.acometidas-section-heading > p:last-child {
+.acometidas-details-heading .services-eyebrow img {
+  filter: brightness(0) invert(1);
+}
+
+.acometidas-details-heading h2 {
+  color: #fff;
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+}
+
+.acometidas-details-heading > p:last-child {
+  max-width: 28rem;
   margin: 1rem 0 0;
-  color: var(--acometidas-muted);
+  color: #d6e6ec;
   font-size: 1rem;
   line-height: 1.7;
 }
 
-.acometidas-service-grid {
-  display: grid;
-  width: min(100%, 1200px);
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1rem, 2vw, 1.5rem);
-  margin: 0 auto;
+.acometidas-service-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .85rem;
+  padding: clamp(2rem, 4vw, 4rem) clamp(1.5rem, 5vw, 5rem);
 }
 
 .acometidas-service-card {
-  position: relative;
-  min-height: 15rem;
-  overflow: hidden;
-  padding: clamp(1.5rem, 2.5vw, 2.25rem);
+  padding: 1.1rem 1.35rem;
   border: 1px solid #dce7eb;
-  border-radius: 1rem;
-  background: linear-gradient(145deg, #fff 18%, #f2f8fa 100%);
-  box-shadow: 0 14px 32px rgba(13, 52, 72, .07);
-  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
-}
-
-.acometidas-service-card::after {
-  position: absolute;
-  right: -2.5rem;
-  bottom: -4rem;
-  width: 10rem;
-  aspect-ratio: 1;
-  border: 1px solid rgba(19, 125, 161, .12);
-  border-radius: 50%;
-  content: "";
-}
-
-.acometidas-service-card:hover {
-  transform: translateY(-6px);
-  border-color: #b3d8e4;
-  box-shadow: 0 22px 40px rgba(13, 52, 72, .13);
-}
-
-.acometidas-card-mark {
-  display: inline-grid;
-  width: 2.5rem;
-  height: 2.5rem;
-  place-items: center;
-  border-radius: .75rem;
-  background: #e3f3f7;
-  color: var(--acometidas-blue);
-  font-size: .8rem;
-  font-weight: 700;
+  border-left: 3px solid #39b8ef;
+  border-radius: .85rem;
+  background: #fff;
+  box-shadow: 0 12px 26px rgba(13, 52, 72, .08);
 }
 
 .acometidas-service-card h3,
 .acometidas-value-card h3 {
-  margin: 1.5rem 0 .65rem;
+  margin: 0 0 .4rem;
   color: var(--acometidas-ink);
   font-size: clamp(1.15rem, 1.8vw, 1.4rem);
   font-weight: 600;
@@ -160,15 +206,28 @@
 }
 
 .acometidas-value {
-  padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 6vw, 6.5rem);
+  padding: clamp(4rem, 8vw, 7rem) var(--services-gutter);
   background:
     radial-gradient(ellipse at 82% 10%, rgba(85, 181, 213, .2), transparent 32rem),
     linear-gradient(135deg, #0d3448, #123f56 58%, #0d3448);
   color: #fff;
 }
 
-.acometidas-value .acometidas-section-heading {
-  margin-bottom: clamp(2rem, 4vw, 3rem);
+.acometidas-value-content .acometidas-section-heading {
+  width: 100%;
+  margin: 0 0 clamp(1.5rem, 3vw, 2.25rem);
+  text-align: left;
+}
+
+.acometidas-value-content .acometidas-section-heading .services-eyebrow {
+  justify-content: flex-start;
+}
+
+.acometidas-value .acometidas-section-heading > p:last-child {
+  margin: 1rem 0 0;
+  color: #d6e6ec;
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 .acometidas-value .acometidas-section-heading h2 {
@@ -179,12 +238,38 @@
   color: #b9d5e1;
 }
 
+.acometidas-value-layout {
+  display: grid;
+  width: min(100%, 1200px);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin: 0 auto;
+}
+
+.acometidas-value-visual {
+  min-width: 0;
+}
+
+.acometidas-value-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 42rem;
+  border: 1px solid rgba(222, 241, 247, .2);
+  border-radius: 1rem;
+  object-fit: contain;
+  box-shadow: 0 20px 44px rgba(3, 21, 32, .18);
+}
+
+.acometidas-value-content {
+  min-width: 0;
+}
+
 .acometidas-value-grid {
   display: grid;
-  width: min(100%, 1100px);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem;
-  margin: 0 auto;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
 }
 
 .acometidas-value-card {
@@ -227,11 +312,11 @@
 
 .acometidas-certification {
   display: flex;
-  width: min(100%, 1100px);
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
-  margin: 1.5rem auto 0;
+  gap: .75rem 1.5rem;
+  margin: 1rem 0 0;
   padding: 1.15rem 1.5rem;
   border: 1px solid rgba(222, 241, 247, .2);
   border-radius: .9rem;
@@ -263,17 +348,52 @@
   font-size: .9rem;
 }
 
-@media (max-width: 760px) {
-  .acometidas-service-grid {
+@media (max-width: 900px) {
+  .acometidas-intro {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+
+  .acometidas-intro-image {
+    min-height: 0;
+    max-height: 25rem;
+    aspect-ratio: 1.5;
+  }
+
+  .acometidas-details {
     grid-template-columns: 1fr;
   }
 
+  .acometidas-details-heading {
+    padding: 3rem clamp(1.25rem, 6vw, 3rem);
+  }
+
+  .acometidas-service-list {
+    padding: 2rem clamp(1.25rem, 6vw, 3rem) 3rem;
+  }
+
   .acometidas-service-card {
-    min-height: 0;
+    padding: 1rem 1.1rem;
   }
 
   .acometidas-value-grid {
     grid-template-columns: 1fr;
+  }
+
+  .acometidas-value-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .acometidas-value-visual {
+    width: min(100%, 26rem);
+    margin: 0 auto;
+  }
+
+  .acometidas-value-image {
+    max-height: none;
   }
 }
 
@@ -287,10 +407,46 @@
     align-items: flex-start;
     flex-direction: column;
     gap: .6rem;
+    padding: 1rem 1.1rem;
+  }
+
+  .acometidas-certification p {
+    flex-wrap: wrap;
+    gap: .4rem .75rem;
+  }
+
+  .acometidas-value {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .acometidas-value-card {
+    gap: .85rem;
+    padding: 1.25rem;
+  }
+
+  .acometidas-value-icon {
+    width: 2.6rem;
+    height: 2.6rem;
+    flex-basis: 2.6rem;
+  }
+
+  .acometidas-value-content .acometidas-section-heading .services-eyebrow {
+    align-items: flex-start;
+    font-size: .68rem;
+    letter-spacing: .1em;
+  }
+
+  .acometidas-value-content .acometidas-section-heading h2 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .acometidas-fiber-pulse animateMotion {
+    display: none;
+  }
+
   .acometidas-page *,
   .acometidas-page *::before,
   .acometidas-page *::after {

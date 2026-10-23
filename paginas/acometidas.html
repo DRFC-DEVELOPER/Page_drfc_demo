@@ -21,10 +21,26 @@
     <section class="services-hero acometidas-hero" aria-labelledby="acometidas-title">
       <img
         class="services-hero-image"
-        src="../assets/img/encabezados/PortadaCons1.png"
+        src="../assets/img/encabezados/Acometidas.jpg"
         alt="Personal técnico trabajando en infraestructura de telecomunicaciones"
       >
       <div class="services-hero-overlay" aria-hidden="true"></div>
+      <div class="acometidas-hero-fiber" aria-hidden="true">
+        <svg viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+          <path class="acometidas-fiber-path" d="M-100,200 C300,100 500,500 900,300 C1200,150 1400,400 1600,350"></path>
+          <path id="acometidas-fiber-route" class="acometidas-fiber-path acometidas-fiber-path--accent" d="M-100,560 C200,680 550,250 900,500 C1200,710 1450,430 1600,510"></path>
+          <circle class="acometidas-fiber-pulse" r="5">
+            <animateMotion dur="5s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#acometidas-fiber-route"></mpath>
+            </animateMotion>
+          </circle>
+          <g class="acometidas-fiber-nodes">
+            <circle cx="200" cy="200" r="6"></circle>
+            <circle cx="900" cy="300" r="8"></circle>
+            <circle cx="1200" cy="600" r="6"></circle>
+          </g>
+        </svg>
+      </div>
       <div class="services-hero-content">
         <p class="services-eyebrow services-eyebrow--light">
           <img src="../assets/img/marca/Ícono%20DRFC.png" alt="">
@@ -44,6 +60,12 @@
 
     <section class="acometidas-intro" aria-labelledby="acometidas-intro-title">
       <img class="page-content-iso-badge" src="../assets/img/certificaciones/Logo%20ISO%20Definitivo.png" alt="Certificación ISO 9001:2015">
+      <img
+        class="acometidas-intro-image"
+        src="../assets/img/encabezados/ultima_milla.jpg"
+        alt="Instalación de una acometida de fibra óptica hasta un domicilio"
+        loading="lazy"
+      >
       <div class="acometidas-intro-content">
         <p class="services-eyebrow">
           <img src="../assets/img/marca/Ícono%20DRFC.png" alt="">
@@ -56,7 +78,7 @@
     </section>
 
     <section class="acometidas-details" aria-labelledby="acometidas-details-title">
-      <div class="acometidas-section-heading">
+      <div class="acometidas-details-heading">
         <p class="services-eyebrow">
           <img src="../assets/img/marca/Ícono%20DRFC.png" alt="">
           <span>Atención de principio a fin</span>
@@ -64,19 +86,16 @@
         <h2 id="acometidas-details-title">Servicios específicos</h2>
         <p>Coordinamos la atención residencial y la transición de tecnología en cada etapa.</p>
       </div>
-      <div class="acometidas-service-grid">
+      <div class="acometidas-service-list">
         <article class="acometidas-service-card">
-          <span class="acometidas-card-mark" aria-hidden="true">01</span>
           <h3>Instalaciones a clientes nuevos</h3>
           <p>Conectamos nuevos hogares para que comiencen a disfrutar de los servicios de telecomunicaciones.</p>
         </article>
         <article class="acometidas-service-card">
-          <span class="acometidas-card-mark" aria-hidden="true">02</span>
           <h3>Cambios de domicilio</h3>
           <p>Realizamos instalaciones para clientes existentes que se mudan a un nuevo domicilio.</p>
         </article>
         <article class="acometidas-service-card">
-          <span class="acometidas-card-mark" aria-hidden="true">03</span>
           <h3>Actualización tecnológica</h3>
           <p>Migramos la conexión del cliente de HFC a FTTH, actualizando la tecnología que le brinda el servicio.</p>
         </article>
@@ -84,41 +103,53 @@
     </section>
 
     <section class="acometidas-value" aria-labelledby="acometidas-value-title">
-      <div class="acometidas-section-heading">
-        <p class="services-eyebrow services-eyebrow--light">
-          <img src="../assets/img/marca/Ícono%20DRFC.png" alt="">
-          <span>El valor de un equipo con experiencia</span>
-        </p>
-        <h2 id="acometidas-value-title">Más agilidad. Instalaciones con respaldo.</h2>
-      </div>
-      <div class="acometidas-value-grid">
-        <article class="acometidas-value-card">
-          <span class="acometidas-value-icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none">
-              <path d="M24 7v10m0 0 7-7m-7 7-7-7M12 24h24M16 32l8 8 8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          <div>
-            <h3>Acorta los días de atención</h3>
-            <p>Agilizamos la atención de los servicios requeridos por los clientes.</p>
+      <div class="acometidas-value-layout">
+        <div class="acometidas-value-content">
+          <div class="acometidas-section-heading">
+            <p class="services-eyebrow services-eyebrow--light">
+              <img src="../assets/img/marca/Ícono%20DRFC.png" alt="">
+              <span>El valor de un equipo con experiencia</span>
+            </p>
+            <h2 id="acometidas-value-title">Más agilidad. Instalaciones con respaldo.</h2>
           </div>
-        </article>
-        <article class="acometidas-value-card">
-          <span class="acometidas-value-icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none">
-              <path d="M24 5 38 10v12c0 9-5.8 16.6-14 20-8.2-3.4-14-11-14-20V10l14-5Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-              <path d="m17 23 5 5 10-11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          <div>
-            <h3>Experiencia y certificación</h3>
-            <p>La experiencia de la empresa y la certificación internacional del liderazgo respaldan la calidad de cada instalación.</p>
+          <div class="acometidas-value-grid">
+            <article class="acometidas-value-card">
+              <span class="acometidas-value-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <path d="M24 7v10m0 0 7-7m-7 7-7-7M12 24h24M16 32l8 8 8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div>
+                <h3>Acorta los días de atención</h3>
+                <p>Agilizamos la atención de los servicios requeridos por los clientes.</p>
+              </div>
+            </article>
+            <article class="acometidas-value-card">
+              <span class="acometidas-value-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <path d="M24 5 38 10v12c0 9-5.8 16.6-14 20-8.2-3.4-14-11-14-20V10l14-5Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                  <path d="m17 23 5 5 10-11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div>
+                <h3>Experiencia y certificación</h3>
+                <p>La experiencia de la empresa y la certificación internacional del liderazgo respaldan la calidad de cada instalación.</p>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
-      <div class="acometidas-certification" aria-label="Certificación del liderazgo: SCTE, Instalaciones de banda ancha">
-        <span class="acometidas-certification-label">Certificación del liderazgo</span>
-        <p><strong>SCTE</strong><span>Instalaciones de banda ancha</span></p>
+          <div class="acometidas-certification" aria-label="Certificación del liderazgo: SCTE, Instalaciones de banda ancha">
+            <span class="acometidas-certification-label">Certificación del liderazgo</span>
+            <p><strong>SCTE</strong><span>Instalaciones de banda ancha</span></p>
+          </div>
+        </div>
+        <div class="acometidas-value-visual">
+          <img
+            class="acometidas-value-image"
+            src="../assets/img/servicios/acometidas2.jpg"
+            alt="Equipo técnico especializado realizando una instalación de acometida de fibra óptica"
+            loading="lazy"
+          >
+        </div>
       </div>
     </section>
   </main>

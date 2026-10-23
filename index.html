@@ -215,6 +215,41 @@
                 </div>
             </li>
 
+            <!-- SLIDE 6: ACOMETIDAS -->
+            <li class="hero-slide slide-6" data-slide="5" aria-hidden="true">
+                <div class="slide-bg"></div>
+                <div class="slide-overlay"></div>
+
+                <div class="fiber-svg-container">
+                    <svg class="fiber-svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+                        <path class="fiber-path" d="M-100,220 C220,120 470,490 790,330 C1080,185 1320,395 1540,315" />
+                        <path id="path6_1" class="fiber-path-accent" d="M-100,570 C230,680 520,270 860,490 C1150,680 1390,450 1540,520" />
+                        <circle class="fiber-pulse" r="5">
+                            <animateMotion dur="4.5s" repeatCount="indefinite" rotate="auto">
+                                <mpath href="#path6_1"/>
+                            </animateMotion>
+                        </circle>
+                        <g class="fiber-nodes">
+                            <circle class="fiber-node" cx="220" cy="610" r="6"/>
+                            <circle class="fiber-node" cx="790" cy="330" r="8"/>
+                            <circle class="fiber-node" cx="1150" cy="640" r="6"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="slide-container">
+                    <div class="slide-content">
+                        <span class="slide-badge">Conexión residencial · FTTH</span>
+                        <h2 class="slide-title">Acometidas de última milla</h2>
+                        <p class="slide-description">Instalación residencial y migración tecnológica para mantener cada conexión en marcha.</p>
+                        <a href="paginas/acometidas.html" target="_top" onclick="try{window.top.location.href=this.href;}catch(e){window.location.href=this.href;}" class="cta-button" aria-label="Conoce más sobre Acometidas de última milla">
+                            <span>Conoce más</span>
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
         </ul>
 
         <button class="nav-arrow nav-prev" aria-label="Slide anterior" id="prevBtn">
@@ -232,6 +267,7 @@
                 <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Slide 3" data-slide-to="2"><span class="indicator-progress"></span></button>
                 <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Slide 4" data-slide-to="3"><span class="indicator-progress"></span></button>
                 <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Slide 5" data-slide-to="4"><span class="indicator-progress"></span></button>
+                <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Slide 6" data-slide-to="5"><span class="indicator-progress"></span></button>
             </div>
         </div>
 
@@ -256,7 +292,7 @@
     </div>
 
     <!-- Título Principal -->
-    <h2 class="main-title">Nuestra experiencia a tu servicio</h2>
+    <h2 class="main-title" data-experience-reveal>Nuestra experiencia a tu servicio</h2>
     <div class="title-line"></div>
 
     <!-- Sección de contadores -->
@@ -415,7 +451,7 @@
 
   <section class="network-benefits" aria-labelledby="network-benefits-title">
     <div class="network-benefits-container">
-      <header class="network-benefits-header">
+      <header class="network-benefits-header" data-benefits-reveal>
         <div class="network-benefits-tag">
           <div class="network-benefits-tag-icon">
             <img src="assets/img/marca/Ícono DRFC.png" alt="DRFC Icono">
@@ -427,7 +463,7 @@
       </header>
 
       <div class="network-benefits-grid">
-        <div class="network-benefits-image" id="networkBenefitsCarousel" role="region" aria-label="Galería de trabajo en redes" aria-roledescription="carrusel">
+        <div class="network-benefits-image" id="networkBenefitsCarousel" role="region" aria-label="Galería de trabajo en redes" aria-roledescription="carrusel" data-benefits-reveal>
           <div class="network-benefits-track" data-benefits-track>
             <div class="network-benefits-slide is-active" data-benefits-slide aria-hidden="false">
               <img src="assets/img/fotos/Foto_etapas.jpg" alt="Trabajo operativo en campo">
@@ -446,7 +482,7 @@
         </div>
 
         <div class="network-benefits-list">
-          <div class="network-benefits-item">
+          <div class="network-benefits-item" data-benefits-reveal>
             <div class="network-benefits-item-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#243c5a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
@@ -458,7 +494,7 @@
             </div>
           </div>
 
-          <div class="network-benefits-item">
+          <div class="network-benefits-item" data-benefits-reveal>
             <div class="network-benefits-item-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#243c5a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -474,7 +510,7 @@
             </div>
           </div>
 
-          <div class="network-benefits-item">
+          <div class="network-benefits-item" data-benefits-reveal>
             <div class="network-benefits-item-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#243c5a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
@@ -498,16 +534,32 @@
 <section class="collaborators" aria-labelledby="collaborators-title">
   <div class="collaborators-container">
     <!-- Sección de título -->
-    <div class="collaborators-header" data-coverage-reveal="header">
+    <div class="collaborators-header">
       <div class="collaborators-tagline">
         <img src="assets/img/marca/Ícono DRFC.png" alt="DRFC" class="collaborators-tagline-icon">
         <span>COLABORADORES</span>
       </div>
-      <h2 class="collaborators-title" id="collaborators-title">Cobertura nacional</h2>
+      <h2 class="collaborators-title" id="collaborators-title" data-coverage-reveal="header">Cobertura nacional</h2>
     </div>
 
     <!-- Sección principal azul -->
     <div class="collaborators-panel">
+      <svg class="collaborators-fiber-overlay" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+        <path class="collaborators-fiber-path" d="M-100 180C180 80 330 440 650 340S1050 120 1540 300"></path>
+        <path class="collaborators-fiber-path" d="M-80 650C250 570 370 210 690 300S1120 700 1520 510"></path>
+        <path id="collaborators-fiber-path-primary" class="collaborators-fiber-path collaborators-fiber-path-accent" d="M-100 460C180 700 460 120 760 380S1160 690 1540 180"></path>
+        <path id="collaborators-fiber-path-secondary" class="collaborators-fiber-path collaborators-fiber-path-accent collaborators-fiber-path-accent--slow" d="M-100 100C230 360 460 680 760 500S1180 160 1540 620"></path>
+        <circle class="collaborators-fiber-pulse" r="5">
+          <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#collaborators-fiber-path-primary"></mpath>
+          </animateMotion>
+        </circle>
+        <circle class="collaborators-fiber-pulse collaborators-fiber-pulse--secondary" r="4">
+          <animateMotion dur="5.5s" begin="-2.5s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#collaborators-fiber-path-secondary"></mpath>
+          </animateMotion>
+        </circle>
+      </svg>
       
       <!-- Ubicaciones -->
       <div class="collaborators-location" data-coverage-reveal="locations">
@@ -557,18 +609,18 @@
 
 <section class="fiber-cta" aria-label="Contacto y evaluación técnica">
   <div class="fiber-cta-card">
-    <p class="fiber-cta-eyebrow">
+    <p class="fiber-cta-eyebrow" data-cta-reveal>
       <img src="assets/img/marca/Ícono DRFC.png" alt="" class="fiber-cta-logo">
       Te ayudamos a expandir tu red
     </p>
-    <h2 class="fiber-cta-title">Agendemos una reunión técnica para evaluar tu próximo despliegue</h2>
-    <div class="fiber-cta-connection" role="img" aria-label="Señal de fibra óptica conectando dos terminales">
+    <h2 class="fiber-cta-title" data-cta-reveal>Agendemos una reunión técnica para evaluar tu próximo despliegue</h2>
+    <div class="fiber-cta-connection" role="img" aria-label="Señal de fibra óptica conectando dos terminales" data-cta-reveal>
       <span class="fiber-cta-connector"></span>
       <span class="fiber-cta-cable"></span>
       <span class="fiber-cta-connector"></span>
     </div>
-    <p class="fiber-cta-description">En DRFC estamos comprometidos con entregar calidad en cada uno de nuestros trabajos</p>
-    <a class="fiber-cta-contact" href="paginas/contacto.html">
+    <p class="fiber-cta-description" data-cta-reveal>En DRFC estamos comprometidos con entregar calidad en cada uno de nuestros trabajos</p>
+    <a class="fiber-cta-contact" href="paginas/contacto.html" data-cta-reveal>
       Contacto
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M5 12h14"></path>
@@ -577,6 +629,8 @@
     </a>
   </div>
 </section>
+
+<script src="assets/js/paginas/index/cta.js"></script>
 
 <!-- PIE DE PÁGINA COMPARTIDO -->
 <script src="componentes/footer.js"></script>
