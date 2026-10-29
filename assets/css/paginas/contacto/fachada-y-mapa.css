@@ -1,46 +1,76 @@
-* {
-  box-sizing: border-box;
+.contact-location {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 6vw, 6.5rem);
+  background: #fff;
+}
+
+.contact-location-heading {
+  width: min(100%, 1240px);
+  margin: 0 auto 2rem;
+}
+
+.contact-location-eyebrow {
+  margin: 0 0 .65rem;
+  color: #537181;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.contact-location-heading h2 {
   margin: 0;
-  padding: 0;
+  color: #183448;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 600;
+  letter-spacing: -.045em;
+  line-height: 1.2;
 }
 
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 1200px;
+.contact-location-heading > p:last-child {
+  max-width: 42rem;
+  margin: .75rem 0 0;
+  color: #637582;
+  font-size: .9rem;
+  line-height: 1.7;
+}
+
+.contact-location-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  width: min(100%, 1240px);
   margin: 0 auto;
-  height: 450px; /* Puedes ajustar la altura según tus necesidades */
 }
 
-.column {
-  flex: 1 1 300px;
+.contact-location-photo,
+.contact-location-map {
   min-width: 0;
-  max-width: 100%;
-  height: 100%;
+  height: clamp(18rem, 34vw, 28rem);
+  overflow: hidden;
+  border-radius: .75rem;
+  background: #e8eef0;
 }
 
-/* Ajuste para la foto */
-.column img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.contact-location-photo img,
+.contact-location-map iframe {
   display: block;
-}
-
-/* Ajuste para el mapa de Google */
-.column iframe {
   width: 100%;
   height: 100%;
   border: 0;
+  object-fit: cover;
 }
 
-/* Responsivo para pantallas pequeñas */
-@media (max-width: 768px) {
-  .container {
-    height: auto;
+@media (max-width: 700px) {
+  .contact-location {
+    padding-inline: 1rem;
   }
-  .column {
-    height: 350px;
+
+  .contact-location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-location-photo,
+  .contact-location-map {
+    height: 18rem;
   }
 }

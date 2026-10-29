@@ -33,7 +33,7 @@
           { texto: "Responsabilidad Social", url: "paginas/responsabilidad_social.html" }
         ]
       },
-      { texto: "Bolsa de Trabajo", url: "#" }
+      { texto: "Bolsa de Trabajo", url: "mailto:contacto@drfc.com.mx?subject=Bolsa%20de%20trabajo" }
     ]
   };
 
