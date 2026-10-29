@@ -23,7 +23,7 @@
       { texto: "Contacto", url: "paginas/contacto.html" }
     ],
     redes: [
-      { texto: "Facebook", url: "https://facebook.com/" },
+      { texto: "Facebook", url: "https://facebook.com/DRFCIngenieria/" },
       { texto: "LinkedIn", url: "https://linkedin.com/" }
     ],
     direccion: "Camino a Ocotepec, SN Col. Ocotepec 123, Cuernavaca, Morelos, C.P. 62220",

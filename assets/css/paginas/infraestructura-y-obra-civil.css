@@ -302,7 +302,7 @@ body {
     list-style: none;
 }
 
-.infrastructure-services-list li {
+.infrastructure-services-list > li {
     position: relative;
     padding: 0.85rem 1rem;
     border: 1px solid #e2e8f0;
@@ -313,6 +313,45 @@ body {
     color: #173d59;
     font-size: clamp(0.875rem, 1.5vw, 1rem);
     transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.infrastructure-services-list > .infrastructure-services-group {
+    padding: 0;
+}
+
+.infrastructure-services-group-title {
+    margin: 0;
+    padding: 0.85rem 1rem 0.5rem;
+    color: #173d59;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    font-weight: 600;
+}
+
+.infrastructure-services-sublist {
+    display: grid;
+    gap: 0.35rem;
+    margin: 0;
+    padding: 0 1rem 1rem 2rem;
+    list-style: none;
+}
+
+.infrastructure-services-sublist li {
+    position: relative;
+    padding-left: 0.9rem;
+    color: #334e68;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.infrastructure-services-sublist li::before {
+    position: absolute;
+    top: 0.62em;
+    left: 0;
+    width: 0.35rem;
+    height: 0.35rem;
+    border-radius: 50%;
+    background: #38bdf8;
+    content: "";
 }
 
 .infrastructure-compliance {
@@ -459,7 +498,7 @@ body {
 
 @media (hover: hover) {
     .infrastructure-intro-services li:hover,
-    .infrastructure-services-list li:hover,
+    .infrastructure-services-list > li:hover,
     .infrastructure-certifications li:hover,
     .infrastructure-standards li:hover,
     .infrastructure-audiences span:hover {
@@ -482,7 +521,7 @@ body {
     }
 
     .infrastructure-intro-services li,
-    .infrastructure-services-list li,
+    .infrastructure-services-list > li,
     .infrastructure-certifications li,
     .infrastructure-standards li,
     .infrastructure-audiences span {
@@ -490,7 +529,7 @@ body {
     }
 
     .infrastructure-intro-services li:hover,
-    .infrastructure-services-list li:hover,
+    .infrastructure-services-list > li:hover,
     .infrastructure-certifications li:hover,
     .infrastructure-standards li:hover,
     .infrastructure-audiences span:hover {
