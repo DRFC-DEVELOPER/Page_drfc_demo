@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Diseño y construcción de redes de telecomunicaciones aéreas y subterráneas, con proyectos llave en mano en México.">
     <title>Construcción de Red - Infraestructura de Telecomunicaciones</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="../assets/img/marca/Ícono DRFC.png">
+    <link rel="canonical" href="https://www.drfc.mx/paginas/construccion-de-red.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <script src="../assets/js/config/tailwind.config.js"></script>
+    <link rel="stylesheet" href="../assets/css/tailwind.production.css">
     <link rel="stylesheet" href="../assets/css/paginas/construccion-de-red.css">
     <link rel="stylesheet" href="../assets/css/paginas/service-carousel-hero.css">
     <link rel="stylesheet" href="../assets/css/paginas/service-typography.css">
+    <link rel="stylesheet" href="../assets/css/paginas/index/cta.css">
 </head>
 <body class="antialiased min-h-screen">
 
@@ -157,9 +159,9 @@
 
                     <!-- Call to Action Dark Button -->
                     <div class="pt-2">
-                        <button onclick="openModal()" class="w-full sm:w-auto bg-brand-dark hover:bg-brand-navy text-white text-xs font-bold tracking-wider py-3.5 px-8 rounded-full shadow-lg hover:shadow-xl transform active:scale-95 transition duration-200 uppercase">
+                        <a href="contacto.html" class="inline-flex w-full sm:w-auto items-center justify-center bg-brand-dark hover:bg-brand-navy text-white text-xs font-bold tracking-wider py-3.5 px-8 rounded-full shadow-lg hover:shadow-xl transform active:scale-95 transition duration-200 uppercase">
                             SOLICITAR PROPUESTA
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -269,18 +271,18 @@
                         </h3>
                         
                         <div class="space-y-2 max-w-sm mx-auto">
-                            <button onclick="selectAudience('Operadoras/proveedores de telecom')" class="w-full bg-brand-pillBg hover:bg-brand-hoverBg active:bg-brand-slateBg text-gray-700 text-xs font-semibold py-2.5 px-4 rounded-full text-center transition duration-200 border border-gray-200/60 shadow-sm block cursor-pointer">
+                            <span class="w-full bg-brand-pillBg text-gray-700 text-xs font-semibold py-2.5 px-4 rounded-full text-center border border-gray-200/60 shadow-sm block">
                                 Operadoras/proveedores de telecom
-                            </button>
-                            <button onclick="selectAudience('Desarrolladores inmobiliarios')" class="w-full bg-brand-pillBg hover:bg-brand-hoverBg active:bg-brand-slateBg text-gray-700 text-xs font-semibold py-2.5 px-4 rounded-full text-center transition duration-200 border border-gray-200/60 shadow-sm block cursor-pointer">
+                            </span>
+                            <span class="w-full bg-brand-pillBg text-gray-700 text-xs font-semibold py-2.5 px-4 rounded-full text-center border border-gray-200/60 shadow-sm block">
                                 Desarrolladores inmobiliarios
-                            </button>
-                            <button onclick="selectAudience('Empresas privadas')" class="w-full bg-brand-pillBg hover:bg-brand-hoverBg active:bg-brand-slateBg text-gray-700 text-xs font-semibold py-2.5 px-4 rounded-full text-center transition duration-200 border border-gray-200/60 shadow-sm block cursor-pointer">
+                            </span>
+                            <span class="w-full bg-brand-pillBg text-gray-700 text-xs font-semibold py-2.5 px-4 rounded-full text-center border border-gray-200/60 shadow-sm block">
                                 Empresas privadas
-                            </button>
-                            <button onclick="selectAudience('Instituciones')" class="w-full bg-brand-pillBg hover:bg-brand-hoverBg active:bg-brand-slateBg text-gray-700 text-xs font-semibold py-2.5 px-4 rounded-full text-center transition duration-200 border border-gray-200/60 shadow-sm block cursor-pointer">
+                            </span>
+                            <span class="w-full bg-brand-pillBg text-gray-700 text-xs font-semibold py-2.5 px-4 rounded-full text-center border border-gray-200/60 shadow-sm block">
                                 Instituciones
-                            </button>
+                            </span>
                         </div>
                     </div>
 
@@ -290,97 +292,18 @@
 
         </section>
 
-        <section class="construction-fiber-cta" aria-label="Construye tu red con nosotros">
-            <div class="construction-fiber-cta-card">
-                <p class="construction-fiber-cta-eyebrow">
-                    <img src="../assets/img/marca/Ícono DRFC.png" alt="" class="construction-fiber-cta-logo">
-                    Te ayudamos a expandir tu red
-                </p>
-                <h2 class="construction-fiber-cta-title">Construye tu red con nosotros</h2>
-                <div class="construction-fiber-cta-connection" role="img" aria-label="Señal de fibra óptica conectando dos terminales">
-                    <span class="construction-fiber-cta-connector"></span>
-                    <span class="construction-fiber-cta-cable"></span>
-                    <span class="construction-fiber-cta-connector"></span>
-                </div>
-                <p class="construction-fiber-cta-description">En DRFC estamos comprometidos con entregar calidad en cada uno de nuestros trabajos</p>
-                <a class="construction-fiber-cta-contact" href="contacto.html">
-                    Contacto
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M5 12h14"></path>
-                        <path d="m12 5 7 7-7 7"></path>
-                    </svg>
-                </a>
-            </div>
-        </section>
+        <script
+            src="../assets/js/secciones/call-to-action.js"
+            data-title="Construye tu red con nosotros"
+            data-description="Diseñamos y construimos infraestructura de red aérea y subterránea con alcance nacional."
+            data-button-text="Solicitar una propuesta"
+            data-button-href="contacto.html"
+        ></script>
 
         <!-- PIE DE PÁGINA COMPARTIDO -->
         <script src="../componentes/footer.js"></script>
 
     </main>
-
-    <!-- INTERACTIVE PROPOSAL MODAL -->
-    <div id="proposalModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
-        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 relative border border-gray-100 transform scale-95 transition-transform duration-300" id="modalContainer">
-            <!-- Close Button -->
-           
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 p-1">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
-
-            <!-- Modal Header -->
-            <div class="mb-4">
-                <span class="text-[10px] font-bold tracking-widest text-brand-cyan uppercase bg-brand-dark px-2.5 py-1 rounded-full">
-                    Solicitud
-                </span>
-                <h3 class="text-xl font-extrabold text-brand-dark mt-3">Solicitar Propuesta de Red</h3>
-                <p class="text-xs text-gray-500 mt-1">Completa tus datos y nos pondremos en contacto a la brevedad.</p>
-            </div>
-
-            <!-- Modal Form -->
-            <form id="contactForm" onsubmit="submitForm(event)" class="space-y-3.5">
-                <div>
-                    <label class="block text-xs font-semibold text-gray-700 mb-1">Nombre Completo</label>
-                    <input type="text" required placeholder="Ingresa tu nombre" class="w-full text-xs px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-dark focus:border-brand-dark outline-none transition">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-gray-700 mb-1">Correo Electrónico</label>
-                    <input type="email" required placeholder="ejemplo@empresa.com" class="w-full text-xs px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-dark focus:border-brand-dark outline-none transition">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-gray-700 mb-1">Tipo de Proyecto / Sector</label>
-                    <select id="sectorSelect" class="w-full text-xs px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-dark focus:border-brand-dark outline-none transition text-gray-700">
-                        <option value="Telecom">Operadoras/proveedores de telecom</option>
-                        <option value="Inmobiliaria">Desarrolladores inmobiliarios</option>
-                        <option value="Privada">Empresas privadas</option>
-                        <option value="Institucional">Instituciones</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-gray-700 mb-1">Detalles del Proyecto</label>
-                    <textarea rows="3" placeholder="Describe brevemente la ubicación, alcance o requerimientos..." class="w-full text-xs px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-dark focus:border-brand-dark outline-none transition"></textarea>
-                </div>
-
-                <!-- Toast Notification Box Inside Modal -->
-                <div id="modalToast" class="hidden text-xs p-3 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 font-medium">
-                    ✓ ¡Solicitud enviada con éxito! Un especialista te contactará pronto.
-                </div>
-
-                <div class="pt-2 flex justify-end space-x-2">
-                    <button type="button" onclick="closeModal()" class="px-4 py-2 text-xs font-bold text-gray-500 hover:text-gray-700 rounded-lg">
-                        Cancelar
-                    </button>
-                    <button type="submit" class="px-6 py-2.5 text-xs font-bold text-white bg-brand-dark hover:bg-brand-navy rounded-lg shadow-md transition">
-                        Enviar Solicitud
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
 
     <script src="../assets/js/paginas/construccion-de-red.js"></script>
     

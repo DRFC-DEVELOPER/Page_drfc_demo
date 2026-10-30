@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ingeniería, diseño y digitalización de redes HFC y FTTH para proyectos de telecomunicaciones en México.">
     <title>Ingeniería y Diseño de Red HFC y FTTX | DRFC</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="../assets/img/marca/Ícono DRFC.png">
+    <link rel="canonical" href="https://www.drfc.mx/paginas/ingenieria-y-diseno.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <script src="../assets/js/config/tailwind.config.js"></script>
+    <link rel="stylesheet" href="../assets/css/tailwind.production.css">
     <link rel="stylesheet" href="../assets/css/paginas/ingenieria-y-diseno.css">
     <link rel="stylesheet" href="../assets/css/paginas/hero-iso.css">
     <link rel="stylesheet" href="../assets/css/paginas/service-carousel-hero.css">
@@ -248,20 +249,19 @@
                     <a href="proyectos.html">Proyectos</a>
                     <a href="#alcance">Servicios</a>
                     <a href="acerca_nosotros.html">Acerca de nosotros</a>
-                    <a href="#">Bolsa de Trabajo</a>
+                    <a href="mailto:contacto@drfc.com.mx?subject=Bolsa%20de%20trabajo">Bolsa de Trabajo</a>
                     <a href="#contacto">Contacto</a>
                 </nav>
 
                 <nav class="contact-cta-links" aria-label="Redes sociales">
-                    <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a>
-                    <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://facebook.com/DRFCIngenieria/" target="_blank" rel="noopener noreferrer">Facebook</a>
                 </nav>
 
                 <div class="contact-cta-corporate" aria-label="Información corporativa">
                     <strong>Corporativo</strong>
                     <p>Camino a Ocotepec, SN Col. Ocotepec 123, Cuernavaca, Morelos, C.P. 62220</p>
                     <a href="mailto:contacto@drfc.com.mx">contacto@drfc.com.mx</a>
-                    <a href="tel:+527774166135">777 416 6135</a>
+                    <a href="tel:+527774502639">777 450 2639</a>
                 </div>
             </div>
 
@@ -299,24 +299,24 @@
                     Solicitud
                 </span>
                 <h3 class="text-xl font-extrabold text-brand-dark mt-3">Solicitar servicio de ingeniería y diseño</h3>
-                <p class="text-xs text-gray-500 mt-1">Completa tus datos y nos pondremos en contacto a la brevedad.</p>
+                <p class="text-xs text-gray-500 mt-1">Completa tus datos. Se abrirá tu aplicación de correo para revisar y confirmar el envío.</p>
             </div>
 
             <!-- Modal Form -->
             <form id="contactForm" onsubmit="submitForm(event)" class="space-y-3.5">
                 <div>
                     <label class="block text-xs font-semibold text-gray-700 mb-1">Nombre Completo</label>
-                    <input type="text" required placeholder="Ingresa tu nombre" class="w-full text-xs px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-dark focus:border-brand-dark outline-none transition">
+                    <input type="text" name="nombre" required placeholder="Ingresa tu nombre" class="w-full text-xs px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-dark focus:border-brand-dark outline-none transition">
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold text-gray-700 mb-1">Correo Electrónico</label>
-                    <input type="email" required placeholder="ejemplo@empresa.com" class="w-full text-xs px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-dark focus:border-brand-dark outline-none transition">
+                    <input type="email" name="correo" required placeholder="ejemplo@empresa.com" class="w-full text-xs px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-dark focus:border-brand-dark outline-none transition">
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold text-gray-700 mb-1">Tipo de Proyecto / Sector</label>
-                    <select id="sectorSelect" class="w-full text-xs px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-dark focus:border-brand-dark outline-none transition text-gray-700">
+                    <select id="sectorSelect" name="sector" class="w-full text-xs px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-dark focus:border-brand-dark outline-none transition text-gray-700">
                         <option value="Telecom">Operadoras/proveedores de telecom</option>
                         <option value="Inmobiliaria">Desarrolladores inmobiliarios</option>
                         <option value="Privada">Empresas privadas</option>
@@ -326,12 +326,11 @@
 
                 <div>
                     <label class="block text-xs font-semibold text-gray-700 mb-1">Detalles del proyecto</label>
-                    <textarea rows="3" placeholder="Describe la ubicación, el tipo de red y los servicios que necesitas..." class="w-full text-xs px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-dark focus:border-brand-dark outline-none transition"></textarea>
+                    <textarea name="detalles" rows="3" placeholder="Describe la ubicación, el tipo de red y los servicios que necesitas..." class="w-full text-xs px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-dark focus:border-brand-dark outline-none transition"></textarea>
                 </div>
 
                 <!-- Toast Notification Box Inside Modal -->
-                <div id="modalToast" class="hidden text-xs p-3 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 font-medium">
-                    ✓ ¡Solicitud enviada con éxito! Un especialista te contactará pronto.
+                <div id="modalToast" role="status" aria-live="polite" class="hidden text-xs p-3 rounded-lg bg-sky-50 text-sky-800 border border-sky-200 font-medium">
                 </div>
 
                 <div class="pt-2 flex justify-end space-x-2">

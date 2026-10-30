@@ -13,7 +13,7 @@
   animation: acometidas-hero-drift 18s ease-in-out infinite alternate;
 }
 
-.acometidas-hero-content {
+.acometidas-hero .services-hero-content {
   position: relative;
   z-index: 2;
 }

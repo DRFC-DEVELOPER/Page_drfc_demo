@@ -19,19 +19,17 @@
       { texto: "Proyectos", url: "paginas/proyectos.html" },
       { texto: "Servicios", url: "paginas/servicios.html" },
       { texto: "Acerca de nosotros", url: "paginas/acerca_nosotros.html" },
-      { texto: "Bolsa de Trabajo", url: "#" },
+      { texto: "Bolsa de Trabajo", url: "mailto:contacto@drfc.com.mx?subject=Bolsa%20de%20trabajo" },
       { texto: "Contacto", url: "paginas/contacto.html" }
     ],
     redes: [
-      { texto: "Facebook", url: "https://facebook.com/DRFCIngenieria/" },
-      { texto: "LinkedIn", url: "https://linkedin.com/" }
+      { texto: "Facebook", url: "https://facebook.com/DRFCIngenieria/" }
     ],
     direccion: "Camino a Ocotepec, SN Col. Ocotepec 123, Cuernavaca, Morelos, C.P. 62220",
     correo: "contacto@drfc.com.mx",
-    telefono: "777 416 6135",
-    telefonoLink: "+527774166135",
+    telefono: "777 450 2639",
+    telefonoLink: "+527774502639",
     empresa: "DRFC Ingeniería S.A. de C.V.",
-    mensajeNewsletter: "Gracias. Para completar la suscripción, conecta un servicio de correo."
   };
 
   /* ---------- 2. Rutas ---------- */
@@ -61,11 +59,8 @@
   .site-footer .back-top .arrow{display:flex;align-items:center;justify-content:center;width:23px;height:23px;border-radius:50%;background:#1e303e;color:#c2d5e2;font-size:.9375rem}
   .site-footer .newsletter h2{margin-bottom:12px;font-size:1rem;font-weight:400;letter-spacing:-.4px;line-height:1.3;text-align:right}
   .site-footer .newsletter{width:min(100%,340px);margin-left:auto}
-  .site-footer .newsletter-form{display:flex;align-items:center;width:100%;max-width:340px;height:38px;padding:4px;border-radius:30px;background:#fff;margin-left:auto}
-  .site-footer .newsletter-form input{flex:1;min-width:0;padding:0 10px;border:none;outline:none;background:transparent;color:#111;font-size:.8125rem}
-  .site-footer .newsletter-form input::placeholder{color:#888}
-  .site-footer .newsletter-form button{flex-shrink:0;width:29px;height:29px;padding:0;border:none;border-radius:50%;background:#003e58;color:#fff;cursor:pointer;font-size:.875rem}
-  .site-footer .newsletter-message{margin-top:8px;font-size:.75rem}
+  .site-footer .newsletter-link{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 18px;border-radius:30px;background:#fff;color:#003e58;font-size:.8125rem;font-weight:600;transition:background-color .2s ease}
+  .site-footer .newsletter-link:hover{background:#e8f1f5}
   .site-footer .copyright{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.35rem 1.25rem;width:100%;padding:1rem var(--footer-gutter);background:#fff;color:#003e58;font-size:.75rem;line-height:1.5;text-align:center}
   @media (max-width:900px){.site-footer .footer-top{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media (max-width:520px){
@@ -73,7 +68,6 @@
     .site-footer .footer-top{gap:2rem 15px}
     .site-footer .footer-bottom{flex-direction:column;align-items:stretch;gap:30px;margin-top:0}
     .site-footer .newsletter{width:100%}
-    .site-footer .newsletter-form{max-width:100%}
     .site-footer .copyright{padding-inline:1rem}
   }
   @media (prefers-reduced-motion:reduce){.site-footer .footer-links a,.site-footer .legal-links a{transition:none}}`;
@@ -111,11 +105,7 @@
         </div>
         <div class="newsletter">
           <h2>Agendemos una<br>evaluación inicial</h2>
-          <form class="newsletter-form" id="newsletter-form">
-            <input type="email" name="email" placeholder="name@example.com" aria-label="Correo electrónico" required>
-            <button type="submit" aria-label="Suscribirse">➜</button>
-          </form>
-          <p class="newsletter-message" id="newsletter-message" role="status"></p>
+          <a class="newsletter-link" href="${ruta("paginas/contacto.html")}">Cuéntanos sobre tu proyecto</a>
         </div>
       </div>
     </footer>
@@ -135,11 +125,4 @@
     window.scrollTo({ top: 0, behavior: reducir ? "auto" : "smooth" });
   });
 
-  const form = footer.querySelector(".newsletter-form");
-  const mensaje = footer.querySelector(".newsletter-message");
-  form.addEventListener("submit", (ev) => {
-    ev.preventDefault();
-    mensaje.textContent = CONFIG.mensajeNewsletter;
-    form.reset();
-  });
 })();

@@ -175,8 +175,8 @@ body {
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    max-width: 1400px;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    width: min(calc(100% - clamp(2rem, 8vw, 8rem)), 1720px);
     margin: 0 auto;
     background: #d0d9e2;
 }
@@ -184,14 +184,17 @@ body {
 .infrastructure-intro-content {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-self: stretch;
-    padding: clamp(1.5rem, 4vw, 3.5rem);
+    gap: clamp(0.75rem, 1.4vw, 1.5rem);
+    min-width: 0;
+    padding: clamp(1.5rem, 4vw, 4rem);
 }
 
 .infrastructure-intro-image {
     position: relative;
-    min-height: clamp(18rem, 30vw, 30rem);
+    min-width: 0;
+    min-height: clamp(20rem, 34vw, 38rem);
     overflow: hidden;
     background: #d0d9e2;
 }
@@ -229,7 +232,7 @@ body {
 }
 
 .infrastructure-intro-lead {
-    margin: 1.5rem 0 0.75rem;
+    margin: 0;
     color: #173d59;
     font-size: clamp(0.95rem, 1.25vw, 1.125rem);
     font-weight: 700;
@@ -238,8 +241,8 @@ body {
 .infrastructure-intro-services {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.75rem;
-    margin: 0 0 1.5rem;
+    gap: clamp(0.5rem, 1vw, 0.9rem);
+    margin: 0 0 0.25rem;
     padding: 0;
     list-style: none;
 }
@@ -248,8 +251,9 @@ body {
     display: flex;
     align-items: center;
     position: relative;
-    min-height: 4.5rem;
-    padding: 0.9rem 1rem;
+    min-width: 0;
+    min-height: clamp(4rem, 5vw, 5.25rem);
+    padding: clamp(0.75rem, 1.2vw, 1.1rem);
     border: 1px solid rgba(18, 62, 89, 0.12);
     border-left: 3px solid #38bdf8;
     border-radius: 0.75rem;
@@ -268,8 +272,8 @@ body {
 
 .infrastructure-services {
     display: grid;
-    grid-template-columns: minmax(13rem, 0.7fr) 1.3fr;
-    max-width: 1400px;
+    grid-template-columns: minmax(17rem, 0.65fr) minmax(0, 1.35fr);
+    width: min(calc(100% - clamp(2rem, 8vw, 8rem)), 1720px);
     margin: 0 auto 3rem;
     overflow: visible;
     border-radius: 1.25rem;
@@ -278,7 +282,7 @@ body {
 }
 
 .infrastructure-services-heading {
-    padding: clamp(1.5rem, 4vw, 3rem);
+    padding: clamp(1.5rem, 4vw, 4rem);
     border-radius: 1.25rem 0 0 1.25rem;
     background: #28445e;
     color: white;
@@ -298,12 +302,14 @@ body {
     gap: 0.75rem;
     align-self: stretch;
     margin: 0;
-    padding: clamp(1.25rem, 3vw, 2.5rem);
+    min-width: 0;
+    padding: clamp(1.25rem, 3vw, 3rem);
     list-style: none;
 }
 
 .infrastructure-services-list > li {
     position: relative;
+    min-width: 0;
     padding: 0.85rem 1rem;
     border: 1px solid #e2e8f0;
     border-left: 3px solid #38bdf8;
@@ -356,8 +362,8 @@ body {
 
 .infrastructure-compliance {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    max-width: 1400px;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    width: min(calc(100% - clamp(2rem, 8vw, 8rem)), 1720px);
     margin: 0 auto 3rem;
     overflow: hidden;
     background: #1c3b57;
@@ -365,6 +371,7 @@ body {
 }
 
 .infrastructure-compliance-image {
+    min-width: 0;
     min-height: 20rem;
 }
 
@@ -379,7 +386,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: clamp(1.5rem, 4vw, 3rem);
+    min-width: 0;
+    padding: clamp(1.5rem, 4vw, 4rem);
 }
 
 .infrastructure-compliance-title-row {
@@ -388,6 +396,7 @@ body {
     justify-content: flex-start;
     gap: 0.75rem;
     margin-bottom: 1.5rem;
+    min-width: 0;
 }
 
 .infrastructure-compliance-title-row img {
@@ -399,6 +408,7 @@ body {
 }
 
 .infrastructure-compliance-title {
+    min-width: 0;
     margin: 0;
     color: white;
     font-size: clamp(1.5rem, 3vw, 2.25rem);
@@ -408,7 +418,7 @@ body {
 
 .infrastructure-compliance-groups {
     display: grid;
-    gap: 1.25rem;
+    gap: clamp(1rem, 2vw, 1.75rem);
 }
 
 .infrastructure-compliance-group {
@@ -439,8 +449,9 @@ body {
     position: relative;
     display: flex;
     align-items: center;
+    min-width: 0;
     min-height: 3.25rem;
-    padding: 0.75rem 0.9rem;
+    padding: clamp(0.65rem, 1vw, 0.85rem);
     border: 1px solid rgba(226, 232, 240, 0.2);
     border-radius: 0.65rem;
     background: rgba(255, 255, 255, 0.08);
@@ -459,7 +470,7 @@ body {
 }
 
 .infrastructure-audience {
-    margin-top: 1.25rem;
+    margin-top: clamp(1.25rem, 2vw, 2rem);
 }
 
 .infrastructure-audience-title {
@@ -473,13 +484,17 @@ body {
 
 .infrastructure-audiences {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-.infrastructure-audiences span {
+.infrastructure-audiences li {
     position: relative;
     display: block;
+    min-width: 0;
     padding: 0.6rem 0.7rem;
     border: 1px solid rgba(219, 234, 254, 0.16);
     border-radius: 0.6rem;
@@ -488,10 +503,10 @@ body {
     font-size: 0.7rem;
     line-height: 1.35;
     text-align: center;
-    transition: transform 220ms ease, box-shadow 220ms ease;
+    list-style: none;
 }
 
-.infrastructure-audiences span:nth-child(even) {
+.infrastructure-audiences li:nth-child(even) {
     background: #e8f0f6;
     color: #28445e;
 }
@@ -500,8 +515,7 @@ body {
     .infrastructure-intro-services li:hover,
     .infrastructure-services-list > li:hover,
     .infrastructure-certifications li:hover,
-    .infrastructure-standards li:hover,
-    .infrastructure-audiences span:hover {
+    .infrastructure-standards li:hover {
         z-index: 1;
         transform: scale(1.03);
         box-shadow: 0 14px 28px rgba(18, 43, 61, 0.2);
@@ -523,35 +537,37 @@ body {
     .infrastructure-intro-services li,
     .infrastructure-services-list > li,
     .infrastructure-certifications li,
-    .infrastructure-standards li,
-    .infrastructure-audiences span {
+    .infrastructure-standards li {
         transition: none;
     }
 
     .infrastructure-intro-services li:hover,
     .infrastructure-services-list > li:hover,
     .infrastructure-certifications li:hover,
-    .infrastructure-standards li:hover,
-    .infrastructure-audiences span:hover {
+    .infrastructure-standards li:hover {
         transform: none;
     }
 }
 
-@media (max-width: 700px) {
-    .infrastructure-hero {
-        min-height: 14rem;
+@media (min-width: 1200px) {
+    .infrastructure-services-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .infrastructure-hero-title {
-        font-size: clamp(1.75rem, 8.5vw, 3.75rem);
+    .infrastructure-services-list > .infrastructure-services-group {
+        grid-column: 1 / -1;
     }
 
-    .infrastructure-section-eyebrow img {
-        flex-basis: 2rem;
-        width: 2rem;
-        height: 2rem;
+    .infrastructure-services-sublist {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
+    .infrastructure-compliance-groups {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 1000px) {
     .infrastructure-intro {
         grid-template-columns: 1fr;
     }
@@ -590,6 +606,10 @@ body {
         max-height: 20rem;
     }
 
+    .infrastructure-compliance-groups {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .infrastructure-compliance-title-row {
         justify-content: flex-start;
     }
@@ -600,7 +620,45 @@ body {
     }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 700px) {
+    .infrastructure-hero {
+        min-height: 14rem;
+    }
+
+    .infrastructure-hero-title {
+        font-size: clamp(1.75rem, 8.5vw, 3.75rem);
+    }
+
+    .infrastructure-section-eyebrow img {
+        flex-basis: 2rem;
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .infrastructure-intro,
+    .infrastructure-services,
+    .infrastructure-compliance {
+        width: calc(100% - 2rem);
+    }
+
+    .infrastructure-intro-content {
+        gap: 1rem;
+    }
+
+    .infrastructure-intro-image {
+        min-height: 16rem;
+    }
+
+    .infrastructure-services-list {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .infrastructure-compliance-groups {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 560px) {
     .infrastructure-intro-services,
     .infrastructure-certifications,
     .infrastructure-standards,

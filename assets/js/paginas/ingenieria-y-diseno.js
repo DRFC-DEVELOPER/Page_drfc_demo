@@ -105,13 +105,23 @@ function scrollToServices() {
 
 function submitForm(event) {
     event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const toast = document.getElementById('modalToast');
     if (toast) {
+        toast.textContent = 'Se abrirá tu aplicación de correo. La solicitud se enviará cuando confirmes el envío desde allí.';
         toast.classList.remove('hidden');
     }
-    setTimeout(() => {
-        closeModal();
-    }, 2000);
+    const body = [
+        `Nombre: ${formData.get('nombre')}`,
+        `Correo electrónico: ${formData.get('correo')}`,
+        `Tipo de proyecto / sector: ${formData.get('sector')}`,
+        '',
+        'Detalles del proyecto:',
+        formData.get('detalles') || 'No especificados'
+    ].join('\r\n');
+    const subject = 'Solicitud de ingeniería y diseño';
+    window.location.href = `mailto:contacto@drfc.com.mx?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
 // Close modal when clicking on backdrop

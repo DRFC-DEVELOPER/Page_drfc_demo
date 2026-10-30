@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Consulta los estados, ciudades y tipos de proyecto en los que ha trabajado DRFC Ingeniería en México.">
     <title>Proyectos en México - DRFC Ingeniería</title>
+    <link rel="icon" type="image/png" href="../assets/img/marca/Ícono DRFC.png">
+    <link rel="canonical" href="https://www.drfc.mx/paginas/proyectos.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -267,7 +269,7 @@ function pintarContadores(){
   document.getElementById("nEstados").textContent = Object.keys(est).length;
 }
 
-var svg = d3.select("#mapa");
+var svg = window.d3 ? d3.select("#mapa") : null;
 var proj = null;
 var capa = null;
 var tip = document.getElementById("tip");
@@ -307,6 +309,10 @@ function pintarMarcadores(){
 
 pintarChips(); pintarLista(); pintarDetalle(); pintarContadores();
 
+if (!window.d3 || !window.topojson) {
+  console.error("No se pudieron cargar las librerías del mapa de proyectos.");
+  document.querySelector(".mapa").innerHTML = '<p class="vacio" style="padding:24px">No se pudo cargar el mapa. La lista de ciudades sigue disponible abajo.</p>';
+} else {
 d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json").then(function(w){
   var mx = topojson.feature(w, w.objects.countries).features.filter(function(d){ return d.id === "484"; })[0];
   proj = d3.geoMercator().fitExtent([[14,14],[746,486]], mx);
@@ -336,6 +342,7 @@ d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json").then(fu
   console.error("No se pudo cargar la geometría del mapa de México.", error);
   document.querySelector(".mapa").innerHTML = '<p class="vacio" style="padding:24px">No se pudo cargar el mapa. La lista de ciudades sigue disponible abajo.</p>';
 });
+}
 </script>
     </main>
     <script src="../assets/js/secciones/call-to-action.js" data-title="Hablemos de tu próximo proyecto"></script>
