@@ -396,12 +396,11 @@ body {
 .infrastructure-compliance-title-row {
     grid-column: 1 / -1;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
     gap: 0.75rem;
     margin: 0;
-    padding: clamp(1.5rem, 3vw, 3rem) var(--infrastructure-content-gutter) 0;
+    padding: clamp(1.5rem, 3vw, 3rem) var(--infrastructure-content-gutter) 1rem;
     min-width: 0;
 }
 
