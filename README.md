@@ -57,7 +57,7 @@ Vuelve a generar `assets/css/tailwind.production.css` cuando cambien las clases 
 
 ### Contenedor Docker
 
-La imagen compila Tailwind y publica las páginas principales mediante Nginx. Las páginas HTML no se almacenan en caché; CSS, JavaScript e imágenes usan caché de un día.
+La imagen compila Tailwind y publica las páginas principales mediante Nginx. Las páginas HTML, CSS y JavaScript no se almacenan en caché (el navegador revalida en cada visita); las imágenes usan caché de un día.
 
 ```powershell
 docker build -t drfc-web .
