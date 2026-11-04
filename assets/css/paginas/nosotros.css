@@ -109,6 +109,10 @@ body.about-site {
   margin: 0 auto;
 }
 
+body.about-site .about-section--white .about-inner {
+  max-width: none;
+}
+
 .about-section-heading {
   max-width: 54rem;
   margin: 0 0 clamp(2rem, 4vw, 3.25rem);
@@ -142,6 +146,10 @@ body.about-site {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.about-choice-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .about-choice-card {
@@ -788,6 +796,12 @@ body.about-site {
 
   .about-feature {
     gap: 1.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-choice-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
