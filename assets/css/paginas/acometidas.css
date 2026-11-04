@@ -144,7 +144,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: clamp(3rem, 6vw, 5.5rem) clamp(1.5rem, 4vw, 4rem);
+  padding: clamp(3rem, 6vw, 5.5rem) var(--services-gutter);
   background: #28465f;
   color: #fff;
 }
@@ -366,7 +366,7 @@
   }
 
   .acometidas-details-heading {
-    padding: 3rem clamp(1.25rem, 6vw, 3rem);
+    padding: 3rem var(--services-gutter);
   }
 
   .acometidas-service-list {

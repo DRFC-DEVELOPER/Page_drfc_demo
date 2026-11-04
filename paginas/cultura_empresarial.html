@@ -106,7 +106,10 @@
       const frameDocument = valuesSlider.contentDocument;
       if (!frameDocument) return;
 
-      const contentHeight = frameDocument.body.scrollHeight;
+      const contentHeight = Math.max(
+        frameDocument.body.scrollHeight,
+        frameDocument.documentElement.scrollHeight
+      );
       const targetHeight = Math.max(baseSliderHeight, contentHeight);
 
       if (Math.abs(valuesSlider.getBoundingClientRect().height - targetHeight) > 1) {
@@ -124,7 +127,12 @@
       const frameDocument = valuesSlider.contentDocument;
       const frameObserver = new ResizeObserver(scheduleValuesSliderFit);
       frameObserver.observe(frameDocument.body);
+      frameObserver.observe(frameDocument.documentElement);
     });
+
+    if (valuesSlider.contentDocument.readyState === "complete") {
+      scheduleValuesSliderFit();
+    }
 
     window.addEventListener("resize", () => {
       valuesSlider.style.height = "";

@@ -76,6 +76,18 @@
   margin: 0 0 clamp(2rem, 4vw, 4rem);
 }
 
+@media (min-width: 993px) {
+  .section-container .header-tag,
+  .section-container .main-title {
+    margin-right: 0;
+    margin-left: var(--section-gutter);
+  }
+
+  .section-container .title-line {
+    margin-left: var(--section-gutter);
+  }
+}
+
 /* Sección de estadísticas */
 .stats-section {
   position: relative;

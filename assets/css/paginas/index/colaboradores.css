@@ -54,6 +54,14 @@
   padding: clamp(2rem, 5vw, 4rem) 0 clamp(1.5rem, 3vw, 2.5rem);
 }
 
+@media (min-width: 993px) {
+  .collaborators-header {
+    width: min(calc(100% - 3 * var(--page-content-gutter)), 1400px);
+    margin-right: 0;
+    margin-left: calc(2 * var(--page-content-gutter));
+  }
+}
+
 .collaborators-tagline {
   display: flex;
   align-items: center;

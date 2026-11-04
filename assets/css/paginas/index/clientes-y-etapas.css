@@ -37,6 +37,14 @@ body {
   text-align: left;
 }
 
+@media (min-width: 993px) {
+  .logo-marquee-heading {
+    width: min(calc(100% - 3 * var(--page-content-gutter)), 1400px);
+    margin-right: 0;
+    margin-left: calc(2 * var(--page-content-gutter));
+  }
+}
+
 .logo-marquee-tagline {
   display: flex;
   align-items: center;
@@ -169,6 +177,14 @@ body {
 .network-benefits-container {
   width: min(100%, 1400px);
   margin: 0 auto;
+}
+
+@media (min-width: 993px) {
+  .network-benefits-container {
+    width: min(calc(100% - var(--page-content-gutter)), 1400px);
+    margin-right: 0;
+    margin-left: var(--page-content-gutter);
+  }
 }
 
 .network-benefits.benefits-reveal-ready [data-benefits-reveal] {

@@ -301,7 +301,7 @@ body.about-site .about-section--white .about-inner {
 .about-value-slider {
   display: block;
   width: 100%;
-  height: clamp(34rem, 38vw, 40rem);
+  height: clamp(40rem, 44vw, 46rem);
   border: 0;
   border-radius: 12px;
   background: #e9eef1;
@@ -309,6 +309,10 @@ body.about-site .about-section--white .about-inner {
 
 .about-section--culture-values {
   padding-block: clamp(3rem, 5vw, 4.5rem);
+}
+
+.about-section--culture-values .about-inner {
+  max-width: none;
 }
 
 .about-section--identity {
@@ -535,8 +539,12 @@ body.about-site .about-section--white .about-inner {
 
 .social-principles-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
   gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.about-section--soft .about-inner {
+  max-width: none;
 }
 
 .social-action-grid .about-practice-card,
@@ -783,7 +791,7 @@ body.about-site .about-section--white .about-inner {
   }
 
   .about-value-slider {
-    height: 40rem;
+    height: 44rem;
   }
 
   .social-internship {
@@ -802,6 +810,12 @@ body.about-site .about-section--white .about-inner {
 @media (max-width: 900px) {
   .about-choice-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .about-value-slider {
+    height: 60rem;
   }
 }
 
