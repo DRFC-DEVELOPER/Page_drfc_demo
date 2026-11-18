@@ -182,13 +182,12 @@
         }
 
         .infrastructure-benefits-section {
-            padding: clamp(1.25rem, 3vw, 2.5rem) var(--infrastructure-content-gutter, clamp(2rem, 7vw, 6.5rem));
+            padding: clamp(1.25rem, 3vw, 2.5rem) clamp(1rem, 4vw, 4rem);
         }
 
         .infrastructure-benefits {
             grid-template-columns: repeat(4, minmax(0, 1fr));
-            width: 100%;
-            max-width: none;
+            width: min(100%, 1720px);
         }
 
         .infrastructure-benefits .network-tool-card {
@@ -227,8 +226,7 @@
         }
 
         .infrastructure-benefits-section .network-tools-grid {
-            max-width: none;
-            margin: 0;
+            max-width: 1720px;
         }
 
         @media (max-width: 1100px) and (min-width: 641px) {
@@ -250,13 +248,6 @@
             .infrastructure-benefits {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
                 max-width: none;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .infrastructure-benefits-section {
-                padding-right: 1.5rem;
-                padding-left: 1.5rem;
             }
         }
 

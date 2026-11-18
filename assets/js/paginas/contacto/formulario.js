@@ -19,6 +19,8 @@ if (contactForm) {
       `Servicio de interés: ${value('Servicio de interés')}`,
       `Plazo estimado: ${value('Plazo estimado')}`,
       `Ubicación del proyecto: ${value('Ubicación del proyecto')}`,
+      `Consentimiento para tratar los datos de la solicitud: ${formData.has('consentimientoPrivacidad') ? 'Sí' : 'No'}`,
+      `Comunicaciones promocionales: ${formData.has('comunicacionesPromocionales') ? 'Sí' : 'No'}`,
       '',
       'Descripción del proyecto:',
       value('Descripción del proyecto')

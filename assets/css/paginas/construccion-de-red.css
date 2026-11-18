@@ -279,10 +279,6 @@ body {
     color: #123e59;
 }
 
-#sobre-servicio {
-    padding-inline: clamp(2rem, 7vw, 6.5rem);
-}
-
 #alcance {
     display: grid;
     grid-template-columns: minmax(18rem, 0.35fr) minmax(0, 0.65fr);
@@ -293,12 +289,8 @@ body {
 #alcance > div:first-child {
     grid-column: 1;
     justify-content: flex-start;
-    padding: clamp(2rem, 7vw, 6.5rem);
+    padding: clamp(2rem, 4.2vw, 4rem);
     background: #2d4658;
-}
-
-#alcance .construction-heading {
-    color: #ffffff;
 }
 
 #alcance > div:first-child > .absolute {
@@ -340,10 +332,6 @@ body {
 }
 
 @media (max-width: 767px) {
-    #sobre-servicio {
-        padding-inline: 1.5rem;
-    }
-
     #alcance {
         grid-template-columns: minmax(0, 1fr);
     }

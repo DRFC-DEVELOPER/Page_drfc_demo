@@ -70,7 +70,7 @@
 
     .card-item {
       width: clamp(19rem, 29vw, 23rem);
-      height: clamp(26rem, 37vw, 32rem);
+      height: clamp(23rem, 34vw, 27rem);
       scroll-snap-align: center;
     }
 
@@ -116,7 +116,6 @@
 
     main.glass-panel {
       width: 100%;
-      max-width: none;
       margin: 0 auto;
       padding: clamp(1rem, 3vw, 2.5rem);
     }
@@ -136,7 +135,7 @@
     @media (max-width: 1023px) {
       .card-item {
         width: clamp(19rem, 48vw, 22rem);
-        height: clamp(26rem, 60vw, 30rem);
+        height: clamp(23rem, 56vw, 26rem);
       }
 
       #cardsTrack {
@@ -147,7 +146,7 @@
     @media (max-width: 640px) {
       .card-item {
         width: min(21rem, calc(100vw - 5rem));
-        height: clamp(24rem, 105vw, 28rem);
+        height: clamp(21rem, 96vw, 24rem);
       }
 
       #cardsTrack {
@@ -428,7 +427,7 @@
       autoPlayTimer = setInterval(() => {
         currentIndex = (currentIndex + 1) % valores.length;
         goToSlide(currentIndex);
-      }, 5000);
+      }, 3000);
     }
 
     function resetAutoPlay() {
