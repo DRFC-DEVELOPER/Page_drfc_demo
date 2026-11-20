@@ -310,7 +310,7 @@
                     <div class="network-tool-copy">
                         <h3 class="network-tool-title">Diseño de Redes</h3>
                         <div class="network-tool-divider" aria-hidden="true"></div>
-                        <p class="network-tool-subtitle">CAD / IODE Data / Bentley</p>
+                        <p class="network-tool-subtitle">CAD / LODE Data / Bentley</p>
                     </div>
                 </article>
             </div>
