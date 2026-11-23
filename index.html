@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Monda:wght@400;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="assets/css/paginas/index/hero.css">
+    <link rel="stylesheet" href="assets/css/paginas/index/anuncios.css">
     <link rel="stylesheet" href="assets/css/paginas/index/experiencia.css">
     <link rel="stylesheet" href="assets/css/paginas/index/clientes-y-etapas.css">
     <link rel="stylesheet" href="assets/css/paginas/index/colaboradores.css">
@@ -344,6 +345,47 @@
 
   <!-- Script para la animación de conteo -->
   <script src="assets/js/paginas/index/experiencia.js"></script>
+
+  <div class="fiber-divider" aria-hidden="true">
+    <svg viewBox="0 0 1000 20" preserveAspectRatio="none">
+      <line class="fiber-divider-base" x1="0" y1="10" x2="1000" y2="10"></line>
+      <line class="fiber-divider-pulse" x1="0" y1="10" x2="1000" y2="10"></line>
+    </svg>
+  </div>
+
+  <section class="announcements" aria-labelledby="announcement-title">
+    <div class="announcements-container">
+      <div class="announcements-carousel" id="announcementsCarousel" role="region" aria-label="Anuncios de DRFC" aria-roledescription="carrusel">
+        <div class="announcements-track" data-announcements-track>
+          <article class="announcement-slide" data-announcement-slide role="group" aria-roledescription="anuncio" aria-label="1 de 1" aria-hidden="false">
+            <img class="announcement-seal" src="assets/img/certificaciones/sello_circulo.png" alt="Sello de A&amp;EE Certificación Internacional ISO 9001:2015" width="300" height="300" loading="lazy">
+            <div class="announcement-copy">
+              <p class="announcement-kicker">Un logro de todo el equipo</p>
+              <h2 class="announcement-title" id="announcement-title">Sistema de Gestión de la Calidad certificado <span>ISO 9001:2015</span></h2>
+              <p>El Sistema de Gestión de la Calidad de DRFC INGENIERIA, S.A. DE C.V. ha sido certificado de conformidad con la norma NMX-CC-9001-IMNC-2015 / ISO 9001:2015 por A&amp;EE CERTIFICACIÓN INTERNACIONAL, S.A. DE C.V.</p>
+              <p class="announcement-thanks">¡Gracias a todas las personas colaboradoras por su compromiso y dedicación; este logro también es suyo!</p>
+              <div class="announcement-meta">
+                <span>Registro C.C. <strong>26.SGC.10.04.11.06</strong></span>
+                <span>Otorgado el <time datetime="2026-11-05">05 de noviembre de 2026</time></span>
+                <span>Vigente hasta el <time datetime="2029-11-04">04 de noviembre de 2029</time></span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="announcements-controls" data-announcements-controls hidden>
+          <button class="announcement-arrow" type="button" data-announcement-previous aria-label="Anuncio anterior">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
+          </button>
+          <div class="announcement-indicators" data-announcement-indicators aria-label="Seleccionar anuncio"></div>
+          <button class="announcement-arrow" type="button" data-announcement-next aria-label="Siguiente anuncio">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="assets/js/paginas/index/anuncios.js"></script>
 
   <!-- SECCIÓN PRINCIPAL DEL CARRUSEL -->
   <section class="logo-marquee-section" aria-labelledby="logo-marquee-title">
