@@ -54,9 +54,9 @@
   .site-footer .footer-brand-icon{display:block;width:var(--footer-icon);height:var(--footer-icon);margin-bottom:12px;object-fit:contain}
   .site-footer .footer-logo{font-size:clamp(1.25rem,2vw,1.5625rem);font-weight:500;letter-spacing:-1.8px;line-height:1}
   .site-footer .footer-tagline{margin-top:7px;color:#b8b8b8;font-size:.75rem;line-height:1.5}
-  .site-footer .footer-certification{display:flex;flex-direction:column;align-items:flex-start;gap:.4rem;max-width:22rem;margin-top:1rem}
+  .site-footer .footer-certification{display:flex;flex-direction:column;align-items:center;gap:.4rem;width:100%;max-width:22rem;margin-top:1rem;text-align:center}
   .site-footer .footer-certification img{width:4rem;height:4rem;flex:0 0 4rem;align-self:center;margin-top:.35rem;object-fit:contain}
-  .site-footer .footer-certification-copy{min-width:0;color:#c2cbd2;font-size:.6875rem;line-height:1.45}
+  .site-footer .footer-certification-copy{min-width:0;color:#c2cbd2;font-size:.6875rem;line-height:1.45;text-align:center}
   .site-footer .footer-certification-copy strong{display:block;margin-bottom:.15rem;color:#fff;font-size:.75rem;font-weight:600}
   .site-footer .footer-links{display:flex;flex-direction:column;gap:13px;font-size:.8125rem}
   .site-footer .footer-links{display:flex;flex-direction:column;gap:13px;font-size:.8125rem}
@@ -88,7 +88,7 @@
   .site-footer .back-top:hover{color:#fff}
   .site-footer .back-top:focus-visible{outline:2px solid #55b5d5;outline-offset:4px}
   .site-footer .back-top .arrow{display:flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#324454;color:#c2d5e2;font-size:.875rem}
-  .site-footer .newsletter{display:flex;width:100%;flex-direction:column;align-items:flex-start}
+  .site-footer .newsletter{display:flex;width:100%;flex-direction:column;align-items:center}
   .site-footer .newsletter-link{display:inline-flex;max-width:100%;align-items:center;justify-content:center;min-height:38px;padding:0 .9rem;border-radius:30px;background:#fff;color:#003e58;font-size:.8125rem;font-weight:600;text-align:center;transition:background-color .2s ease}
   .site-footer .newsletter-link:hover{background:#e8f1f5}
   .site-footer .copyright{width:100%;padding:.65rem var(--footer-gutter);background:#fff;color:#003e58;font-size:.75rem;line-height:1.5}
@@ -144,9 +144,14 @@
         <div class="newsletter">
           <a class="newsletter-link" href="${ruta("paginas/contacto.html")}">Cuéntanos sobre tu proyecto</a>
           <div class="footer-certification">
-            <p class="footer-certification-copy"><strong>Empresa certificada en ISO 9001:2015</strong></p>
             <p class="footer-certification-copy">
-              Sistema de Gestión de la Calidad certificado por A&amp;EE Certificación Internacional, S.A. de C.V. · Registro C.C. 26.SGC.10.04.11.06
+              <strong>Sistema de Gestión de la Calidad certificado ISO 9001:2015</strong>
+            </p>
+            <p class="footer-certification-copy">
+              El Sistema de Gestión de la Calidad de DRFC INGENIERIA, S.A. DE C.V. ha sido certificado de conformidad con la norma NMX-CC-9001-IMNC-2015 / ISO 9001:2015 por A&amp;EE Certificación Internacional, S.A. de C.V.
+            </p>
+            <p class="footer-certification-copy">
+              Registro C.C. 26.SGC.10.04.11.06
             </p>
             <img src="${rutaArchivo("assets/img/certificaciones/sello_circulo.png")}" alt="Sello de A&amp;EE Certificación Internacional ISO 9001:2015" width="64" height="64" loading="lazy">
           </div>

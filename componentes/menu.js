@@ -55,7 +55,7 @@
   .drfc-header *{box-sizing:border-box;margin:0}
   .drfc-header a{text-decoration:none}
   .drfc-header-logo a{display:flex;align-items:center}
-  .drfc-header-logo img{display:block;width:auto;height:clamp(70px,7vw,130px);max-width:220px;object-fit:contain}
+  .drfc-header-logo img{display:block;width:auto;height:clamp(80px,8vw,150px);max-width:260px;object-fit:contain}
   .drfc-header nav{justify-self:center}
   .drfc-header-links{display:flex;align-items:center;justify-content:center;gap:clamp(12px,1.5vw,36px);list-style:none;padding:0}
   .drfc-header-links li{position:relative}
